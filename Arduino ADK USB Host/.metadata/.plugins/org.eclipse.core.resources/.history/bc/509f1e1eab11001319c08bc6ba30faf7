@@ -132,7 +132,7 @@ void DEBUG_API::test_leds(){
 
 	//! Turn them off
 	for(register byte i = NUMBER_OF_LEDS; i > NUMBER_OF_LEDS; i--){
-		digitalWrite(DBG_LED_1 + i, LOW);
+		digitalWrite(DBG_LED_1 + i, HIGH);
 	}
 }
 

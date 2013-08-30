@@ -260,7 +260,7 @@ void USB_DEVICE::_init_rf_network(){
 	/**
 	 * Save them to eeprom address 200dec.
 	 */
-	nvram.savex((byte)200, (byte)8, (void*)packet_parser._radio_configs);
+	nvram._savex((byte)200, 8, (void*)packet_parser._radio_configs);
 
 	/**
 	 * Move the state machine to the network map request.

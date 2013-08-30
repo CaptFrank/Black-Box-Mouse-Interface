@@ -260,7 +260,7 @@ void USB_DEVICE::_init_rf_network(){
 	/**
 	 * Save them to eeprom address 200dec.
 	 */
-	nvram.savex((byte)200, (byte)8, (void*)packet_parser._radio_configs);
+	nvram._savex((byte)200, 8, (void*)packet_parser._radio_configs);
 
 	/**
 	 * Move the state machine to the network map request.
@@ -320,15 +320,13 @@ void USB_DEVICE::_init_rf_network(){
 	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)REQUEST_SENSOR_ENABLE);
 
 #ifdef DEBUG
-	char* text;
 	DEBUG_SERIAL.print("[NOTICE]: The following sensors are active:\n");
 	for(register byte i = 0; i < sizeof(byte); i ++){
 		byte bitmask = 0b11111110;
 		bitmask = ~bitmask;
 		byte sensor = packet_parser._en_sensors & bitmask;
 		if(sensor > 0)
-			sprintf(text, "\t - Sensor [%d] : ACTIVE\n", (i+1));
-			DEBUG_SERIAL.print(text);
+			DEBUG_SERIAL.printf("\t - Sensor [%d] : ACTIVE\n", (i+1));
 	}
 #endif
 	/**

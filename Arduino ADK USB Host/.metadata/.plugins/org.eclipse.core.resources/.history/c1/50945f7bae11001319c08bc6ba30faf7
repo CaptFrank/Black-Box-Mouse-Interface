@@ -7,6 +7,45 @@ void init();
 void configure_device(NVRAM* nvram_object);
 
 /**
+ * This function configures the device with NVRAM stored
+ * parameters.
+ * @param nvram_object - NVRAM
+ */
+void configure_device(NVRAM* nvram_object){
+
+	SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
+	RF_SERIAL.begin(nvram_object->nv.serial2_speed);
+
+	#ifdef DEBUG
+		DEBUG_SERIAL.begin(nvram_object->nv.serial3_speed);
+		DEBUG_SERIAL.println("BOOT SERIAL");
+	#endif
+
+	//! Buttons setup
+	pinMode(nvram_object->nv.button_1,
+				 nvram_object->nv.button1_setting);
+	pinMode(nvram_object->nv.button_2,
+				 nvram_object->nv.button2_setting);
+
+	//! LED setup
+	pinMode(nvram_object->nv.led_1,
+				 nvram_object->nv.led1_setting);
+	pinMode(nvram_object->nv.led_2,
+				 nvram_object->nv.led2_setting);
+	pinMode(nvram_object->nv.led_3,
+				 nvram_object->nv.led3_setting);
+	pinMode(nvram_object->nv.led_4,
+				 nvram_object->nv.led4_setting);
+
+	//! Set RF data.
+	base_station_address = nvram_object->nv.node_address;
+	base_station_mode = nvram_object->nv.device_mode;
+	#ifdef DEBUG
+		DEBUG_SERIAL.println("NVRAM READ");
+	#endif
+}
+
+/**
  * This is the main function that does the work
  * on the uC. It returns 0 if successfully terminated,
  * and 1 is there is an error.
@@ -163,41 +202,3 @@ void loop(){
 	}
 }
 
-/**
- * This function configures the device with NVRAM stored
- * parameters.
- * @param nvram_object - NVRAM
- */
-void configure_device(NVRAM* nvram_object){
-
-	SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
-	RF_SERIAL.begin(nvram_object->nv.serial2_speed);
-
-	#ifdef DEBUG
-		DEBUG_SERIAL.begin(nvram_object->nv.serial3_speed);
-		DEBUG_SERIAL.println("BOOT SERIAL");
-	#endif
-
-	//! Buttons setup
-	pinMode(nvram_object->nv.button_1,
-				 nvram_object->nv.button1_setting);
-	pinMode(nvram_object->nv.button_2,
-				 nvram_object->nv.button2_setting);
-
-	//! LED setup
-	pinMode(nvram_object->nv.led_1,
-				 nvram_object->nv.led1_setting);
-	pinMode(nvram_object->nv.led_2,
-				 nvram_object->nv.led2_setting);
-	pinMode(nvram_object->nv.led_3,
-				 nvram_object->nv.led3_setting);
-	pinMode(nvram_object->nv.led_4,
-				 nvram_object->nv.led4_setting);
-
-	//! Set RF data.
-	base_station_address = nvram_object->nv.node_address;
-	base_station_mode = nvram_object->nv.device_mode;
-	#ifdef DEBUG
-		DEBUG_SERIAL.println("NVRAM READ");
-	#endif
-}

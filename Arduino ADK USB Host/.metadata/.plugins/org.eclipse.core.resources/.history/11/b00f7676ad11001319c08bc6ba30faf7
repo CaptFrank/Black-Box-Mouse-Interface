@@ -92,10 +92,5 @@ void NVRAM::_savex(uint8_t address, uint8_t size, void *value){
                 EEPROM.write(address++, *rp++);
 }
 
-// Saves @ the specific address
-void NVRAM::savex(byte address, byte size, void* value){
-	_savex(address, size, value);
-}
-
 
 

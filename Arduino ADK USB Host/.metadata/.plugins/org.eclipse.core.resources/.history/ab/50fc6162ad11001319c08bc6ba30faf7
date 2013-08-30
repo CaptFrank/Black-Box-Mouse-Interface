@@ -52,7 +52,7 @@ class NVRAM {
 		 * @param size - byte
 		 * @param value - void*
 		 */
-		void savex(byte address, byte size, void* value);
+		void _savex(byte address, byte size, void* value);
 
 		/**
 		 * The structure for the nvram varialbes.

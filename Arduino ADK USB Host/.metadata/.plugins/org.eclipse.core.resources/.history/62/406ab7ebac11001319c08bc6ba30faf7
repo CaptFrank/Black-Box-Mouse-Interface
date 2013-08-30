@@ -12,7 +12,6 @@
 #include <avr/pgmspace.h>
 
 //System Defines
-#include "System_Defines/Main_Defines.h"
 #include "System_Defines/Command_Interpreter.h"
 #include "System_Defines/Hardware_Defines.h"
 #include "System_Defines/NVRAM_API.h"
@@ -20,7 +19,7 @@
 
 //USB Implementation
 #include "USB_Implementation/USB_Reports.h"
-#include "USB_Implementation/USB_Functions.h"
+#include "USB_Implementation/USB_Defines.h"
 
 //USB HID API
 #include "USB_HID_API/usbconfig.h"

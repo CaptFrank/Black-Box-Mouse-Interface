@@ -209,13 +209,11 @@ class USB_DEVICE {
         byte _sending_mutex;
 
         //! The pointers to changing data
-		#ifdef MOUSE_REPORT
-        	//! Mouse
-        	byte* buttons_mouse;
-        	word* wheel_mouse;
-        	word* x_axis_mouse;
-        	word* y_axis_mouse;
-		#endif
+        //! Mouse
+        byte* buttons_mouse;
+        word* wheel_mouse;
+        word* x_axis_mouse;
+        word* y_axis_mouse;
 
         /**
          * Init the rf network

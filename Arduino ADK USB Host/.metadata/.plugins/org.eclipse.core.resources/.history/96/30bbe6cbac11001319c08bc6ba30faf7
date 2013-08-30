@@ -14,7 +14,7 @@
  //#define MOUSE_JOYSTICK_REPORT			//! Send both joystick mouse USb reports
 
 #define DEBUG_development					//! The debug interface for Serial3, Serial2, Serial1
-#define DEBUG								//! Serial Debug Define
+//#define DEBUG								//! Serial Debug Define
 #define USER_INPUT							//! User Button Define
 #define DEBUG_LEDs							//! Debug LEDs Define
 
