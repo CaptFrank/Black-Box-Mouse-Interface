@@ -6,7 +6,6 @@
  */
 
 #include "USB_State_Machine.h"
-#include "../System_Defines/Main_Defines.h"
 
 //! Setup the state machine
 USB_STATE_MACHINE::USB_STATE_MACHINE(){

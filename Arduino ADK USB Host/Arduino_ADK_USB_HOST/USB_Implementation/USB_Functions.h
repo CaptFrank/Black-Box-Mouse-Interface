@@ -8,7 +8,10 @@
 #ifndef USB_DEFINES_H_
 #define USB_DEFINES_H_
 
-#include "System_Defines/Main_Defines.h"
+#include "../USB_HID_API/usbconfig.h"
+#include "../USB_HID_API/usbdrv.h"
+
+#include "../System_Defines/Main_Defines.h"
 
 static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 static byte protocol_version = 0; // see HID1_11.pdf sect 7.2.6

@@ -8,7 +8,8 @@
 #ifndef COMMAND_INTERPRETER_H_
 #define COMMAND_INTERPRETER_H_
 
-#include "../System_Defines/Includes.h"
+#include "../System_Defines/Main_Defines.h"
+#include "../System_Defines/NVRAM_API.h"
 
 #define WAKEUP_ROUTER				0x01	// Wake up the router
 #define WAKEUP_SENSOR				0x02	// Wake up a sensor
@@ -75,8 +76,9 @@ class COMMAND_INTERPRETER {
 		 *
 		 * @param packet_id - byte
 		 * @param command - byte*
+		 * @param len - int
 		 */
-		void _send_check(byte receive_packet_id, byte* command);
+		void _send_check(byte receive_packet_id, byte* command, int len);
 
 	public:
 

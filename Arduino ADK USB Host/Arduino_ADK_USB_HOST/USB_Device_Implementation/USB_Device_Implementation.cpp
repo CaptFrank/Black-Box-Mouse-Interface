@@ -6,7 +6,6 @@
  */
 
 #include "USB_Device_Implementation.h"
-#include "System_Defines/Main_Defines.h"
 
 #define ROUTER			0
 #define BUTTONS			0

@@ -1,0 +1,45 @@
+/*
+ * USB_Sender_Utils.h
+ *
+ *  Created on: Aug 30, 2013
+ *      Author: francispapineau
+ */
+
+#ifndef USB_SENDER_UTILS_H_
+#define USB_SENDER_UTILS_H_
+
+#include "USB_Host_Shield_2.0-master/cdcacm.h"
+
+class ACMAsyncOper : public CDCAsyncOper {
+public:
+  virtual uint8_t OnInit(ACM *pacm);
+};
+
+uint8_t ACMAsyncOper::OnInit(ACM *pacm)
+{
+  uint8_t rcode = 0;
+
+  // Set DTR=1 and RTS=1:
+  rcode = pacm->SetControlLineState(3);
+
+  if (rcode) {
+    ErrorMessage<uint8_t>(PSTR("SetControlLineState"), rcode);
+    return rcode;
+  }
+
+  LINE_CODING lc;
+  lc.dwDTERate = 115200;
+  lc.bCharFormat = 0;
+  lc.bParityType = 0;
+  lc.bDataBits = 8;
+
+  rcode = pacm->SetLineCoding(&lc);
+
+  if (rcode)
+    ErrorMessage<uint8_t>(PSTR("SetLineCoding"), rcode);
+
+  return rcode;
+}
+
+
+#endif /* USB_SENDER_UTILS_H_ */

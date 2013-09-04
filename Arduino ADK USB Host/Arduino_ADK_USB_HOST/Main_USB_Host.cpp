@@ -1,5 +1,18 @@
 
-#include "../System_Defines/Includes.h"
+//File System
+#include <Arduino.h>
+#include <EEPROM/EEPROM.h>
+#include <HardwareSerial.h>
+#include <avr/pgmspace.h>
+
+//Main defines
+#include "System_Defines/Main_Defines.h"
+#include "System_Defines/Hardware_Defines.h"
+
+#include "Debug_API/Debug_LED_Function.h"
+
+#include "USB_Implementation/USB_Reports.h"
+#include "USB_Implementation/USB_Functions.h"
 
 void setup();
 void loop();
@@ -108,8 +121,14 @@ void setup(){
 	#endif
 
 	//! USB Initialize the buffers and structures pertaining to the
-	//! USB device class.
+	//! USB device class. This inits the arduino -> PC comms
 	usbInit();
+
+	//! USB Access Point init
+	if (usb.init() == -1){
+    	debug_api.set_leds(REBOOT_ERROR);
+		error((void*)__LINE__, (void*)__func__);
+	}
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("USB ENUM STATE");
@@ -171,7 +190,7 @@ void loop(){
 void configure_device(NVRAM* nvram_object){
 
 	SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
-	RF_SERIAL.begin(nvram_object->nv.serial2_speed);
+	lc.dwDTERate = (nvram_object->nv.serial2_speed);
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.begin(nvram_object->nv.serial3_speed);

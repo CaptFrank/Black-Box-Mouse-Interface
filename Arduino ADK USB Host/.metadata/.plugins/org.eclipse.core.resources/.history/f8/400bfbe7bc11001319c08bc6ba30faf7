@@ -1,0 +1,24 @@
+/*
+ * USB_Sender_Utils.h
+ *
+ *  Created on: Aug 30, 2013
+ *      Author: francispapineau
+ */
+
+#ifndef USB_SENDER_UTILS_H_
+#define USB_SENDER_UTILS_H_
+
+#include "../../System_Defines/Main_Defines.h"
+#include "USB_Host_Shield_2.0-master/cdcacm.h"
+
+USB Usb;
+ACMAsyncOper AsyncOper;
+ACM Acm(&Usb, &AsyncOper);
+
+class ACMAsyncOper : public CDCAsyncOper {
+public:
+  virtual uint8_t OnInit(ACM *pacm);
+};
+
+
+#endif /* USB_SENDER_UTILS_H_ */

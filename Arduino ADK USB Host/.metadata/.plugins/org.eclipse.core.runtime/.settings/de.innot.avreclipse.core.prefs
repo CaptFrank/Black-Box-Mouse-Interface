@@ -1,5 +1,13 @@
 avrdude/avrdudeUseConsole=true
-avrdude/avrdudeconf=/Users/francispapineau/Documents/4th year project/Source Code/Black-Box-Mouse-Interface/Arduino ADK USB Host/ArduinoCore/avrdude.conf
+avrdude/avrdudeconf=/Users/francispapineau/Documents/4th year project/Source Code/Black-Box-Mouse-Interface/Arduino ADK USB Host/avrdude.conf
+avrdude/configs/programmerconfig.1/baudrate=9600
+avrdude/configs/programmerconfig.1/description=Default AVRDude Programmer Configuration. Modify as required for your setup.
+avrdude/configs/programmerconfig.1/name=Arduino
+avrdude/configs/programmerconfig.1/port=
+avrdude/configs/programmerconfig.1/postAvrdudeDelayMs=
+avrdude/configs/programmerconfig.1/ppresetline=
+avrdude/configs/programmerconfig.1/ppvccline=
+avrdude/configs/programmerconfig.1/programmer=arduino
 avrdude/customconfigfile=true
 avrdudepropertypage/previewexpanded=false
 avrdudepropertypage/weight_preview_collapsed=50

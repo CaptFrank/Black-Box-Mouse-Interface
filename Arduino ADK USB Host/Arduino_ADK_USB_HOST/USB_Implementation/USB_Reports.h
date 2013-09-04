@@ -8,7 +8,7 @@
 #ifndef USB_REPORTS_H_
 #define USB_REPORTS_H_
 
-#include "../System_Defines/Includes.h"
+#include "../System_Defines/Main_Defines.h"
 
 //! Mouse USB report chosen
 #ifdef MOUSE_REPORT

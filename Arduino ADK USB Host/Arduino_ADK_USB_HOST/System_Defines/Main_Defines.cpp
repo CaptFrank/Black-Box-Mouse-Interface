@@ -5,7 +5,6 @@
  *      Author: fjpapin
  */
 
-#include "Main_Defines.h"
 #include "Debug_API/Debug_LED_Function.h"
 
 
@@ -40,6 +39,8 @@
 		//! Disconnect the device.
 		usbDeviceDisconnect();
 		command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)PAUSE_ROUTER);
+		send_frame(sizeof(AP_STOP), AP_STOP);
+		send_frame(sizeof(AP_RESET), AP_RESET);
 		usb_state_machine.move_state_to_local_error(usb_state_machine.current_state);
 
 	#ifdef SELECT_BUTTON_2

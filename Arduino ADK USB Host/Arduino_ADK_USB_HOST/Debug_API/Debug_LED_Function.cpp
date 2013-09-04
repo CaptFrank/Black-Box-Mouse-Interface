@@ -6,7 +6,6 @@
  */
 
 #include "Debug_LED_Function.h"
-#include "System_Defines/Main_Defines.h"
 
 //! Initialize the object
 void DEBUG_API::DEBUG_API(){

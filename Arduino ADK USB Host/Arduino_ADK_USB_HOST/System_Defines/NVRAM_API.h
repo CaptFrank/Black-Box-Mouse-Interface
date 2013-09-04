@@ -5,8 +5,6 @@
  *      Author: fjpapin
  */
 
-#include "../System_Defines/Includes.h"
-
 /**
  * This class handles the NVRAM accesses and storage
  * structure.
@@ -22,7 +20,7 @@ class NVRAM {
 		 * @param size - byte
 		 * @param value - void*
 		 */
-		void _loadx(byte address, byte size, void* value);
+		void _loadx(uint8_t address, uint8_t size, void* value);
 
 		/**
 		 * Saves bytes to NVRAM
@@ -31,7 +29,7 @@ class NVRAM {
 		 * @param size - byte
 		 * @param value - void*
 		 */
-		void _savex(byte address, byte size, void* value);
+		void _savex(uint8_t address, uint8_t size, void* value);
 
 	public:
 
@@ -52,7 +50,7 @@ class NVRAM {
 		 * @param size - byte
 		 * @param value - void*
 		 */
-		void savex(byte address, byte size, void* value);
+		void savex(uint8_t address, uint8_t size, void* value);
 
 		/**
 		 * The structure for the nvram varialbes.
@@ -65,46 +63,46 @@ class NVRAM {
 			word serial3_speed;
 
 			//! RF settings
-			byte node_address;
-			byte device_mode;
+			uint8_t node_address;
+			uint8_t device_mode;
 
 			//! GPIO settings
 			//!		buttons:
-			byte button_1;
-			byte button1_setting;
-			byte button_2;
-			byte button2_setting;
+			uint8_t button_1;
+			uint8_t button1_setting;
+			uint8_t button_2;
+			uint8_t button2_setting;
 
 			//!		LEDs:
-			byte led_1;
-			byte led1_setting;
-			byte led_2;
-			byte led2_setting;
-			byte led_3;
-			byte led3_setting;
-			byte led_4;
-			byte led4_setting;
+			uint8_t led_1;
+			uint8_t led1_setting;
+			uint8_t led_2;
+			uint8_t led2_setting;
+			uint8_t led_3;
+			uint8_t led3_setting;
+			uint8_t led_4;
+			uint8_t led4_setting;
 
 			//! Possible Commands;
-			byte _ping_router[6];
-			byte _ping_sensor[6];
-			byte _request_router_run[3];
-			byte _request_router_config[7];
-			byte _request_sensor_config[7];
-			byte _request_sensor_enable[7];
-			byte _request_sensor_channel[10];
-			byte _request_nmap[4];
-			byte _request_router_status[6];
-			byte _pause_sensor[7];
-			byte _pause_router[7];
-			byte _power_on_router[6];
-			byte _power_on_sensor[6];
-			byte _poweroff_router[6];
-			byte _poweroff_sensor[6];
-			byte _wakeup_router[6];
-			byte _wakeup_sensor[6];
-			byte _request_sensor_number[7];
-			byte _request_sensor_channels[7];
+			uint8_t _ping_router[6];
+			uint8_t _ping_sensor[6];
+			uint8_t _request_router_run[3];
+			uint8_t _request_router_config[7];
+			uint8_t _request_sensor_config[7];
+			uint8_t _request_sensor_enable[7];
+			uint8_t _request_sensor_channel[10];
+			uint8_t _request_nmap[4];
+			uint8_t _request_router_status[6];
+			uint8_t _pause_sensor[7];
+			uint8_t _pause_router[7];
+			uint8_t _power_on_router[6];
+			uint8_t _power_on_sensor[6];
+			uint8_t _poweroff_router[6];
+			uint8_t _poweroff_sensor[6];
+			uint8_t _wakeup_router[6];
+			uint8_t _wakeup_sensor[6];
+			uint8_t _request_sensor_number[7];
+			uint8_t _request_sensor_channels[7];
 
 		};
 

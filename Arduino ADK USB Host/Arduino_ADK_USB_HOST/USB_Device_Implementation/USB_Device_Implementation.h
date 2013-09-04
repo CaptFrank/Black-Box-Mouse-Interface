@@ -8,7 +8,7 @@
 #ifndef USB_DEVICE_IMPLEMENTATION_H_
 #define USB_DEVICE_IMPLEMENTATION_H_
 
-#include "System_Defines/Main_Defines.h"
+#include "../System_Defines/Main_Defines.h"
 
 /**
  	// GENERAL INFO ABOUT USB DEVICE FUNCTIONS

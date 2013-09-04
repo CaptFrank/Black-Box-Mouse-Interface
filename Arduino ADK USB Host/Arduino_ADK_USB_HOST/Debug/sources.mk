@@ -15,7 +15,9 @@ C++_SRCS :=
 CC_SRCS := 
 OBJS := 
 C_DEPS := 
+EEPROM_IMAGE := 
 ELFS := 
+FLASH_IMAGE := 
 LSS := 
 S_DEPS := 
 CXX_DEPS := 
@@ -23,6 +25,7 @@ S_UPPER_DEPS :=
 C++_DEPS := 
 ASM_DEPS := 
 CC_DEPS := 
+AVRDUDEDUMMY := 
 CPP_DEPS := 
 C_UPPER_DEPS := 
 SIZEDUMMY := 
@@ -33,6 +36,10 @@ USB_Implementation \
 USB_HID_API \
 USB_Device_Implementation \
 System_Defines \
+Sensor_Parser_Implementation/USB_Sender \
+Sensor_Parser_Implementation/USB_Sender/USB_Host_Shield_2.0-master \
+Sensor_Parser_Implementation/USB_Sender/USB_Host_Shield_2.0-master/examples/HID/le3dp \
+Sensor_Parser_Implementation/USB_Sender/USB_Host_Shield_2.0-master/examples/HID/USBHIDJoystick \
 Sensor_Parser_Implementation \
 . \
 Emulation_Device_Implementation \

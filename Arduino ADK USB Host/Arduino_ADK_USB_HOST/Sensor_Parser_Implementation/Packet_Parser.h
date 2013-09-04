@@ -8,7 +8,7 @@
 #ifndef SENSOR_PARSER_H_
 #define SENSOR_PARSER_H_
 
-#include "System_Defines/Main_Defines.h"
+#include "../System_Defines/Main_Defines.h"
 
 #define MAX_TOKENS		40
 
@@ -32,7 +32,7 @@ class PACKET_PARSER {
 		struct router_status_info_t 			_status;
 		struct router_debug_status_t 			_debug;
 		struct router_sensor_enable_report_t 	_en_sensors;
-		struct remote_radio_values_t			_radio_configs;
+		struct remote_radio_configs_t			_radio_configs;
 		struct error_message_t					_error;
 		struct local_command_t					_command;
 		struct number_of_sensors_t				_num_sensors;

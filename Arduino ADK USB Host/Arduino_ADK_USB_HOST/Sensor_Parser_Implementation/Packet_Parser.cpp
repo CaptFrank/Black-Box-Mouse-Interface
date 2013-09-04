@@ -6,7 +6,6 @@
  */
 
 #include "Packet_Parser.h"
-#include "System_Defines/Main_Defines.h"
 
 //! Default constructor
 PACKET_PARSER::PACKET_PARSER(){

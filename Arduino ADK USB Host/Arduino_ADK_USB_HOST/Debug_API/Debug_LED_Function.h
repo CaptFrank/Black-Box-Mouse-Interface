@@ -5,6 +5,8 @@
  *      Author: francispapineau
  */
 
+#include "../System_Defines/Main_Defines.h"
+
 //! Debug indexes
 #define FATAL			1
 #define WARNING			2

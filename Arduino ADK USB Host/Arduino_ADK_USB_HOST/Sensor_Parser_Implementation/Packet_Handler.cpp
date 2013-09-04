@@ -6,6 +6,7 @@
  */
 
 #include "Packet_Handler.h"
+#include "USB_Sender/USB_Sender_Utils.h"
 
 /**
  * This is the packet decoder, over written with a past handler_table
@@ -37,7 +38,9 @@ void PACKET_DECODER::poll(void){
 
 	byte available;
 
-	available = RF_SERIAL.available();
+	usb.Task();
+	available = acm.isReady();
+
 	if(EMPTY == available){
 		_guard_bool = false;
 		//check timeout watchdog and if over reset.
@@ -45,10 +48,23 @@ void PACKET_DECODER::poll(void){
 			_phase = PACKET_WAIT_PHASE_1;
 		}
 	}else {
+	    send_frame(sizeof(AP_ON_COMMAND), AP_ON_COMMAND);
+	    send_frame(sizeof(ACC_DATA_REQUEST), ACC_DATA_REQUEST);
+
 		_guard_bool = true;
+
+		// get 4 byte payload
+
 		// new data was discovered
-		while (available--){
-			_move_state((byte)RF_SERIAL.read());
+		while (acm.isReady()){
+			uint8_t input_byte[1];
+			uint16_t receiving_byte = 1;
+
+			// get a byte
+			get_frame(input_byte, &receiving_byte);
+
+			// move to the next state
+			_move_state(input_byte[0]);
 			_last_received = millis();
 		}
 	}
