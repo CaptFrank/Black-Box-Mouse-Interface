@@ -1,9 +1,0 @@
-*.[oa]
-*.pyc
-*.*~
-*.s
-.pida-metadata
-build
-TAGS
-doc/*.html
-output.map

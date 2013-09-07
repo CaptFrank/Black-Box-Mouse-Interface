@@ -6,6 +6,7 @@
  */
 
 #include "Emulation_Device_Implementation.h"
+#include "../USB_Implementation/USB_Reports.h"
 
 
 //! Default Constructor

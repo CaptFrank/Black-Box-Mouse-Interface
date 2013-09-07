@@ -24,6 +24,7 @@ e-mail   :  support@circuitsathome.com
 #if defined(__AVR_ATmega2560__)
 /* Uncomment the following if you have Arduino Mega ADK board with MAX3421e built-in */
 #define BOARD_MEGA_ADK
+#define PORTJ
 #endif
 
 /* Uncomment the following if you are using a Teensy 2.0 */
@@ -33,8 +34,6 @@ e-mail   :  support@circuitsathome.com
 //#define BOARD_SANGUINO
 
 #include <avr/io.h>
-
-#define PORTJ
 
 #ifdef PORTA
 #define USE_PORTA

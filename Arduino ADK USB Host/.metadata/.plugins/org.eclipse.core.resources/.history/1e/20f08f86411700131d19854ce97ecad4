@@ -24,7 +24,7 @@
 #include "../USB_Implementation/USB_Functions.h"
 
 //USB HID API
-//#include "../USB_HID_API/usbconfig.h"
+#include "../USB_HID_API/usbconfig.h"
 #include "../USB_HID_API/usbdrv.h"
 
 //USB Device Implementation
