@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+pathvariable.ArduinoLibPath=/Applications/Development/Arduino.app/Contents/Resources/Java/libraries
+pathvariable.CoreArduinoPath=/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores
+pathvariable.PinArduinoPath=/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants
+pathvariable.PivateLibPath=/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host
+version=1

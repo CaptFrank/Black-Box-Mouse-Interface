@@ -1,0 +1,121 @@
+/*
+ * USB_Functions.cpp
+ *
+ *  Created on: Jul 12, 2013
+ *      Author: fjpapin
+ */
+
+#include "USB_Functions.h"
+
+/**
+ * This function is used to setup the USB functionality. Its sets up
+ * the structure of the report, and also filters to the preferred
+ * HID report to send.
+ *
+ * @param data - Setup data
+ * @return - usbMsgLen
+ */
+usbMsgLen_t usbFunctionSetup(byte data[8]){
+	//! see HID1_11.pdf sect 7.2 and http://vusb.wikidot.com/driver-api
+	usbRequest_t *rq = (usbRequest_t *)data;
+
+	if ((rq->bmRequestType & USBRQ_TYPE_MASK) != USBRQ_TYPE_CLASS)
+		return 0; //! ignore request if it's not a class specific request
+
+	//! see HID1_11.pdf sect 7.2
+	switch (rq->bRequest){
+		case USBRQ_HID_GET_IDLE:
+			usbMsgPtr = &idle_rate; //! send data starting from this byte
+			return 1; //! send 1 byte
+		case USBRQ_HID_SET_IDLE:
+			idle_rate = rq->wValue.bytes[1]; //! read in idle rate
+			return 0; //! send nothing
+		case USBRQ_HID_GET_PROTOCOL:
+			usbMsgPtr = &protocol_version; //! send data starting from this byte
+			return 1; //! send 1 byte
+		case USBRQ_HID_SET_PROTOCOL:
+			protocol_version = rq->wValue.bytes[1];
+			return 0; //! send nothing
+		case USBRQ_HID_GET_REPORT:
+#ifdef JOYSTICK_REPORT
+			//! check for report ID then send back report
+			if (rq->wValue.bytes[0] == 1){
+				usbMsgPtr = (uchar*)&joystick_report;
+				return sizeof(joystick_report);
+			}
+#endif
+#ifdef MOUSE_REPORT
+			if (rq->wValue.bytes[0] == 1){
+				usbMsgPtr = (uchar*)&mouse_report;
+				return sizeof(mouse_report);
+			}
+#endif
+#ifdef MOUSE_JOYSTICK_REPORT
+			if (rq->wValue.bytes[0] == 1){
+				usbMsgPtr = (uchar*)&joystick_mouse_report;
+				return sizeof(joystick_mouse_report);
+			}
+#endif
+			else{
+				return 0; //! no such report, send nothing
+			}
+		case USBRQ_HID_SET_REPORT: //! no "output" or "feature" implemented, so ignore
+			return 0; //! send nothing
+		default: //! do not understand data, ignore
+			return 0; //! send nothing
+	}
+}
+
+/**
+ * This function is used to guarantee that the data is sent to the computer once.
+ * Sends the usb report through the serial interface.
+ *
+ * @param data - USB Report type
+ * @param len - sizeof(USB Report)
+ */
+void usbSendHidReport(byte* data, uchar len){
+	while(1){
+		usbPoll();
+		if (usbInterruptIsReady()){
+			usbSetInterrupt(data, len);
+			break;
+		}
+	}
+}
+
+#ifdef JOYSTICK_REPORT
+/**
+ * This function by definition takes in a usb report structure and
+ * sends it to the host.
+ *
+ * @param report - joystick_report_t*
+ */
+void send_joystick_report(struct joystick_report_t* report){
+	usbSendHidReport((byte*)report, sizeof(joystick_report_t));
+}
+#endif
+
+#ifdef MOUSE_REPORT
+/**
+ * This function by definition takes in a usb report structure and
+ * sends it to the host.
+ *
+ * @param report - mouse_report_t*
+ */
+void send_mouse_report(struct mouse_report_t* report){
+	usbSendHidReport((byte*)report, sizeof(mouse_report_t));
+}
+#endif
+
+#ifdef MOUSE_JOYSTICK_REPORT
+
+/**
+ * This function by definition takes in a usb report structure and
+ * sends it to the host.
+ *
+ * @param report - joystick_mouse_report_t*
+ */
+void send_mouse_joystick_report(struct joystick_mouse_report_t* report){
+	usbSendHidReport((byte*)report, sizeof(joystick_mouse_report_t));
+}
+#endif

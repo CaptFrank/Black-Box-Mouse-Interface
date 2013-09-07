@@ -1,0 +1,14 @@
+	
+	Hardware_Defines.h
+		- Port Maps
+		
+	ALL
+		- Review.
+		
+	Sensor Input Map:
+	
+		ACC: x, y, z
+		BATT: batt
+		PRESSURE: pressure / altitude
+		TEMPERATURE: temp
+		Buttons: 1, 2, 3, 4, 5
