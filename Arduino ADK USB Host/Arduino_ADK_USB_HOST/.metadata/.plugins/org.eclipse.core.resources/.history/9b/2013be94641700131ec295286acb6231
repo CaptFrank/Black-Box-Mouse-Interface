@@ -393,4 +393,4 @@ usbMFTimeout:
 ;#   else
 ;#       error "USB_CFG_CLOCK_KHZ is not one of the supported non-crc-rates!"
 ;#   endif
-;#endif /* USB_CFG_CHECK_CRC */
+#endif /* USB_CFG_CHECK_CRC */

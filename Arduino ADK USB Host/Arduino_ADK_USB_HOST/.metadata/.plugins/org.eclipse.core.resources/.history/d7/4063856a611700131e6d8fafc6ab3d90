@@ -42,7 +42,6 @@ void PACKET_DECODER::poll(void){
 
 	byte available;
 
-	//TODO
 	usb.Task();
 	available = acm.isReady();
 
@@ -61,7 +60,7 @@ void PACKET_DECODER::poll(void){
 		// get 4 byte payload
 
 		// new data was discovered
-		while (/*acm.isReady()*/1){
+		while (acm.isReady()){
 			uint8_t input_byte[1];
 			uint16_t receiving_byte = 1;
 

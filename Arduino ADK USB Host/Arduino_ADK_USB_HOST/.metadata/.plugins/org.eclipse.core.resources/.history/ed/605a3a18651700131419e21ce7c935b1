@@ -41,7 +41,7 @@
 		};
 
 		//! The debug codes.
-		const uint8_t DEBUG_CODES[9] = {
+		const byte DEBUG_CODES[9] = {
 
 				0b0000001,	// FATAL ERROR
 				0b0000010,	// STATE CHANGE
@@ -55,7 +55,7 @@
 		};
 
 		//! The LED codes
-		const uint8_t DEBUG_LED_CODES[9] = {
+		const byte DEBUG_LED_CODES[9] = {
 
 				0b0001,		// FATAL ERROR
 				0b0000,		// CLEAR ERRORS
@@ -74,7 +74,7 @@
 typedef struct DEBUG_CODES_STRUCT {
 
 		//! The index to the arrays.
-		uint8_t ERROR_INDEX; //! Cannot be bigger than 9;
+		byte ERROR_INDEX; //! Cannot be bigger than 9;
 
 	}debug_code_struct_t; //! Defining a type
 
@@ -85,10 +85,10 @@ typedef struct DEBUG_CODES_STRUCT {
 typedef struct ERROR_TYPE_COUNTS {
 
 	//! The counts for each errors.
-	uint8_t warnings_errors;
-	uint8_t info_errors;
-	uint8_t debug_errors;
-	uint8_t memory_errors;
+	byte warnings_errors;
+	byte info_errors;
+	byte debug_errors;
+	byte memory_errors;
 
 	//byte fatal_errors; //not needed since it will reboot.
 }error_type_counts_t;
@@ -104,8 +104,8 @@ class DEBUG_API {
 
 		//! The needed pointers for the print
 		String* debug_type;
-		uint8_t* debug_code;
-		uint8_t* led_debug_code;
+		byte* debug_code;
+		byte* led_debug_code;
 
 		//! Boolean mutexes for the process
 		bool debug_set;
@@ -115,7 +115,7 @@ class DEBUG_API {
 		 * This reboots the device given a reason.
 		 * @param cause - the debug code
 		 */
-		void reboot_cause_error(uint8_t cause);
+		void reboot_cause_error(byte cause);
 
 		/**
 		 * The default print_error
@@ -124,8 +124,8 @@ class DEBUG_API {
 		 * @param error_led_code - byte
 		 * @param string - String
 		 */
-		void print_error(String error_type, uint8_t error_code,
-				uint8_t error_led_code, String* string);
+		void print_error(String error_type, byte error_code,
+				byte error_led_code, String* string);
 
 	public:
 
@@ -139,7 +139,7 @@ class DEBUG_API {
 		 * @param error_index - byte
 		 * @param string - String
 		 */
-		void print_error(uint8_t error_index, String* string);
+		void print_error(byte error_index, String* string);
 
 		/**
 		 * This enables the api.
@@ -156,7 +156,7 @@ class DEBUG_API {
 		 * @param debug_type - String
 		 * @return byte - number
 		 */
-		uint8_t get_number_of(String debug_type);
+		byte get_number_of(String debug_type);
 
 		/**
 		 * Tests the leds.
@@ -168,5 +168,5 @@ class DEBUG_API {
 		 * Sets the leds based on the error_message index passed.
 		 * @param error_index - byte
 		 */
-		void set_leds(uint8_t error_index);
+		void set_leds(byte error_index);
 };

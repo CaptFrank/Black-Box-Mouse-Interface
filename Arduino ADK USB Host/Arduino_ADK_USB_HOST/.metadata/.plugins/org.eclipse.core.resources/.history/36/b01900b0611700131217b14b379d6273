@@ -10,7 +10,6 @@
 
 //! the CPU Speed
 #define F_CPU				16000000
-#define USB_CFG_CLOCK_KHZ 	(F_CPU/1000)
 
 //! This determines the sensor data maps
 #define WATCH_ONLY
@@ -34,11 +33,11 @@
 //! - Serial 2 - USB Host 	  - RF COMS
 //! - Serial 3 - Debug		  - FTDI COMS
 
-#ifdef DEBUG_development
-	  extern HardwareSerial Serial1;
-	  extern HardwareSerial Serial2;
-	  extern HardwareSerial Serial3;
-#endif
+//#ifdef DEBUG_development
+//	  extern HardwareSerial Serial1;
+//	  extern HardwareSerial Serial2;
+//	  extern HardwareSerial Serial3;
+//#endif
 
  //! Normal Output Stream
 #define SERIAL_OUTPUT		Serial1

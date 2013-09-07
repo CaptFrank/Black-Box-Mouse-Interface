@@ -42,9 +42,8 @@ void PACKET_DECODER::poll(void){
 
 	byte available;
 
-	//TODO
-	usb.Task();
-	available = acm.isReady();
+	//usb.Task();
+	//available = acm.isReady();
 
 	if(EMPTY == available){
 		_guard_bool = false;
@@ -53,15 +52,15 @@ void PACKET_DECODER::poll(void){
 			_phase = PACKET_WAIT_PHASE_1;
 		}
 	}else {
-	    send_frame(sizeof(AP_ON_COMMAND), AP_ON_COMMAND);
-	    send_frame(sizeof(ACC_DATA_REQUEST), ACC_DATA_REQUEST);
+	    //send_frame(sizeof(AP_ON_COMMAND), AP_ON_COMMAND);
+	    //send_frame(sizeof(ACC_DATA_REQUEST), ACC_DATA_REQUEST);
 
 		_guard_bool = true;
 
 		// get 4 byte payload
 
 		// new data was discovered
-		while (/*acm.isReady()*/1){
+		while (/*acm.isReady()*/){
 			uint8_t input_byte[1];
 			uint16_t receiving_byte = 1;
 
