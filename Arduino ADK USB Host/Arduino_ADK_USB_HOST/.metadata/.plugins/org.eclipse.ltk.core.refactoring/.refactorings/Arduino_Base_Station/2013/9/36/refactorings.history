@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Arduino_Base_Station/Arduino_Base_Station.cpp&apos; to &apos;Arduino_Base_Station.ino&apos;" description="Rename resource &apos;Arduino_Base_Station.cpp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Arduino_Base_Station.cpp" name="Arduino_Base_Station.ino" stamp="1378523172773" updateReferences="true"/>
+</session>
