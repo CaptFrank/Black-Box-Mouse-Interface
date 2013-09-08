@@ -26,6 +26,8 @@ e-mail   :  support@circuitsathome.com
 #include <WProgram.h>
 #endif
 
+#include <avr/io.h>
+
 #include "avrpins.h"
 #include "max3421e.h"
 #include "usb_ch9.h"
@@ -50,9 +52,10 @@ public:
 };
 
 /* SPI pin definitions. see avrpins.h   */
-#if defined(__AVR_ATmega1280__) || (__AVR_ATmega2560__) || defined(__AVR_ATmega32U4__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB1286__)
+#define __AVR_ATmega2560__
+//#if defined(__AVR_ATmega1280__) || (__AVR_ATmega2560__) || defined(__AVR_ATmega32U4__) || defined(__AVR_AT90USB646__) || defined(__AVR_AT90USB1286__)
 typedef SPi< Pb1, Pb2, Pb3, Pb0 > spi;
-#endif
+//#endif
 #if  defined(__AVR_ATmega168__) || defined(__AVR_ATmega328P__)
 typedef SPi< Pb5, Pb3, Pb4, Pb2 > spi;
 #endif

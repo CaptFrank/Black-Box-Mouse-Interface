@@ -34,6 +34,8 @@ e-mail   :  support@circuitsathome.com
 
 #include <avr/io.h>
 
+#define PORTJ
+
 #ifdef PORTA
 #define USE_PORTA
 #endif

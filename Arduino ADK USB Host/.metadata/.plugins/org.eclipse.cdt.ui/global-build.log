@@ -1,4 +1,4 @@
-20:29:27 **** Incremental Build of configuration Debug for project Arduino_ADK_USB_HOST ****
+20:13:06 **** Incremental Build of configuration Debug for project Arduino_ADK_USB_HOST ****
 make all 
 Building file: ../USB_Implementation/USB_Functions.cpp
 Invoking: AVR C++ Compiler
