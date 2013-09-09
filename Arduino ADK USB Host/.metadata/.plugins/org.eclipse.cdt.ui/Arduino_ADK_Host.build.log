@@ -1,0 +1,10 @@
+20:09:26 **** Build of configuration Release for project Arduino_ADK_Host ****
+make all 
+Building file: ../Arduino_ADK_Host.cpp
+/bin/sh: avr-g++: command not found
+Invoking: AVR C++ Compiler
+make: *** [Arduino_ADK_Host.o] Error 127
+avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Users/francispapineau/Documents/4th year project/Source Code/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_Host" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"Arduino_ADK_Host.d" -MT"Arduino_ADK_Host.d"  -c -o "Arduino_ADK_Host.o" -x c++ "../Arduino_ADK_Host.cpp"
+
+20:09:26 Build Finished (took 260ms)
+

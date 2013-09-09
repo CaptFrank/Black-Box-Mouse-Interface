@@ -1,0 +1,7 @@
+Arduino\ Board=Arduino Mega 2560 or Mega ADK
+Arduino\ IDE\ Version=1.0.5
+Arduino\ Path=/Applications/Arduino.app/Contents/Resources/Java
+Arduino\ Port=/dev/cu.NXT-DevB
+Private\ Library\ Path=/Applications/Arduino.app/Contents/Resources/Java/libraries
+Use\ Arduino\ IDE\ Tools=true
+eclipse.preferences.version=1

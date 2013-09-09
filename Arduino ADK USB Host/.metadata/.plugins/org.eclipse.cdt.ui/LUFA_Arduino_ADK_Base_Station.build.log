@@ -1,0 +1,12 @@
+19:49:55 **** Build of configuration Debug for project LUFA_Arduino_ADK_Base_Station ****
+make all 
+Building file: ../USB_Implementation/USB_Functions.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -funsigned-char -funsigned-bitfields -fno-exceptions -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Implementation/USB_Functions.d" -MT"USB_Implementation/USB_Functions.d" -c -o "USB_Implementation/USB_Functions.o" "../USB_Implementation/USB_Functions.cpp"
+In file included from ../USB_Implementation/USB_Functions.cpp:8:0:
+../USB_Implementation/USB_Functions.h:11:38: fatal error: ../USB_HID_API/usbconfig.h: No such file or directory
+compilation terminated.
+make: *** [USB_Implementation/USB_Functions.o] Error 1
+
+19:49:55 Build Finished (took 235ms)
+

@@ -7,7 +7,6 @@
 
 #include "Packet_Handler.h"
 #include "../USB_Sender/USB_Sender_Utils.h"
-#include "../Sensor_Parser_Implementation/Network_Protocol.h"
 
 /**
  * This is the packet decoder, over written with a past handler_table
