@@ -1,8 +1,33 @@
-22:15:08 **** Incremental Build of configuration Release for project AVR_USB_Host ****
+23:41:18 **** Incremental Build of configuration Release for project AVR_USB_Host ****
 make all 
+Building file: ../USB_Implementation/USB_Functions.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/AVR_USB_Host" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Implementation/USB_Functions.d" -MT"USB_Implementation/USB_Functions.d"  -c -o "USB_Implementation/USB_Functions.o" -x c++ "../USB_Implementation/USB_Functions.cpp"
+In file included from ../USB_Implementation/../USB_HID_API/usbconfig.h:14,
+                 from ../USB_Implementation/USB_Functions.h:11,
+                 from ../USB_Implementation/USB_Functions.cpp:8:
+../USB_Implementation/../USB_HID_API/../System_Defines/Hardware_Defines.h:10:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+Finished building: ../USB_Implementation/USB_Functions.cpp
+ 
+Building file: ../USB_HID_API/oddebug.c
+Invoking: AVR Compiler
+avr-gcc -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/AVR_USB_Host" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/libraries/EEPROM" -D__IN_ECLIPSE__=1 -DARDUINO=100 -DUSB_PID= -DUSB_VID= -Wall -Os -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_HID_API/oddebug.d" -MT"USB_HID_API/oddebug.d"  -c -o "USB_HID_API/oddebug.o" "../USB_HID_API/oddebug.c"
+In file included from ../USB_HID_API/usbconfig.h:14,
+                 from ../USB_HID_API/usbdrv.h:13,
+                 from ../USB_HID_API/usbdrv.c:11:
+Finished building: ../USB_HID_API/oddebug.c
+ 
+Building file: ../USB_HID_API/usbdrv.c
+Invoking: AVR Compiler
+avr-gcc -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/AVR_USB_Host" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/libraries/EEPROM" -D__IN_ECLIPSE__=1 -DARDUINO=100 -DUSB_PID= -DUSB_VID= -Wall -Os -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_HID_API/usbdrv.d" -MT"USB_HID_API/usbdrv.d"  -c -o "USB_HID_API/usbdrv.o" "../USB_HID_API/usbdrv.c"
+../USB_HID_API/../System_Defines/Hardware_Defines.h:10:1: warning: "F_CPU" redefined
+Finished building: ../USB_HID_API/usbdrv.c
+ 
 Building file: ../USB_HID_API/usbdrvasm.S
 Invoking: AVR Assembler
 avr-gcc -x assembler-with-cpp -mmcu=atmega2560 -MMD -MP -MF"USB_HID_API/usbdrvasm.d" -MT"USB_HID_API/usbdrvasm.d" -c -o "USB_HID_API/usbdrvasm.o" "../USB_HID_API/usbdrvasm.S"
+<command-line>: warning: this is the location of the previous definition
 /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h: Assembler messages:
 /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:121: Error: unknown opcode `typedef'
 /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:122: Error: unknown opcode `typedef'
@@ -104,5 +129,5 @@ avr-gcc -x assembler-with-cpp -mmcu=atmega2560 -MMD -MP -MF"USB_HID_API/usbdrvas
 ../USB_HID_API/../USB_Implementation/USB_Reports.h:48: Error: junk at end of line, first unrecognized character is `}'
 make: *** [USB_HID_API/usbdrvasm.o] Error 1
 
-22:15:08 Build Finished (took 570ms)
+23:41:19 Build Finished (took 904ms)
 
