@@ -59,7 +59,6 @@ USB_ClassInfo_HID_Device_t Joystick_HID_Interface =
 			},
 	};
 
-
 /** Main program entry point. This routine contains the overall program flow, including initial
  *  setup of all components and the main program loop.
  */

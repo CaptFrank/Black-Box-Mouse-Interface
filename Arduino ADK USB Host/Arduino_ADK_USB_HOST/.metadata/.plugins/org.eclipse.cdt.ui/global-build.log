@@ -1,17 +1,12 @@
-23:46:14 **** Incremental Build of configuration Release for project LUFA_Arduino_ADK ****
+00:22:04 **** Incremental Build of configuration Release for project AVR_USB_Host ****
 make all 
-Invoking: Print Size
-avr-size --format=avr --mcu=atmega2560 LUFA_Arduino_ADK.elf
-AVR Memory Usage
-----------------
-Device: atmega2560
-
-Program:     678 bytes (0.3% Full)
-(.text + .data + .bootloader)
-
-Data:          9 bytes (0.1% Full)
-(.data + .bss + .noinit)
-
-
-Finished building: sizedummy
- 
+Building file: ../USB_Implementation/USB_Functions.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/AVR_USB_Host" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Implementation/USB_Functions.d" -MT"USB_Implementation/USB_Functions.d"  -c -o "USB_Implementation/USB_Functions.o" -x c++ "../USB_Implementation/USB_Functions.cpp"
+In file included from ../USB_Implementation/../USB_HID_API/usbconfig.h:14,
+                 from ../USB_Implementation/USB_Functions.h:11,
+                 from ../USB_Implementation/USB_Functions.cpp:8:
+../USB_Implementation/../USB_HID_API/../System_Defines/Hardware_Defines.h:9:28: error: HardwareSerial.h: No such file or directory
+../USB_Implementation/../USB_HID_API/../System_Defines/Hardware_Defines.h:12:1: warning: "F_CPU" redefined
+<command-line>: warning: this is the location of the previous definition
+make: *** [USB_Implementation/USB_Functions.o] Error 1

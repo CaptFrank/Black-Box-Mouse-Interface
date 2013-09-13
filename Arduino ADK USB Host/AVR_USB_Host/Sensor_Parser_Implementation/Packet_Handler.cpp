@@ -9,6 +9,7 @@
 #include "USB_Sender/USB_Sender_Utils.h"
 #include "../System_Defines/Packet_Watchdog.h"
 #include "Network_Protocol.h"
+#include "../System_Defines/Hardware_Defines.h"
 
 #define EMPTY			0
 
@@ -43,8 +44,7 @@ void PACKET_DECODER::poll(void){
 	byte available;
 
 	//TODO
-	usb.Task();
-	available = acm.isReady();
+	available = SERIAL_OUTPUT.available();
 
 	if(EMPTY == available){
 		_guard_bool = false;
@@ -53,9 +53,9 @@ void PACKET_DECODER::poll(void){
 			_phase = PACKET_WAIT_PHASE_1;
 		}
 	}else {
-	    send_frame(sizeof(AP_ON_COMMAND), AP_ON_COMMAND);
-	    send_frame(sizeof(ACC_DATA_REQUEST), ACC_DATA_REQUEST);
-
+		 // new data
+		while (available--)
+			_move_state(SERIAL_OUTPUT.read());
 		_guard_bool = true;
 
 		// get 4 byte payload

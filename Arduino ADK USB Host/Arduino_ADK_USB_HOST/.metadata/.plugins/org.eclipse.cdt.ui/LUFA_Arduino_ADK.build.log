@@ -1,4 +1,4 @@
-23:46:14 **** Incremental Build of configuration Release for project LUFA_Arduino_ADK ****
+23:52:23 **** Incremental Build of configuration Release for project LUFA_Arduino_ADK ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega2560 LUFA_Arduino_ADK.elf
@@ -16,5 +16,5 @@ Data:          9 bytes (0.1% Full)
 Finished building: sizedummy
  
 
-23:46:14 Build Finished (took 76ms)
+23:52:23 Build Finished (took 72ms)
 

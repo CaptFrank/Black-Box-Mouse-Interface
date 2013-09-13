@@ -5,7 +5,6 @@
  *      Author: fjpapin
  */
 
-
 //! the CPU Speed
 #define F_CPU				16000000
 //#define USB_CFG_CLOCK_KHZ 	(F_CPU/1000)
@@ -39,9 +38,9 @@
 //#endif
 
 //! Normal Output Stream
-//#define SERIAL_OUTPUT		Serial1
-//#define PRINT				Serial1.print	//! Serial API
-//#define PRINTLN				Serial1.println //! Serial API
+#define SERIAL_OUTPUT		Serial1
+#define PRINT				Serial1.print	//! Serial API
+#define PRINTLN				Serial1.println //! Serial API
 
 //! RF output stream
 //#define RF_SERIAL			Serial2

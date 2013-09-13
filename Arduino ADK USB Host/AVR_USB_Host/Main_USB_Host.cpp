@@ -2,6 +2,7 @@
 
 //Main defines
 #include "AVR_USB_Host.h"
+#include "System_Defines/Hardware_Defines.h"
 
 void configure_device(NVRAM* nvram_object);
 
@@ -174,8 +175,7 @@ void loop(){
  */
 void configure_device(NVRAM* nvram_object){
 
-	//SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
-	lc.dwDTERate = (nvram_object->nv.serial2_speed);
+	SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.begin(nvram_object->nv.serial3_speed);
