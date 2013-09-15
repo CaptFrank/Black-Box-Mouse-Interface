@@ -1,7 +1,0 @@
-19:31:19 **** Clean-only build of configuration Debug for project Sensor Hub - Demo ****
-make clean 
-rm -rf  ./logic/acceleration.o ./logic/agility.o ./logic/alarm.o ./logic/altitude.o ./logic/battery.o ./logic/bluerobin.o ./logic/clock.o ./logic/countdowntimer.o ./logic/date.o ./logic/display2.o ./logic/menu.o ./logic/miscellaneous.o ./logic/random.o ./logic/rfbsl.o ./logic/rfsimpliciti.o ./logic/stopwatch.o ./logic/stubs.o ./logic/temperature.o ./logic/test.o ./logic/user.o  ./driver/adc12.o ./driver/buzzer.o ./driver/display.o ./driver/display1.o ./driver/pmm.o ./driver/ports.o ./driver/radio.o ./driver/rf1a.o ./driver/timer.o ./driver/vti_as.o ./driver/vti_ps.o  ./Main\ -\ Demo/main.o  libUSER_OBJS.a  "Sensor Hub - Demo.elf"
- 
-
-19:31:20 Build Finished (took 321ms)
-

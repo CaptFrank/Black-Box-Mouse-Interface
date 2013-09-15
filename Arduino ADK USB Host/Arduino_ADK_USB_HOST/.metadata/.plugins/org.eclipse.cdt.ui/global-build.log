@@ -1,12 +1,120 @@
-00:22:04 **** Incremental Build of configuration Release for project AVR_USB_Host ****
+00:36:36 **** Incremental Build of configuration Release for project AVR_USB_Host ****
 make all 
-Building file: ../USB_Implementation/USB_Functions.cpp
-Invoking: AVR C++ Compiler
-avr-g++ -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/AVR_USB_Host" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Implementation/USB_Functions.d" -MT"USB_Implementation/USB_Functions.d"  -c -o "USB_Implementation/USB_Functions.o" -x c++ "../USB_Implementation/USB_Functions.cpp"
-In file included from ../USB_Implementation/../USB_HID_API/usbconfig.h:14,
-                 from ../USB_Implementation/USB_Functions.h:11,
-                 from ../USB_Implementation/USB_Functions.cpp:8:
-../USB_Implementation/../USB_HID_API/../System_Defines/Hardware_Defines.h:9:28: error: HardwareSerial.h: No such file or directory
-../USB_Implementation/../USB_HID_API/../System_Defines/Hardware_Defines.h:12:1: warning: "F_CPU" redefined
+Building file: ../USB_HID_API/usbdrv.c
+Invoking: AVR Compiler
+avr-gcc -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/AVR_USB_Host" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/libraries/EEPROM" -D__IN_ECLIPSE__=1 -DARDUINO=100 -DUSB_PID= -DUSB_VID= -Wall -Os -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_HID_API/usbdrv.d" -MT"USB_HID_API/usbdrv.d"  -c -o "USB_HID_API/usbdrv.o" "../USB_HID_API/usbdrv.c"
+In file included from ../USB_HID_API/usbconfig.h:14,
+                 from ../USB_HID_API/usbdrv.h:13,
+                 from ../USB_HID_API/usbdrv.c:11:
+../USB_HID_API/../System_Defines/Hardware_Defines.h:8:28: warning: HardwareSerial.h: No such file or directory
+../USB_HID_API/../System_Defines/Hardware_Defines.h:11:1: warning: "F_CPU" redefined
 <command-line>: warning: this is the location of the previous definition
-make: *** [USB_Implementation/USB_Functions.o] Error 1
+Finished building: ../USB_HID_API/usbdrv.c
+ 
+Building file: ../USB_HID_API/usbdrvasm.S
+Invoking: AVR Assembler
+avr-gcc -x assembler-with-cpp -mmcu=atmega2560 -MMD -MP -MF"USB_HID_API/usbdrvasm.d" -MT"USB_HID_API/usbdrvasm.d" -c -o "USB_HID_API/usbdrvasm.o" "../USB_HID_API/usbdrvasm.S"
+In file included from ../USB_HID_API/usbconfig.h:14,
+                 from ../USB_HID_API/usbdrv.h:13,
+                 from ../USB_HID_API/usbdrvasm.S:20:
+../USB_HID_API/../System_Defines/Hardware_Defines.h:8:28: warning: HardwareSerial.h: No such file or directory
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h: Assembler messages:
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:121: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:122: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:123: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:124: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:125: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:126: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:128: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:129: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:142: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:147: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:159: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:164: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:169: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:174: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:179: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:184: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:192: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:199: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:213: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:218: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:223: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:228: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:233: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:238: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:246: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:253: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:273: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/stdint.h:278: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/inttypes.h:77: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/inttypes.h:81: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/include/stddef.h:214: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:211: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:212: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:213: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:215: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:216: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:217: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:218: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:219: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:220: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:222: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:223: Error: unknown opcode `typedef'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:744: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:745: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:746: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:747: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:748: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:749: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:750: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:751: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:752: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:753: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:754: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:755: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:756: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:757: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:758: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:759: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:760: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:761: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:762: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:763: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:764: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:765: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:766: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:767: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:768: Error: unknown opcode `extern'
+/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/tools/avr/bin/../lib/gcc/avr/4.3.2/../../../../avr/include/avr/pgmspace.h:769: Error: unknown opcode `extern'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:18: Error: unknown opcode `prog_uint8'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:20: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:21: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:22: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:23: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:24: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:25: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:26: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:27: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:28: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:29: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:30: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:31: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:32: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:33: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:34: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:35: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:36: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:37: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:38: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:39: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:40: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:41: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:42: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:43: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:44: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:45: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:46: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:47: Error: junk at end of line, first unrecognized character is `0'
+../USB_HID_API/../USB_Implementation/USB_Reports.h:48: Error: junk at end of line, first unrecognized character is `}'
+make: *** [USB_HID_API/usbdrvasm.o] Error 1
