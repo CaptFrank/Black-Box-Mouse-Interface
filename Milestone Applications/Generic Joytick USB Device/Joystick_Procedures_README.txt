@@ -1,0 +1,55 @@
+#########################################################################################
+#
+#	This is the first milestone that was reached in terms of modifying and proving that
+#	the Arduino Mega ADK rev3 is able to act as a Generic USB device. 
+#		
+#	In particular, this is a readme on how the Arduino Mega ADK was programmed in order 
+#	enumerate as a USB joystick, and how to run a simulation of a joystick on an
+#	Arduino Mega ADK.
+#
+#	by: Francis Papineau
+#########################################################################################
+
+	Files needed:
+	
+		NOTE: The Joystick tester application that was used in a Mac OS X application
+		called Joystick and Gamepad Tester available on sourceforge for free 
+		(Open Source).
+		
+		Link: http://download.cnet.com/Joystick-and-Gamepad-Tester
+							/3000-18490_4-48273.html
+		
+		###############################################################
+
+		Arduino Mega ADK (Atmega2560) Arduino Sketch needed:
+		
+		File name: big_joystick_demo.ino
+		Link: http://hunt.net.nz/users/darran/
+							weblog/15f92/attachments/f1534/big_joystick_demo.ino
+							
+		###############################################################
+
+		Atmega8U2 firmware file needed:
+		
+		File name: Arduino-big-joystick.hex
+		Link: http://hunt.net.nz/users/darran/
+							weblog/15f92/attachments/432b6/Arduino-big-joystick.hex
+							
+	Procedure:
+	
+		1) Flash the Arduino bootloader on the arduino (Atmega2560), using the AVR MKII and
+		the Arduino Atmega2560 using the ISP programmer plug.
+		
+		2) Flash the firmware file using the arduino suite. 
+		(File name: big_joystick_demo.ino)
+						
+		3) Flash the Atmega8U2 using the AVR MKII and the ISP for the Atmega8U2.
+		(File name: File name: Arduino-big-joystick.hex)
+		
+		4) Unplug and plug back the arduino on the computer.
+			- this allows for reenumeration and rebooting of the arduino.
+		
+		5) Test the application using the test application listed above.
+		
+		
+		
