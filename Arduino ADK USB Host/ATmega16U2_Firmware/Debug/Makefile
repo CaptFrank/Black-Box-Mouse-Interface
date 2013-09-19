@@ -56,7 +56,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../Arduino-mouse.c \
+../Arduino-device.c \
 ../Descriptors.c \
 ../src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.c \
 ../src/LUFA/LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.c \
@@ -103,7 +103,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-Arduino-mouse.o \
+Arduino-device.o \
 Descriptors.o \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.o \
@@ -143,7 +143,7 @@ src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
 
 OBJS_AS_ARGS +=  \
-Arduino-mouse.o \
+Arduino-device.o \
 Descriptors.o \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.o \
@@ -183,7 +183,7 @@ src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
 
 C_DEPS +=  \
-Arduino-mouse.d \
+Arduino-device.d \
 Descriptors.d \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.d \
@@ -223,7 +223,7 @@ src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.d \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.d
 
 C_DEPS_AS_ARGS +=  \
-Arduino-mouse.d \
+Arduino-device.d \
 Descriptors.d \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.d \
 src/LUFA/LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.d \
@@ -262,9 +262,9 @@ src/LUFA/LUFA/Drivers/USB/Core/Events.d \
 src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.d \
 src/LUFA/LUFA/Drivers/USB/Core/USBTask.d
 
-OUTPUT_FILE_PATH +=CLASS_MOUSE3.elf
+OUTPUT_FILE_PATH +=ATMega16U2_Mouse_Interface.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=CLASS_MOUSE3.elf
+OUTPUT_FILE_PATH_AS_ARGS +=ATMega16U2_Mouse_Interface.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -431,13 +431,13 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 3.4.2
-	$(QUOTE)C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="CLASS_MOUSE3.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mrelax -mmcu=at90usb1287 
+	$(QUOTE)C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="ATMega16U2_Mouse_Interface.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mrelax -mmcu=at90usb1287 
 	@echo Finished building target: $@
-	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "CLASS_MOUSE3.elf" "CLASS_MOUSE3.hex"
-	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "CLASS_MOUSE3.elf" "CLASS_MOUSE3.eep" || exit 0
-	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "CLASS_MOUSE3.elf" > "CLASS_MOUSE3.lss"
-	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature  "CLASS_MOUSE3.elf" "CLASS_MOUSE3.srec"
-	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-size.exe" "CLASS_MOUSE3.elf"
+	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature  "ATMega16U2_Mouse_Interface.elf" "ATMega16U2_Mouse_Interface.hex"
+	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "ATMega16U2_Mouse_Interface.elf" "ATMega16U2_Mouse_Interface.eep" || exit 0
+	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "ATMega16U2_Mouse_Interface.elf" > "ATMega16U2_Mouse_Interface.lss"
+	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature  "ATMega16U2_Mouse_Interface.elf" "ATMega16U2_Mouse_Interface.srec"
+	"C:\Program Files\Atmel\Atmel Toolchain\AVR8 GCC\Native\3.4.2.1002\avr8-gnu-toolchain\bin\avr-size.exe" "ATMega16U2_Mouse_Interface.elf"
 	
 	
 
@@ -449,5 +449,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP)
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "CLASS_MOUSE3.elf" "CLASS_MOUSE3.a" "CLASS_MOUSE3.hex" "CLASS_MOUSE3.lss" "CLASS_MOUSE3.eep" "CLASS_MOUSE3.map" "CLASS_MOUSE3.srec"
+	rm -rf "ATMega16U2_Mouse_Interface.elf" "ATMega16U2_Mouse_Interface.a" "ATMega16U2_Mouse_Interface.hex" "ATMega16U2_Mouse_Interface.lss" "ATMega16U2_Mouse_Interface.eep" "ATMega16U2_Mouse_Interface.map" "ATMega16U2_Mouse_Interface.srec"
 	

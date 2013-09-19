@@ -43,35 +43,99 @@
  *  the device will send, and what it may be sent back from the host. Refer to the HID specification for
  *  more details on HID report descriptors.
  */
-const USB_Descriptor_HIDReport_Datatype_t PROGMEM MouseReport[] =
-{
-	0x05, 0x01,          /* Usage Page (Generic Desktop)             */
-	0x09, 0x02,          /* Usage (Mouse)                            */
-	0xA1, 0x01,          /* Collection (Application)                 */
-	0x09, 0x01,          /*   Usage (Pointer)                        */
-	0xA1, 0x00,          /*   Collection (Application)               */
-	0x95, 0x03,          /*     Report Count (3)                     */
-	0x75, 0x01,          /*     Report Size (1)                      */
-	0x05, 0x09,          /*     Usage Page (Button)                  */
-	0x19, 0x01,          /*     Usage Minimum (Button 1)             */
-	0x29, 0x03,          /*     Usage Maximum (Button 3)             */
-	0x15, 0x00,          /*     Logical Minimum (0)                  */
-	0x25, 0x01,          /*     Logical Maximum (1)                  */
-	0x81, 0x02,          /*     Input (Data, Variable, Absolute)     */
-	0x95, 0x01,          /*     Report Count (1)                     */
-	0x75, 0x05,          /*     Report Size (5)                      */
-	0x81, 0x01,          /*     Input (Constant)                     */
-	0x75, 0x08,          /*     Report Size (8)                      */
-	0x95, 0x02,          /*     Report Count (2)                     */
-	0x05, 0x01,          /*     Usage Page (Generic Desktop Control) */
-	0x09, 0x30,          /*     Usage X                              */
-	0x09, 0x31,          /*     Usage Y                              */
-	0x15, 0x81,          /*     Logical Minimum (-127)               */
-	0x25, 0x7F,          /*     Logical Maximum (127)                */
-	0x81, 0x06,          /*     Input (Data, Variable, Relative)     */
-	0xC0,                /*   End Collection                         */
-	0xC0                 /* End Collection                           */
-};
+
+
+#ifdef MOUSE_REPORT
+	const USB_Descriptor_HIDReport_Datatype_t PROGMEM MouseReport[] =
+	{
+		0x05, 0x01,          /* Usage Page (Generic Desktop)             */
+		0x09, 0x02,          /* Usage (Mouse)                            */
+		0xA1, 0x01,          /* Collection (Application)                 */
+		0x09, 0x01,          /*   Usage (Pointer)                        */
+		0xA1, 0x00,          /*   Collection (Application)               */
+		0x95, 0x03,          /*     Report Count (3)                     */
+		0x75, 0x01,          /*     Report Size (1)                      */
+		0x05, 0x09,          /*     Usage Page (Button)                  */
+		0x19, 0x01,          /*     Usage Minimum (Button 1)             */
+		0x29, 0x03,          /*     Usage Maximum (Button 3)             */
+		0x15, 0x00,          /*     Logical Minimum (0)                  */
+		0x25, 0x01,          /*     Logical Maximum (1)                  */
+		0x81, 0x02,          /*     Input (Data, Variable, Absolute)     */
+		0x95, 0x01,          /*     Report Count (1)                     */
+		0x75, 0x05,          /*     Report Size (5)                      */
+		0x81, 0x01,          /*     Input (Constant)                     */
+		0x75, 0x08,          /*     Report Size (8)                      */
+		0x95, 0x02,          /*     Report Count (2)                     */
+		0x05, 0x01,          /*     Usage Page (Generic Desktop Control) */
+		0x09, 0x30,          /*     Usage X                              */
+		0x09, 0x31,          /*     Usage Y                              */
+		0x15, 0x81,          /*     Logical Minimum (-127)               */
+		0x25, 0x7F,          /*     Logical Maximum (127)                */
+		0x81, 0x06,          /*     Input (Data, Variable, Relative)     */
+		0xC0,                /*   End Collection                         */
+		0xC0                 /* End Collection                           */
+	};
+#endif
+
+//! Joystick USB report chosen
+#ifdef JOYSTICK_REPORT
+	const USB_Descriptor_HIDReport_Datatype_t PROGMEM JoystickReport[] = {
+
+		/* Use the HID class driver's standard Joystick report.
+		 *   Min X/Y/Z Axis values: -255
+		 *   Max X/Y/Z Axis values:  255
+		 *   Min physical X/Y/Z Axis values (used to determine resolution): -1
+		 *   Max physical X/Y/Z Axis values (used to determine resolution):  1
+		 *   Buttons: 10
+		 */
+		HID_DESCRIPTOR_JOYSTICK(-255, 255, -1, 1, 10)
+	};
+#endif
+
+//! Mouse and Joystick USB report chosen
+#ifdef MOUSE_JOYSTICK_REPORT
+	const USB_Descriptor_HIDReport_Datatype_t PROGMEM JoystickMouseReport[] = {
+		0x05, 0x01,                    //! USAGE_PAGE (Generic Desktop)
+		0x09, 0x02,                    //! USAGE (Mouse)
+		0xa1, 0x01,                    //! COLLECTION (Application)
+		0x09, 0x01,                    //!   USAGE (Pointer)
+		0xa1, 0x00,                    //!   COLLECTION (Physical)
+		0x85, 0x01,                    //!     REPORT_ID (1)
+		0x05, 0x09,                    //!     USAGE_PAGE (Button)
+		0x19, 0x01,                    //!     USAGE_MINIMUM (Button 1)
+		0x29, 0x03,                    //!     USAGE_MAXIMUM (Button 3)
+		0x15, 0x00,                    //!     LOGICAL_MINIMUM (0)
+		0x25, 0x01,                    //!     LOGICAL_MAXIMUM (1)
+		0x95, 0x03,                    //!     REPORT_COUNT (3)
+		0x75, 0x01,                    //!     REPORT_SIZE (1)
+		0x81, 0x02,                    //!     INPUT (Data,Var,Abs)
+		0x95, 0x01,                    //!     REPORT_COUNT (1)
+		0x75, 0x05,                    //!     REPORT_SIZE (5)
+		0x81, 0x03,                    //!     INPUT (Cnst,Var,Abs)
+		0x05, 0x01,                    //!     USAGE_PAGE (Generic Desktop)
+		0x09, 0x30,                    //!     USAGE (X)
+		0x09, 0x31,                    //!     USAGE (Y)
+		0x09, 0x38,                    //!     USAGE (Wheel)
+		0x15, 0x81,                    //!     LOGICAL_MINIMUM (-127)
+		0x25, 0x7f,                    //!     LOGICAL_MAXIMUM (127)
+		0x75, 0x08,                    //!     REPORT_SIZE (8)
+		0x95, 0x03,                    //!     REPORT_COUNT (3)
+		0x81, 0x06,                    //!     INPUT (Data,Var,Rel)
+		0xc0,                          //!   END_COLLECTION
+		0xc0,                          //! END_COLLECTION
+
+		//! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		/* Use the HID class driver's standard Joystick report.
+		 *   Min X/Y/Z Axis values: -255
+		 *   Max X/Y/Z Axis values:  255
+		 *   Min physical X/Y/Z Axis values (used to determine resolution): -1
+		 *   Max physical X/Y/Z Axis values (used to determine resolution):  1
+		 *   Buttons: 10
+		 */
+		HID_DESCRIPTOR_JOYSTICK(-255, 255, -1, 1, 8)
+	};
+#endif
 
 /** Device descriptor structure. This descriptor, located in FLASH memory, describes the overall
  *  device characteristics, including the supported USB version, control endpoint size and the
@@ -133,12 +197,22 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
 				
 			.Class                  = 0x03,
 			.SubClass               = 0x01,
+
+#ifdef MOUSE_REPORT
 			.Protocol               = HID_CSCP_MouseBootProtocol, //changed from HID_BOOT_MOUSE_PROTOCOL,
-				
+#endif
+
+#ifdef JOYSTICK_REPORT
+			.Protocol				= HID_CSCP_HIDClass,
+#endif
+
+#ifdef MOUSE_JOYSTICK_REPORT
+			.Protocol				= HID_CSCP_MouseBootProtocol
+#endif
 			.InterfaceStrIndex      = NO_DESCRIPTOR
 		},
 
-	.HID_MouseHID = 
+	.HID_DeviceHID = 
 		{
 			.Header                 = {.Size = sizeof(USB_HID_Descriptor_HID_t), .Type = HID_DTYPE_HID}, //changed added HID
 
@@ -153,9 +227,31 @@ const USB_Descriptor_Configuration_t PROGMEM ConfigurationDescriptor =
 		{
 			.Header                 = {.Size = sizeof(USB_Descriptor_Endpoint_t), .Type = DTYPE_Endpoint},
 
+			#ifdef MOUSE_REPORT
 			.EndpointAddress        = (ENDPOINT_DIR_IN | MOUSE_EPNUM), //changed from ENDPOINT_DIRECTION_DIR_IN
+			#endif
+
+			#ifdef JOYSTICK_REPORT
+			.EndpointAddress        = JOYSTICK_EPADDR,
+			#endif
+
+			#ifdef MOUSE_JOYSTICK_REPORT
+			.EndpointAddress        = (ENDPOINT_DIR_IN | MOUSE_JOYSTICK_EPNUM),
+			#endif
+
 			.Attributes             = (EP_TYPE_INTERRUPT | ENDPOINT_ATTR_NO_SYNC | ENDPOINT_USAGE_DATA),
+			
+			#ifdef MOUSE_REPORT
 			.EndpointSize           = MOUSE_EPSIZE,
+			#endif
+
+			#ifdef JOYSTICK_REPORT
+			.EndpointSize           = JOYSTICK_EPSIZE,
+			#endif
+
+			#ifdef MOUSE_JOYSTICK_REPORT
+			.EndpointSize           = MOUSE_JOYSTICK_EPSIZE,
+			#endif
 			.PollingIntervalMS      = 0x0A
 		}
 };
@@ -179,7 +275,7 @@ const USB_Descriptor_String_t PROGMEM ManufacturerString =
 {
 	.Header                 = {.Size = USB_STRING_LEN(7), .Type = DTYPE_String},
 		
-	.UnicodeString          = L"Arduino"
+	.UnicodeString          = L"Carleton University"
 };
 
 /** Product descriptor string. This is a Unicode string containing the product's details in human readable form,
@@ -189,8 +285,18 @@ const USB_Descriptor_String_t PROGMEM ManufacturerString =
 const USB_Descriptor_String_t PROGMEM ProductString =
 {
 	.Header                 = {.Size = USB_STRING_LEN(9), .Type = DTYPE_String},
-		
-	.UnicodeString          = L"Mouse 0.1"
+	
+	#ifdef MOUSE_REPORT
+	.UnicodeString          = L"Medical Mouse 0.1"
+	#endif
+
+	#ifdef JOYSTICK_REPORT
+	.UnicodeString          = L"Medical Joystick 0.1"
+	#endif
+
+	#ifdef MOUSE_JOYSTICK_REPORT
+	.UnicodeString          = L"Medical Mouse & Joystick 0.1"
+	#endif
 };
 
 /** This function is called by the library when in device mode, and must be overridden (see library "USB Descriptors"
@@ -238,12 +344,25 @@ uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
 			
 			break;
 		case HID_DTYPE_HID: //added HID
-			Address = (void*)&ConfigurationDescriptor.HID_MouseHID;
+			Address = (void*)&ConfigurationDescriptor.HID_DeviceHID;
 			Size    = sizeof(USB_HID_Descriptor_HID_t); // added HID
 			break;
 		case HID_DTYPE_Report: //added HID 
+		
+			#ifdef MOUSE_REPORT
 			Address = (void*)&MouseReport;
 			Size    = sizeof(MouseReport);
+			#endif
+
+			#ifdef JOYSTICK_REPORT
+			Address = (void*)&JoystickReport;
+			Size    = sizeof(JoystickReport);
+			#endif
+
+			#ifdef MOUSE_JOYSTICK_REPORT
+			Address = (void*)&JoystickMouseReport;
+			Size    = sizeof(JoystickMouseReport);
+			#endif
 			break;
 	}
 	

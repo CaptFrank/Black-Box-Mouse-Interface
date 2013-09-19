@@ -37,6 +37,9 @@
 #define _DESCRIPTORS_H_
 
 	/* Includes: */
+	
+		#include "Hardware_Definitions.h"
+		
 		#include <LUFA/Drivers/USB/USB.h>
 		#include <LUFA/Drivers/USB/Class/HIDClass.h>
 
@@ -50,17 +53,45 @@
 		typedef struct
 		{
 			USB_Descriptor_Configuration_Header_t Config;
+			
+			// Interface configs
 			USB_Descriptor_Interface_t            HID_Interface;
-			USB_HID_Descriptor_HID_t              HID_MouseHID;
+			USB_HID_Descriptor_HID_t              HID_DeviceHID;
 	        USB_Descriptor_Endpoint_t             HID_ReportINEndpoint;
 		} USB_Descriptor_Configuration_t;
 					
+#ifdef MOUSE_REPORT
 	/* Macros: */
 		/** Endpoint number of the Mouse HID reporting IN endpoint. */
 		#define MOUSE_EPNUM               1
 		
 		/** Size in bytes of the Mouse HID reporting IN endpoint. */
 		#define MOUSE_EPSIZE              8
+#endif
+
+/************************************************************************/
+// 	TODO
+// 	#ifdef JOYSTICK_REPORT
+// 	/* Macros: */
+// 		/** Endpoint number of the Mouse HID reporting IN endpoint. */
+// 		#define JOYSTICK_EPADDR              (ENDPOINT_DIR_IN | 1)
+// 	
+// 		/** Size in bytes of the Mouse HID reporting IN endpoint. */
+// 		#define JOYSTICK_EPSIZE              8
+// 	#endif
+/************************************************************************/
+
+/************************************************************************/
+// 	TODO
+// 	#ifdef MOUSE_JOYSTICK_REPORT
+// 	/* Macros: */
+// 		/** Endpoint number of the Mouse HID reporting IN endpoint. */
+// 		#define MOUSE_JOYSTICK_EPNUM               1
+//
+// 		/** Size in bytes of the Mouse HID reporting IN endpoint. */
+// 		#define MOUSE_JOYSTICK_EPSIZE              8
+// 	#endif
+/************************************************************************/
 
 	/* Function Prototypes: */
 		uint16_t CALLBACK_USB_GetDescriptor(const uint16_t wValue,
