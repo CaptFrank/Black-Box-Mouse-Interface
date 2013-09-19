@@ -45,6 +45,8 @@
 						
 		3) Flash the Atmega8U2 using the AVR MKII and the ISP for the Atmega8U2.
 		(File name: File name: Arduino-big-joystick.hex)
+
+		Command: avrdude -p atmega16u2 -F -P usb -c avrispmkii -U flash:w:Arduino-big-joystick.hex -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF4:m -U lock:w:0x0F:m
 		
 		4) Unplug and plug back the arduino on the computer.
 			- this allows for reenumeration and rebooting of the arduino.
