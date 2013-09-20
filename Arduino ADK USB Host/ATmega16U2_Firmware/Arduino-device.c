@@ -180,7 +180,8 @@ int main(void)
 			HID_Device_USBTask(&Joystick_HID_Interface);
 		#endif
 		#ifdef MOUSE_JOYSTICK_REPORT
-			// TODO	
+			// TODO
+			HID_Device_USBTask(&Joystick_HID_Interface);	
 		#endif
 	    USB_USBTask();
 	}
@@ -300,19 +301,25 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
     /* Not used but must be present */
 }
 
-void map_mem(void* device_reporold_t, void* new_device_report, int data_type){
+void map_mem(void* device_report_old, void* new_device_report, int data_type){
 	
 	switch (data_type){
 		case MOUSE_DATA:
-			device_reporold_t = (USB_MouseReport_Data_t*)device_reporold_t;
+			device_report_old = (USB_MouseReport_Data_t*)device_report_old;
 			new_device_report = (USB_MouseReport_Data_t*)new_device_report;
 			
-			device_reporold_t->Button = new_device_report->Button;
-			device_reporold_t->X = new_device_report->X;
-			device_reporold_t->Y = new_device_report->Y;
-		return;
+			device_report_old->Button = new_device_report->Button;
+			device_report_old->X = new_device_report->X;
+			device_report_old->Y = new_device_report->Y;
+			return;
 		case JOYSTICK_DATA:
-		
+			device_report_old = (USB_JoystickReport_Data_t*)device_report_old;
+			new_device_report = (USB_JoystickReport_Data_t*)new_device_report;
+			
+			device_report_old->Button = new_device_report->Button;
+			device_report_old->X = new_device_report->X;
+			device_report_old->Y = new_device_report->Y;
+			device_report_old->Z = new_device_report->Z;
 			return;
 		case MOUSE_JOYSTICK_DATA:
 			//TODO

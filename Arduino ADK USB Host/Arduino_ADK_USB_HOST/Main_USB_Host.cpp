@@ -120,24 +120,6 @@ void setup(){
 		DEBUG_SERIAL.println("USB INIT STATE");
 	#endif
 
-	//! USB Initialize the buffers and structures pertaining to the
-	//! USB device class. This inits the arduino -> PC comms
-	usbInit();
-
-	//! USB Access Point init
-	if (usb.init() == -1){
-    	debug_api.set_leds(REBOOT_ERROR);
-		error((void*)__LINE__, (void*)__func__);
-	}
-
-	#ifdef DEBUG
-		DEBUG_SERIAL.println("USB ENUM STATE");
-	#endif
-	//! This allows the USB device to re-enumerate in the PC OS.
-    usbDeviceDisconnect();
-    delay(250);
-    usbDeviceConnect();
-
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("MEM CHECK");
 	#endif
@@ -190,7 +172,6 @@ void loop(){
 void configure_device(NVRAM* nvram_object){
 
 	SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
-	lc.dwDTERate = (nvram_object->nv.serial2_speed);
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.begin(nvram_object->nv.serial3_speed);
