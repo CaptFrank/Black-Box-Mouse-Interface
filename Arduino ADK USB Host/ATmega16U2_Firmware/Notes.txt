@@ -1,0 +1,11 @@
+
+/*
+ * Notes.txt
+ *
+ * Created: 9/19/2013 1:10:44 PM
+ *  Author: Administrator
+ */ 
+
+ Need to do:
+	- Mouse interface wheel
+	- Joystick mouse interface

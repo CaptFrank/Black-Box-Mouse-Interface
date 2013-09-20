@@ -18,7 +18,6 @@ EMULATION_DEVICE::EMULATION_DEVICE(){
 	_packet_buffer = EMPTY;
 	_packet_id = EMPTY;
 	_packet_in_sending_queue = true;
-	_packet_size = USB_CFG_HID_REPORT_DESCRIPTOR_LENGTH;
 
 }
 
@@ -28,7 +27,6 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 #ifdef MOUSE_REPORT
 
 	//! Setup the structure values
-	mouse_report.report_id = 1;
 	mouse_report.buttons = random(255);
 	mouse_report.wheel = random(255);
 	mouse_report.x = random(255);
@@ -41,7 +39,6 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 #ifdef JOYSTICK_REPORT
 
 	//! Setup the structure values
-	joystick_report.report_id = 1;
 	joystick_report.buttons = random(255);
 	joystick_report.x = random(6556);
 	joystick_report.y = random(6556);
@@ -53,13 +50,11 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 #ifdef MOUSE_JOYSTICK_REPORT
 
 	//! Setup the structure values
-	joystick_mouse_report.mouse.report_id = 1;
 	joystick_mouse_report.mouse.buttons = random(255);
 	joystick_mouse_report.mouse.wheel = random(255);
 	joystick_mouse_report.mouse.x = random(255);
 	joystick_mouse_report.mouse.y = random(255);
 
-	joystick_mouse_report.joystick.report_id = 2;
 	joystick_mouse_report.joystick.buttons = random(255);
 	joystick_mouse_report.joystick.x = random(6556);
 	joystick_mouse_report.joystick.y = random(6556);
@@ -112,9 +107,6 @@ void EMULATION_DEVICE::emulate_usb(){
 	//! Do this forever.
 	while(1){
 
-		//! Poll the USB Line
-		usbPoll();
-
 		//! Check to see if a report needs to be sent, using
 		//! the idle rate.
 		if ((TCNT1 > ((4 * (F_CPU / 1024000)) * idle_rate)
@@ -128,9 +120,6 @@ void EMULATION_DEVICE::emulate_usb(){
 			_create_usb_report_frame();
 		}
 
-		//! Poll the USB Line
-		usbPoll();
-
 		//! If we need to send.
 		if(_sending_mutex){
 
@@ -139,9 +128,6 @@ void EMULATION_DEVICE::emulate_usb(){
 			_send_usb_report_frame();
 			TCNT1 = 0;
 		}
-
-		//! Poll the USB line
-		usbPoll();
 
 		//! No need to send anymore.
 		_sending_mutex = false;

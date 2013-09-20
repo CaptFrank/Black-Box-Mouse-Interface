@@ -26,7 +26,6 @@ static byte protocol_version = 0; // see HID1_11.pdf sect 7.2.6
  */
 typedef struct mouse_report_t {
 
-	byte report_id; /*! the REPORT_ID of the message (8bits)*/
 	byte buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
 	int8_t x;		/*! X axis analog values (8bits) */
 	int8_t y;		/*! Y axis analog values (8bits) */
@@ -53,7 +52,6 @@ void send_mouse_report(mouse_report_t* report);
  */
 typedef struct joystick_report_t {
 
-	byte report_id; /*! the REPORT_ID of the message (8bits)*/
 	int16_t x;		/*! X axis analog values (16bits) */
 	int16_t y;		/*! Y axis analog values (16bits) */
 	byte buttons;	/*! Houses all the bits to toggle for each button. (8bits)*/
