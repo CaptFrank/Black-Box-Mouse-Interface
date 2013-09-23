@@ -1,0 +1,167 @@
+/*
+ * Packet_Handler.cpp
+ *
+ *  Created on: Jul 24, 2013
+ *      Author: fjpapin
+ */
+
+#include "Packet_Handler.h"
+#include "../Sensor_Parser_Implementation/Network_Protocol.h"
+
+/**
+ * This is the packet decoder, over written with a past handler_table
+ * structure.
+ * @param handler_table - packet_handler_t
+ */
+PACKET_DECODER::PACKET_DECODER(struct packet_handler_t* handler_table){
+
+	//! Assign the default variables.
+	this->_phase 			= PACKET_WAIT_PHASE_1;
+	this->_handler_table 	= handler_table;
+
+	//! Set to 0
+	this->_buf 				= nullptr;
+	this->_data_expected 	= 0;
+	this->_data_in 			= 0;
+	this->_last_received 	= 0;
+	this->_packet_id 		= 0;
+	this->_packet_ver 		= 0;
+	this->_sum_A			= 0;
+	this->_sum_B 			= 0;
+	this->_guard_bool		= false;
+}
+
+/**
+ * Poll loop reading is data from the Serial device.
+ */
+void PACKET_DECODER::poll(void){
+
+	byte available;
+
+	available = RF_SERIAL.available();
+
+	if(EMPTY == available){
+		_guard_bool = false;
+		//check timeout watchdog and if over reset.
+		if((millis() - _last_received) > PACKET_TIMEOUT){
+			_phase = PACKET_WAIT_PHASE_1;
+		}
+	}else {
+
+		// new data
+		while(available --){
+			// move to the next state
+			_move_state(RF_SERIAL.read());
+		}
+			_last_received = millis();
+		}
+	}
+	#ifdef DEBUG
+		//! Bang for every packet received.
+		DEBUG_SERIAL.print("!");
+	#endif
+}
+
+/**
+ * Move the state machine based on the input char.
+ * @param data_byte - byte
+ */
+void PACKET_DECODER::_move_state(byte data_byte){
+
+	byte table_index;
+
+	switch(_phase){
+    //! Preamble detection
+    //!
+    //! Note the fallthrough from P2 to P1 deals with the case where
+    //! we see 0x34, 0x34, 0x44 where the first 0x34 is garbage or
+    //! a SUM_B byte we never looked at.
+	case PACKET_WAIT_PHASE_2:
+		if ('+' == data_byte) {
+            _phase++;
+
+            //! prepare for the header
+            _data_in = 0;
+            _data_expected = sizeof(struct packet_header_t);
+
+            //! intialise the checksum accumulators
+            _sum_A = _sum_B = 0;
+
+            break;
+		}
+		_phase = PACKET_WAIT_PHASE_1;
+
+    //! FALLTHROUGH
+	case PACKET_WAIT_PHASE_1:
+		if ('+' == data_byte) {
+            _phase++;
+		}
+		break;
+
+    //! receiving the header
+	case PACKET_WAIT_HEADER:
+		//! do checksum accumulation
+		_sum_A += data_byte;
+		_sum_B += _sum_A;
+
+		//! store the byte
+		_buf.bytes[_data_in++] = data_byte;
+
+		//! check for complete header received
+		if (_data_in == _data_expected) {
+            _phase++;
+
+            //! prepare for the payload
+            //! variable-length data?
+            _data_in = 0;
+            _data_expected = _buf.header.message_size;
+            _packet_id = _buf.header.packet_id;
+            _packet_ver = _buf.header.packet_version;
+
+            //! sanity check to avoid buffer overflow - revert back to waiting
+            if (_data_expected > sizeof(_buf))
+                    _phase = PACKET_WAIT_PHASE_1;
+		}
+		break;
+
+    //! receiving payload data
+	case PACKET_WAIT_PACKET:
+		//! do checksum accumulation
+		_sum_A += data_byte;
+		_sum_B += _sum_A;
+
+		//! store the byte
+		_buf.bytes[_data_in++] = data_byte;
+
+		//! check for complete payload received
+		if (_data_in == _data_expected) {
+            _phase++;
+		}
+		break;
+
+	//! waiting for the checksum bytes
+	case PACKET_WAIT_SUM_A:
+		if (data_byte != _sum_A) {
+            _phase = PACKET_WAIT_PHASE_1;
+		} else {
+            _phase++;
+		}
+		break;
+	case PACEKT_WAIT_SUM_B:
+		if (data_byte == _sum_B) {
+            //! if we got this far, we have a packet
+            /**
+             * TOGGLE LEDS
+             */
+
+            // !call any handler interested in this message
+            for (table_index = 0; 0xff != _handler_table[table_index].packet_id; table_index++)
+                    if ((_handler_table[table_index].packet_id == PACKET_ANY) ||
+                        (_handler_table[table_index].packet_id == _packet_id))
+                            _handler_table[table_index].handler(_handler_table[table_index].args, _packet_id, _packet_ver, &_buf);
+		} else {}
+
+		_phase = PACKET_WAIT_PHASE_1;
+		break;
+	}
+}

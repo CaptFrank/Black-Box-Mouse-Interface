@@ -1,0 +1,73 @@
+/*
+ * Emulation_Packet_Assembler.h
+ *
+ *  Created on: Jul 13, 2013
+ *      Author: francispapineau
+ */
+
+#include "../System_Defines/Main_Defines.h"
+#include "../USB_Implementation/USB_Functions.h"
+
+/**
+ * This class is implemented to be able to assemble a
+ * USB Frame to send to the host PC.
+ */
+
+ class EMULATION_DEVICE {
+
+	private:
+
+		//! The pointer to the data structure
+		byte* _packet_buffer;
+
+		//! The packet id
+		word _packet_id;
+
+		//! The packet size
+		byte _packet_size;
+
+		//! The mutex for the packet in the queue
+		byte _packet_in_sending_queue;
+
+		//! The sending packet mutex
+		byte _sending_mutex;
+
+		/**
+		 * The default constructor
+		 */
+		EMULATION_DEVICE();
+
+		/**
+		 * The assembly function for the packet
+		 */
+		void _assemble_usb_emulation_frame();
+
+		/**
+		 * Create a USB report to send
+		 */
+		void _create_usb_report_frame();
+
+		/**
+		 * Sends a usb report
+		 */
+		void _send_usb_report_frame();
+
+		/**
+		 * This updates the packet id
+		 */
+		void _update_packet_id();
+
+	public:
+
+		/**
+		 * The emulation loop
+		 */
+		void emulate_usb();
+
+		/**
+		 * This returns the packet id
+		 */
+		word get_packet_id();
+
+};
+

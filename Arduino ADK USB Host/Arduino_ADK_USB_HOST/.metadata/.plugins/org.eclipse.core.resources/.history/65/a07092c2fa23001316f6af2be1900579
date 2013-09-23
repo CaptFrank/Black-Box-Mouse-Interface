@@ -1,0 +1,29 @@
+// Only modify this file to include
+// - function definitions (prototypes)
+// - include files
+// - extern variable definitions
+// In the appropriate section
+
+#ifndef Arduino_HID_Joystick_H_
+#define Arduino_HID_Joystick_H_
+#include "Arduino.h"
+//add your includes for the project Arduino_HID_Joystick here
+
+
+//end of add your includes here
+#ifdef __cplusplus
+extern "C" {
+#endif
+void loop();
+void setup();
+#ifdef __cplusplus
+} // extern "C"
+#endif
+
+//add your function definitions for the project Arduino_HID_Joystick here
+
+
+
+
+//Do not add code below this line
+#endif /* Arduino_HID_Joystick_H_ */
