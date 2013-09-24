@@ -10,7 +10,7 @@
 
 #include "../System_Defines/Main_Defines.h"
 
-static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
+//static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
 /// If the mouse is chosen.
 #ifdef MOUSE_REPORT

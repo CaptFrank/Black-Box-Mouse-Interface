@@ -7,10 +7,12 @@
 
 #include "NVRAM_API.h"
 
+#include <avr/pgmspace.h>
+
 #define SPACE 	' '
 
 //! Define the structure
-struct NVRAM::nv_data_t nvram_default PROGMEM = {
+const NVRAM::nv_data_t nvram_default PROGMEM = {
 
         9600,
         9600,

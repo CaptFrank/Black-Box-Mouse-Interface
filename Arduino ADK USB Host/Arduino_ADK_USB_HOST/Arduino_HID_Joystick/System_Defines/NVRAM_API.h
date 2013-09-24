@@ -8,6 +8,8 @@
 #ifndef _NVRAM_h_
 #define _NVRAM_h_
 
+#include "Hardware_Defines.h"
+
 /**
  * This class handles the NVRAM accesses and storage
  * structure.

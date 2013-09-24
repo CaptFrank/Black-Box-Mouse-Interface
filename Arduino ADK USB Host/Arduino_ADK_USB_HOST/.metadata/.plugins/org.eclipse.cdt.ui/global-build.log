@@ -1,4 +1,4 @@
-00:38:16 **** Incremental Build of configuration Release for project Arduino_Mega_2560_or_Mega_ADK ****
+01:07:56 **** Incremental Build of configuration Release for project Arduino_Mega_2560_or_Mega_ADK ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega2560 libArduino_Mega_2560_or_Mega_ADK.a
@@ -202,14 +202,17 @@ Data:          0 bytes (0.0% Full)
 
 Finished building: sizedummy
  
-00:38:17 **** Incremental Build of configuration Release for project Arduino_HID_Joystick ****
+01:07:57 **** Incremental Build of configuration Release for project Arduino_HID_Joystick ****
 make all 
-Building file: ../USB_Device_Implementation/USB_Device_Implementation.cpp
+Building file: ../USB_Device_Implementation/USB_State_Machine.cpp
 Invoking: AVR C++ Compiler
-avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Device_Implementation/USB_Device_Implementation.d" -MT"USB_Device_Implementation/USB_Device_Implementation.d"  -c -o "USB_Device_Implementation/USB_Device_Implementation.o" -x c++ "../USB_Device_Implementation/USB_Device_Implementation.cpp"
-In file included from ../USB_Device_Implementation/../USB_Implementation/USB_Structures.h:11,
-                 from ../USB_Device_Implementation/USB_Device_Implementation.h:15,
-                 from ../USB_Device_Implementation/USB_Device_Implementation.cpp:8:
-../USB_Device_Implementation/../USB_Implementation/../System_Defines/Main_Defines.h:93: error: elements of array 'packet_handler packet_handlers []' have incomplete type
-../USB_Device_Implementation/../USB_Implementation/../System_Defines/Main_Defines.h:93: error: storage size of 'packet_handlers' isn't known
-make: *** [USB_Device_Implementation/USB_Device_Implementation.o] Error 1
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Device_Implementation/USB_State_Machine.d" -MT"USB_Device_Implementation/USB_State_Machine.d"  -c -o "USB_Device_Implementation/USB_State_Machine.o" -x c++ "../USB_Device_Implementation/USB_State_Machine.cpp"
+In file included from ../System_Defines/Command_Interpreter.h:16,
+Finished building: ../USB_Device_Implementation/USB_State_Machine.cpp
+                 from ../System_Defines/Command_Interpreter.cpp:8:
+ 
+Building file: ../System_Defines/Command_Interpreter.cpp
+../System_Defines/../System_Defines/Main_Defines.h:66: error: 'COMMAND_INTERPRETER' does not name a type
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"System_Defines/Command_Interpreter.d" -MT"System_Defines/Command_Interpreter.d"  -c -o "System_Defines/Command_Interpreter.o" -x c++ "../System_Defines/Command_Interpreter.cpp"
+make: *** [System_Defines/Command_Interpreter.o] Error 1

@@ -5,6 +5,9 @@
  *      Author: fjpapin
  */
 
+#ifndef _USB_State_Machine_h_
+#define _USB_State_Machine_h_
+
 #include "../System_Defines/Hardware_Defines.h"
 #include "../Debug_API/Debug_LED_Function.h"
 
@@ -34,15 +37,15 @@ class USB_STATE_MACHINE {
 
 	private:
 
-		static byte current_state;
-		static byte next_state;
-
 		/**
 		 * Defines the reset state function
 		 */
 		void(*reset_device);
 
 	public:
+
+		byte current_state;
+		byte next_state;
 
 		/**
 		 * Default constructor.
@@ -87,3 +90,5 @@ class USB_STATE_MACHINE {
 		 */
 		byte get_current_state();
 };
+
+#endif

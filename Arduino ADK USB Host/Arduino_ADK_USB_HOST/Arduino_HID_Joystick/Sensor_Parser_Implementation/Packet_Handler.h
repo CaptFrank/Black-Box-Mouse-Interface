@@ -47,10 +47,9 @@ class PACKET_DECODER {
 		byte _data_expected;
 		byte _sum_A;
 		byte _sum_B;
-		byte _packet_id;
 		byte _packet_ver;
 
-		unsigned long _last_received;	//! last received time stamp.
+
 
 		//! The handler table that contains
 		//! packet handlers
@@ -70,6 +69,9 @@ class PACKET_DECODER {
 		void _move_state(byte data_byte);
 
 	public:
+
+		byte _packet_id;
+		unsigned long _last_received;	//! last received time stamp.
 
 		/**
 		 * The overwritten default constructor,

@@ -13,6 +13,7 @@
 #include "../Sensor_Parser_Implementation/Network_Protocol.h"
 #include "../Debug_API/Debug_LED_Function.h"
 #include "../USB_Implementation/USB_Structures.h"
+#include "../System_Defines/Main_Defines.h"
 
 #include <avr/io.h>
 

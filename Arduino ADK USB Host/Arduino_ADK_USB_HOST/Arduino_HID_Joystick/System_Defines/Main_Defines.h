@@ -7,6 +7,9 @@
 
 //#include "./Includes.h"
 
+#ifndef _Main_defines_h_
+#define _Main_defines_h_
+
 //File System
 #include <Arduino.h>
 #include <EEPROM.h>
@@ -66,7 +69,7 @@
 	USB_STATE_MACHINE usb_state_machine;
 
 	//! Define a packet decoder function table.
-	struct packet_handler packet_handlers[] = {
+	struct packet_handler_t packet_handlers[11] = {
 
 			//{/*PACKET ID*/, /*TARGET FUNCTION*/, /*OBJECT ADDRESS*/},
 
@@ -136,3 +139,5 @@
 	 * as an error.
 	 */
 	void error(void* line, void* function);
+
+#endif

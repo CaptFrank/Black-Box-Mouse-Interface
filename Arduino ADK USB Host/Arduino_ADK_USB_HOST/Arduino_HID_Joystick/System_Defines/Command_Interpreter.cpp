@@ -6,13 +6,10 @@
  */
 
 #include "Command_Interpreter.h"
-#include <Network_Protocol.h>
-#include "../System_Defines/Hardware_Defines.h"
-#include "../Debug_API/Debug_LED_Function.h"
 
 //! Sets up our non volatile nvram object, our command db.
 COMMAND_INTERPRETER::COMMAND_INTERPRETER(NVRAM* nvram_object){
-	this->command_buffer = nullptr;
+	this->command_buffer = 0;
 	this->nvram_object = nvram_object;
 }
 
@@ -22,12 +19,12 @@ COMMAND_INTERPRETER::COMMAND_INTERPRETER(NVRAM* nvram_object){
 //! Sends a command
 void COMMAND_INTERPRETER::_send_cmd(byte packet_id, void *buf){
 
-	String* buffer = (String*) buf;
+	char* buffer = (char*) buf;
 
 	if(packet_id == USB_DEVICE_CMD){
 
 		//! Construct a command
-		_send_command((byte*)buf[0]);
+		_send_command((byte*)buffer[0]);
 	}
 }
 
@@ -35,8 +32,6 @@ void COMMAND_INTERPRETER::_send_cmd(byte packet_id, void *buf){
 void COMMAND_INTERPRETER::_send_command(byte* command){
 
 	byte* command_send;
-	void* packet_pointer;
-
 	switch(command[0]){
 
  // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -99,11 +94,11 @@ void COMMAND_INTERPRETER::_send_command(byte* command){
 			break;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-		case REQUEST_NMAP: 	// Request NMAP
-			_send_check(ROUTER_NMAP, (byte*)this->nvram_object->nv._request_nmap,
-					sizeof(this->nvram_object->nv._request_nmap));
-			break;
+//
+//		case REQUEST_NMAP: 	// Request NMAP
+//			_send_check(ROUTER_NMAP, (byte*)this->nvram_object->nv._request_nmap,
+//					sizeof(this->nvram_object->nv._request_nmap));
+//			break;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -165,7 +160,7 @@ void COMMAND_INTERPRETER::_send_command(byte* command){
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		default:	// Other commands don't exist
-			command_send = nullptr;
+			command_send = 0;
 			break;
 	}
 }
