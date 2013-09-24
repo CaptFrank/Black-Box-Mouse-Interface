@@ -63,12 +63,12 @@
 		/**
 		 * This clears a button
 		 */
-		void clearButton(joystick_report_t *joy, uint8_t button);
+		void clearButton(struct joystick_report_t *joy, uint8_t button);
 
 		/**
 		 * This sets a button
 		 */
-		void setButton(joystick_report_t *joy, uint8_t button);
+		void setButton(struct joystick_report_t *joy, uint8_t button);
 
 	public:
 

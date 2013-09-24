@@ -6,6 +6,9 @@
  */
 
 
+#ifndef _Network_Protocol_h_
+#define _Network_Protocol_h_
+
 //! Internal State Machine.
 
 // ENABLES THE COMS DEBUG MESSAGES OVER SERIAL2;
@@ -139,7 +142,7 @@ struct remote_sensor_data_t {
 
 	byte sensor_id;
 	uint16_t axis[NUM_AXES];
-	uint16_t button[(NUM_BUTTONS+7)/8];
+	uint8_t button[(NUM_BUTTONS+7)/8];
 };
 
 // *************************************************
@@ -153,6 +156,8 @@ struct remote_radio_configs_t {
 struct number_of_sensors_t {
 	byte number_of_sensors;
 };
+
+#endif
 
 
 

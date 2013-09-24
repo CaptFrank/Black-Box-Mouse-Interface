@@ -16,6 +16,8 @@ EMULATION_DEVICE::EMULATION_DEVICE(){
 	_packet_buffer = EMPTY;
 	_packet_id = EMPTY;
 	_packet_in_sending_queue = true;
+	_button = 0;
+	_packet_size = 0;
 
 }
 

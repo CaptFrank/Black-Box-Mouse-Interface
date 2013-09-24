@@ -10,7 +10,7 @@
 #define SPACE 	' '
 
 //! Define the structure
-struct nv_data_t nvram_default PROGMEM = {
+struct NVRAM::nv_data_t nvram_default PROGMEM = {
 
         9600,
         9600,
@@ -58,7 +58,7 @@ void NVRAM::load(void){
         if (('f' != EEPROM.read(0)) ||
             ('s' != EEPROM.read(1))) {
                 // load defaults
-                memcpy_P(&nv, &nvram_default, sizeof(nv));
+                memcpy_P(&nv, (void*)&nvram_default, sizeof(nv));
         } else {
                 // load from NVRAM
                 _loadx(2, sizeof(nv), &nv);

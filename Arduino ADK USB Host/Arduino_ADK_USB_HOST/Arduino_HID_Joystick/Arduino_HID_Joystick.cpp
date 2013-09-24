@@ -6,8 +6,8 @@ void loop();
 void init();
 void configure_device(NVRAM* nvram_object);
 
-	sensor_configs_t* configs;
-	remote_sensor_data_t* data;
+sensor_configs_t* configs;
+remote_sensor_data_t* data;
 
 /**
  * This is the main function that does the work

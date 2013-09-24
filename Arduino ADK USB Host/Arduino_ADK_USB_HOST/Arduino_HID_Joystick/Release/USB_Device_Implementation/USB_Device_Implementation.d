@@ -32,13 +32,12 @@ USB_Device_Implementation/USB_Device_Implementation.d \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../USB_Device_Implementation/USB_State_Machine.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../USB_Device_Implementation/../System_Defines/Hardware_Defines.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../USB_Device_Implementation/../Debug_API/Debug_LED_Function.h \
-  ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Network_Protocol.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Packet_Handler.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../System_Defines/Hardware_Defines.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../System_Defines/Command_Interpreter.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Packet_Parser.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../Debug_API/Debug_LED_Function.h \
-  ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Network_Protocol.h \
+  ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../Sensor_Parser_Implementation/Network_Protocol.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Emulation_Device_Implementation/Emulation_Device_Implementation.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Emulation_Device_Implementation/../System_Defines/Hardware_Defines.h \
   ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Emulation_Device_Implementation/../USB_Implementation/USB_Structures.h \
@@ -106,8 +105,6 @@ USB_Device_Implementation/USB_Device_Implementation.d \
 
 ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../USB_Device_Implementation/../Debug_API/Debug_LED_Function.h:
 
-../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Network_Protocol.h:
-
 ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Packet_Handler.h:
 
 ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../System_Defines/Hardware_Defines.h:
@@ -118,7 +115,7 @@ USB_Device_Implementation/USB_Device_Implementation.d \
 
 ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../Debug_API/Debug_LED_Function.h:
 
-../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/Network_Protocol.h:
+../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Sensor_Parser_Implementation/../Sensor_Parser_Implementation/Network_Protocol.h:
 
 ../USB_Device_Implementation/../USB_Implementation/../System_Defines/../Emulation_Device_Implementation/Emulation_Device_Implementation.h:
 

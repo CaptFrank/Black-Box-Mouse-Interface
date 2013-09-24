@@ -27,7 +27,6 @@
 #include "../USB_Device_Implementation/USB_State_Machine.h"
 
 //Sensor Parser Implementation
-#include "../Sensor_Parser_Implementation/Network_Protocol.h"
 #include "../Sensor_Parser_Implementation/Packet_Handler.h"
 #include "../Sensor_Parser_Implementation/Packet_Parser.h"
 
@@ -49,7 +48,7 @@
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	//! Define an EEPROM object.
-	EEPROM eeprom;
+	EEPROMClass eeprom;
 
 	//! Define an NVRAM object
 	NVRAM nvram;
@@ -67,7 +66,7 @@
 	USB_STATE_MACHINE usb_state_machine;
 
 	//! Define a packet decoder function table.
-	struct packet_handler packet_handlers[13] = {
+	struct packet_handler packet_handlers[] = {
 
 			//{/*PACKET ID*/, /*TARGET FUNCTION*/, /*OBJECT ADDRESS*/},
 
@@ -78,7 +77,7 @@
 			{ROUTER_ACK,	   	PACKET_PARSER::parse, 			&packet_parser},
 			{ROUTER_HEARTBEAT, 	PACKET_PARSER::parse, 			&packet_parser},
 			{ROUTER_STATUS,    	PACKET_PARSER::parse, 			&packet_parser},
-			{ROUTER_NMAP,	   	PACKET_PARSER::parse, 			&packet_parser},
+//			{ROUTER_NMAP,	   	PACKET_PARSER::parse, 			&packet_parser},
 			{ROUTER_CONFIG,     PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_ENABLE,    	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_CONFIGS,   	PACKET_PARSER::parse, 			&packet_parser},
@@ -86,7 +85,7 @@
 			{SENSOR_NUMBER,		PACKET_PARSER::parse,			&packet_parser},
 
 			//! USB local device function calls
-			{USB_DEVICE_CMD,   PACKET_PARSER::parse,			&packet_parser},
+//			{USB_DEVICE_CMD,   PACKET_PARSER::parse,			&packet_parser},
 
 			//! Optional
 			{ROUTER_DEBUG,     PACKET_PARSER::parse, 			&packet_parser},
@@ -99,7 +98,6 @@
 	#ifdef DEBUG_LEDs
 		//! Define a DEBUG_API object if debug.
 		DEBUG_API debug_api;
-		error_type_counts_t error_type_counts;
 	#endif
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

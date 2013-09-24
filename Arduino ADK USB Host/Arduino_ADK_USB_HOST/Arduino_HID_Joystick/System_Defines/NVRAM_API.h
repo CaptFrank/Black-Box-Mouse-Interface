@@ -5,6 +5,9 @@
  *      Author: fjpapin
  */
 
+#ifndef _NVRAM_h_
+#define _NVRAM_h_
+
 /**
  * This class handles the NVRAM accesses and storage
  * structure.
@@ -109,3 +112,5 @@ class NVRAM {
 		//! The exported structure definition.
 		struct nv_data_t nv;
 };
+
+#endif

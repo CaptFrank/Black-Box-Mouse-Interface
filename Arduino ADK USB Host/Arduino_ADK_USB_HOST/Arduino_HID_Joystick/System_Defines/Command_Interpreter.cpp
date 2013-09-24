@@ -6,7 +6,7 @@
  */
 
 #include "Command_Interpreter.h"
-#include "../Sensor_Parser_Implementation/Network_Protocol.h"
+#include <Network_Protocol.h>
 #include "../System_Defines/Hardware_Defines.h"
 #include "../Debug_API/Debug_LED_Function.h"
 

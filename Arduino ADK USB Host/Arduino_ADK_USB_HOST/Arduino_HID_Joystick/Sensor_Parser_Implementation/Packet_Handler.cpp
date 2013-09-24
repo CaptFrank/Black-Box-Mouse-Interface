@@ -6,7 +6,7 @@
  */
 
 #include "Packet_Handler.h"
-#include "../Sensor_Parser_Implementation/Network_Protocol.h"
+#include <Network_Protocol.h>
 
 /**
  * This is the packet decoder, over written with a past handler_table
@@ -89,6 +89,7 @@ void PACKET_DECODER::_move_state(byte data_byte){
             break;
 		}
 		_phase = PACKET_WAIT_PHASE_1;
+		continue;
 
     //! FALLTHROUGH
 	case PACKET_WAIT_PHASE_1:

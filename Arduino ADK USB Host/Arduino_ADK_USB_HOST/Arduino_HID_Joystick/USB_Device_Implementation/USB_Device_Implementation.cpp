@@ -22,6 +22,7 @@ USB_DEVICE::USB_DEVICE(){
 	_packet_buffer = EMPTY;
 	_packet_id = EMPTY;
 	_packet_in_sending_queue = true;
+	_packet_size = 0;
 }
 
 void USB_DEVICE::run_usb(){
@@ -73,12 +74,10 @@ void USB_DEVICE::_create_usb_report_frame(){
 		y_axis_mouse = packet_parser._data[ROUTER].channels[Y_AXIS].channel_data;
 	#endif
 	//! Reassign the structure to send.
-	_packet_buffer = &mouse_report;
+	_packet_buffer = (uint8_t* )&mouse_report;
 #endif
 
 #ifdef JOYSTICK_REPORT
-
-	joystick_report.buttons = random(6556);
 
 	for(register byte i = 0; i < NUM_AXES; i ++){
 		joystick_report.axis[i] = packet_parser._data.axis[i];
@@ -88,7 +87,7 @@ void USB_DEVICE::_create_usb_report_frame(){
 	}
 
 	//! Reassign the structure to send.
-	_packet_buffer = &joystick_report;
+	_packet_buffer = (uint8_t* )&joystick_report;
 #endif
 }
 
@@ -183,7 +182,7 @@ void USB_DEVICE::_init_rf_network(){
 	/**
 	 * Save them to eeprom address 200dec.
 	 */
-	nvram.savex((byte)200, (byte)8, (void*)packet_parser._radio_configs);
+	nvram.savex((byte)200, (byte)8, (void*)&packet_parser._radio_configs);
 
 	/**
 	 * Move the state machine to the network map request.
@@ -315,12 +314,8 @@ void USB_DEVICE::_setup_usb_report_params(){
 #endif
 
 #ifdef JOYSTICK_REPORT
-
-	joystick_report.axis = &packet_parser._data.axis;
-	joystick_report.button = &packet_parser._data.button;
-
 	//! Reassign the structure to send.
-	_packet_buffer = &joystick_report;
+	_packet_buffer = (uint8_t* )&joystick_report;
 #endif
 
 }

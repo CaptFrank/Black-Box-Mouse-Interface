@@ -5,6 +5,9 @@
  *      Author: francispapineau
  */
 
+#ifndef _Debuf_LED_Function_h_
+#define _Debuf_LED_Function_h_
+
 #include <stdio.h>
 
 //! Debug indexes
@@ -27,62 +30,62 @@
 #define REBOOT_ERROR	7
 
 
-		//! The Strings needed
-		const String DEBUG_STRINGS[9] = {
+//! The Strings needed
+const String DEBUG_STRINGS[9] = {
 
-				"FATAL  ",
-				"WARNING",
-				"INFO   ",
-				"DEBUG  ",
-				"MEMORY ",
-				"REBOOT ",
-				"DEBUG E",
-				"STATE  "
-		};
+		"FATAL  ",
+		"WARNING",
+		"INFO   ",
+		"DEBUG  ",
+		"MEMORY ",
+		"REBOOT ",
+		"DEBUG E",
+		"STATE  "
+};
 
-		//! The debug codes.
-		const byte DEBUG_CODES[9] = {
+//! The debug codes.
+const byte DEBUG_CODES[9] = {
 
-				0b0000001,	// FATAL ERROR
-				0b0000010,	// STATE CHANGE
-				0b0000100,	// WARNING ERROR
-				0b0001000,	// INFO ERROR
-				0b0010000,	// DEBUG INFO
-				0b0100000,	// MEMORY ERROR
-				0b1000000,	// DEBUG ERROR
-				0b1111111, 	// REBOOT ERRORS
-				0b0000000 	// CLEAR ERRORS
-		};
+		0b0000001,	// FATAL ERROR
+		0b0000010,	// STATE CHANGE
+		0b0000100,	// WARNING ERROR
+		0b0001000,	// INFO ERROR
+		0b0010000,	// DEBUG INFO
+		0b0100000,	// MEMORY ERROR
+		0b1000000,	// DEBUG ERROR
+		0b1111111, 	// REBOOT ERRORS
+		0b0000000 	// CLEAR ERRORS
+};
 
-		//! The LED codes
-		const byte DEBUG_LED_CODES[9] = {
+//! The LED codes
+const byte DEBUG_LED_CODES[9] = {
 
-				0b0001,		// FATAL ERROR
-				0b0000,		// CLEAR ERRORS
-				0b0010,		// WARNING ERROR
-				0b0100,		// INFO ERROR
-				0b1000,		// DEBUG INFO
-				0b0011,		// MEMORY ERROR
-				0b0101,		// DEBUG ERROR
-				0b1111		// REBOOT ERROR
-		};
+		0b0001,		// FATAL ERROR
+		0b0000,		// CLEAR ERRORS
+		0b0010,		// WARNING ERROR
+		0b0100,		// INFO ERROR
+		0b1000,		// DEBUG INFO
+		0b0011,		// MEMORY ERROR
+		0b0101,		// DEBUG ERROR
+		0b1111		// REBOOT ERROR
+};
 
 /**
  * This structure holds all the definitions for
  * states and strings associated debug messages.
  */
-typedef struct DEBUG_CODES_STRUCT {
+struct DEBUG_CODES_STRUCT {
 
 		//! The index to the arrays.
 		byte ERROR_INDEX; //! Cannot be bigger than 9;
 
-	}debug_code_struct_t; //! Defining a type
+}; //! Defining a type
 
 /**
  * This is a structure that holds the
  * total errors for each class of errors.
  */
-typedef struct ERROR_TYPE_COUNTS {
+struct ERROR_TYPE_COUNTS {
 
 	//! The counts for each errors.
 	byte warnings_errors;
@@ -91,7 +94,7 @@ typedef struct ERROR_TYPE_COUNTS {
 	byte memory_errors;
 
 	//byte fatal_errors; //not needed since it will reboot.
-}error_type_counts_t;
+};
 
 /**
  * This class is implemented to handle debug commands and
@@ -103,7 +106,7 @@ class DEBUG_API {
 	private:
 
 		//! Errors
-		error_type_counts_t errors;
+		ERROR_TYPE_COUNTS errors;
 
 		//! The needed pointers for the print
 		char* debug_type;
@@ -173,3 +176,5 @@ class DEBUG_API {
 		 */
 		void set_leds(byte error_index);
 };
+
+#endif

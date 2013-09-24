@@ -11,7 +11,7 @@
 #include "../System_Defines/Hardware_Defines.h"
 #include "../Debug_API/Debug_LED_Function.h"
 
-#include "Network_Protocol.h"
+#include "../Sensor_Parser_Implementation/Network_Protocol.h"
 
 #define MAX_TOKENS		40
 
@@ -21,25 +21,6 @@
 class PACKET_PARSER {
 
 	private:
-
-		//! The structures needed to parse info into.
-		struct packet_header_t					_header;
-		struct router_ack_info_t				_ack;
-		struct router_heartbeat_t 				_heartbeat;
-		struct router_status_info_t 			_status;
-		struct router_debug_status_t 			_debug;
-		struct router_sensor_enable_report_t 	_en_sensors;
-		struct remote_radio_configs_t			_radio_configs;
-		struct error_message_t					_error;
-		struct number_of_sensors_t				_num_sensors;
-
-		/**
-		 * These will get reallocated to how many sensors there are in
-		 * the sensor network.
-		 */
-		struct sensor_configs_t			 		_configs;
-//		router_nmap_info_t						_nmap	[1];
-		struct remote_sensor_data_t 			_data;
 
 		/**
 		 * Gets if a packet was read, and what type.
@@ -134,6 +115,25 @@ class PACKET_PARSER {
 		 * @param buf - void*
 		 */
 		static void	parse(void *arg, byte packet_id, byte packet_ver, void *buf);
+
+		//! The structures needed to parse info into.
+		struct packet_header_t					_header;
+		struct router_ack_info_t				_ack;
+		struct router_heartbeat_t 				_heartbeat;
+		struct router_status_info_t 			_status;
+		struct router_debug_status_t 			_debug;
+		struct router_sensor_enable_report_t 	_en_sensors;
+		struct remote_radio_configs_t			_radio_configs;
+		struct error_message_t					_error;
+		struct number_of_sensors_t				_num_sensors;
+
+		/**
+		 * These will get reallocated to how many sensors there are in
+		 * the sensor network.
+		 */
+		struct sensor_configs_t			 		_configs;
+//		router_nmap_info_t						_nmap	[1];
+		struct remote_sensor_data_t 			_data;
 
 };
 

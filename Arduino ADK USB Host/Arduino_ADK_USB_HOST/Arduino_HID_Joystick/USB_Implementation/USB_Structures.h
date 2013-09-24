@@ -11,7 +11,6 @@
 #include "../System_Defines/Main_Defines.h"
 
 static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
-static byte protocol_version = 0; // see HID1_11.pdf sect 7.2.6
 
 /// If the mouse is chosen.
 #ifdef MOUSE_REPORT
@@ -21,7 +20,7 @@ static byte protocol_version = 0; // see HID1_11.pdf sect 7.2.6
  * This is used to be able to vary the data from the
  * input parameters such as buttons (Setting them HIGH/LOW).
  */
-typedef struct mouse_report_t {
+struct mouse_report_t {
 
 	byte buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
 	int8_t x;		/*! X axis analog values (8bits) */
@@ -30,7 +29,7 @@ typedef struct mouse_report_t {
 };
 
 /// Defining a mouse_report_t structure.
-static mouse_report_t mouse_report;
+mouse_report_t mouse_report;
 
 /**
  * Sends a USB report of the mouse structure only.
@@ -47,21 +46,21 @@ void send_mouse_report(mouse_report_t* report);
  * This is used to be able to vary the data from the
  * input parameters such as buttons (Setting them HIGH/LOW).
  */
-typedef struct joystick_report_t {
+struct joystick_report_t {
 
-    int16_t axis[NUM_AXES];
+    uint16_t axis[NUM_AXES];
     uint8_t button[(NUM_BUTTONS+7)/8]; // 8 buttons per byte
 
 };
 
 /// Defining a joystick_report_t structure
-static joystick_report_t joystick_report;
+joystick_report_t joystick_report;
 
 /**
  * Sends a USB report of the joystick structure only.
  * @param report - joystick_report_t
  */
-void send_joystick_report(joystick_report_t* report);
+void send_joystick_report(struct joystick_report_t* report);
 
 #endif
 

@@ -40,7 +40,7 @@ extern "C" {
 #define MAX_DEBUG			100000
 #define MAX_MEMORY			10
 
-#define F_CPU				16000000
+//#define F_CPU				16000000
 
 #define DEBUG_development					//! The debug interface for Serial3, Serial2, Serial1
 //#define DEBUG								//! Serial Debug Define

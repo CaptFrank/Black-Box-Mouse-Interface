@@ -1,4 +1,4 @@
-23:07:31 **** Incremental Build of configuration Release for project Arduino_Mega_2560_or_Mega_ADK ****
+00:38:16 **** Incremental Build of configuration Release for project Arduino_Mega_2560_or_Mega_ADK ****
 make all 
 Invoking: Print Size
 avr-size --format=avr --mcu=atmega2560 libArduino_Mega_2560_or_Mega_ADK.a
@@ -203,5 +203,5 @@ Data:          0 bytes (0.0% Full)
 Finished building: sizedummy
  
 
-23:07:31 Build Finished (took 69ms)
+00:38:16 Build Finished (took 58ms)
 
