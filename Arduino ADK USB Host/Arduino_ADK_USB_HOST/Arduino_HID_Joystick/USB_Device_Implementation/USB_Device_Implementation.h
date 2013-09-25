@@ -8,12 +8,7 @@
 #ifndef USB_DEVICE_IMPLEMENTATION_H_
 #define USB_DEVICE_IMPLEMENTATION_H_
 
-#include "../System_Defines/Hardware_Defines.h"
-#include "../System_Defines/Command_Interpreter.h"
-#include "../Sensor_Parser_Implementation/Network_Protocol.h"
-#include "../Debug_API/Debug_LED_Function.h"
-#include "../USB_Implementation/USB_Structures.h"
-#include "../System_Defines/Main_Defines.h"
+#include "Arduino_HID_Joystick.h"
 
 #include <avr/io.h>
 

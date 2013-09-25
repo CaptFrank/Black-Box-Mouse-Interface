@@ -99,7 +99,10 @@ void setup(){
 	}else{
 
 		//! If none of the above, reset the device.
+
+	#ifdef DEBUG_LEDs
 		debug_api.set_leds(REBOOT_ERROR);
+	#endif
 		error((void*)__LINE__, (void*)__func__);
 	}
 

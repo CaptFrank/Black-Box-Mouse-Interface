@@ -8,8 +8,10 @@
 #ifndef PACKET_HANDLER_H_
 #define PACKET_HANDLER_H_
 
-#include "../System_Defines/Hardware_Defines.h"
-#include "../System_Defines/Command_Interpreter.h"
+//#include "../System_Defines/Hardware_Defines.h"
+//#include "../System_Defines/Command_Interpreter.h"
+#include "Arduino_HID_Joystick.h"
+
 
 //#define PACKET_TIMEOUT				100 //100ms timeout
 

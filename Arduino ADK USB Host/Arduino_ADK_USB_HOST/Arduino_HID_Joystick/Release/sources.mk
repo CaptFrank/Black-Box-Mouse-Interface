@@ -35,6 +35,6 @@ USB_Device_Implementation \
 System_Defines \
 Sensor_Parser_Implementation \
 Emulation_Device_Implementation \
-. \
 Debug_API \
+. \
 

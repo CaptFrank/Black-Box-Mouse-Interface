@@ -45,7 +45,7 @@ extern "C" {
 #define DEBUG_development					//! The debug interface for Serial3, Serial2, Serial1
 //#define DEBUG								//! Serial Debug Define
 #define USER_INPUT							//! User Button Define
-#define DEBUG_LEDs							//! Debug LEDs Define
+//#define DEBUG_LEDs							//! Debug LEDs Define
 
 #define NUMBER_OF_LEDS		4
 
@@ -88,11 +88,9 @@ extern "C" {
  //! Debug LEDs Activation
  //! TODO - ADD THE PORT MAP
 
- #ifdef DEBUG_LEDs
 	#define DBG_LED_1		3				//! PORT MAPS
 	#define DBG_LED_2		4
 	#define DBG_LED_3		5
 	#define DBG_LED_4		6
- #endif
 
 #endif /* HARDWARE_DEFINES_H_ */

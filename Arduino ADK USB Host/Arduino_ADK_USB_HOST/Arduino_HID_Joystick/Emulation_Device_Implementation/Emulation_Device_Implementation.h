@@ -5,8 +5,10 @@
  *      Author: francispapineau
  */
 
-#include "../System_Defines/Hardware_Defines.h"
+//#include "../System_Defines/Hardware_Defines.h"
 #include "../USB_Implementation/USB_Structures.h"
+#include "Arduino_HID_Joystick.h"
+
 
 /**
  * This class is implemented to be able to assemble a

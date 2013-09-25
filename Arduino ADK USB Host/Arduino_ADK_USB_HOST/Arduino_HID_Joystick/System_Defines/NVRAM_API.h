@@ -5,10 +5,11 @@
  *      Author: fjpapin
  */
 
-#ifndef _NVRAM_h_
-#define _NVRAM_h_
+#ifndef NVRAM_h_
+#define NVRAM_h_
 
 #include "Hardware_Defines.h"
+#include "Main_Defines.h"
 
 /**
  * This class handles the NVRAM accesses and storage

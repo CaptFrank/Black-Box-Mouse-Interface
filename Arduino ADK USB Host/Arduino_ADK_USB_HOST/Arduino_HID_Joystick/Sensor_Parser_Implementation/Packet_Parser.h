@@ -8,10 +8,11 @@
 #ifndef SENSOR_PARSER_H_
 #define SENSOR_PARSER_H_
 
-#include "../System_Defines/Hardware_Defines.h"
-#include "../Debug_API/Debug_LED_Function.h"
-
+//#include "../System_Defines/Hardware_Defines.h"
+////#include "../Debug_API/Debug_LED_Function.h"
 #include "../Sensor_Parser_Implementation/Network_Protocol.h"
+#include "Arduino_HID_Joystick.h"
+
 
 #define MAX_TOKENS		40
 

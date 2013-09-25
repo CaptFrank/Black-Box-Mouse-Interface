@@ -6,6 +6,9 @@
  */
 
 #include "USB_Device_Implementation.h"
+#include "../System_Defines/Command_Interpreter.h"
+
+static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
 #define ROUTER			0
 #define BUTTONS			0

@@ -4,16 +4,13 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-../Arduino_HID_Joystick.cpp \
-../EEPROM.cpp 
+../Arduino_HID_Joystick.cpp 
 
 OBJS += \
-./Arduino_HID_Joystick.o \
-./EEPROM.o 
+./Arduino_HID_Joystick.o 
 
 CPP_DEPS += \
-./Arduino_HID_Joystick.d \
-./EEPROM.d 
+./Arduino_HID_Joystick.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

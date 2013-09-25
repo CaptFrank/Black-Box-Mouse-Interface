@@ -5,11 +5,12 @@
  *      Author: fjpapin
  */
 
-#ifndef _USB_State_Machine_h_
-#define _USB_State_Machine_h_
+#ifndef USB_State_Machine_h_
+#define USB_State_Machine_h_
 
 #include "../System_Defines/Hardware_Defines.h"
-#include "../Debug_API/Debug_LED_Function.h"
+//#include "Arduino_HID_Joystick.h"
+
 
 //! USB State machine
 #define LOCAL_RESET							-1

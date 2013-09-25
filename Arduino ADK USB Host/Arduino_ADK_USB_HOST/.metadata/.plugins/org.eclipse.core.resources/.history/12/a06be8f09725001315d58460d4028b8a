@@ -1,0 +1,61 @@
+/*
+ * Main_Defines.h
+ *
+ *  Created on: Jul 10, 2013
+ *      Author: francispapineau
+ */
+
+//#include "./Includes.h"
+
+#ifndef _Main_Defines_h_
+#define _Main_Defines_h_
+
+//File System
+#include <Arduino.h>
+#include <EEPROM.h>
+#include <HardwareSerial.h>
+#include <avr/pgmspace.h>
+
+//System Defines
+#include "Hardware_Defines.h"
+#include "NVRAM_API.h"
+#include "Packet_Watchdog.h"
+#include "Command_Interpreter.h"
+
+//USB Implementation
+#include "../USB_Implementation/USB_Structures.h"
+
+//USB Device Implementation
+#include "../USB_Device_Implementation/USB_Device_Implementation.h"
+#include "../USB_Device_Implementation/USB_State_Machine.h"
+
+//Sensor Parser Implementation
+
+
+//Emulation Device Implementation
+#include "../Emulation_Device_Implementation/Emulation_Device_Implementation.h"
+
+//Debug API
+//#include "../Debug_API/Debug_LED_Function.h"
+
+	//! Cached structs to keep
+//	router_nmap_info_t* nmap;
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//~~~~~~~~~~~~~~~~~~~~ FUNCTION DEFINITIONS ~~~~~~~~~~~~~~~~~~~~~~~~
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	/**
+	 * This does a memory check of the whole system, and checks
+	 * to see how much free mem there is.
+	 */
+	word memory_check();
+
+	/**
+	 * This function is accessible throughout the code repo
+	 * it allows the functions to return and terminate the process
+	 * as an error.
+	 */
+	void error(void* line, void* function);
+
+#endif

@@ -6,8 +6,7 @@
  */
 
 #include "Debug_API/Debug_LED_Function.h"
-#include "Command_Interpreter.h"
-#include <Network_Protocol.h>
+#include "../Sensor_Parser_Implementation/Network_Protocol.h"
 
 
 	//! Reset the device.

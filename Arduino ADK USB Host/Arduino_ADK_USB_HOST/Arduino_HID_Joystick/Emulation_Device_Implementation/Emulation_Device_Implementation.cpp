@@ -7,6 +7,8 @@
 
 #include "Emulation_Device_Implementation.h"
 
+static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
+
 //! Default Constructor
 EMULATION_DEVICE::EMULATION_DEVICE(){
 	//! Sending mutex
@@ -18,6 +20,7 @@ EMULATION_DEVICE::EMULATION_DEVICE(){
 	_packet_in_sending_queue = true;
 	_button = 0;
 	_packet_size = 0;
+	_button = 0;
 
 }
 

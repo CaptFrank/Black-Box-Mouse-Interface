@@ -5,15 +5,16 @@
  *      Author: francispapineau
  */
 
-#ifndef _COMMAND_INTERPRETER_H_
-#define _COMMAND_INTERPRETER_H_
+#ifndef COMMAND_INTERPRETER_H
+#define COMMAND_INTERPRETER_H
 
-#include "../System_Defines/Hardware_Defines.h"
-#include "../System_Defines/NVRAM_API.h"
-#include "../Sensor_Parser_Implementation/Network_Protocol.h"
-#include "../System_Defines/Hardware_Defines.h"
-#include "../Debug_API/Debug_LED_Function.h"
-#include "../System_Defines/Main_Defines.h"
+//#include "Arduino_HID_Joystick.h"
+#include "Sensor_Parser_Implementation/Network_Protocol.h"
+#include "Sensor_Parser_Implementation/Packet_Handler.h"
+
+#include "Hardware_Defines.h"
+#include "NVRAM_API.h"
+
 
 #define WAKEUP_ROUTER				0x01	// Wake up the router
 #define WAKEUP_SENSOR				0x02	// Wake up a sensor
@@ -35,14 +36,14 @@
 #define REQUEST_NUMBER_SENSORS		0x13 	// Get the number of sensors
 #define REQUEST_NUMBER_CHANNELS		0x14	// Gets the number of channels for one sensor
 
-#define PACKET_TIMEOUT		1000 //!5sec
+#define PACKET_TIMEOUT				1000 //!5sec
 
 /**
  * This class handles commands sent from the sensor nodes to the
  * base station, and executes them.
  * We can also send commands through this class.
  */
-class COMMAND_INTERPRETER {
+class COMMAND_PARSER {
 
 	private:
 
@@ -50,7 +51,7 @@ class COMMAND_INTERPRETER {
 		uint8_t* command_buffer;
 
 		//! Our command database loaded in cache.
-		NVRAM* nvram_object;
+		NVRAM nvram_object;
 
 		/**
 		 * Constructs a command
@@ -69,15 +70,6 @@ class COMMAND_INTERPRETER {
 		void _send_cmd(uint8_t packet_id, void *buf);
 
 		/**
-		 * Loads bytes from NVRAM
-		 *
-		 * @param address - byte
-		 * @param size - byte
-		 * @param value - void*
-		 */
-		void _loadx(uint8_t address, uint8_t size, void* value);
-
-		/**
 		 * Sends and checks for a response.
 		 *
 		 * @param packet_id - byte
@@ -93,7 +85,7 @@ class COMMAND_INTERPRETER {
 		 *
 		 * @param nvram_object
 		 */
-		COMMAND_INTERPRETER(NVRAM* nvram_object);
+		COMMAND_PARSER(NVRAM* nvram_object);
 
 		/**
 		 * Sends a command via the public domain.
@@ -101,13 +93,6 @@ class COMMAND_INTERPRETER {
 		 * @param buf - void*
 		 */
 		void send_cmd(uint8_t packet_id, void *buf);
-
-
-		/**
-		 * Load all of the saved variables.
-		 */
-		void load(void);
 };
 
-
-#endif /* COMMAND_INTERPRETER_H_ */
+#endif

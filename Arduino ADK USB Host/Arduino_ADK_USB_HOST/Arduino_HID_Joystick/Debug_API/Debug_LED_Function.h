@@ -5,10 +5,11 @@
  *      Author: francispapineau
  */
 
-#ifndef _Debuf_LED_Function_h_
-#define _Debuf_LED_Function_h_
+#ifndef Debug_LED_Function_h_
+#define Debug_LED_Function_h_
 
 #include <stdio.h>
+#include "../System_Defines/Main_Defines.h"
 
 //! Debug indexes
 #define FATAL			1

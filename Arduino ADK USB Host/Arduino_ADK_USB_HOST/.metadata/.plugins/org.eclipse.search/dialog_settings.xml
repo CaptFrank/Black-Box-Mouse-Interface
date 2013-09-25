@@ -3,8 +3,8 @@
 	<section name="DialogBounds_SearchDialog">
 		<item value="587" key="DIALOG_WIDTH"/>
 		<item value="373" key="DIALOG_Y_ORIGIN"/>
-		<item value="455" key="DIALOG_HEIGHT"/>
 		<item value="987" key="DIALOG_X_ORIGIN"/>
+		<item value="455" key="DIALOG_HEIGHT"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="Search">
@@ -25,6 +25,15 @@
 	</section>
 	<section name="org.eclipse.cdt.ui.pdomSearchViewPage">
 		<item value="true" key="showEnclosingDefinitions"/>
+	</section>
+	<section name="TextSearchPage">
+		<item value="false" key="CASE_SENSITIVE"/>
+		<item value="false" key="REG_EX_SEARCH"/>
+		<item value="false" key="SEARCH_DERIVED"/>
+		<item value="0" key="HISTORY_SIZE"/>
+		<section name="EXTENSIONS">
+			<item value="*" key="0"/>
+		</section>
 	</section>
 	<section name="SearchDialog.ScopePart">
 		<item value="0" key="scope"/>

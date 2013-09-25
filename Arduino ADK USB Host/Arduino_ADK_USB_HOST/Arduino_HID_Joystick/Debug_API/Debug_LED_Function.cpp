@@ -5,8 +5,10 @@
  *      Author: francispapineau
  */
 
+#ifdef DEBUG_LEDS
 #include "Debug_LED_Function.h"
 #include "../System_Defines/Hardware_Defines.h"
+#include "../Debug_API/Debug_LED_Function.h"
 
 //! Initialize the object
 void DEBUG_API::DEBUG_API(){
@@ -139,5 +141,6 @@ void DEBUG_API::test_leds(){
 		digitalWrite(DBG_LED_1 + i, 0x00);
 	}
 }
+#endif
 
 

@@ -11,6 +11,9 @@
 
 //! Internal State Machine.
 
+#include <Arduino.h>
+#include "System_Defines/Hardware_Defines.h"
+
 // ENABLES THE COMS DEBUG MESSAGES OVER SERIAL2;
 #define ROUTER_COMS_DEBUG
 
