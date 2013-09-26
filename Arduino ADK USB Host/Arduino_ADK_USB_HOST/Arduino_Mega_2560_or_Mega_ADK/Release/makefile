@@ -8,6 +8,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include arduino/avr-libc/subdir.mk
 -include arduino/subdir.mk
 -include subdir.mk
 -include objects.mk
@@ -71,7 +72,7 @@ libArduino_Mega_2560_or_Mega_ADK.lss: libArduino_Mega_2560_or_Mega_ADK.a
 
 sizedummy: libArduino_Mega_2560_or_Mega_ADK.a
 	@echo 'Invoking: Print Size'
-	-avr-size --format=avr --mcu=atmega2560 libArduino_Mega_2560_or_Mega_ADK.a
+	-avr-size --format=berkeley -t libArduino_Mega_2560_or_Mega_ADK.a
 	@echo 'Finished building: $@'
 	@echo ' '
 

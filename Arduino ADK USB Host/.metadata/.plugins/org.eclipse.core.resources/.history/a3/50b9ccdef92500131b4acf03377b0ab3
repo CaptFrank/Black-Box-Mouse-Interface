@@ -1,0 +1,9 @@
+'''
+Created on Sep 25, 2013
+
+@author: francispapineau
+'''
+
+if __name__ == '__main__':
+    
+    snd = Sound()

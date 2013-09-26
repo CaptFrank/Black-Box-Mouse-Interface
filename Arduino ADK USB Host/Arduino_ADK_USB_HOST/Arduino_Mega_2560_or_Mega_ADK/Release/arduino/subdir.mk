@@ -4,26 +4,26 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/CDC.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HID.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/IPAddress.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Stream.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/USBCore.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/new.cpp 
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/CDC.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HID.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/IPAddress.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Stream.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/USBCore.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/new.cpp 
 
 C_SRCS += \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c \
-/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c 
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c \
+/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c 
 
 OBJS += \
 ./arduino/CDC.o \
@@ -69,129 +69,129 @@ CPP_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-arduino/CDC.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/CDC.cpp
+arduino/CDC.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/CDC.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/HID.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HID.cpp
+arduino/HID.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HID.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/HardwareSerial.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.cpp
+arduino/HardwareSerial.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/HardwareSerial.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/IPAddress.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/IPAddress.cpp
+arduino/IPAddress.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/IPAddress.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/Print.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp
+arduino/Print.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Print.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/Stream.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Stream.cpp
+arduino/Stream.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Stream.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/Tone.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp
+arduino/Tone.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/Tone.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/USBCore.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/USBCore.cpp
+arduino/USBCore.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/USBCore.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/WInterrupts.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c
+arduino/WInterrupts.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WInterrupts.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-gcc -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/WMath.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp
+arduino/WMath.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WMath.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/WString.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp
+arduino/WString.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/WString.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/main.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp
+arduino/main.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/main.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/new.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/new.cpp
+arduino/new.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/new.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR C++ Compiler'
-	avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=100 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-g++ -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_PID= -DUSB_VID= -DARDUINO=105 -Wall -Os -fno-exceptions -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/wiring.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c
+arduino/wiring.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-gcc -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/wiring_analog.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c
+arduino/wiring_analog.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_analog.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-gcc -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/wiring_digital.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c
+arduino/wiring_digital.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_digital.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-gcc -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/wiring_pulse.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c
+arduino/wiring_pulse.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_pulse.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-gcc -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
-arduino/wiring_shift.o: /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c
+arduino/wiring_shift.o: /Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino/wiring_shift.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: AVR Compiler'
-	avr-gcc -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
+	avr-gcc -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -DUSB_VID= -DUSB_PID= -DARDUINO=105 -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -g  -ffunction-sections  -fdata-sections -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)"  -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

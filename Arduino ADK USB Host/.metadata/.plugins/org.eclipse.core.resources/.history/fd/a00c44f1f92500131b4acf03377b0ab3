@@ -1,0 +1,12 @@
+'''
+Created on Sep 25, 2013
+
+@author: francispapineau
+'''
+
+import tkSnack
+
+if __name__ == '__main__':
+    
+    snd = Sound()
+    

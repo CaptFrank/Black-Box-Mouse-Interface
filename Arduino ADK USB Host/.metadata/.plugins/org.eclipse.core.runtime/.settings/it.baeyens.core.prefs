@@ -20,6 +20,7 @@ avrpaths//systempath/AVRDUDE=/usr/local/CrossPack-AVR-20120217/bin
 avrpaths//systempath/AVRGCC=/usr/local/CrossPack-AVR-20120217/bin
 avrpaths//systempath/AVRINCLUDE=/usr/local/CrossPack-AVR-20120217/avr/include
 avrpaths//systempath/MAKE=/usr/bin
+avrpaths//systempath/PDFPATH=
 avrpaths/AVRDUDE=/Users/francispapineau/Documents/4th year project/Source Code/Black-Box-Mouse-Interface/Arduino ADK USB Host/arduino/bin
 avrpaths/AVRGCC=/Users/francispapineau/Documents/4th year project/Source Code/Black-Box-Mouse-Interface/Arduino ADK USB Host/arduino/bin
 avrpaths/AVRINCLUDE=System

@@ -43,6 +43,7 @@ void setup();
 #include "USB_Device_Implementation/USB_Device_Implementation.h"
 #include "USB_Device_Implementation/USB_State_Machine.h"
 #include "Emulation_Device_Implementation/Emulation_Device_Implementation.h"
+#include "Sensor_Parser_Implementation/Network_Protocol.h"
 
 //#include "Debug_API/Debug_LED_Function.h"
 

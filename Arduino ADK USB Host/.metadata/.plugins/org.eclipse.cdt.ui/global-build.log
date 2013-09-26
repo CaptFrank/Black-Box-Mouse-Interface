@@ -2,3 +2,27 @@
 **** Build of configuration Debug for project Arduino_ADK_USB_HOST ****
 
 Nothing to build for project Arduino_ADK_USB_HOST
+
+**** Build of configuration Debug for project Arduino_ADK_USB_HOST ****
+
+Nothing to build for project Arduino_ADK_USB_HOST
+10:36:35 **** Incremental Build of configuration Release for project Arduino_Mega_2560_or_Mega_ADK ****
+make all 
+Invoking: Print Size
+make: avr-size: Permission denied
+avr-size --format=berkeley -t libArduino_Mega_2560_or_Mega_ADK.a
+make: [sizedummy] Error 1 (ignored)
+Finished building: sizedummy
+ 
+
+**** Build of configuration Debug for project Arduino_ADK_USB_HOST ****
+
+Nothing to build for project Arduino_ADK_USB_HOST
+10:52:59 **** Incremental Build of configuration Release for project Arduino_Mega_2560_or_Mega_ADK ****
+make all 
+Invoking: Print Size
+make: avr-size: Permission denied
+avr-size --format=berkeley -t libArduino_Mega_2560_or_Mega_ADK.a
+make: [sizedummy] Error 1 (ignored)
+Finished building: sizedummy
+ 
