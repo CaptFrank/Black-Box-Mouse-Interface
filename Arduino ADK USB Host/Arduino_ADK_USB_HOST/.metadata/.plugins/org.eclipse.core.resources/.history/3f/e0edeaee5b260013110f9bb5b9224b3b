@@ -1,0 +1,33 @@
+/*
+ * Main_Defines.h
+ *
+ *  Created on: Jul 10, 2013
+ *      Author: francispapineau
+ */
+
+//#include "./Includes.h"
+
+#ifndef MAIN_DEFINES_h_
+#define MAIN_DEFINES_h_
+
+//USB Implementation
+#include "USB_Implementation/USB_Structures.h"
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//~~~~~~~~~~~~~~~~~~~~ FUNCTION DEFINITIONS ~~~~~~~~~~~~~~~~~~~~~~~~
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	/**
+	 * This does a memory check of the whole system, and checks
+	 * to see how much free mem there is.
+	 */
+	word memory_check();
+
+	/**
+	 * This function is accessible throughout the code repo
+	 * it allows the functions to return and terminate the process
+	 * as an error.
+	 */
+	void error(void* line, void* function);
+
+#endif

@@ -5,9 +5,8 @@
  *      Author: francispapineau
  */
 
-//#include "../System_Defines/Hardware_Defines.h"
-#include "../USB_Implementation/USB_Structures.h"
-#include "Arduino_HID_Joystick.h"
+#include "USB_Implementation/USB_Structures.h"
+#include "System_Defines/Hardware_Defines.h"
 
 
 /**
@@ -37,10 +36,8 @@
 		//! button toggling
 		byte _button;
 
-		/**
-		 * The default constructor
-		 */
-		EMULATION_DEVICE();
+		//! joystick report pointer
+		joystick_report_t* _joy;
 
 		/**
 		 * The assembly function for the packet
@@ -65,14 +62,19 @@
 		/**
 		 * This clears a button
 		 */
-		void clearButton(struct joystick_report_t *joy, uint8_t button);
+		void clearButton(void* joy, unsigned char button);
 
 		/**
 		 * This sets a button
 		 */
-		void setButton(struct joystick_report_t *joy, uint8_t button);
+		void setButton(void* joy, unsigned char button);
 
 	public:
+
+		/**
+		 * The default constructor
+		 */
+		EMULATION_DEVICE(joystick_report_t* joystick_report);
 
 		/**
 		 * The emulation loop

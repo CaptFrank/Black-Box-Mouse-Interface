@@ -5,10 +5,33 @@
 	</section>
 	<section name="completion_proposal_size">
 	</section>
+	<section name="org.eclipse.cdt.internal.ui.browser.opentype.OpenTypeActionSettings">
+		<item value="true" key="show_structs"/>
+		<item value="true" key="show_lowlevel"/>
+		<item value="true" key="show_macros"/>
+		<item value="true" key="show_variables"/>
+		<item value="529" key="width"/>
+		<item value="true" key="show_functions"/>
+		<item value="true" key="show_enums"/>
+		<item value="604" key="height"/>
+		<item value="true" key="show_classes"/>
+		<item value="true" key="show_typedefs"/>
+		<item value="true" key="show_namespaces"/>
+		<item value="true" key="show_unions"/>
+		<item value="true" key="show_enumerators"/>
+		<item value="296" key="y"/>
+		<item value="1016" key="x"/>
+	</section>
 	<section name="PDOMSearchPage">
 		<item value="227191" key="searchFlags"/>
 		<item value="false" key="caseSensitive"/>
 		<list key="previousPatterns">
+			<item value="error"/>
+			<item value="USB_Structures"/>
+			<item value="joystick_report"/>
+			<item value="reset_device"/>
+			<item value="parse"/>
+			<item value="Command_Interpreter"/>
 			<item value="Network_Protocol"/>
 			<item value="dla"/>
 			<item value="__ASSEMBLER__"/>
@@ -17,20 +40,20 @@
 	</section>
 	<section name="RenameInformationPopup">
 	</section>
+	<section name="CRenameRefactoringInputPage">
+		<item value="false" key="exhausiveFileSearch"/>
+		<item value="3" key="scope"/>
+		<item value="false" key="macroDefinition"/>
+		<item value="false" key="comment"/>
+		<item value="" key="workingset"/>
+		<item value="false" key="references_inv"/>
+	</section>
 	<section name="org.eclipse.cdt.ui.OPEN_ACTION_SELECTION_DIALOG_SECTION">
 		<item value="778" key="DIALOG_WIDTH"/>
 		<item value="470" key="DIALOG_Y_ORIGIN"/>
-		<item value="375" key="DIALOG_HEIGHT"/>
 		<item value="1089" key="DIALOG_X_ORIGIN"/>
+		<item value="375" key="DIALOG_HEIGHT"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
-	</section>
-	<section name="CRenameRefactoringInputPage">
-		<item value="false" key="exhausiveFileSearch"/>
-		<item value="false" key="macroDefinition"/>
-		<item value="3" key="scope"/>
-		<item value="false" key="comment"/>
-		<item value="false" key="references_inv"/>
-		<item value="" key="workingset"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>

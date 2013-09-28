@@ -5,16 +5,15 @@
  *      Author: francispapineau
  */
 
-#ifndef COMMAND_INTERPRETER_H
-#define COMMAND_INTERPRETER_H
-
-//#include "Arduino_HID_Joystick.h"
-#include "Sensor_Parser_Implementation/Network_Protocol.h"
-#include "Sensor_Parser_Implementation/Packet_Handler.h"
+#ifndef COMMAND_INTERPRETER_h_
+#define COMMAND_INTERPRETER_h_
 
 #include "Hardware_Defines.h"
 #include "NVRAM_API.h"
 
+#include "Sensor_Parser_Implementation/Network_Protocol.h"
+#include "Sensor_Parser_Implementation/Packet_Handler.h"
+#include "USB_Device_Implementation/USB_State_Machine.h"
 
 #define WAKEUP_ROUTER				0x01	// Wake up the router
 #define WAKEUP_SENSOR				0x02	// Wake up a sensor
@@ -50,8 +49,8 @@ class COMMAND_PARSER {
 		//! The command buffer to send.
 		uint8_t* command_buffer;
 
-		//! Our command database loaded in cache.
-		NVRAM nvram_object;
+		//! Our packet decoder pointer
+		PACKET_HANDLER* packet_decoder;
 
 		/**
 		 * Constructs a command
@@ -80,12 +79,19 @@ class COMMAND_PARSER {
 
 	public:
 
+		//! Our state machine
+		USB_STATE_MACHINE* usb_state_machine;
+
+		//! Our command database loaded in cache.
+		NVRAM* nvram_object;
+
 		/**
 		 * Default constructor.
 		 *
 		 * @param nvram_object
 		 */
-		COMMAND_PARSER(NVRAM* nvram_object);
+		COMMAND_PARSER(NVRAM* nvram_object, PACKET_HANDLER* packet_decoder,
+				USB_STATE_MACHINE* usb_state_machine);
 
 		/**
 		 * Sends a command via the public domain.

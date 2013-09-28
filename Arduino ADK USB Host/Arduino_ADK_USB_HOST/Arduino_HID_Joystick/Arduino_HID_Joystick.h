@@ -23,25 +23,25 @@ void setup();
 //add your function definitions for the project Arduino_HID_Joystick here
 
 //File System
-#include <Arduino.h>
-#include <System_Defines/EEPROM.h>
+
 #include <HardwareSerial.h>
-#include <avr/pgmspace.h>
+
+#include "System_Defines/EEPROM.h"
 #include "System_Defines/NVRAM_API.h"
-
-
-//Main defines
 #include "System_Defines/Main_Defines.h"
 #include "System_Defines/Hardware_Defines.h"
-#include "System_Defines/NVRAM_API.h"
 #include "System_Defines/Packet_Watchdog.h"
-
-#include "Sensor_Parser_Implementation/Packet_Parser.h"
-#include "Sensor_Parser_Implementation/Packet_Handler.h"
 #include "System_Defines/Command_Interpreter.h"
+
+
+#include "Sensor_Parser_Implementation/Packet_Handler.h"
+#include "Sensor_Parser_Implementation/Packet_Parser.h"
+
 
 #include "USB_Device_Implementation/USB_Device_Implementation.h"
 #include "USB_Device_Implementation/USB_State_Machine.h"
+
+
 #include "Emulation_Device_Implementation/Emulation_Device_Implementation.h"
 #include "Sensor_Parser_Implementation/Network_Protocol.h"
 
@@ -64,14 +64,14 @@ void setup();
 	//! Define an WATCHDOG object
 	WATCHDOG watchdog;
 
-	//! Define an PACKET_PARSER object
-	PACKET_PARSER packet_parser;
-
 	//! Define a common USB_STATE_MACHINE object
 	USB_STATE_MACHINE usb_state_machine;
 
 	//! Define an NVRAM object
 	NVRAM nvram;
+
+	//! Define an PACKET_PARSER object
+	PACKET_PARSER packet_parser;
 
 	//! Define a packet decoder function table.
 	struct packet_handler_t packet_handlers[] = {
@@ -101,10 +101,10 @@ void setup();
 	};
 
 	//! Define a PACKET_DECODER object
-	PACKET_DECODER packet_decoder(packet_handlers);
+	PACKET_HANDLER packet_decoder((void*)&packet_handlers);
 
 	//! Define a COMMAND_INTERPRETER object
-	COMMAND_PARSER command_interpreter(nvram);
+	COMMAND_PARSER command_interpreter(&nvram, &packet_decoder, &usb_state_machine);
 
 	#ifdef DEBUG_LEDs
 		//! Define a DEBUG_API object if debug.
@@ -114,6 +114,12 @@ void setup();
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//~~~~~~~~~~~~~~~~~~~~ VARIABLE DEFINITIONS ~~~~~~~~~~~~~~~~~~~~~~~~
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	#ifdef JOYSTICK_REPORT
+		/// Defining a joystick_report_t structure
+		joystick_report_t joystick_report;
+	#endif
 
 	//! A generic pointer to the chosen object.
 	void* generic_pointer;

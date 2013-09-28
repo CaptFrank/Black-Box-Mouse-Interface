@@ -9,7 +9,7 @@
 #define NVRAM_h_
 
 #include "Hardware_Defines.h"
-#include "Main_Defines.h"
+#include "EEPROM.h"
 
 /**
  * This class handles the NVRAM accesses and storage

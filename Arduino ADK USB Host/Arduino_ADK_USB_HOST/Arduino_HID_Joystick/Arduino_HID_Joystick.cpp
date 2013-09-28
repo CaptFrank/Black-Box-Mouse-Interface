@@ -6,6 +6,9 @@ void loop();
 void init();
 void configure_device(NVRAM* nvram_object);
 
+/**
+ * Divers data structures.
+ */
 sensor_configs_t* configs;
 remote_sensor_data_t* data;
 
@@ -57,6 +60,9 @@ void setup(){
 		DEBUG_SERIAL.println("STARTED DEBUG ENGINE");
 	#endif
 
+	//! sets the sdecoder objdect.
+	packet_parser.set_handler(&packet_decoder);
+
 	//! Reset and reboot device.
 	attachInterrupt(SELECT_BUTTON_2, reset_device, CHANGE);
 
@@ -75,7 +81,7 @@ void setup(){
 
 		//! Defines the generic pointer (EMULATION).
 		//! This is where we setup the object pointer.
-		EMULATION_DEVICE emulation_device;
+		EMULATION_DEVICE emulation_device(&joystick_report);
 		generic_pointer = &emulation_device;
 		emulation_chosen = true;
 
@@ -88,7 +94,8 @@ void setup(){
 		//! Define the generic pointer (USB HOST DEVICE).
 		//! This is where we setup the object pointer.
 
-		USB_DEVICE usb_host_device;
+		USB_DEVICE usb_host_device(&command_interpreter,
+				&packet_parser, &joystick_report);
 		generic_pointer = &usb_host_device;
 		usb_device_chosen = true;
 

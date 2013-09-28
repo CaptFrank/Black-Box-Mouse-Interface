@@ -5,11 +5,11 @@
  *      Author: fjpapin
  */
 
-#ifndef HARDWARE_DEFINES_H_
-#define HARDWARE_DEFINES_H_
+#ifndef HARDWARE_DEFINES_h_
+#define HARDWARE_DEFINES_h_
+
 
 #include <Arduino.h>
-
 
 extern "C" {
 //! external reference to the end of the BSS for use in checking memory consumption

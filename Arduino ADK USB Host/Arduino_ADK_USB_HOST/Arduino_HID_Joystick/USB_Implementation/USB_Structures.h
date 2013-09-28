@@ -5,10 +5,10 @@
  *      Author: fjpapin
  */
 
-#ifndef USB_DEFINES_H_
-#define USB_DEFINES_H_
+#ifndef USB_STRUCTURES_h_
+#define USB_STRUCTURES_h_
 
-#include "../System_Defines/Main_Defines.h"
+#include "System_Defines/Hardware_Defines.h"
 
 //static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
@@ -46,15 +46,12 @@ void send_mouse_report(mouse_report_t* report);
  * This is used to be able to vary the data from the
  * input parameters such as buttons (Setting them HIGH/LOW).
  */
-struct joystick_report_t {
+typedef struct joystick_report_t {
 
     uint16_t axis[NUM_AXES];
     uint8_t button[(NUM_BUTTONS+7)/8]; // 8 buttons per byte
 
 };
-
-/// Defining a joystick_report_t structure
-joystick_report_t joystick_report;
 
 /**
  * Sends a USB report of the joystick structure only.

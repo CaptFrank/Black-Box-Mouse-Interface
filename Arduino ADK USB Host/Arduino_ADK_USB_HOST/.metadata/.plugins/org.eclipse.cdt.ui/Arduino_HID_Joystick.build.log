@@ -1,14 +1,109 @@
-00:36:29 **** Incremental Build of configuration Release for project Arduino_HID_Joystick ****
+00:48:55 **** Build of configuration Release for project Arduino_HID_Joystick ****
 make all 
 Building file: ../USB_Device_Implementation/USB_Device_Implementation.cpp
 Invoking: AVR C++ Compiler
 avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Device_Implementation/USB_Device_Implementation.d" -MT"USB_Device_Implementation/USB_Device_Implementation.d"  -c -o "USB_Device_Implementation/USB_Device_Implementation.o" -x c++ "../USB_Device_Implementation/USB_Device_Implementation.cpp"
-In file included from ../USB_Device_Implementation/USB_Device_Implementation.h:11,
+In file included from ../USB_Device_Implementation/USB_Device_Implementation.h:12,
                  from ../USB_Device_Implementation/USB_Device_Implementation.cpp:8:
-/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick/Arduino_HID_Joystick.h:106: error: no matching function for call to 'COMMAND_PARSER::COMMAND_PARSER(NVRAM&)'
-/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick/System_Defines/Command_Interpreter.h:88: note: candidates are: COMMAND_PARSER::COMMAND_PARSER(NVRAM*)
-/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick/System_Defines/Command_Interpreter.h:46: note:                 COMMAND_PARSER::COMMAND_PARSER(const COMMAND_PARSER&)
-make: *** [USB_Device_Implementation/USB_Device_Implementation.o] Error 1
+Finished building: ../USB_Device_Implementation/USB_Device_Implementation.cpp
+ 
+/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick/USB_Implementation/USB_Structures.h:54: warning: 'typedef' was ignored in this declaration
+Building file: ../USB_Device_Implementation/USB_State_Machine.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"USB_Device_Implementation/USB_State_Machine.d" -MT"USB_Device_Implementation/USB_State_Machine.d"  -c -o "USB_Device_Implementation/USB_State_Machine.o" -x c++ "../USB_Device_Implementation/USB_State_Machine.cpp"
+../System_Defines/Main_Defines.h:35: warning: 'void error(void*, void*)' defined but not used
+Finished building: ../USB_Device_Implementation/USB_State_Machine.cpp
+ 
+Building file: ../System_Defines/Command_Interpreter.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"System_Defines/Command_Interpreter.d" -MT"System_Defines/Command_Interpreter.d"  -c -o "System_Defines/Command_Interpreter.o" -x c++ "../System_Defines/Command_Interpreter.cpp"
+../System_Defines/NVRAM_API.cpp:14: warning: only initialized variables can be placed into program memory area
+Finished building: ../System_Defines/Command_Interpreter.cpp
+ 
+Building file: ../System_Defines/EEPROM.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"System_Defines/EEPROM.d" -MT"System_Defines/EEPROM.d"  -c -o "System_Defines/EEPROM.o" -x c++ "../System_Defines/EEPROM.cpp"
+Finished building: ../System_Defines/EEPROM.cpp
+ 
+Building file: ../System_Defines/Main_Defines.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"System_Defines/Main_Defines.d" -MT"System_Defines/Main_Defines.d"  -c -o "System_Defines/Main_Defines.o" -x c++ "../System_Defines/Main_Defines.cpp"
+In file included from ../Emulation_Device_Implementation/Emulation_Device_Implementation.h:8,
+                 from ../Emulation_Device_Implementation/Emulation_Device_Implementation.cpp:8:
+/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick/USB_Implementation/USB_Structures.h:54: warning: 'typedef' was ignored in this declaration
+Finished building: ../System_Defines/Main_Defines.cpp
+ 
+Building file: ../System_Defines/NVRAM_API.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"System_Defines/NVRAM_API.d" -MT"System_Defines/NVRAM_API.d"  -c -o "System_Defines/NVRAM_API.o" -x c++ "../System_Defines/NVRAM_API.cpp"
+In file included from ../USB_Device_Implementation/USB_Device_Implementation.h:12,
+                 from ../Arduino_HID_Joystick.h:41,
+                 from ../Arduino_HID_Joystick.cpp:2:
+Finished building: ../System_Defines/NVRAM_API.cpp
+ 
+/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick/USB_Implementation/USB_Structures.h:54: warning: 'typedef' was ignored in this declaration
+Building file: ../System_Defines/Packet_Watchdog.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"System_Defines/Packet_Watchdog.d" -MT"System_Defines/Packet_Watchdog.d"  -c -o "System_Defines/Packet_Watchdog.o" -x c++ "../System_Defines/Packet_Watchdog.cpp"
+Finished building: ../System_Defines/Packet_Watchdog.cpp
+ 
+Building file: ../Sensor_Parser_Implementation/Packet_Handler.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"Sensor_Parser_Implementation/Packet_Handler.d" -MT"Sensor_Parser_Implementation/Packet_Handler.d"  -c -o "Sensor_Parser_Implementation/Packet_Handler.o" -x c++ "../Sensor_Parser_Implementation/Packet_Handler.cpp"
+Finished building: ../Sensor_Parser_Implementation/Packet_Handler.cpp
+ 
+Building file: ../Sensor_Parser_Implementation/Packet_Parser.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"Sensor_Parser_Implementation/Packet_Parser.d" -MT"Sensor_Parser_Implementation/Packet_Parser.d"  -c -o "Sensor_Parser_Implementation/Packet_Parser.o" -x c++ "../Sensor_Parser_Implementation/Packet_Parser.cpp"
+Finished building: ../Sensor_Parser_Implementation/Packet_Parser.cpp
+ 
+Building file: ../Emulation_Device_Implementation/Emulation_Device_Implementation.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"Emulation_Device_Implementation/Emulation_Device_Implementation.d" -MT"Emulation_Device_Implementation/Emulation_Device_Implementation.d"  -c -o "Emulation_Device_Implementation/Emulation_Device_Implementation.o" -x c++ "../Emulation_Device_Implementation/Emulation_Device_Implementation.cpp"
+Finished building: ../Emulation_Device_Implementation/Emulation_Device_Implementation.cpp
+ 
+Building file: ../Debug_API/Debug_LED_Function.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"Debug_API/Debug_LED_Function.d" -MT"Debug_API/Debug_LED_Function.d"  -c -o "Debug_API/Debug_LED_Function.o" -x c++ "../Debug_API/Debug_LED_Function.cpp"
+Finished building: ../Debug_API/Debug_LED_Function.cpp
+ 
+Building file: ../Arduino_HID_Joystick.cpp
+Invoking: AVR C++ Compiler
+avr-g++ -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/cores/arduino" -I"/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/variants/mega" -I"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_HID_Joystick" -D__IN_ECLIPSE__=1 -DUSB_VID= -DUSB_PID= -DARDUINO=100 -Wall -Os -ffunction-sections -fdata-sections -fno-exceptions -g -mmcu=atmega2560 -DF_CPU=16000000UL -MMD -MP -MF"Arduino_HID_Joystick.d" -MT"Arduino_HID_Joystick.d"  -c -o "Arduino_HID_Joystick.o" -x c++ "../Arduino_HID_Joystick.cpp"
+Finished building: ../Arduino_HID_Joystick.cpp
+ 
+Building target: Arduino_HID_Joystick.elf
+Invoking: AVR C++ Linker
+avr-gcc -Os -Wl,--gc-sections  -L"/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/Arduino_Mega_2560_or_Mega_ADK/Release" -mmcu=atmega2560  -o"Arduino_HID_Joystick.elf"  ./USB_Device_Implementation/USB_Device_Implementation.o ./USB_Device_Implementation/USB_State_Machine.o  ./System_Defines/Command_Interpreter.o ./System_Defines/EEPROM.o ./System_Defines/Main_Defines.o ./System_Defines/NVRAM_API.o ./System_Defines/Packet_Watchdog.o  ./Sensor_Parser_Implementation/Packet_Handler.o ./Sensor_Parser_Implementation/Packet_Parser.o  ./Emulation_Device_Implementation/Emulation_Device_Implementation.o  ./Debug_API/Debug_LED_Function.o  ./Arduino_HID_Joystick.o   -l"Arduino_Mega_2560_or_Mega_ADK" -lm
+Finished building target: Arduino_HID_Joystick.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S Arduino_HID_Joystick.elf  >"Arduino_HID_Joystick.lss"
+Finished building: Arduino_HID_Joystick.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -O ihex Arduino_HID_Joystick.elf  "Arduino_HID_Joystick.hex"
+Finished building: Arduino_HID_Joystick.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex Arduino_HID_Joystick.elf  "Arduino_HID_Joystick.eep"
+Finished building: Arduino_HID_Joystick.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega2560 Arduino_HID_Joystick.elf
+AVR Memory Usage
+----------------
+Device: atmega2560
 
-00:36:29 Build Finished (took 261ms)
+Program:    9716 bytes (3.7% Full)
+(.text + .data + .bootloader)
+
+Data:       1074 bytes (13.1% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+00:48:56 Build Finished (took 1s.549ms)
 

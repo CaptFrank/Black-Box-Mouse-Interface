@@ -8,9 +8,8 @@
 #ifndef USB_State_Machine_h_
 #define USB_State_Machine_h_
 
-#include "../System_Defines/Hardware_Defines.h"
-//#include "Arduino_HID_Joystick.h"
-
+#include "System_Defines/Hardware_Defines.h"
+#include "System_Defines/Main_Defines.h"
 
 //! USB State machine
 #define LOCAL_RESET							-1
@@ -35,13 +34,6 @@
  * state machine.
  */
 class USB_STATE_MACHINE {
-
-	private:
-
-		/**
-		 * Defines the reset state function
-		 */
-		void(*reset_device);
 
 	public:
 

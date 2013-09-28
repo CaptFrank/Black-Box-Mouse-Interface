@@ -10,23 +10,21 @@
 //! Default constructor
 PACKET_PARSER::PACKET_PARSER(){}
 
+void PACKET_PARSER::set_handler(PACKET_HANDLER* packet_handler){
+	this->_packet_handler = packet_handler;
+}
+
 //! Parse the structures.
-static void PACKET_PARSER::parse(void *arg, byte packet_id, byte packet_ver,
+void PACKET_PARSER::parse(void *arg, byte packet_id, byte packet_ver,
 		void *buf) {
-
-	//! Check if there is space left
-	_check_memory_space();
-
-	//! Check if the string is ok to process.
-	_check_packet_integrity((String*) buf);
 
 	//! Process String
 	((PACKET_PARSER*) arg)->_parse(packet_id, packet_ver, buf);
 }
 
 //! Check if a specific packet was read.
-bool _check_read_packet(byte packet_type){
-	if((!packet_decoder._guard_bool) || !(packet_decoder._packet_id == packet_type)){
+bool PACKET_PARSER::_check_read_packet(byte packet_type){
+	if((!this->_packet_handler->_guard_bool) || !(this->_packet_handler->_packet_id == packet_type)){
 #ifdef DEBUG_LEDs
 		debug_api.set_leds(REBOOT_ERROR);
 #endif
@@ -36,7 +34,7 @@ bool _check_read_packet(byte packet_type){
 }
 
 //! Check the memory space
-static void PACKET_PARSER::_check_memory_space(size_t mem_space) {
+void PACKET_PARSER::_check_memory_space(size_t mem_space) {
 
 	//! Check memory integrity
 	if (memory_check() <= mem_space)
@@ -47,20 +45,19 @@ static void PACKET_PARSER::_check_memory_space(size_t mem_space) {
 }
 
 //! Check packet integrity
-static bool PACKET_PARSER::_check_packet_integrity(String* packet) {
+bool PACKET_PARSER::_check_packet_integrity(char* packet) {
 
 	//! Checks length, Header, Tail
-	if (packet->len > EMPTY)
-		if (packet[2] > EMPTY)
-			if (packet[0] == '+')
-				if (packet[packet->len - 1] == '*')
-					return true;
+	if (packet[2] > EMPTY)
+		if (packet[0] == '+')
+			if (packet[sizeof(packet) - 1] == '*')
+				return true;
 
 	return false;
 }
 
 //! Checks the ack signal
-static void PACKET_PARSER::_check_ack() {
+void PACKET_PARSER::_check_ack() {
 	if (this->_ack.ack) {
 		return;
 	} else {
@@ -72,7 +69,7 @@ static void PACKET_PARSER::_check_ack() {
 }
 
 //! Checks the heartbeat signal
-static void PACKET_PARSER::_check_heartbeat() {
+void PACKET_PARSER::_check_heartbeat() {
 
 	//! Checks the heartbeat of the remote device.
 	if (_heartbeat.battery_voltage < MIN_BATT_LEVEL) {
@@ -100,7 +97,7 @@ static void PACKET_PARSER::_check_heartbeat() {
 }
 
 //! Checks the router status.
-static void PACKET_PARSER::_check_router_status() {
+void PACKET_PARSER::_check_router_status() {
 
 	if (_status.error_count >= MAX_ROUTER_ERRORS) {
 #ifdef DEBUG_LEDs
@@ -141,7 +138,7 @@ static void PACKET_PARSER::_check_router_status() {
 }
 
 //! Checks Packet header
-static void PACKET_PARSER::_check_packet_header() {
+void PACKET_PARSER::_check_packet_header() {
 
 	if (_header.message_size < 1) {
 #ifdef DEBUG_LEDs
@@ -188,14 +185,14 @@ static void PACKET_PARSER::_check_packet_header() {
 //}
 
 //! Gets the sensor configs
-static void PACKET_PARSER::_get_sensor_configs(void* buf) {
+void PACKET_PARSER::_get_sensor_configs(void* buf) {
 
 	//! Cast buf to class needed;
 	sensor_configs_t* buf_ptr;
-	buf_ptr = buf;
+	buf_ptr = (sensor_configs_t*)buf;
 
 	//! Get the sensor info from the packet sent.
-	_alloc_mem((void*)_configs, sizeof(sensor_configs_t),
+	_alloc_mem((void*)&_configs, sizeof(sensor_configs_t),
 			(void*) buf_ptr);
 
 //	//! Check for the number of sensors packet
@@ -219,21 +216,21 @@ static void PACKET_PARSER::_get_sensor_configs(void* buf) {
 //		_alloc_mem((void*) &_configs[i - 1], sizeof(sensor_configs_t),
 //				(void*) buf_ptr);
 //	}
-	configs = & _configs;
+//	configs = & _configs;
 }
 
 //! Gets the sensor data
-static void PACKET_PARSER::_get_sensor_data(void* buf) {
+void PACKET_PARSER::_get_sensor_data(void* buf) {
 
 	//! Cast buf to class needed;
 	remote_sensor_data_t* buf_ptr;
-	buf_ptr = buf;
+	buf_ptr = (remote_sensor_data_t*)buf;
 
 	//! Checks for memory space
 	_check_memory_space(sizeof(_data));
 
 	//! Allocate the structures
-	_alloc_mem((void*) _data, sizeof(_data), (void*) buf_ptr);
+	_alloc_mem((void*) &_data, sizeof(_data), (void*) buf_ptr);
 
 //	//! Checks for the number of sensors packet.
 //	packet_decoder.poll(); //! Checks for more incoming packets.
@@ -262,42 +259,45 @@ static void PACKET_PARSER::_get_sensor_data(void* buf) {
 //					sizeof(remote_sensor_data_t::channels_t), buf_ptr);
 //		}
 //	}
-	data = &_data;
+//	data = &_data;
 }
 
 //! Allocate buffer
-static void PACKET_PARSER::_alloc_mem(void* dest_pointer, size_t size, void* buf) {
+void PACKET_PARSER::_alloc_mem(void* dest_pointer, size_t size, void* buf) {
 	memcpy(dest_pointer, buf, size);
 }
 
 //! Parse the packet
-static void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
+void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 
-	String* buffer = (String*) buf;
+	char* buffer = (char*) buf;
 
-	//! Grabs the header structure from the String.
-	String header = buffer->substring(1, 13);
+	//! Check if there is space left
+	_check_memory_space();
+
+	//! Check if the string is ok to process.
+	this->_check_packet_integrity((char*) buf);
 
 	//! Assigns the new construct
 	memcpy(&_header, buffer, sizeof(packet_header_t));
 	_check_packet_header();
 
-	buf += sizeof(header);
+	buffer += sizeof(this->_header);
 
 	switch (packet_id) {
 
 	case ROUTER_ACK:
-		_alloc_mem(&_ack, sizeof(_ack), buf);
+		_alloc_mem(&_ack, sizeof(_ack), buffer);
 		_check_ack();
 		return;
 
 	case ROUTER_HEARTBEAT:
-		_alloc_mem(&_heartbeat, sizeof(_heartbeat), buf);
+		_alloc_mem(&_heartbeat, sizeof(_heartbeat), buffer);
 		_check_heartbeat();
 		return;
 
 	case ROUTER_STATUS:
-		_alloc_mem(&_status, sizeof(_status), buf);
+		_alloc_mem(&_status, sizeof(_status), buffer);
 		_check_router_status();
 		return;
 
@@ -307,25 +307,25 @@ static void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 //		return;
 
 	case ROUTER_CONFIG:
-		_alloc_mem(&_radio_configs, sizeof(_radio_configs), buf);
+		_alloc_mem(&_radio_configs, sizeof(_radio_configs), buffer);
 		return;
 
 	case SENSOR_ENABLE:
-		_alloc_mem(&_en_sensors, sizeof(_en_sensors), buf);
+		_alloc_mem(&_en_sensors, sizeof(_en_sensors), buffer);
 		return;
 
 	case SENSOR_CONFIGS:
 		_check_memory_space(sizeof(sensor_configs_t));
-		_get_sensor_configs((void*) buf);
+		_get_sensor_configs((void*) buffer);
 		return;
 
 	case SENSOR_DATA:
 		_check_memory_space(sizeof(remote_sensor_data_t));
-		_get_sensor_data((void*) buf);
+		_get_sensor_data((void*) buffer);
 		return;
 
 	case ROUTER_DEBUG:
-		_alloc_mem(&_debug, sizeof(_debug), buf);
+		_alloc_mem(&_debug, sizeof(_debug), buffer);
 
 #ifdef DEBUG
 		char* debug_info;
@@ -338,7 +338,7 @@ static void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 		return;
 
 	case ERROR_MSG:
-		_alloc_mem(&_error, sizeof(_error), buf);
+		_alloc_mem(&_error, sizeof(_error), buffer);
 
 #ifdef DEBUG
 		char* debug_info;
@@ -349,7 +349,7 @@ static void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 		return;
 
 	case SENSOR_NUMBER:
-		_alloc_mem(&_num_sensors, sizeof(_num_sensors), buf);
+		_alloc_mem(&_num_sensors, sizeof(_num_sensors), buffer);
 		return;
 
 	default: //! Nothing done here

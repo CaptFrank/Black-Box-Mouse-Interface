@@ -7,7 +7,6 @@
 
 #include "NVRAM_API.h"
 
-#include <avr/pgmspace.h>
 
 #define SPACE 	' '
 
@@ -57,8 +56,8 @@ const NVRAM::nv_data_t nvram_default PROGMEM = {
 //! Load the saved args.
 void NVRAM::load(void){
         // check for signature
-        if (('f' != eeprom.read(0)) ||
-            ('s' != eeprom.read(1))) {
+        if (('f' != EEPROM.read(0)) ||
+            ('s' != EEPROM.read(1))) {
                 // load defaults
                 memcpy_P(&nv, (void*)&nvram_default, sizeof(nv));
         } else {
@@ -72,8 +71,8 @@ void NVRAM::save(void){
         // save to NVRAM
         _savex(2, sizeof(nv), &nv);
 
-        eeprom.write(0, 'f');
-        eeprom.write(1, 's');
+        EEPROM.write(0, 'f');
+        EEPROM.write(1, 's');
 }
 
 //! Load bytes
@@ -82,7 +81,7 @@ void NVRAM::_loadx(uint8_t address, uint8_t size, void *value){
 
         rp = (uint8_t *)value;
         while (size--)
-                *rp++ = eeprom.read(address++);
+                *rp++ = EEPROM.read(address++);
 }
 
 //! Save bytes
@@ -91,7 +90,7 @@ void NVRAM::_savex(uint8_t address, uint8_t size, void *value){
 
         rp = (uint8_t *)value;
         while (size--)
-        	eeprom.write(address++, *rp++);
+        	EEPROM.write(address++, *rp++);
 }
 
 // Saves @ the specific address

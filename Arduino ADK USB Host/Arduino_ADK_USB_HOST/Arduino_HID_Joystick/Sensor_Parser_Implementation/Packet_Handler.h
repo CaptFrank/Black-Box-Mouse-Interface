@@ -8,12 +8,9 @@
 #ifndef PACKET_HANDLER_H_
 #define PACKET_HANDLER_H_
 
-//#include "../System_Defines/Hardware_Defines.h"
-//#include "../System_Defines/Command_Interpreter.h"
-#include "Arduino_HID_Joystick.h"
+#include "Network_Protocol.h"
 
-
-//#define PACKET_TIMEOUT				100 //100ms timeout
+#define PACKET_TIMEOUT				1000 //100ms timeout
 
 //! Internal State Machine
 #define PACKET_WAIT_PHASE_1 		0
@@ -38,12 +35,12 @@ struct packet_handler_t {
  * This class contains the methods that handle and decode the packets,
  * as they come in the state machine.
  */
-class PACKET_DECODER {
+class PACKET_HANDLER {
 
 	private:
 
 		//! Variables used in the class.
-		byte _guard_bool;
+
 		byte _phase;
 		byte _data_in;
 		byte _data_expected;
@@ -73,6 +70,8 @@ class PACKET_DECODER {
 	public:
 
 		byte _packet_id;
+		byte _guard_bool;
+
 		unsigned long _last_received;	//! last received time stamp.
 
 		/**
@@ -80,7 +79,7 @@ class PACKET_DECODER {
 		 * that takes in a handler table.
 		 * @param handler_table - packet_handler_t
 		 */
-		PACKET_DECODER(struct packet_handler_t* handler_table);
+		PACKET_HANDLER(void* handler_table);
 
 		/**
 		 * This is the poll loop for the incoming bytes.

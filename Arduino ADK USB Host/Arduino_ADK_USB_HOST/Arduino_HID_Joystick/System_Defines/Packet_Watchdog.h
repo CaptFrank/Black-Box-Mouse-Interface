@@ -5,7 +5,10 @@
  *      Author: fjpapin
  */
 
-#include "../System_Defines/Hardware_Defines.h"
+#ifndef PACKET_WATCHDOG_h_
+#define PACKET_WATCHDOG_h_
+
+#include <Arduino.h>
 
 //! Global packet macros definition
 #define PACKET_TIMEOUT		1000 //!5sec
@@ -50,3 +53,5 @@ class WATCHDOG {
 		void check_watchdog(void);
 
 };
+
+#endif

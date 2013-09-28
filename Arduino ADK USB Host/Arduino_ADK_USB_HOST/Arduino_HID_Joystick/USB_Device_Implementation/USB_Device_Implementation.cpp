@@ -6,7 +6,6 @@
  */
 
 #include "USB_Device_Implementation.h"
-#include "../System_Defines/Command_Interpreter.h"
 
 static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
@@ -17,7 +16,8 @@ static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 #define Y_AXIS			3
 
 //! Default Constructor
-USB_DEVICE::USB_DEVICE(){
+USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packet_parser,
+		joystick_report_t* joystick_report){
 	//! Sending mutex
 	_sending_mutex = false;
 
@@ -26,6 +26,10 @@ USB_DEVICE::USB_DEVICE(){
 	_packet_id = EMPTY;
 	_packet_in_sending_queue = true;
 	_packet_size = 0;
+	_joystick_report = joystick_report;
+
+	this->_command_interpreter = command_interpreter;
+	this->_packet_parser = packet_parser;
 }
 
 void USB_DEVICE::run_usb(){
@@ -83,14 +87,14 @@ void USB_DEVICE::_create_usb_report_frame(){
 #ifdef JOYSTICK_REPORT
 
 	for(register byte i = 0; i < NUM_AXES; i ++){
-		joystick_report.axis[i] = packet_parser._data.axis[i];
+		_joystick_report->axis[i] = this->_packet_parser->_data.axis[i];
 	}
 	for(register byte i = 0; i < NUM_BUTTONS/8; i ++){
-		joystick_report.button[i] = packet_parser._data.button[i];
+		_joystick_report->button[i] = this->_packet_parser->_data.button[i];
 	}
 
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&joystick_report;
+	_packet_buffer = (uint8_t* )_joystick_report;
 #endif
 }
 
@@ -106,7 +110,7 @@ void USB_DEVICE::_send_usb_report_frame(){
 #ifdef JOYSTICK_REPORT
 
 	//! Send the structure.
-	RF_SERIAL.write(_packet_buffer, sizeof(joystick_report));
+	RF_SERIAL.write(_packet_buffer, sizeof(_joystick_report));
 #endif
 
 	_packet_in_sending_queue = false;
@@ -120,12 +124,12 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM: 	LOCAL_DEVICE_SETUP
 	 * TO: 		NETWORK_SETUP
 	 */
-	usb_state_machine.move_state_forward();
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 	/**
 	 * Powers on the router.
 	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)POWERON_ROUTER);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)POWERON_ROUTER);
 
 	/**
 	 * Move the state machine to the ID wakeup router section of the
@@ -134,7 +138,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM: 	NETWORK_SETUP
 	 * TO: 		NETWORK_ID_REQUEST
 	 */
-	usb_state_machine.move_state_forward();
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 	/** This function sends_a wakeup call to the router and makes the
 	 * router go into command polling mode. This allows the router to
@@ -148,12 +152,12 @@ void USB_DEVICE::_init_rf_network(){
 	 * 	 1. send_wakeup_router();
 	 * 	 	-> receive_router_ack();
  	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)WAKEUP_ROUTER);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)WAKEUP_ROUTER);
 
 	/**
 	 * Makes sure that the device is ok and running
 	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)PING_ROUTER);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)PING_ROUTER);
 
 	/**
 	 * Move the state machine to the network status request state.
@@ -161,7 +165,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM:	NETWORK_ID_REQUEST
 	 * TO: 		NETWORK_STATUS_REQUEST
 	 */
-	usb_state_machine.move_state_forward();
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 	/**
 	 * This function requests a router status structure. It sends a
@@ -174,18 +178,19 @@ void USB_DEVICE::_init_rf_network(){
   	 * 	  2. request_router_status();
   	 * 	  	-> receive_router_status();
 	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)REQUEST_ROUTER_STATUS);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_ROUTER_STATUS);
 
 	/**
 	 * Gets the router configs. [Radio Bytes Config]
 	 * Gets the radio configuration registers in the transceiver.
 	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)REQUEST_ROUTER_CONFIG);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_ROUTER_CONFIG);
 
 	/**
 	 * Save them to eeprom address 200dec.
 	 */
-	nvram.savex((byte)200, (byte)8, (void*)&packet_parser._radio_configs);
+	this->_command_interpreter->nvram_object->savex((byte)200,
+			(byte)8, (void*)&this->_packet_parser->_radio_configs);
 
 	/**
 	 * Move the state machine to the network map request.
@@ -193,7 +198,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM:	NETWORK_STATUS_REQUEST
 	 * TO: 		NETWORK_MAP_REQUEST
 	 */
-	usb_state_machine.move_state_forward();
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 	/**
 	 * This function is very crucial to the network implementation, as
@@ -208,7 +213,7 @@ void USB_DEVICE::_init_rf_network(){
 	 *		3. request_net_map();
 	 *			-> receive_nmap();
 	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)REQUEST_NMAP);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_NMAP);
 
 	/**
 	 * Move the state machine to the network sensor configs.
@@ -216,7 +221,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM:	NETWORK_MAP_REQUEST
 	 * TO: 		NETWORK_SENSOR_CONFIGS
 	 */
-	usb_state_machine.move_state_forward();
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 //TODO
 // DO I REALLY NEED THIS?????
@@ -242,7 +247,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * 		5. get_user_enable_sensors();
 	 * 			-> set_flags(byte sensor flags);
 	 */
-	command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)REQUEST_SENSOR_ENABLE);
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_SENSOR_ENABLE);
 
 #ifdef DEBUG
 	char* text;
@@ -262,7 +267,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM:	NETWORK_SENSOR_CONFIGS
 	 * TO: 		LOCAL_CONFIGURATION
 	 */
-	usb_state_machine.move_state_forward();
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 	/**
 	 * Then to finalize the ground station network initialization,
@@ -292,8 +297,7 @@ void USB_DEVICE::_init_rf_network(){
 	 * FROM:	LOCAL_CONFIGURATION
 	 * TO: 		NETWORK_REQUEST_ROUTER_STATE_RUN
 	 */
-	usb_state_machine.move_state_forward();
-
+	this->_command_interpreter->usb_state_machine->move_state_forward();
 
 	/**
 	 * After this step is complete, we go into the loop that does all the
@@ -307,10 +311,10 @@ void USB_DEVICE::_setup_usb_report_params(){
 #ifdef MOUSE_REPORT
 	//! Setup the structure values
 
-	buttons_mouse = &packet_parser._data[ROUTER].channels[BUTTONS].channel_data;
-	wheel_mouse = &packet_parser._data[ROUTER].channels[WHEEL].channel_data;
-	x_axis_mouse = &packet_parser._data[ROUTER].channels[X_AXIS].channel_data;
-	y_axis_mouse = &packet_parser._data[ROUTER].channels[Y_AXIS].channel_data;
+	buttons_mouse = &this->_packet_parser->_data[ROUTER].channels[BUTTONS].channel_data;
+	wheel_mouse = &this->_packet_parser->_data[ROUTER].channels[WHEEL].channel_data;
+	x_axis_mouse = &this->_packet_parser->_data[ROUTER].channels[X_AXIS].channel_data;
+	y_axis_mouse = &this->_packet_parser->_data[ROUTER].channels[Y_AXIS].channel_data;
 
 	//! Reassign the structure to send.
 	_packet_buffer = &mouse_report;
@@ -318,7 +322,7 @@ void USB_DEVICE::_setup_usb_report_params(){
 
 #ifdef JOYSTICK_REPORT
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&joystick_report;
+	_packet_buffer = (uint8_t* )_joystick_report;
 #endif
 
 }

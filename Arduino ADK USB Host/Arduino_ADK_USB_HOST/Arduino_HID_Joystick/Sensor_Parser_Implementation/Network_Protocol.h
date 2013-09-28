@@ -11,7 +11,6 @@
 
 //! Internal State Machine.
 
-#include <Arduino.h>
 #include "System_Defines/Hardware_Defines.h"
 
 // ENABLES THE COMS DEBUG MESSAGES OVER SERIAL2;
@@ -33,7 +32,7 @@
 #define USB_DEVICE_CMD			0x31
 
 //! Optional
-#define ROUTER_DEBUG			0x07
+#define ROUTER_DEBUG			0x0B
 #define ERROR_MSG				0x0A
 
 //! Internal packet_id values
