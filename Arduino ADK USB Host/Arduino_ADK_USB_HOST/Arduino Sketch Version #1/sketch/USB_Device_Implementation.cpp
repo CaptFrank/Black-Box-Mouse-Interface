@@ -249,18 +249,18 @@ void USB_DEVICE::_init_rf_network(){
 	 */
 	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_SENSOR_ENABLE);
 
-#ifdef DEBUG
-	char* text;
-	DEBUG_SERIAL.print("[NOTICE]: The following sensors are active:\n");
-	for(register byte i = 0; i < sizeof(byte); i ++){
-		byte bitmask = 0b11111110;
-		bitmask = ~bitmask;
-		byte sensor = packet_parser._en_sensors & bitmask;
-		if(sensor > 0)
-			sprintf(text, "\t - Sensor [%d] : ACTIVE\n", (i+1));
-			DEBUG_SERIAL.print(text);
-	}
-#endif
+//#ifdef DEBUG
+//	char* text;
+//	DEBUG_SERIAL.print("[NOTICE]: The following sensors are active:\n");
+//	for(register byte i = 0; i < sizeof(byte); i ++){
+//		byte bitmask = 0b11111110;
+//		bitmask = ~bitmask;
+//		byte sensor =  this->_packet_parser._en_sensors & bitmask;
+//		if(sensor > 0)
+//			sprintf(text, "\t - Sensor [%d] : ACTIVE\n", (i+1));
+//			DEBUG_SERIAL.print(text);
+//	}
+//#endif
 	/**
 	 * Move the state machine to the network sensor configs.
 	 *

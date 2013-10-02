@@ -271,6 +271,7 @@ void PACKET_PARSER::_alloc_mem(void* dest_pointer, size_t size, void* buf) {
 void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 
 	char* buffer = (char*) buf;
+        char* debug_info;
 
 	//! Check if there is space left
 	_check_memory_space();
@@ -328,7 +329,6 @@ void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 		_alloc_mem(&_debug, sizeof(_debug), buffer);
 
 #ifdef DEBUG
-		char* debug_info;
 		sprintf(debug_info, "acks: %d \npckts: %d\nrx_count: %d\nsnt_rqs: %d\ntx_count: %d",
 				_debug.router_acks_sent_counter, _debug.router_packet_counter,
 				_debug.router_rx_count, _debug.router_sent_request_counter,
@@ -341,7 +341,6 @@ void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 		_alloc_mem(&_error, sizeof(_error), buffer);
 
 #ifdef DEBUG
-		char* debug_info;
 		sprintf(debug_info, "[%d] %d -> %d", _error.error_code,
 				_error.sensor_address, _error.sensor_id);
 		DEBUG_SERIAL.println(debug_info);
