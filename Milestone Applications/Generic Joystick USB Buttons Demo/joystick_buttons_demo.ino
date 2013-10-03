@@ -42,7 +42,7 @@ void setup()
     pinMode(BUTTON_2, INPUT);
     
     // activate the serial lines
-    Serial.begin(115200);
+    Serial.begin(9600);
     delay(200);
     joyReport.x = 100;
     joyReport.y = 100;
