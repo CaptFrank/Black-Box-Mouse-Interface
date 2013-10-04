@@ -72,9 +72,9 @@ volatile int led1_ticks = 0;
  */
 int main(void)
 {
-    SetupHardware();
+	SetupHardware();
 
-    LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
+	LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
     RingBuffer_InitBuffer(&USARTtoUSB_Buffer);
 
     sei();
@@ -101,7 +101,7 @@ void SetupHardware(void)
     wdt_disable();
 
     /* Hardware Initialization */
-    Serial_Init(9600, true);
+    Serial_Init(115200, true);
     LEDs_Init();
     USB_Init();
 

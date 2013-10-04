@@ -28,40 +28,45 @@ void setup()
 void loop() 
 {
     int ind;
-    delay(5000);
+    delay(100);
 
-    mouseReport.x = 0;
-
-    mouseReport.x = -2;
-    for (ind=0; ind<20; ind++) {
-	Serial.write((uint8_t *)&mouseReport, 4);
-	Serial.write((uint8_t *)&nullReport, 4);
-    }
-
-    mouseReport.x = 0;
-    mouseReport.y = -2;
-    for (ind=0; ind<20; ind++) {
-	Serial.write((uint8_t *)&mouseReport, 4);
-	Serial.write((uint8_t *)&nullReport, 4);
-    }
-
-    mouseReport.x = 2;
-    mouseReport.y = 0;
-    for (ind=0; ind<20; ind++) {
-	Serial.write((uint8_t *)&mouseReport, 4);
-	Serial.write((uint8_t *)&nullReport, 4);
-    }
-
-    mouseReport.x = 0;
-    mouseReport.y = 2;
-    for (ind=0; ind<20; ind++) {
-	Serial.write((uint8_t *)&mouseReport, 4);
-	Serial.write((uint8_t *)&nullReport, 4);
-    }
+//    mouseReport.x = 0;
+//
+//    mouseReport.x = -2;
+//    for (ind=0; ind<20; ind++) {
+//	Serial.write((uint8_t *)&mouseReport, 4);
+//	Serial.write((uint8_t *)&nullReport, 4);
+//    }
+//
+//    mouseReport.x = 0;
+//    mouseReport.y = -2;
+//    for (ind=0; ind<20; ind++) {
+//	Serial.write((uint8_t *)&mouseReport, 4);
+//	Serial.write((uint8_t *)&nullReport, 4);
+//    }
+//
+//    mouseReport.x = 2;
+//    mouseReport.y = 0;
+//    for (ind=0; ind<20; ind++) {
+//	Serial.write((uint8_t *)&mouseReport, 4);
+//	Serial.write((uint8_t *)&nullReport, 4);
+//    }
+//
+//    mouseReport.x = 0;
+//    mouseReport.y = 2;
+//    for (ind=0; ind<20; ind++) {
+//	Serial.write((uint8_t *)&mouseReport, 4);
+//	Serial.write((uint8_t *)&nullReport, 4);
+//    }
     
     
     // read a button and map the input to the USB report.
     mouseReport.buttons |= digitalRead(PIN_DIGI_1) << 1;
     mouseReport.buttons |= digitalRead(PIN_DIGI_2);
+   
+    Serial.write((uint8_t *)&mouseReport, 4);
+    Serial.write((uint8_t *)&nullReport, 4);
+    
+    mouseReport.buttons = 0;
     
 }
