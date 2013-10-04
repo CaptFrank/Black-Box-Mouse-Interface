@@ -12,13 +12,12 @@
  * These defines, define the sequential order of the button array.
  * These defines, define the port map for the buttons.
  */
-#define FIRST_BUTTON_PIN   5
-#define LAST_BUTTON_PIN    8
-
+ #define PIN_DIGI_1      5
+ #define PIN_DIGI_2      6
+ 
 /**
  * This defines the number of buttons and the number of axis.
  */
-#define NUM_BUTTONS	3
 #define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
 
 /**
@@ -26,7 +25,9 @@
  * will interpret.
  */
 typedef struct joyReport_t {
-    int16_t axis[NUM_AXES];
+    int8_t x;
+    int8_t y;
+    int8_t z;
     uint8_t button; // 8 buttons per byte
 } joyReport_t;
 
@@ -41,17 +42,21 @@ void sendJoyReport(joyReport_t *report);
 // The setup loop
 void setup()
 {
+  
+    
     // activate the serial lines
     Serial.begin(115200);
     delay(200);
     
+    pinMode(PIN_DIGI_1, INPUT);
+    pinMode(PIN_DIGI_2, INPUT);
     // initialize the buttons and axis
-    for (uint8_t ind=0; ind<8; ind++) {
-        joyReport.axis[ind] = ind*1000;
-    }
-    for (uint8_t ind=0; ind<sizeof(joyReport.button); ind++) {
-        joyReport.button[ind] = 0;
-    }
+
+    joyReport.x = (int) 0;
+    joyReport.y = (int) 0;
+    joyReport.z = (int) 0;
+
+    joyReport.button = 0;
 }
 
 // Send an HID report to the USB interface
@@ -63,11 +68,21 @@ void sendJoyReport(struct joyReport_t *report){
  * add values to each axis each loop
  */
 void loop() {
-    
     // read a button and map the input to the USB report.
-    for(byte i = FIRST_BUTTON_PIN; i < LAST_BUTTON_PIN; i++){
-        joystick.button[i - FIRST_BUTTON_PIN] = digitalRead(i);
+    
+    int digi_1 = digitalRead(PIN_DIGI_1);
+    delay(10);
+    int digi_2 = digitalRead(PIN_DIGI_2);
+    delay(10);
+    
+    joyReport.button = 0;
+    
+    if(digi_1 == 1){
+      joyReport.button |= 1 << 1;
+    }if(digi_2 == 1){
+      joyReport.button |= 1 ;
     }
+//    Serial.println(joyReport.button);
     
     // send the report
     sendJoyReport(&joyReport);
