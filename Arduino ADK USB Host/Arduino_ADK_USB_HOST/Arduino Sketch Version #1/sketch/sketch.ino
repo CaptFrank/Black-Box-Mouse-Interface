@@ -48,7 +48,7 @@ void setup(){
 	#endif
 	#ifdef DEBUG
 		//! Start Debug Engine.
-		debug_api.enable_debug();
+		//debug_api.enable_debug();
 	#endif
 
 	#ifdef DEBUG_LEDs

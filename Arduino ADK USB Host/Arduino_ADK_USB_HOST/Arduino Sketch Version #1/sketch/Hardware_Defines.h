@@ -43,7 +43,7 @@ extern "C" {
 //#define F_CPU				16000000
 
 //#define DEBUG_development					//! The debug interface for Serial3, Serial2, Serial1
-//#define DEBUG								//! Serial Debug Define
+#define DEBUG								//! Serial Debug Define
 #define USER_INPUT							//! User Button Define
 //#define DEBUG_LEDs							//! Debug LEDs Define
 
@@ -61,7 +61,7 @@ extern "C" {
 #endif
 
  //! Normal Output Stream
-#define SERIAL_OUTPUT		Serial1
+#define SERIAL_OUTPUT		        Serial1
 #define PRINT				Serial1.print	//! Serial API
 #define PRINTLN				Serial1.println //! Serial API
 
@@ -72,9 +72,9 @@ extern "C" {
 
 //! Debug Output Stream
 #ifdef DEBUG
-	#define DEBUG_SERIAL	Serial3
-	#define DEBUG_PRINT 	Serial3.print 	//! Serial API
-	#define DEBUG_PRINTLN 	Serial3.println //! Serial API
+	#define DEBUG_SERIAL	        Serial3
+	#define DEBUG_PRINT 	        Serial3.print 	//! Serial API
+	#define DEBUG_PRINTLN 	        Serial3.println //! Serial API
  #endif
 
  //! User Button Activation
