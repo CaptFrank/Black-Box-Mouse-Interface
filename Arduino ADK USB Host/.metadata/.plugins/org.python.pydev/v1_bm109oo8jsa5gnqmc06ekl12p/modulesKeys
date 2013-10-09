@@ -314,6 +314,7 @@ _lsprof|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/l
 _md5
 _multibytecodec|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/_multibytecodec.so
 _multiprocessing|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/_multiprocessing.so
+_portaudio|/Library/Python/2.7/site-packages/_portaudio.so
 _pyio|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/_pyio.py
 _random|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/_random.so
 _scproxy|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload/_scproxy.so
@@ -1412,6 +1413,7 @@ py2app.recipes.virtualenv|/System/Library/Frameworks/Python.framework/Versions/2
 py2app.script_py2applet|/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/py2app/script_py2applet.py
 py2app.util|/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/py2app/util.py
 py_compile|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/py_compile.py
+pyaudio|/Library/Python/2.7/site-packages/pyaudio.py
 pyclbr|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pyclbr.py
 pydoc|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc.py
 pydoc_data.__init__|/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/pydoc_data/__init__.py

@@ -13,7 +13,7 @@
  * These defines, define the port map for the buttons.
  */
 #define FIRST_BUTTON_PIN   5
-#define LAST_BUTTON_PIN    8
+#define LAST_BUTTON_PIN    6
 
 /**
  * This defines the number of buttons and the number of axis.

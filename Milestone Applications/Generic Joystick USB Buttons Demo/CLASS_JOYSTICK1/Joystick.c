@@ -101,7 +101,7 @@ void SetupHardware(void)
     wdt_disable();
 
     /* Hardware Initialization */
-    Serial_Init(115200, true);
+    Serial_Init(9600, true);
     LEDs_Init();
     USB_Init();
 
