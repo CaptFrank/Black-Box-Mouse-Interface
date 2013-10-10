@@ -62,35 +62,24 @@ USB_ClassInfo_HID_Device_t Joystick_HID_Interface =
 /** Circular buffer to hold data from the serial port before it is sent to the host. */
 RingBuff_t USARTtoUSB_Buffer;
 
-USB_JoystickReport_Data_t joyReport = { 0, 0, 0 };
-
-#define LED_ON_TICKS 2000	/* Number of ticks to leave LEDs on */
-volatile int led1_ticks = 0;
+USB_JoystickReport_Data_t joyReport;
 
 /** Main program entry point. This routine contains the overall program flow, including initial
  *  setup of all components and the main program loop.
  */
 int main(void)
-{
+{	
 	SetupHardware();
-
-	LEDs_SetAllLEDs(LEDMASK_USB_NOTREADY);
     RingBuffer_InitBuffer(&USARTtoUSB_Buffer);
 
     sei();
 
     for (;;) {
+		
 	    HID_Device_USBTask(&Joystick_HID_Interface);
 	    USB_USBTask();
-
-	    /* Turn off the Tx LED when the tick count reaches zero */
-	    if (led1_ticks) {
-		    led1_ticks--;
-		    if (led1_ticks == 0) {
-			    LEDs_TurnOffLEDs(LEDS_LED1);
-		    }
-	    }
-    }
+		
+	}
 }
 
 /** Configures the board hardware and chip peripherals for the demo's functionality. */
@@ -156,22 +145,27 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
                                          void* ReportData,
                                          uint16_t* const ReportSize)
 {
+	USB_JoystickReport_Data_t newReport;
+	int ind;
+	
     USB_JoystickReport_Data_t *reportp = (USB_JoystickReport_Data_t*)ReportData;
+	
+	RingBuff_Count_t BufferCount = RingBuffer_GetCount(&USARTtoUSB_Buffer);
 
-    RingBuff_Count_t BufferCount = RingBuffer_GetCount(&USARTtoUSB_Buffer);
+	if (BufferCount >= 8) {
+		for (ind=0; ind<sizeof(joyReport); ind++) {
+			((uint8_t *)&newReport)[ind] = RingBuffer_Remove(&USARTtoUSB_Buffer);
+		}
 
-    if (BufferCount >= (sizeof(joyReport) + 1)) {
-	    uint8_t ind;
-	    for (ind=0; ind<sizeof(joyReport); ind++) {
-		    ((uint8_t *)&joyReport)[ind] = RingBuffer_Remove(&USARTtoUSB_Buffer);
-	    }
-
-	    /* Remove spacer */
-	    RingBuffer_Remove(&USARTtoUSB_Buffer);
-
-	    LEDs_TurnOnLEDs(LEDS_LED1);
-	    led1_ticks = LED_ON_TICKS;
-    }
+		joyReport.Button = newReport.Button;
+		joyReport.X = newReport.X;
+		joyReport.Y = newReport.Y;
+		joyReport.Z = newReport.Z;
+				 
+		/* Remove spacer */
+		RingBuffer_Remove(&USARTtoUSB_Buffer);
+	}
+	
 
     *reportp = joyReport;
 
@@ -203,8 +197,7 @@ ISR(USART1_RX_vect, ISR_BLOCK)
 {
     uint8_t ReceivedByte = UDR1;
 
-    if ((USB_DeviceState == DEVICE_STATE_Configured) &&
-	    !RingBuffer_IsFull(&USARTtoUSB_Buffer)) {
+    if ((USB_DeviceState == DEVICE_STATE_Configured)) {
 	RingBuffer_Insert(&USARTtoUSB_Buffer, ReceivedByte);
     }
 }

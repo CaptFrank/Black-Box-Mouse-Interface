@@ -4,19 +4,21 @@
  * Released into the public domain.
  */
 
-#undef DEBUG
-
-#define NUM_BUTTONS	2
 #define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
 
 #define PIN_1           5
 #define PIN_2           6
 
 
-struct joyReport_t {
-    int8_t axis[NUM_AXES];
+typedef struct joyReport_t {
+    int8_t x;
+    int8_t y;
+    int8_t z;
     uint8_t buttons; // 8 buttons per byte
-} joyReport;
+    uint8_t spacer;
+} joyReport_t;
+
+joyReport_t joyReport;
 
 uint8_t nullReport[5] = { 0, 0, 0, 0, 0 };
 
@@ -26,19 +28,26 @@ void loop(void);
 
 void setup() 
 {
-    Serial.begin(115200);
-    delay(200);
+    
+    joyReport.x = (int8_t)100;
+    joyReport.y = (int8_t)100;
+    joyReport.z = (int8_t)100;
+    joyReport.buttons = 0;
     
     pinMode(PIN_1, INPUT);
     pinMode(PIN_2, INPUT);
+    
+    Serial.begin(115200);
+    delay(200);
 }
 
 void loop() 
 {
+    delay(200);
     joyReport.buttons |= digitalRead(PIN_1) << 1;
     joyReport.buttons |= digitalRead(PIN_2);
 
     Serial.write((uint8_t *)&joyReport, sizeof(joyReport_t));
-    Serial.write((uint8_t *)&nullReport, 5);
-    delay(100);
+    joyReport.buttons = 0;
+
 }
