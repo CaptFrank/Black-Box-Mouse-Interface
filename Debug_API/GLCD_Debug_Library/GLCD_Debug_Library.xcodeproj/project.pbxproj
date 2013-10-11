@@ -1,0 +1,76 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		6F259DDB1807884F00898150 /* Debug_API_GLCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Debug_API_GLCD.h; sourceTree = "<group>"; };
+		6F259DDD180797CA00898150 /* Debug_API_GLCD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Debug_API_GLCD.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		6FF4D3B8180787DE00DDA4F1 = {
+			isa = PBXGroup;
+			children = (
+				6F259DDB1807884F00898150 /* Debug_API_GLCD.h */,
+				6F259DDD180797CA00898150 /* Debug_API_GLCD.cpp */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		6FF4D3B9180787DE00DDA4F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
+			buildConfigurationList = 6FF4D3BC180787DE00DDA4F1 /* Build configuration list for PBXProject "GLCD_Debug_Library" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6FF4D3B8180787DE00DDA4F1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		6FF4D3BA180787DE00DDA4F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+			};
+			name = Debug;
+		};
+		6FF4D3BB180787DE00DDA4F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6FF4D3BC180787DE00DDA4F1 /* Build configuration list for PBXProject "GLCD_Debug_Library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FF4D3BA180787DE00DDA4F1 /* Debug */,
+				6FF4D3BB180787DE00DDA4F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6FF4D3B9180787DE00DDA4F1 /* Project object */;
+}

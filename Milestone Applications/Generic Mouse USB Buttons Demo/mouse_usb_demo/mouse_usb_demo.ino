@@ -6,6 +6,7 @@
 
  #define PIN_DIGI_1      5
  #define PIN_DIGI_2      6
+ #define APIN_1          A7
 
 struct {
     uint8_t buttons;
@@ -20,6 +21,14 @@ void loop();
 
 void setup() 
 {
+  
+    mouseReport.x = (int8_t) 0;
+    mouseReport.y = (int8_t) 0;
+    mouseReport.buttons = (uint8_t) 0;
+    
+    pinMode(PIN_DIGI_1, INPUT);
+    pinMode(PIN_DIGI_2, INPUT);
+    
     Serial.begin(9600);
     delay(200);
 }

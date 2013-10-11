@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Atmel Studio Solution File, Format Version 11.00
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "CLASS_JOYSTICK1", "CLASS_JOYSTICK1.cproj", "{5E0197B7-E751-4104-AC39-A1581582872A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|AVR = Debug|AVR
+		Release|AVR = Release|AVR
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E0197B7-E751-4104-AC39-A1581582872A}.Debug|AVR.ActiveCfg = Debug|AVR
+		{5E0197B7-E751-4104-AC39-A1581582872A}.Debug|AVR.Build.0 = Debug|AVR
+		{5E0197B7-E751-4104-AC39-A1581582872A}.Release|AVR.ActiveCfg = Release|AVR
+		{5E0197B7-E751-4104-AC39-A1581582872A}.Release|AVR.Build.0 = Release|AVR
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

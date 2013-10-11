@@ -8,6 +8,7 @@
 
 #define PIN_1           5
 #define PIN_2           6
+#define APIN_1          A7
 
 
 typedef struct joyReport_t {
@@ -38,6 +39,12 @@ void setup()
     pinMode(PIN_2, INPUT);
     
     Serial.begin(115200);
+    
+    // Making the ADC work faster... 16MHZ
+    bitClear(ADCSRA,ADPS0) ;
+    bitClear(ADCSRA,ADPS1) ;
+    bitSet(ADCSRA,ADPS2) ;
+    
     delay(200);
 }
 
@@ -46,6 +53,8 @@ void loop()
     delay(200);
     joyReport.buttons |= digitalRead(PIN_1) << 1;
     joyReport.buttons |= digitalRead(PIN_2);
+    
+    joyReport.x = (int8_t) map(analogRead(APIN_1), 0, 1023, 0, 255);
 
     Serial.write((uint8_t *)&joyReport, sizeof(joyReport_t));
     joyReport.buttons = 0;
