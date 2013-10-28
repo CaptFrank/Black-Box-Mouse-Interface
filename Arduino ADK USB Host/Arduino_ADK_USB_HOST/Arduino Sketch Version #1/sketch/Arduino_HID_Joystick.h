@@ -35,7 +35,6 @@
 #include "Emulation_Device_Implementation.h"
 #include "Network_Protocol.h"
 
-//#include "Debug_API/Debug_LED_Function.h"
 
 /**
  * This file contains all of the device DEFINE macros, and
@@ -76,7 +75,7 @@
 			{ROUTER_HEARTBEAT, 	PACKET_PARSER::parse, 			&packet_parser},
 			{ROUTER_STATUS,    	PACKET_PARSER::parse, 			&packet_parser},
 //			{ROUTER_NMAP,	   	PACKET_PARSER::parse, 			&packet_parser},
-			{ROUTER_CONFIG,     PACKET_PARSER::parse, 			&packet_parser},
+			{ROUTER_CONFIG,         PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_ENABLE,    	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_CONFIGS,   	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_DATA,      	PACKET_PARSER::parse, 			&packet_parser},

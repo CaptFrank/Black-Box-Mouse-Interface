@@ -141,6 +141,10 @@ void setup(){
 
 void loop(){
 
+      // We are only testing the setup part of the running process
+      DEBUG_SERIAL.println("DEBUGING STARTUP PRODCEDURE)
+      abort();
+  
 	//! If the emulation device is chosen.
 	//! Start the emulation process.
 	if(emulation_chosen){

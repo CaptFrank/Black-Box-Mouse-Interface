@@ -40,20 +40,20 @@
 	</section>
 	<section name="RenameInformationPopup">
 	</section>
-	<section name="CRenameRefactoringInputPage">
-		<item value="false" key="exhausiveFileSearch"/>
-		<item value="3" key="scope"/>
-		<item value="false" key="macroDefinition"/>
-		<item value="false" key="comment"/>
-		<item value="" key="workingset"/>
-		<item value="false" key="references_inv"/>
-	</section>
 	<section name="org.eclipse.cdt.ui.OPEN_ACTION_SELECTION_DIALOG_SECTION">
 		<item value="778" key="DIALOG_WIDTH"/>
 		<item value="470" key="DIALOG_Y_ORIGIN"/>
-		<item value="1089" key="DIALOG_X_ORIGIN"/>
 		<item value="375" key="DIALOG_HEIGHT"/>
+		<item value="1089" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande" key="DIALOG_FONT_NAME"/>
+	</section>
+	<section name="CRenameRefactoringInputPage">
+		<item value="false" key="exhausiveFileSearch"/>
+		<item value="false" key="macroDefinition"/>
+		<item value="3" key="scope"/>
+		<item value="false" key="comment"/>
+		<item value="false" key="references_inv"/>
+		<item value="" key="workingset"/>
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>
