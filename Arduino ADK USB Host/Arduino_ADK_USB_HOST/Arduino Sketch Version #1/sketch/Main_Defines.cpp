@@ -15,6 +15,9 @@
 	 * to see how much free mem there is.
 	 */
 	word memory_check(){
+                #ifdef DEBUG
+                    DEBUG_SERIAL.println("EXEC MEM CHECK");
+                #endif
 		word freemem;
 		freemem = ((word)&freemem) - ((word)&__bss_end);
 		return freemem;

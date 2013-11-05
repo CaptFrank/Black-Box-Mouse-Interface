@@ -20,8 +20,8 @@ extern "C" {
 // #define MOUSE_REPORT						//! Only send the Mouse USB report
 #define JOYSTICK_REPORT					//! Only send the joystick USB report
 
-#define NUM_BUTTONS		40
-#define NUM_AXES		8
+#define NUM_BUTTONS		4
+#define NUM_AXES		3
 
 //! This determines the sensor data maps
 #define WATCH_ONLY
@@ -33,6 +33,7 @@ extern "C" {
 #define MIN_BATT_LEVEL		        100
 #define GOOD				1
 #define FIVE_SECONDS		        5000
+#define THREE_SECONDS                   3000
 #define EMPTY				0
 
 #define MAX_WARNINGS 		        10
@@ -40,14 +41,14 @@ extern "C" {
 #define MAX_DEBUG			100000
 #define MAX_MEMORY			10
 
-//#define F_CPU				16000000
+#define F_CPU				16000000
 
 //#define DEBUG_development					//! The debug interface for Serial3, Serial2, Serial1
 #define DEBUG								//! Serial Debug Define
 #define USER_INPUT							//! User Button Define
 //#define DEBUG_LEDs							//! Debug LEDs Define
 
-#define NUMBER_OF_LEDS		4
+#define NUMBER_OF_LEDS		        4
 
 //! Serial device map
 //!	- Serial 1 - USB Endpoint - PC COMS
@@ -72,25 +73,25 @@ extern "C" {
 
 //! Debug Output Stream
 #ifdef DEBUG
-	#define DEBUG_SERIAL	        Serial3
-	#define DEBUG_PRINT 	        Serial3.print 	//! Serial API
-	#define DEBUG_PRINTLN 	        Serial3.println //! Serial API
+	#define DEBUG_SERIAL	        Serial
+	#define DEBUG_PRINT 	        Serial.print 	//! Serial API
+	#define DEBUG_PRINTLN 	        Serial.println //! Serial API
  #endif
 
  //! User Button Activation
  //! TODO - ADD THE PORT MAP
 
  #ifdef USER_INPUT
-	#define SELECT_BUTTON_1	2				//! Choice button
-	#define SELECT_BUTTON_2 3				//! Reset button
+	#define SELECT_BUTTON_1	        2				//! Choice button
+	#define SELECT_BUTTON_2         3				//! Reset button
  #endif
 
  //! Debug LEDs Activation
  //! TODO - ADD THE PORT MAP
 
-	#define DBG_LED_1		3				//! PORT MAPS
-	#define DBG_LED_2		4
-	#define DBG_LED_3		5
-	#define DBG_LED_4		6
+	#define DBG_LED_1		22				//! PORT MAPS
+	#define DBG_LED_2		24
+	#define DBG_LED_3		26
+	#define DBG_LED_4		28
 
 #endif /* HARDWARE_DEFINES_H_ */
