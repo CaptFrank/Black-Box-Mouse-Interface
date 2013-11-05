@@ -52,7 +52,42 @@ const USB_Descriptor_HIDReport_Datatype_t PROGMEM JoystickReport[] =
 	 *   Max physical X/Y/Z Axis values (used to determine resolution):  1
 	 *   Buttons: 2
 	 */
+<<<<<<< HEAD
 	HID_DESCRIPTOR_JOYSTICK(-1000, 1000, (uint16_t)-1, (uint16_t)1, 2)
+=======
+	HID_DESCRIPTOR_JOYSTICK(-100, 100, -1, 1, 8)
+	
+// 	0x05, 0x01, /* Usage Page (Generic Desktop) */
+// 	0x09, 0x04, /* Usage (Joystick) */
+// 	
+// 	0xa1, 0x01, /* Collection (Application) */
+// 	0x05, 0x01, /* Usage Page (Generic Desktop) */
+// 	0x09, 0x01, /* Usage (Pointer) */
+// 	
+// 	/* 8 axes, signed 16 bit resolution, range -32768 to 32767 (16 bytes) */
+// 	0xa1, 0x00, /* Collection (Physical) */
+// 
+// 		0x09, 0x30, /* Usage (X) */
+// 		0x09, 0x31, /* Usage (Y) */
+// 		0x09, 0x32, /* Usage (Z) */
+// 	/*	0x15, 0x81, /* Logical Minimum (-100) */
+// 	/*	0x25, 0x7f, /* Logical Maximum (100) */
+// 	/*	0x75, 8, / * Report Size (8) * /*/
+// 		0x95, 3, /* Report Count (3) */
+// 		0x81, 0x82, /* Input (Data, Variable, Absolute, Volatile) */
+// 	0xc0, /* End Collection */
+// 	
+// 	/* 40 buttons, value 0=off, 1=on (5 bytes) */
+// 	0x05, 0x09, /* Usage Page (Button) */
+// 	0x19, 1, /* Usage Minimum (Button 1) */
+// 	0x29, 4, /* Usage Maximum (Button 3) */
+// 	0x15, 0x00, /* Logical Minimum (0) */
+// 	0x25, 0x01, /* Logical Maximum (1) */
+// 	0x75, 1, /* Report Size (1) */
+// 	0x95, 4, /* Report Count (40) */
+// 	0x81, 0x02, /* Input (Data, Variable, Absolute) */
+// 	0xc0 /* End Collection */
+>>>>>>> c0af0e9eb28b412a31850c3c6dc6941ff65bc901
 };
 
 /** Device descriptor structure. This descriptor, located in FLASH memory, describes the overall

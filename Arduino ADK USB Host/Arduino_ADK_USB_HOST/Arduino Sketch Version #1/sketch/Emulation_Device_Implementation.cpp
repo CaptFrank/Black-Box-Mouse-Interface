@@ -23,7 +23,6 @@ EMULATION_DEVICE::EMULATION_DEVICE(joystick_report_t* joystick_report){
 	_button = 0;
 
 	_joy = joystick_report;
-
 }
 
 //! Creates USB report frame

@@ -1,0 +1,26 @@
+
+
+Debugging noteS:
+
+
+This is the debug console output so far...
+
+	"BOOT SERIAL
+	NVRAM READ
+	STARTING DEBUG ENGINE
+	STARTED DEBUG ENGINE
+	INTERRUPT ATTACHED TO BUTTON 2
+	ENTERING SELECT LOOP
+	EMULATION CHOSEN
+	EXEC MEM CHECK
+	Free mem: 6495
+	USB"
+	
+Seems like the stack is full??? or a watchdog timer is set
+to reboot???? Setup function must finish before a cetrain time????
+
+	 - Investigate:
+	 	- Setup watchdog
+	 	- Boot up Watchdog?
+	 	- Stack size?
+	 	- Stack overflow?

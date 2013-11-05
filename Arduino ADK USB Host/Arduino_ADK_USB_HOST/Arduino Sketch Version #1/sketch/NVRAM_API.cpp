@@ -49,8 +49,8 @@ const NVRAM::nv_data_t nvram_default PROGMEM = {
 		{'p', 'w', 'r', '0', ':', SPACE},
 		{'w', 'a', 'k', 'e', ':', '0'},
 		{'w', 'a', 'k', 'e', ':', SPACE},
-        {'s', 'e', 'n', 's', 'n', 'u', 'm'},
-        {'s', 'e', 'n', 'c', 'h', 'n', SPACE}
+                {'s', 'e', 'n', 's', 'n', 'u', 'm'},
+                {'s', 'e', 'n', 'c', 'h', 'n', SPACE}
 };
 
 //! Load the saved args.

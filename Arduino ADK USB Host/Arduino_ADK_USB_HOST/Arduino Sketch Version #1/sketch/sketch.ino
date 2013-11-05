@@ -1,5 +1,6 @@
 // Do not remove the include below
 #include <Arduino.h>
+#include <avr/wdt.h>
 #include "Arduino_HID_Joystick.h"
 
 void setup();
@@ -19,25 +20,12 @@ remote_sensor_data_t* data;
  * and 1 is there is an error.
  * @return
  */
-int main(void){
-	init();
-	setup();
-
-	#ifdef DEBUG
-		DEBUG_SERIAL.println("ENTERING RUN LOOP");
-	#endif
-	for (;;) {
-		loop();
-	}
-	return 0;
-}
 
 void setup(){
 
-	//! Clear the interrupt flag, to void all interrupts
-	//! coming in during the setup phase
-	cli();
-
+        // Sets the interrupt flags for Serial output and input.
+        interrupts();
+        
 	//! Loads the settings saved in NVRAM
 	//! Also loads the commands to the cached mem.
 	nvram.load();
@@ -65,7 +53,7 @@ void setup(){
 	packet_parser.set_handler(&packet_decoder);
 
 	//! Reset and reboot device.
-	attachInterrupt(SELECT_BUTTON_2, reset_device, CHANGE);
+	attachInterrupt(SELECT_BUTTON_2, reset_device, HIGH);
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("INTERRUPT ATTACHED TO BUTTON 2");
@@ -73,12 +61,19 @@ void setup(){
 	#endif
 
 	//! Wait 5sec to check the pin.
-	delay(FIVE_SECONDS);
+	delay(THREE_SECONDS);
 
+        #ifdef DEBUG
+          // Force the chosing to emulation device
+          digitalWrite(SELECT_BUTTON_1, HIGH);
+        #endif
+        
 	//! Check choice (default = Emulation).
 		//! 1 - Emulation
 		//! 0 - Real USB device
-	if(digitalRead(SELECT_BUTTON_1) == HIGH){
+        byte select_pin_read = digitalRead(SELECT_BUTTON_1);
+	
+        if(select_pin_read == HIGH){
 
 		//! Defines the generic pointer (EMULATION).
 		//! This is where we setup the object pointer.
@@ -90,7 +85,7 @@ void setup(){
 		DEBUG_SERIAL.println("EMULATION CHOSEN");
 	#endif
 
-	}else if(digitalRead(SELECT_BUTTON_1) == LOW){
+	}else if(select_pin_read == LOW){
 
 		//! Define the generic pointer (USB HOST DEVICE).
 		//! This is where we setup the object pointer.
@@ -105,42 +100,47 @@ void setup(){
 	#endif
 
 	}else{
-
-		//! If none of the above, reset the device.
-
-	#ifdef DEBUG_LEDs
-		debug_api.set_leds(REBOOT_ERROR);
+          
+          // The device had an internal issue. We reboot by force.
+        #ifdef DEBUG
+	        DEBUG_SERIAL.println("FATAL ERROR REBOOTING.");
 	#endif
-		error((void*)__LINE__, (void*)__func__);
+                reset_device();
 	}
+        
+        #ifdef DEBUG  
+                int free_mem = memory_check();
+                DEBUG_SERIAL.print("Free mem: ");
+                DEBUG_SERIAL.println(free_mem);
+	#endif
 
 	//! Timer is initialized to keep track of the CPU idle time.
 	TCCR1B = _BV(CS12) | _BV(CS11);
 
 	#ifdef DEBUG
-		DEBUG_SERIAL.println("USB INIT STATE");
+		DEBUG_SERIAL.println("USB INIT");
 	#endif
+
+//=====> STOPS HERE !!!
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("MEM CHECK");
 	#endif
     //! Check memory integrity
-    if(memory_check() <= EMPTY)
+    if(memory_check() <= EMPTY){
 	#ifdef DEBUG_LEDs
-    	debug_api.set_leds(MEMORY_ERROR);
+    	        debug_api.set_leds(MEMORY_ERROR);
 	#endif
 		error((void*)__LINE__, (void*)__func__);
-
-	#ifdef DEBUG
-		DEBUG_SERIAL.println("RESUME INTERRUPTS");
-	#endif
-
-	//! Resume interrupt handling
-	sei();
+    }
 }
 
 void loop(){
 
+      // We are only testing the setup part of the running process
+      DEBUG_SERIAL.println("DEBUGING STARTUP PRODCEDURE");
+      abort();
+  
 	//! If the emulation device is chosen.
 	//! Start the emulation process.
 	if(emulation_chosen){
@@ -171,9 +171,8 @@ void loop(){
  * @param nvram_object - NVRAM
  */
 void configure_device(NVRAM* nvram_object){
-
-	SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
-
+	
+        SERIAL_OUTPUT.begin(nvram_object->nv.serial1_speed);
 	#ifdef DEBUG
 		DEBUG_SERIAL.begin(nvram_object->nv.serial3_speed);
 		DEBUG_SERIAL.println("BOOT SERIAL");

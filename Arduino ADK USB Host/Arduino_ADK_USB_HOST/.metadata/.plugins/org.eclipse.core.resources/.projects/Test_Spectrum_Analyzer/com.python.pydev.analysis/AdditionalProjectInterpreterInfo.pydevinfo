@@ -1,0 +1,74 @@
+-- VERSION_3
+-- START DISKCACHE
+/Volumes/DataHDD/Documents/4th Year Project/Black-Box-Mouse-Interface/Arduino ADK USB Host/Arduino_ADK_USB_HOST/.metadata/.plugins/org.eclipse.core.resources/.projects/Test_Spectrum_Analyzer/com.python.pydev.analysis/v1_indexcache
+.v1_indexcache
+ui|0|/Users/francispapineau/Desktop/Test_Spectrum_Analyzer/ui.py
+recorder|0|/Users/francispapineau/Desktop/Test_Spectrum_Analyzer/recorder.py
+ui_plot|0|/Users/francispapineau/Desktop/Test_Spectrum_Analyzer/ui_plot.py
+realTimeAudio|0|/Users/francispapineau/Desktop/Test_Spectrum_Analyzer/realTimeAudio.py
+_ui2py|0|/Users/francispapineau/Desktop/Test_Spectrum_Analyzer/_ui2py.pyw
+-- END DISKCACHE
+-- START DICTIONARY
+13
+2=ui
+9=Ui_win_plot.setupUi
+12=SwhRecorder.continuousStart
+1=ui_plot
+6=SwhRecorder
+8=SwhRecorder.setup
+7=Ui_win_plot
+11=SwhRecorder.record
+5=recorder
+10=SwhRecorder.__init__
+13=SwhRecorder.continuousEnd
+4=realTimeAudio
+3=_ui2py
+-- END DICTIONARY
+-- START TREE 1
+11
+_fr|1|_fromUtf8!11@
+app|1|app!19@
+f|1|f!27@
+out|1|out!27@
+plo|1|plotSomething!34@
+sho|1|showit!27@
+swh|1|SwhRecorder!41@
+ui_|1|Ui_win_plot!9@
+uin|1|uiname!27@
+uip|1|uiplot!19@
+win|1|win_plot!19@
+-- END TREE
+-- START TREE 2
+31
+__i|1|__init__!6&42@
+app|1|app!7&11@
+aud|1|audio!8&43@
+btn|4|btnC!9&11@btnA!9&11@btnD!9&11@btnB!9&11@
+buf|2|BUFFERSIZE!10&43@buffersToRecord!8&43@
+cen|1|centralwidget!9&11@
+chu|1|chunksToRecord!8&43@
+clo|1|close!6&42@
+con|2|continuousStart!6&42@continuousEnd!6&42@
+dow|1|downsample!6&42@
+fft|1|fft!6&42@
+get|1|getAudio!6&42@
+hor|1|horizontalLayout!9&11@
+ins|1|inStream!8&43@
+new|2|newAudio!11&43@newAudio!10&43@
+p|1|p!8&43@
+plo|1|plotAudio!6&42@
+qwt|1|qwtPlot!9&11@
+rat|1|RATE!10&43@
+rec|1|record!6&42@
+ret|1|retranslateUi!7&10@
+sam|1|samplesToRecord!8&43@
+sec|2|secToRecord!10&43@secPerPoint!8&43@
+set|2|setupUi!7&10@setup!6&42@
+t|1|t!12&43@
+thr|2|threadsDieNow!13&43@threadsDieNow!10&43@
+ui|1|ui!7&11@
+ver|1|verticalLayout!9&11@
+win|1|win_plot!7&11@
+xs|1|xs!8&43@
+xsb|1|xsBuffer!8&43@
+-- END TREE
