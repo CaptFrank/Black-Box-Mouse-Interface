@@ -17,21 +17,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   6 .debug_aranges 00000728  00000000  00000000  00002249  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_info   0000acd5  00000000  00000000  00002971  2**0
+  7 .debug_info   0000acd3  00000000  00000000  00002971  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_abbrev 00002d9f  00000000  00000000  0000d646  2**0
+  8 .debug_abbrev 00002d9f  00000000  00000000  0000d644  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_line   0001607c  00000000  00000000  000103e5  2**0
+  9 .debug_line   0001607c  00000000  00000000  000103e3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_frame  00001290  00000000  00000000  00026464  2**2
+ 10 .debug_frame  00001290  00000000  00000000  00026460  2**2
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_str    00016189  00000000  00000000  000276f4  2**0
+ 11 .debug_str    00016189  00000000  00000000  000276f0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_loc    000075fc  00000000  00000000  0003d87d  2**0
+ 12 .debug_loc    000075fc  00000000  00000000  0003d879  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_ranges 00001028  00000000  00000000  00044e79  2**0
+ 13 .debug_ranges 00001028  00000000  00000000  00044e75  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_macro  0000a255  00000000  00000000  00045ea1  2**0
+ 14 .debug_macro  0000a255  00000000  00000000  00045e9d  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -415,7 +415,7 @@ void SetupHardware(void)
 			                               const bool DoubleSpeed)
 			{
 				UBRR1  = (DoubleSpeed ? SERIAL_2X_UBBRVAL(BaudRate) : SERIAL_UBBRVAL(BaudRate));
-     216:	80 e1       	ldi	r24, 0x10	; 16
+     216:	8f ec       	ldi	r24, 0xCF	; 207
      218:	90 e0       	ldi	r25, 0x00	; 0
      21a:	90 93 cd 00 	sts	0x00CD, r25
      21e:	80 93 cc 00 	sts	0x00CC, r24
@@ -437,7 +437,7 @@ void SetupHardware(void)
      236:	5a 9a       	sbi	0x0b, 2	; 11
 
     /* Hardware Initialization */
-    Serial_Init(115200, true);
+    Serial_Init(9600, true);
     LEDs_Init();
     USB_Init();
      238:	45 d6       	rcall	.+3210   	; 0xec4 <USB_Init>

@@ -4158,46 +4158,46 @@ LOAD c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xacd5
+.debug_info     0x00000000     0xacd3
  *(.debug_info)
  .debug_info    0x00000000      0x6db Descriptors.o
  .debug_info    0x000006db      0x43f src/LUFA/LUFA/Drivers/Peripheral/AVR8/Serial_AVR8.o
- .debug_info    0x00000b1a      0xb18 Joystick.o
- .debug_info    0x00001632      0x746 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o
- .debug_info    0x00001d78      0x8c2 src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o
- .debug_info    0x0000263a      0xe64 src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o
- .debug_info    0x0000349e      0x99f src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o
- .debug_info    0x00003e3d      0x982 src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o
- .debug_info    0x000047bf      0x620 src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o
- .debug_info    0x00004ddf      0xcdd src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o
- .debug_info    0x00005abc     0x1178 src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o
- .debug_info    0x00006c34       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o
- .debug_info    0x00006c8e       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o
- .debug_info    0x00006ce8       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o
- .debug_info    0x00006d42       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o
- .debug_info    0x00006d9c       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o
- .debug_info    0x00006df6       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o
- .debug_info    0x00006e50       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o
- .debug_info    0x00006eaa       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o
- .debug_info    0x00006f04       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o
- .debug_info    0x00006f5e       0xd6 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
- .debug_info    0x00007034     0x17cc src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
- .debug_info    0x00008800      0x619 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_info    0x00008e19       0x5a src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o
- .debug_info    0x00008e73       0x5a src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o
- .debug_info    0x00008ecd       0x5a src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o
- .debug_info    0x00008f27       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o
- .debug_info    0x00008f48       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o
- .debug_info    0x00008f69       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o
- .debug_info    0x00008f8a       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o
- .debug_info    0x00008fab      0x46d src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_info    0x00009418      0x5bb src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_info    0x000099d3      0x3ea src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o
- .debug_info    0x00009dbd      0xa83 src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_info    0x0000a840       0x7c src/LUFA/LUFA/Drivers/USB/Core/Events.o
- .debug_info    0x0000a8bc       0x5a src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o
- .debug_info    0x0000a916      0x271 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
- .debug_info    0x0000ab87      0x14e c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr35\libc.a(iob.o)
+ .debug_info    0x00000b1a      0xb16 Joystick.o
+ .debug_info    0x00001630      0x746 src/LUFA/LUFA/Drivers/USB/Class/Common/HIDParser.o
+ .debug_info    0x00001d76      0x8c2 src/LUFA/LUFA/Drivers/USB/Class/Device/AudioClassDevice.o
+ .debug_info    0x00002638      0xe64 src/LUFA/LUFA/Drivers/USB/Class/Device/CDCClassDevice.o
+ .debug_info    0x0000349c      0x99f src/LUFA/LUFA/Drivers/USB/Class/Device/HIDClassDevice.o
+ .debug_info    0x00003e3b      0x982 src/LUFA/LUFA/Drivers/USB/Class/Device/MassStorageClassDevice.o
+ .debug_info    0x000047bd      0x620 src/LUFA/LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o
+ .debug_info    0x00004ddd      0xcdd src/LUFA/LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o
+ .debug_info    0x00005aba     0x1178 src/LUFA/LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o
+ .debug_info    0x00006c32       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/AndroidAccessoryClassHost.o
+ .debug_info    0x00006c8c       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/AudioClassHost.o
+ .debug_info    0x00006ce6       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/CDCClassHost.o
+ .debug_info    0x00006d40       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/HIDClassHost.o
+ .debug_info    0x00006d9a       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/MassStorageClassHost.o
+ .debug_info    0x00006df4       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/MIDIClassHost.o
+ .debug_info    0x00006e4e       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/PrinterClassHost.o
+ .debug_info    0x00006ea8       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/RNDISClassHost.o
+ .debug_info    0x00006f02       0x5a src/LUFA/LUFA/Drivers/USB/Class/Host/StillImageClassHost.o
+ .debug_info    0x00006f5c       0xd6 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Device_AVR8.o
+ .debug_info    0x00007032     0x17cc src/LUFA/LUFA/Drivers/USB/Core/AVR8/EndpointStream_AVR8.o
+ .debug_info    0x000087fe      0x619 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_info    0x00008e17       0x5a src/LUFA/LUFA/Drivers/USB/Core/AVR8/Host_AVR8.o
+ .debug_info    0x00008e71       0x5a src/LUFA/LUFA/Drivers/USB/Core/AVR8/PipeStream_AVR8.o
+ .debug_info    0x00008ecb       0x5a src/LUFA/LUFA/Drivers/USB/Core/AVR8/Pipe_AVR8.o
+ .debug_info    0x00008f25       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_R.o
+ .debug_info    0x00008f46       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_Control_W.o
+ .debug_info    0x00008f67       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Endpoint_RW.o
+ .debug_info    0x00008f88       0x21 src/LUFA/LUFA/Drivers/USB/Core/AVR8/Template/Template_Pipe_RW.o
+ .debug_info    0x00008fa9      0x46d src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_info    0x00009416      0x5bb src/LUFA/LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_info    0x000099d1      0x3ea src/LUFA/LUFA/Drivers/USB/Core/ConfigDescriptors.o
+ .debug_info    0x00009dbb      0xa83 src/LUFA/LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_info    0x0000a83e       0x7c src/LUFA/LUFA/Drivers/USB/Core/Events.o
+ .debug_info    0x0000a8ba       0x5a src/LUFA/LUFA/Drivers/USB/Core/HostStandardReq.o
+ .debug_info    0x0000a914      0x271 src/LUFA/LUFA/Drivers/USB/Core/USBTask.o
+ .debug_info    0x0000ab85      0x14e c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.2.1002/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.7.2/../../../../avr/lib/avr35\libc.a(iob.o)
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev   0x00000000     0x2d9f

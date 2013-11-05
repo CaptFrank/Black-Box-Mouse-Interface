@@ -322,7 +322,7 @@ void USB_DEVICE::_setup_usb_report_params(){
 
 #ifdef JOYSTICK_REPORT
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )_joystick_report;
+	_packet_buffer = (uint8_t* )&_joystick_report;
 #endif
 
 }
