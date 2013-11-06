@@ -75,7 +75,7 @@
 			{ROUTER_HEARTBEAT, 	PACKET_PARSER::parse, 			&packet_parser},
 			{ROUTER_STATUS,    	PACKET_PARSER::parse, 			&packet_parser},
 //			{ROUTER_NMAP,	   	PACKET_PARSER::parse, 			&packet_parser},
-			{ROUTER_CONFIG,         PACKET_PARSER::parse, 			&packet_parser},
+			{ROUTER_CONFIG,     PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_ENABLE,    	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_CONFIGS,   	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_DATA,      	PACKET_PARSER::parse, 			&packet_parser},
@@ -90,10 +90,10 @@
 	};
 
 	//! Define a PACKET_DECODER object
-	PACKET_HANDLER packet_decoder((void*)&packet_handlers);
+	PACKET_HANDLER packet_decoder((void*)&packet_handlers, &RF_SERIAL);
 
 	//! Define a COMMAND_INTERPRETER object
-	COMMAND_PARSER command_interpreter(&nvram, &packet_decoder, &usb_state_machine);
+	COMMAND_PARSER command_interpreter(&RF_SERIAL, &nvram, &packet_decoder, &usb_state_machine);
 
 	#ifdef DEBUG_LEDs
 		//! Define a DEBUG_API object if debug.

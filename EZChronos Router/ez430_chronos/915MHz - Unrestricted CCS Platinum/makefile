@@ -22,6 +22,11 @@ $(GEN_CMDS__FLAG) \
 "./driver/bmp_as.obj" \
 "./driver/as.obj" \
 "./driver/adc12.obj" \
+"./include/router/sensor_network_utility.obj" \
+"./include/router/router_network_utility.obj" \
+"./include/router/router_main.obj" \
+"./include/router/packet_handlers.obj" \
+"./include/router/function_callbacks.obj" \
 "./logic/user.obj" \
 "./logic/test.obj" \
 "./logic/temperature.obj" \
@@ -70,6 +75,7 @@ RMDIR := RMDIR /S/Q
 -include simpliciti/Components/bsp/subdir_vars.mk
 -include simpliciti/Applications/application/End\ Device/subdir_vars.mk
 -include logic/subdir_vars.mk
+-include include/router/subdir_vars.mk
 -include driver/subdir_vars.mk
 -include bluerobin/subdir_vars.mk
 -include subdir_rules.mk
@@ -79,6 +85,7 @@ RMDIR := RMDIR /S/Q
 -include simpliciti/Components/bsp/subdir_rules.mk
 -include simpliciti/Applications/application/End\ Device/subdir_rules.mk
 -include logic/subdir_rules.mk
+-include include/router/subdir_rules.mk
 -include driver/subdir_rules.mk
 -include bluerobin/subdir_rules.mk
 -include objects.mk
@@ -175,7 +182,7 @@ all: ez430_chronos_915MHz.out
 ez430_chronos_915MHz.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MSP430 Linker'
-	"C:/ti/ccsv5/tools/compiler/msp430_4.2.1/bin/cl430" --cmd_file="C:\Users\Francis Papineau\workspace_v5_5\ez430_chronos\simpliciti\Applications\configuration\smpl_nwk_config.dat" --cmd_file="C:\Users\Francis Papineau\workspace_v5_5\ez430_chronos\simpliciti\Applications\configuration\End Device\smpl_config.dat"  -vmspx -g -O4 --opt_for_speed=0 --define=__CCE__ --define=ISM_US --define=__CC430F6137__ --define=MRFI_CC430 --diag_warning=225 --call_assumptions=0 --auto_inline=0 --gen_opt_info=2 --printf_support=minimal -z -m"ez430_chronos_915MHz.map" --stack_size=80 --heap_size=80 --use_hw_mpy=F5 --warn_sections -i"C:/ti/ccsv5/ccs_base/msp430/include" -i"C:/ti/ccsv5/tools/compiler/msp430_4.2.1/lib" -i"C:/ti/ccsv5/tools/compiler/msp430_4.2.1/include" -i"C:/ti/ccsv5/msp430/include" --reread_libs --xml_link_info="ez430_chronos_915MHz_linkInfo.xml" --rom_model -o "ez430_chronos_915MHz.out" $(ORDERED_OBJS)
+	"C:/ti/ccsv5/tools/compiler/msp430_4.2.1/bin/cl430" --cmd_file="Z:\Black-Box-Mouse-Interface\EZChronos Router\ez430_chronos\simpliciti\Applications\configuration\smpl_nwk_config.dat" --cmd_file="Z:\Black-Box-Mouse-Interface\EZChronos Router\ez430_chronos\simpliciti\Applications\configuration\End Device\smpl_config.dat"  -vmspx -g -O4 --opt_for_speed=0 --define=__CCE__ --define=ISM_US --define=__CC430F6137__ --define=MRFI_CC430 --diag_warning=225 --call_assumptions=0 --auto_inline=0 --gen_opt_info=2 --printf_support=minimal -z -m"ez430_chronos_915MHz.map" --stack_size=80 --heap_size=80 --use_hw_mpy=F5 --warn_sections -i"C:/ti/ccsv5/ccs_base/msp430/include" -i"C:/ti/ccsv5/tools/compiler/msp430_4.2.1/lib" -i"C:/ti/ccsv5/tools/compiler/msp430_4.2.1/include" -i"C:/ti/ccsv5/msp430/include" --reread_libs --xml_link_info="ez430_chronos_915MHz_linkInfo.xml" --rom_model -o "ez430_chronos_915MHz.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 	@$(MAKE) --no-print-directory post-build
@@ -183,10 +190,10 @@ ez430_chronos_915MHz.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(MSP430_EXECUTABLE_OUTPUTS__QUOTED) "ez430_chronos_915MHz.out"
-	-$(RM) "main.pp" "simpliciti\Components\nwk_applications\nwk_freq.pp" "simpliciti\Components\nwk_applications\nwk_ioctl.pp" "simpliciti\Components\nwk_applications\nwk_join.pp" "simpliciti\Components\nwk_applications\nwk_link.pp" "simpliciti\Components\nwk_applications\nwk_mgmt.pp" "simpliciti\Components\nwk_applications\nwk_ping.pp" "simpliciti\Components\nwk_applications\nwk_security.pp" "simpliciti\Components\nwk\nwk.pp" "simpliciti\Components\nwk\nwk_QMgmt.pp" "simpliciti\Components\nwk\nwk_api.pp" "simpliciti\Components\nwk\nwk_frame.pp" "simpliciti\Components\nwk\nwk_globals.pp" "simpliciti\Components\mrfi\mrfi.pp" "simpliciti\Components\bsp\bsp.pp" "simpliciti\Applications\application\End Device\main_ED_BM.pp" "logic\acceleration.pp" "logic\alarm.pp" "logic\altitude.pp" "logic\battery.pp" "logic\bluerobin.pp" "logic\clock.pp" "logic\date.pp" "logic\menu.pp" "logic\rfbsl.pp" "logic\rfsimpliciti.pp" "logic\stopwatch.pp" "logic\temperature.pp" "logic\test.pp" "logic\user.pp" "driver\adc12.pp" 
-	-$(RM) "driver\as.pp" "driver\bmp_as.pp" "driver\bmp_ps.pp" "driver\buzzer.pp" "driver\cma_as.pp" "driver\cma_ps.pp" "driver\display.pp" "driver\pmm.pp" "driver\ports.pp" "driver\ps.pp" "driver\radio.pp" "driver\rf1a.pp" "driver\timer.pp" 
+	-$(RM) "main.pp" "simpliciti\Components\nwk_applications\nwk_freq.pp" "simpliciti\Components\nwk_applications\nwk_ioctl.pp" "simpliciti\Components\nwk_applications\nwk_join.pp" "simpliciti\Components\nwk_applications\nwk_link.pp" "simpliciti\Components\nwk_applications\nwk_mgmt.pp" "simpliciti\Components\nwk_applications\nwk_ping.pp" "simpliciti\Components\nwk_applications\nwk_security.pp" "simpliciti\Components\nwk\nwk.pp" "simpliciti\Components\nwk\nwk_QMgmt.pp" "simpliciti\Components\nwk\nwk_api.pp" "simpliciti\Components\nwk\nwk_frame.pp" "simpliciti\Components\nwk\nwk_globals.pp" "simpliciti\Components\mrfi\mrfi.pp" "simpliciti\Components\bsp\bsp.pp" "simpliciti\Applications\application\End Device\main_ED_BM.pp" "logic\acceleration.pp" "logic\alarm.pp" "logic\altitude.pp" "logic\battery.pp" "logic\bluerobin.pp" "logic\clock.pp" "logic\date.pp" "logic\menu.pp" "logic\rfbsl.pp" "logic\rfsimpliciti.pp" "logic\stopwatch.pp" "logic\temperature.pp" "logic\test.pp" "logic\user.pp" "include\router\function_callbacks.pp" 
+	-$(RM) "include\router\packet_handlers.pp" "include\router\router_main.pp" "include\router\router_network_utility.pp" "include\router\sensor_network_utility.pp" "driver\adc12.pp" "driver\as.pp" "driver\bmp_as.pp" "driver\bmp_ps.pp" "driver\buzzer.pp" "driver\cma_as.pp" "driver\cma_ps.pp" "driver\display.pp" "driver\pmm.pp" "driver\ports.pp" "driver\ps.pp" "driver\radio.pp" "driver\rf1a.pp" "driver\timer.pp" 
 	-$(RM) "main.obj" "simpliciti\Components\nwk_applications\nwk_freq.obj" "simpliciti\Components\nwk_applications\nwk_ioctl.obj" "simpliciti\Components\nwk_applications\nwk_join.obj" "simpliciti\Components\nwk_applications\nwk_link.obj" "simpliciti\Components\nwk_applications\nwk_mgmt.obj" "simpliciti\Components\nwk_applications\nwk_ping.obj" "simpliciti\Components\nwk_applications\nwk_security.obj" "simpliciti\Components\nwk\nwk.obj" "simpliciti\Components\nwk\nwk_QMgmt.obj" "simpliciti\Components\nwk\nwk_api.obj" "simpliciti\Components\nwk\nwk_frame.obj" "simpliciti\Components\nwk\nwk_globals.obj" "simpliciti\Components\mrfi\mrfi.obj" "simpliciti\Components\bsp\bsp.obj" "simpliciti\Applications\application\End Device\main_ED_BM.obj" "logic\acceleration.obj" "logic\alarm.obj" "logic\altitude.obj" "logic\battery.obj" "logic\bluerobin.obj" "logic\clock.obj" "logic\date.obj" "logic\menu.obj" "logic\rfbsl.obj" "logic\rfsimpliciti.obj" "logic\stopwatch.obj" "logic\temperature.obj" "logic\test.obj" "logic\user.obj" 
-	-$(RM) "driver\adc12.obj" "driver\as.obj" "driver\bmp_as.obj" "driver\bmp_ps.obj" "driver\buzzer.obj" "driver\cma_as.obj" "driver\cma_ps.obj" "driver\display.obj" "driver\pmm.obj" "driver\ports.obj" "driver\ps.obj" "driver\radio.obj" "driver\rf1a.obj" "driver\timer.obj" 
+	-$(RM) "include\router\function_callbacks.obj" "include\router\packet_handlers.obj" "include\router\router_main.obj" "include\router\router_network_utility.obj" "include\router\sensor_network_utility.obj" "driver\adc12.obj" "driver\as.obj" "driver\bmp_as.obj" "driver\bmp_ps.obj" "driver\buzzer.obj" "driver\cma_as.obj" "driver\cma_ps.obj" "driver\display.obj" "driver\pmm.obj" "driver\ports.obj" "driver\ps.obj" "driver\radio.obj" "driver\rf1a.obj" "driver\timer.obj" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

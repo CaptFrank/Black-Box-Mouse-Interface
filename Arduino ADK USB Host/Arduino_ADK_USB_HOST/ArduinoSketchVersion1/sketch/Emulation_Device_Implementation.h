@@ -38,6 +38,9 @@
 
 		//! joystick report pointer
 		joystick_report_t* _joy;
+		
+		//! the serial device
+		HardwareSerial* serial_device;
 
 		/**
 		 * The assembly function for the packet
@@ -74,7 +77,7 @@
 		/**
 		 * The default constructor
 		 */
-		EMULATION_DEVICE(joystick_report_t* joystick_report);
+		EMULATION_DEVICE(HardwareSerial* serial_device, joystick_report_t* joystick_report);
 
 		/**
 		 * The emulation loop

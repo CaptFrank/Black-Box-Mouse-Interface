@@ -84,13 +84,16 @@ class COMMAND_PARSER {
 
 		//! Our command database loaded in cache.
 		NVRAM* nvram_object;
+		
+		// The Serial Device used to input/output
+		HardwareSerial* serial_device;
 
 		/**
 		 * Default constructor.
 		 *
 		 * @param nvram_object
 		 */
-		COMMAND_PARSER(NVRAM* nvram_object, PACKET_HANDLER* packet_decoder,
+		COMMAND_PARSER(HardwareSerial* serial_device, NVRAM* nvram_object, PACKET_HANDLER* packet_decoder,
 				USB_STATE_MACHINE* usb_state_machine);
 
 		/**

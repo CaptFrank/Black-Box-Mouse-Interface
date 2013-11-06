@@ -12,7 +12,7 @@
  * structure.
  * @param handler_table - packet_handler_t
  */
-PACKET_HANDLER::PACKET_HANDLER(void* handler_table){
+PACKET_HANDLER::PACKET_HANDLER(void* handler_table, HardwareSerial* serial_device){
 
 	//! Assign the default variables.
 	this->_phase 			= PACKET_WAIT_PHASE_1;
@@ -27,6 +27,7 @@ PACKET_HANDLER::PACKET_HANDLER(void* handler_table){
 	this->_sum_A			= 0;
 	this->_sum_B 			= 0;
 	this->_guard_bool		= false;
+	this->serial_device		= serial_device;
 }
 
 /**
@@ -36,7 +37,7 @@ void PACKET_HANDLER::poll(void){
 
 	byte available;
 
-	available = RF_SERIAL.available();
+	available = this->serial_device->available();
 
 	if(EMPTY == available){
 		_guard_bool = false;
@@ -49,7 +50,7 @@ void PACKET_HANDLER::poll(void){
 		// new data
 		while(available --){
 			// move to the next state
-			_move_state(RF_SERIAL.read());
+			_move_state(this->serial_device->read());
 		}
 			_last_received = millis();
 	}

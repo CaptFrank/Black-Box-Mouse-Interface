@@ -104,6 +104,7 @@ simpliciti/Components/mrfi \
 simpliciti/Components/bsp \
 simpliciti/Applications/application/End\ Device \
 logic \
+include/router \
 driver \
 bluerobin \
 

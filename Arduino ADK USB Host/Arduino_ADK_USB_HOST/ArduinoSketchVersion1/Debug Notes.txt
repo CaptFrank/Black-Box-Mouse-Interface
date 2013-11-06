@@ -16,6 +16,22 @@ This is the debug console output so far...
 	Free mem: 6495
 	USB"
 	
+	NEXT TIME
+	
+	"BOOT SERIAL
+	 NVRAM READ
+	 STARTING DEBUG ENGINE
+	 STARTED DEBUG ENGINE
+	 INTERRUPT ATTACHED TO BUTTON 2
+	 ENTERING SELECT LOOP
+	 USB DEVICE CHOSEN
+	 EXEC MEM CHECK
+	 FREE MEM: 6262
+	 USB INIT
+	 MEM CHECK
+	 EXEC MEM CHECK
+	 DEBUGGING STARTUP PROCEDURE"
+	
 Seems like the stack is full??? or a watchdog timer is set
 to reboot???? Setup function must finish before a cetrain time????
 

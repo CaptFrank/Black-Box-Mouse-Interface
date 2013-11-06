@@ -10,7 +10,7 @@
 static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
 //! Default Constructor
-EMULATION_DEVICE::EMULATION_DEVICE(joystick_report_t* joystick_report){
+EMULATION_DEVICE::EMULATION_DEVICE(HardwareSerial* serial_device, joystick_report_t* joystick_report){
 	//! Sending mutex
 	_sending_mutex = false;
 
@@ -21,6 +21,8 @@ EMULATION_DEVICE::EMULATION_DEVICE(joystick_report_t* joystick_report){
 	_button = 0;
 	_packet_size = 0;
 	_button = 0;
+	
+	this->serial_device = serial_device;
 
 	_joy = joystick_report;
 }
@@ -71,13 +73,13 @@ void EMULATION_DEVICE::_send_usb_report_frame(){
 #ifdef MOUSE_REPORT
 
 	//! Send the structure.
-	SERIAL_OUTPUT.write(this->_packet_buffer, sizeof(mouse_report_t));
+	this->serial_device->write(this->_packet_buffer, sizeof(mouse_report_t));
 #endif
 
 #ifdef JOYSTICK_REPORT
 
 	//! Send the structure.
-	SERIAL_OUTPUT.write(this->_packet_buffer, sizeof(joystick_report_t));
+	this->serial_device->write(this->_packet_buffer, sizeof(joystick_report_t));
 #endif
 
 	_packet_in_sending_queue = false;

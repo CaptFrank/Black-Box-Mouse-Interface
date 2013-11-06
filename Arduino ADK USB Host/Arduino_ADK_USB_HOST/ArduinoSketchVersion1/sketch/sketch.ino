@@ -3,9 +3,6 @@
 #include <avr/wdt.h>
 #include "Arduino_HID_Joystick.h"
 
-void setup();
-void loop();
-void init();
 void configure_device(NVRAM* nvram_object);
 
 /**
@@ -65,7 +62,7 @@ void setup(){
 
         #ifdef DEBUG
           // Force the chosing to emulation device
-          digitalWrite(SELECT_BUTTON_1, HIGH);
+          digitalWrite(SELECT_BUTTON_1, LOW);
         #endif
         
 	//! Check choice (default = Emulation).
@@ -77,7 +74,7 @@ void setup(){
 
 		//! Defines the generic pointer (EMULATION).
 		//! This is where we setup the object pointer.
-		EMULATION_DEVICE emulation_device(&joystick_report);
+		EMULATION_DEVICE emulation_device(&SERIAL_OUTPUT, &joystick_report);
 		generic_pointer = &emulation_device;
 		emulation_chosen = true;
 
@@ -104,13 +101,13 @@ void setup(){
           // The device had an internal issue. We reboot by force.
         #ifdef DEBUG
 	        DEBUG_SERIAL.println("FATAL ERROR REBOOTING.");
-	#endif
-                reset_device();
+		#endif
+            reset_device();
 	}
         
         #ifdef DEBUG  
                 int free_mem = memory_check();
-                DEBUG_SERIAL.print("Free mem: ");
+                DEBUG_SERIAL.print("FREE MEM: ");
                 DEBUG_SERIAL.println(free_mem);
 	#endif
 
@@ -138,7 +135,8 @@ void setup(){
 void loop(){
 
       // We are only testing the setup part of the running process
-      DEBUG_SERIAL.println("DEBUGING STARTUP PRODCEDURE");
+      DEBUG_SERIAL.println("DEBUGGING STARTUP PROCEDURE");
+	  delay(FIVE_SECONDS);
       abort();
   
 	//! If the emulation device is chosen.
