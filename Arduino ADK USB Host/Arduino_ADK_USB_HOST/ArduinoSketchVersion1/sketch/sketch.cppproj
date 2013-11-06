@@ -26,13 +26,14 @@
     <UncachedRange />
     <BootSegment>0</BootSegment>
     <AsfFrameworkConfig>
-      <framework-data xmlns="">
+      <framework-data>
         <options />
         <configurations />
         <files />
         <documentation help="" />
+        <offline-documentation help="" />
         <dependencies>
-          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.7.2" />
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.3.0" />
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
@@ -250,6 +251,7 @@ location.sketchbook=C:\Users\francis-ccs\Documents\Arduino
         <visualmicro.platform.name>avr</visualmicro.platform.name>
         <arduino.upload.port>COM3</arduino.upload.port>
         <VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>
+        <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>
@@ -452,6 +454,7 @@ location.sketchbook=C:\Users\francis-ccs\Documents\Arduino
         <visualmicro.platform.name>avr</visualmicro.platform.name>
         <arduino.upload.port>COM3</arduino.upload.port>
         <VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>1</VM.DebugVariablesWindow.ColumnVisibleVariableValueBinary>
+        <VM.DebugVariablesWindow.ColumnVisibleBreakPointName>1</VM.DebugVariablesWindow.ColumnVisibleBreakPointName>
       </VisualMicroSettings>
     </VisualMicroSettings>
   </PropertyGroup>

@@ -7,13 +7,12 @@
 #include "Command_Interpreter.h"
 
 //! Sets up our non volatile nvram object, our command db.
-COMMAND_PARSER::COMMAND_PARSER(HardwareSerial* serial_device, NVRAM* nvram_object, PACKET_HANDLER* packet_decoder,
+COMMAND_PARSER::COMMAND_PARSER( NVRAM* nvram_object, PACKET_HANDLER* packet_decoder,
 		USB_STATE_MACHINE* usb_state_machine){
 	this->command_buffer = 0;
 	this->nvram_object = nvram_object;
 	this->packet_decoder = packet_decoder;
 	this->usb_state_machine = usb_state_machine;
-	this->serial_device = serial_device;
 }
 
 /**
@@ -178,7 +177,7 @@ void COMMAND_PARSER::send_cmd(byte packet_id, void *buf){
 //! Sends and checks a received message.
 void COMMAND_PARSER::_send_check(byte receive_packet_id, byte* command, int len){
 
-	this->serial_device->write(command, sizeof(command));
+	RF_SERIAL.write(command, sizeof(command));
 
 	while(true){
 		//! Gets a packet to the handler and parser.

@@ -75,7 +75,7 @@
 			{ROUTER_HEARTBEAT, 	PACKET_PARSER::parse, 			&packet_parser},
 			{ROUTER_STATUS,    	PACKET_PARSER::parse, 			&packet_parser},
 //			{ROUTER_NMAP,	   	PACKET_PARSER::parse, 			&packet_parser},
-			{ROUTER_CONFIG,     PACKET_PARSER::parse, 			&packet_parser},
+			{ROUTER_CONFIG,         PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_ENABLE,    	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_CONFIGS,   	PACKET_PARSER::parse, 			&packet_parser},
 			{SENSOR_DATA,      	PACKET_PARSER::parse, 			&packet_parser},
@@ -103,6 +103,12 @@
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	//~~~~~~~~~~~~~~~~~~~~ VARIABLE DEFINITIONS ~~~~~~~~~~~~~~~~~~~~~~~~
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+	#ifdef JOYSTICK_REPORT
+		/// Defining a joystick_report_t structure
+		joystick_report_t joystick_report;
+	#endif
 
 	//! A generic pointer to the chosen object.
 	void* generic_pointer;

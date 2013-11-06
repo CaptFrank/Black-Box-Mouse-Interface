@@ -48,10 +48,6 @@ class PACKET_HANDLER {
 		byte _sum_B;
 		byte _packet_ver;
 		
-		HardwareSerial* serial_device;
-
-
-
 		//! The handler table that contains
 		//! packet handlers
 		struct packet_handler_t *_handler_table;
@@ -81,7 +77,7 @@ class PACKET_HANDLER {
 		 * that takes in a handler table.
 		 * @param handler_table - packet_handler_t
 		 */
-		PACKET_HANDLER(void* handler_table, HardwareSerial* serial_device);
+		PACKET_HANDLER(void* handler_table);
 
 		/**
 		 * This is the poll loop for the incoming bytes.

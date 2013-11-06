@@ -47,53 +47,14 @@ typedef struct joyReport_t {
 } joyReport_t;
 
 joyReport_t joyReport;
->>>>>>> c0af0e9eb28b412a31850c3c6dc6941ff65bc901
-
-joyReport_t joyReport;
 
 // Function Definitions
 void setup(void);
 void loop(void);
-void sendJoyReport(joyReport_t *report);
-
 
 // The setup loop
 void setup()
-{
-<<<<<<< HEAD
-    // activate the serial lines
-    Serial.begin(115200);
-    delay(200);
-    
-    // initialize the buttons and axis
-    for (uint8_t ind=0; ind<8; ind++) {
-        joyReport.axis[ind] = ind*1000;
-    }
-    for (uint8_t ind=0; ind<sizeof(joyReport.button); ind++) {
-        joyReport.button[ind] = 0;
-    }
-}
-
-// Send an HID report to the USB interface
-void sendJoyReport(struct joyReport_t *report){
-    Serial.write((uint8_t *)report, sizeof(joyReport_t));
-}
-
-/* Turn each button on in sequence 1 - 40, then off 1 - 40
- * add values to each axis each loop
- */
-void loop() {
-    
-    // read a button and map the input to the USB report.
-    for(byte i = FIRST_BUTTON_PIN; i < LAST_BUTTON_PIN; i++){
-        joystick.button[i - FIRST_BUTTON_PIN] = digitalRead(i);
-    }
-    
-    // send the report
-    sendJoyReport(&joyReport);
-    delay(100);
-=======
-    
+{ 
     joyReport.x = (int8_t)100;
     joyReport.y = (int8_t)100;
     joyReport.z = (int8_t)100;
@@ -123,5 +84,4 @@ void loop()
     Serial.write((uint8_t *)&joyReport, sizeof(joyReport_t));
     joyReport.buttons = 0;
 
->>>>>>> c0af0e9eb28b412a31850c3c6dc6941ff65bc901
 }

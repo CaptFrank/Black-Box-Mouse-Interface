@@ -4,4 +4,7 @@
 		- Timer ISR for the heartbeat signal
 		- Timer ISR for the watchdog timer
 		- ISR for receiving, transmitting
-		- REverse Engineer the LinkID for the RFBee
+		- Reverse Engineer the LinkID for the RFBee
+		
+		- Create an application to receive information from the chronos and display it on screen
+		

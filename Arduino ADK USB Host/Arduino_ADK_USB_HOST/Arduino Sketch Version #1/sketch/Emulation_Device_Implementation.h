@@ -18,8 +18,6 @@
 
 	private:
 
-		joystick_report_t joystick_report;
-		
 		//! The pointer to the data structure
 		byte* _packet_buffer;
 
@@ -37,6 +35,9 @@
 
 		//! button toggling
 		byte _button;
+
+		//! joystick report pointer
+		joystick_report_t* _joy;
 
 		/**
 		 * The assembly function for the packet
@@ -73,7 +74,7 @@
 		/**
 		 * The default constructor
 		 */
-		EMULATION_DEVICE();
+		EMULATION_DEVICE(joystick_report_t* joystick_report);
 
 		/**
 		 * The emulation loop

@@ -3,6 +3,9 @@
 #include <avr/wdt.h>
 #include "Arduino_HID_Joystick.h"
 
+void setup();
+void loop();
+void init();
 void configure_device(NVRAM* nvram_object);
 
 /**
@@ -74,7 +77,7 @@ void setup(){
 
 		//! Defines the generic pointer (EMULATION).
 		//! This is where we setup the object pointer.
-		EMULATION_DEVICE emulation_device;
+		EMULATION_DEVICE emulation_device(&joystick_report);
 		generic_pointer = &emulation_device;
 		emulation_chosen = true;
 
@@ -86,7 +89,9 @@ void setup(){
 
 		//! Define the generic pointer (USB HOST DEVICE).
 		//! This is where we setup the object pointer.
-		USB_DEVICE usb_host_device(&command_interpreter, &packet_parser);
+
+		USB_DEVICE usb_host_device(&command_interpreter,
+				&packet_parser, &joystick_report);
 		generic_pointer = &usb_host_device;
 		usb_device_chosen = true;
 
@@ -99,13 +104,13 @@ void setup(){
           // The device had an internal issue. We reboot by force.
         #ifdef DEBUG
 	        DEBUG_SERIAL.println("FATAL ERROR REBOOTING.");
-		#endif
-            reset_device();
+	#endif
+                reset_device();
 	}
         
         #ifdef DEBUG  
                 int free_mem = memory_check();
-                DEBUG_SERIAL.print("FREE MEM: ");
+                DEBUG_SERIAL.print("Free mem: ");
                 DEBUG_SERIAL.println(free_mem);
 	#endif
 
@@ -132,31 +137,26 @@ void setup(){
 
 void loop(){
 
-	#ifdef DEBUG
       // We are only testing the setup part of the running process
-      DEBUG_SERIAL.println("DEBUGGING STARTUP PROCEDURE");
-	  delay(ONE_SECOND);
-	  //abort();
-	#endif
-
+      DEBUG_SERIAL.println("DEBUGING STARTUP PRODCEDURE");
+      abort();
+  
 	//! If the emulation device is chosen.
 	//! Start the emulation process.
 	if(emulation_chosen){
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("STARTING EMULATION ENGINE");
-		delay(ONE_SECOND);
 	#endif
-		//! Cast to the emulation device pointer
+		//! Cast to the emulation device pointer.
 		((EMULATION_DEVICE*) generic_pointer)->emulate_usb();
 
 	}else if(usb_device_chosen){
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("STARTING USB DEVICE ENGINE");
-		delay(ONE_SECOND);
 	#endif
 		//! Cast to the USB device pointer
 		((USB_DEVICE*) generic_pointer)->run_usb();
-		
+
 	}else{ //! Something went wrong.
 	#ifdef DEBUG_LEDs
 		debug_api.set_leds(FATAL_ERROR);

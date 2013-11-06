@@ -3,210 +3,39 @@
     <Platform Name="arduino10x" Package="arduino" Platform="avr" Architecture="avr">
       <Board Name="mega2560" Description="Arduino Mega 2560 or Mega ADK" CoreFolder="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" VariantFullPath="C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega" McuIdePath="C:\Program Files (x86)\Arduino\" McuSketchBookPath="C:\Users\francis-ccs\Documents\Arduino" name="Arduino Mega 2560 or Mega ADK" upload.protocol="wiring" upload.maximum_size="258048" upload.speed="115200" bootloader.low_fuses="0xFF" bootloader.high_fuses="0xD8" bootloader.extended_fuses="0xFD" bootloader.path="stk500v2" bootloader.file="stk500boot_v2_mega2560.hex" bootloader.unlock_bits="0x3F" bootloader.lock_bits="0x0F" build.mcu="atmega2560" build.f_cpu="16000000L" build.core="arduino" build.variant="mega" runtime.ide.path="C:\Program Files (x86)\Arduino\" build.system.path="C:\Program Files (x86)\Arduino\hardware\arduino\system" runtime.ide.version="105" originalid="mega2560" build.core.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino" build.core.parentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\cores" build.core.coresparentfolder.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino" vm.core.include="arduino.h" vm.boardsource.path="C:\Program Files (x86)\Arduino\hardware\arduino" vm.platformname.name="avr" build.arch="AVR" ide.hint="Arduino 0023 and 1.0.x Ide" ide.location.key="Arduino" ide.location.ide.winreg="Arduino 1.0.x Application" ide.location.sketchbook.winreg="Arduino 1.0.x Sketchbook" ide.location.sketchbook.preferences="sketchbook.path" ide.location.sketchbook.default="%MYDOCUMENTS%\arduino" ide.location.preferences="%VM_APPDATA_ROAMING%\arduino\preferences.txt" ide.default.package="arduino" ide.default.platform="avr" ide.multiplatform="true" ide.includes="arduino.h" ide.platformswithoutpackage="true" ide.sketchfolder.platforms.exclude="avr" ide.includes.fallback="wprogram.h" ide.extension="ino" ide.extension.fallback="pde" ide.versionLTEQ="149" ide.exe="arduino.exe" ide.hosts="atmel" ide.url="http://arduino.cc/en/Main/Software" vm.debug="true" software="ARDUINO" ide.appid="arduino10x" location.sketchbook="C:\Users\francis-ccs\Documents\Arduino" build.variant.vmresolved="C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega" compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" includes=" -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\cores\arduino&quot;  -I&quot;C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega&quot;  -I&quot;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers\VM_DBG&quot; " build.path="C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560" build.project_name="sketch" build.variant.path="C:\Program Files (x86)\Arduino\hardware\arduino\variants\mega" archive_file="core.a" object_file="C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\VM_DBG\VM_DBG.cpp.o" source_file="C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers\VM_DBG\VM_DBG.cpp" object_files="&quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Command_Interpreter.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Debug_LED_Function.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\EEPROM.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Emulation_Device_Implementation.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Main_Defines.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\NVRAM_API.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Packet_Handler.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Packet_Parser.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\Packet_Watchdog.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\sketch.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\USB_Device_Implementation.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\USB_State_Machine.cpp.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\VM_DBG\VM_mem_check.c.o&quot; &quot;C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560\VM_DBG\VM_DBG.cpp.o&quot; " build.architecture="avr" vmresolved.compiler.path="C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\" vmresolved.tools.path="C:\Program Files (x86)\Arduino\hardware\tools\avr" />
     </Platform>
-    <Compile CompilerErrors="0" ConfigurationName="Debug" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560" IsDebugStart="1" ReportDisassembledView="1" ReportDetailedMemoryUsage="1" SketchName="sketch" ReportDigitalPins="0" ReportAnalogPins="0" ReportI2C="0" ReportFreeMemory="0" IncludeDebug="1" LastDebugPreProcessorDefinitions="VM_DEBUG;VM_DEBUG_ENABLE 1;VM_DEBUG_BANDWIDTH_THROTTLE_MS 80;VM_DEBUGGER_TYPE_HARDWARESERIAL 0;VM_DEBUGGER_TYPE_SOFTWARESERIAL 1;VM_DEBUGGER_TYPE_FASTSERIAL 2;VM_DEBUGGER_TYPE_USB 3;VM_DEBUGGER_TYPE_TEENSY 4;VM_DEBUGGER_TYPE_UART 5;VM_DEBUGGER_TYPE_USART 6;VM_DEBUGGER_TYPE_USBSERIAL 7;VM_DEBUGGER_TYPE VM_DEBUGGER_TYPE_HARDWARESERIAL;VM_DEBUG_AUTO_REPORTING;VM_DEBUG_READ_DIGITAL_PORTS 1;VM_DEBUG_READ_ANALOG_PINS 1;VM_DEBUG_MEM_CHECK 1;" IncludesDebug="1" IsCompiled="1" />
-    <Debug DebugEnabled="1" DebugMode="Full" AutoReportAnalogPins="1" AutoReportDigitalPins="1" AutoReportFreeMemory="1" LocalPort="COM3" LocalPortSpeed="9600" RemotePortSpeed="9600" RemotePort="Serial" />
+    <Compile CompilerErrors="0" ConfigurationName="Release" StopOnError="False" OptimiseLibs="True" OptimiseCore="True" BuildPath="C:\Users\francis-ccs\AppData\Local\VMicro\Arduino\Builds\sketch\mega2560" IsDebugStart="1" SketchName="sketch" ReportDigitalPins="0" ReportAnalogPins="0" ReportI2C="0" ReportFreeMemory="0" IncludeDebug="1" LastDebugPreProcessorDefinitions="VM_DEBUG;VM_DEBUG_ENABLE 1;VM_DEBUG_BANDWIDTH_THROTTLE_MS 80;VM_DEBUGGER_TYPE_HARDWARESERIAL 0;VM_DEBUGGER_TYPE_SOFTWARESERIAL 1;VM_DEBUGGER_TYPE_FASTSERIAL 2;VM_DEBUGGER_TYPE_USB 3;VM_DEBUGGER_TYPE_TEENSY 4;VM_DEBUGGER_TYPE_UART 5;VM_DEBUGGER_TYPE_USART 6;VM_DEBUGGER_TYPE_USBSERIAL 7;VM_DEBUGGER_TYPE VM_DEBUGGER_TYPE_HARDWARESERIAL;" IncludesDebug="1" IsCompiled="1" />
+    <Debug DebugEnabled="1" />
     <VCCodeModel>
       <VCCodeMacros />
     </VCCodeModel>
     <BreakPoints>
-      <BreakPoint Index="1" Name="sketch.ino, line 65 character 1" Id="06b710e7-1328-451f-a4a9-2a44878c3a1c" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="65" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='06b710e7-1328-451f-a4a9-2a44878c3a1c'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>58		#endif
-59	
-60		//! Wait 5sec to check the pin.
-61		delay(THREE_SECONDS);
-62	
-63	        #ifdef DEBUG
-64	          // Force the chosing to emulation device
---&gt;65	          digitalWrite(SELECT_BUTTON_1, LOW);
-66	        #endif
-67	        
-68		//! Check choice (default = Emulation).
-69			//! 1 - Emulation
-70			//! 0 - Real USB device
-71	        byte select_pin_read = digitalRead(SELECT_BUTTON_1);
-72		
-73	        if(select_pin_read == HIGH){
-74	
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="2" Name="sketch.ino, line 73 character 1" Id="26b316fe-9e6f-4afb-9750-74977e71eee3" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="73" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='26b316fe-9e6f-4afb-9750-74977e71eee3'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>66	        #endif
-67	        
-68		//! Check choice (default = Emulation).
-69			//! 1 - Emulation
-70			//! 0 - Real USB device
-71	        byte select_pin_read = digitalRead(SELECT_BUTTON_1);
-72		
---&gt;73	        if(select_pin_read == HIGH){
-74	
-75			//! Defines the generic pointer (EMULATION).
-76			//! This is where we setup the object pointer.
-77			EMULATION_DEVICE emulation_device(&amp;SERIAL_OUTPUT, &amp;joystick_report);
-78			generic_pointer = &amp;emulation_device;
-79			emulation_chosen = true;
-80	
-81		#ifdef DEBUG
-82			DEBUG_SERIAL.println("EMULATION CHOSEN");
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="3" Name="sketch.ino, line 82 character 1" Id="da59d992-008b-45e1-84b3-01e8d4212330" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="82" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='da59d992-008b-45e1-84b3-01e8d4212330'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>75			//! Defines the generic pointer (EMULATION).
-76			//! This is where we setup the object pointer.
-77			EMULATION_DEVICE emulation_device(&amp;SERIAL_OUTPUT, &amp;joystick_report);
-78			generic_pointer = &amp;emulation_device;
-79			emulation_chosen = true;
-80	
-81		#ifdef DEBUG
---&gt;82			DEBUG_SERIAL.println("EMULATION CHOSEN");
-83		#endif
-84	
-85		}else if(select_pin_read == LOW){
-86	
-87			//! Define the generic pointer (USB HOST DEVICE).
-88			//! This is where we setup the object pointer.
-89	
-90			USB_DEVICE usb_host_device(&amp;command_interpreter,
-91					&amp;packet_parser, &amp;joystick_report);
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="4" Name="sketch.ino, line 96 character 1" Id="d97a7da0-8b25-4f2b-9e53-ea294425bd90" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="96" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='d97a7da0-8b25-4f2b-9e53-ea294425bd90'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>89	
-90			USB_DEVICE usb_host_device(&amp;command_interpreter,
-91					&amp;packet_parser, &amp;joystick_report);
-92			generic_pointer = &amp;usb_host_device;
-93			usb_device_chosen = true;
-94	
-95		#ifdef DEBUG
---&gt;96			DEBUG_SERIAL.println("USB DEVICE CHOSEN");
-97		#endif
-98	
-99		}else{
-100	          
-101	          // The device had an internal issue. We reboot by force.
-102	        #ifdef DEBUG
-103		        DEBUG_SERIAL.println("FATAL ERROR REBOOTING.");
-104			#endif
-105	            reset_device();
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="5" Name="sketch.ino, line 109 character 1" Id="fb1cc2c4-d8a0-4e56-b9c1-678637c88a6c" Enabled="1" Message="Function: MEM CHECK" MessageTextType="0" PreProcessedMessage="Function: MEM CHECK" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="109" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='fb1cc2c4-d8a0-4e56-b9c1-678637c88a6c'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>102	        #ifdef DEBUG
-103		        DEBUG_SERIAL.println("FATAL ERROR REBOOTING.");
-104			#endif
-105	            reset_device();
-106		}
-107	        
-108	        #ifdef DEBUG  
---&gt;109	                int free_mem = memory_check();
-110	                DEBUG_SERIAL.print("FREE MEM: ");
-111	                DEBUG_SERIAL.println(free_mem);
-112		#endif
+      <BreakPoint Index="1" Name="Emulation_Device_Implementation.cpp, line 118 character 1" Id="22789882-a122-4a38-b833-7fcc86a77afc" Enabled="1" Message="Function: CREATE" MessageTextType="0" PreProcessedMessage="Function: CREATE" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\emulation_device_implementation.cpp" FileLine="118" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='22789882-a122-4a38-b833-7fcc86a77afc'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>111		//! Do this forever.
+112		while(1){
 113	
-114		//! Timer is initialized to keep track of the CPU idle time.
-115		TCCR1B = _BV(CS12) | _BV(CS11);
-116	
-117		#ifdef DEBUG
-118			DEBUG_SERIAL.println("USB INIT");
+114			//! Delay the sending of the frame.
+115			delay(500);
+116			
+117			//! Create a valid random USB Frame
+--&gt;118			_create_usb_report_frame();
+119			
+120			//! Send the valid report
+121			_send_usb_report_frame();
+122		}
+123	}
 </Source>
       </BreakPoint>
-      <BreakPoint Index="6" Name="sketch.ino, line 118 character 1" Id="7957bac1-f29e-4ef7-9c34-1d92eab6d9b8" Enabled="1" Message="Function: USB INIT" MessageTextType="0" PreProcessedMessage="Function: USB INIT" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="118" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='7957bac1-f29e-4ef7-9c34-1d92eab6d9b8'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>111	                DEBUG_SERIAL.println(free_mem);
-112		#endif
-113	
-114		//! Timer is initialized to keep track of the CPU idle time.
-115		TCCR1B = _BV(CS12) | _BV(CS11);
-116	
-117		#ifdef DEBUG
---&gt;118			DEBUG_SERIAL.println("USB INIT");
-119		#endif
-120	
-121	//=====&gt; STOPS HERE !!!
-122	
-123		#ifdef DEBUG
-124			DEBUG_SERIAL.println("MEM CHECK");
-125		#endif
-126	    //! Check memory integrity
-127	    if(memory_check() &lt;= EMPTY){
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="7" Name="sketch.ino, line 138 character 1" Id="dd2717d3-03ca-4776-ad35-adf53631cb9d" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="138" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='dd2717d3-03ca-4776-ad35-adf53631cb9d'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>131			error((void*)__LINE__, (void*)__func__);
-132	    }
-133	}
-134	
-135	void loop(){
-136	
-137	      // We are only testing the setup part of the running process
---&gt;138	      DEBUG_SERIAL.println("DEBUGGING STARTUP PROCEDURE");
-139		  delay(FIVE_SECONDS);
-140	      abort();
-141	  
-142		//! If the emulation device is chosen.
-143		//! Start the emulation process.
-144		if(emulation_chosen){
-145		#ifdef DEBUG
-146			DEBUG_SERIAL.println("STARTING EMULATION ENGINE");
-147		#endif
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="8" Name="sketch.ino, line 135 character 1" Id="fe767ac3-bc00-457e-972a-f2211ba1a804" Enabled="1" Message="Function: ENTERING LOOP" MessageTextType="0" PreProcessedMessage="Function: ENTERING LOOP" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="135" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='fe767ac3-bc00-457e-972a-f2211ba1a804'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>128		#ifdef DEBUG_LEDs
-129	    	        debug_api.set_leds(MEMORY_ERROR);
-130		#endif
-131			error((void*)__LINE__, (void*)__func__);
-132	    }
-133	}
-134	
---&gt;135	void loop(){
-136	
-137	      // We are only testing the setup part of the running process
-138	      DEBUG_SERIAL.println("DEBUGGING STARTUP PROCEDURE");
-139		  delay(FIVE_SECONDS);
-140	      abort();
-141	  
-142		//! If the emulation device is chosen.
-143		//! Start the emulation process.
-144		if(emulation_chosen){
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="9" Name="sketch.ino, line 131 character 1" Id="eda7c08d-e817-43a4-96eb-4238d5bf4b9d" Enabled="1" Message="Function: error" MessageTextType="0" PreProcessedMessage="Function: error" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="131" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='eda7c08d-e817-43a4-96eb-4238d5bf4b9d'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="0">
-        <Source>124			DEBUG_SERIAL.println("MEM CHECK");
-125		#endif
-126	    //! Check memory integrity
-127	    if(memory_check() &lt;= EMPTY){
-128		#ifdef DEBUG_LEDs
-129	    	        debug_api.set_leds(MEMORY_ERROR);
-130		#endif
---&gt;131			error((void*)__LINE__, (void*)__func__);
-132	    }
-133	}
-134	
-135	void loop(){
-136	
-137	      // We are only testing the setup part of the running process
-138	      DEBUG_SERIAL.println("DEBUGGING STARTUP PROCEDURE");
-139		  delay(FIVE_SECONDS);
-140	      abort();
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="10" Name="sketch.ino, line 173 character 1" Id="ac2a1a97-73f5-43c3-b28c-30e3dc1acfc3" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="173" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='a6a015b8-13b0-4d07-a725-9811c83a3d13'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>166	/**
-167	 * This function configures the device with NVRAM stored
-168	 * parameters.
-169	 * @param nvram_object - NVRAM
-170	 */
-171	void configure_device(NVRAM* nvram_object){
-172		
---&gt;173	        SERIAL_OUTPUT.begin(nvram_object-&gt;nv.serial1_speed);
-174		#ifdef DEBUG
-175			DEBUG_SERIAL.begin(nvram_object-&gt;nv.serial3_speed);
-176			DEBUG_SERIAL.println("BOOT SERIAL");
-177		#endif
-178	
-179		//! Buttons setup
-180		pinMode(nvram_object-&gt;nv.button_1,
-181					 nvram_object-&gt;nv.button1_setting);
-182		pinMode(nvram_object-&gt;nv.button_2,
+      <BreakPoint Index="2" Name="Emulation_Device_Implementation.cpp, line 121 character 1" Id="77aa9a15-fd3c-4c53-ae95-ce4af2c44673" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\emulation_device_implementation.cpp" FileLine="121" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='77aa9a15-fd3c-4c53-ae95-ce4af2c44673'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>114			//! Delay the sending of the frame.
+115			delay(500);
+116			
+117			//! Create a valid random USB Frame
+118			_create_usb_report_frame();
+119			
+120			//! Send the valid report
+--&gt;121			_send_usb_report_frame();
+122		}
+123	}
 </Source>
       </BreakPoint>
     </BreakPoints>

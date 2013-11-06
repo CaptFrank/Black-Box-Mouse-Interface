@@ -16,7 +16,8 @@ static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 #define Y_AXIS			3
 
 //! Default Constructor
-USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packet_parser){
+USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packet_parser,
+		joystick_report_t* joystick_report){
 	//! Sending mutex
 	_sending_mutex = false;
 
@@ -25,6 +26,7 @@ USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packe
 	_packet_id = EMPTY;
 	_packet_in_sending_queue = true;
 	_packet_size = 0;
+	_joystick_report = joystick_report;
 
 	this->_command_interpreter = command_interpreter;
 	this->_packet_parser = packet_parser;
@@ -85,14 +87,14 @@ void USB_DEVICE::_create_usb_report_frame(){
 #ifdef JOYSTICK_REPORT
 
 	for(register byte i = 0; i < NUM_AXES; i ++){
-		joystick_report.axis[i] = this->_packet_parser->_data.axis[i];
+		_joystick_report->axis[i] = this->_packet_parser->_data.axis[i];
 	}
 	for(register byte i = 0; i < NUM_BUTTONS/8; i ++){
-		joystick_report.button[i] = this->_packet_parser->_data.button[i];
+		_joystick_report->button[i] = this->_packet_parser->_data.button[i];
 	}
 
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&joystick_report;
+	_packet_buffer = (uint8_t* )_joystick_report;
 #endif
 }
 
@@ -108,7 +110,7 @@ void USB_DEVICE::_send_usb_report_frame(){
 #ifdef JOYSTICK_REPORT
 
 	//! Send the structure.
-	RF_SERIAL.write(_packet_buffer, sizeof(joystick_report));
+	RF_SERIAL.write(_packet_buffer, sizeof(_joystick_report));
 #endif
 
 	_packet_in_sending_queue = false;
@@ -320,7 +322,7 @@ void USB_DEVICE::_setup_usb_report_params(){
 
 #ifdef JOYSTICK_REPORT
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&joystick_report;
+	_packet_buffer = (uint8_t* )_joystick_report;
 #endif
 
 }

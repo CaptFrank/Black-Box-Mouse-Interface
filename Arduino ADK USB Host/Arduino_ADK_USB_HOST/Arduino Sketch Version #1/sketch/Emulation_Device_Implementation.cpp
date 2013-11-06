@@ -10,7 +10,7 @@
 static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
 //! Default Constructor
-EMULATION_DEVICE::EMULATION_DEVICE(){
+EMULATION_DEVICE::EMULATION_DEVICE(joystick_report_t* joystick_report){
 	//! Sending mutex
 	_sending_mutex = false;
 
@@ -22,8 +22,7 @@ EMULATION_DEVICE::EMULATION_DEVICE(){
 	_packet_size = 0;
 	_button = 0;
 
-	//! Set the random Seed
-	randomSeed(analogRead(0));
+	_joy = joystick_report;
 }
 
 //! Creates USB report frame
@@ -43,29 +42,22 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 
 #ifdef JOYSTICK_REPORT
 
-	for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
-		joystick_report.button[ind] |= 1 << _button;
-		SERIAL_OUTPUT.println("------");
-		SERIAL_OUTPUT.println(joystick_report.button[ind]);
-	}
+    uint8_t index = _button/8;
+    uint8_t bit = _button - 8*index;
+
+    _joy->button[index] |= 1 << bit;
 
     /* Move all of the axes */
-    for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
-    	joystick_report.axis[ind] = random(65535);
-		SERIAL_OUTPUT.println(joystick_report.axis[ind]);
+    for (uint8_t ind=0; ind<8; ind++) {
+    	_joy->axis[ind] += 10 * (ind+1);
     }
-	SERIAL_OUTPUT.println("------");
 
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t*)&joystick_report;
+	_packet_buffer = (uint8_t*)_joy;
 
     _button++;
-    if (_button >= NUM_BUTTONS) {
+    if (_button >= 40) {
        _button = 0;
-	   
-		for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
-			joystick_report.button[ind] = 0;
-		}
     }
 #endif
 
@@ -79,13 +71,13 @@ void EMULATION_DEVICE::_send_usb_report_frame(){
 #ifdef MOUSE_REPORT
 
 	//! Send the structure.
-	SERIAL_OUTPUT.write(_packet_buffer, sizeof(mouse_report_t));
+	SERIAL_OUTPUT.write(this->_packet_buffer, sizeof(mouse_report_t));
 #endif
 
 #ifdef JOYSTICK_REPORT
 
 	//! Send the structure.
-	SERIAL_OUTPUT.write(_packet_buffer, sizeof(joystick_report_t));
+	SERIAL_OUTPUT.write(this->_packet_buffer, sizeof(joystick_report_t));
 #endif
 
 	_packet_in_sending_queue = false;
@@ -101,23 +93,57 @@ word EMULATION_DEVICE::get_packet_id(){
 	return (word)_packet_id;
 }
 
+// turn a button on
+void setButton(void *joy, uint8_t button){
+
+	joystick_report_t* temp = (joystick_report_t*)joy;
+
+    uint8_t index = button/8;
+    uint8_t bit = button - 8*index;
+
+    temp->button[index] |= 1 << bit;
+}
+
+// turn a button off
+void clearButton(void *joy, uint8_t button){
+
+	joystick_report_t* temp = (joystick_report_t*)joy;
+
+    uint8_t index = button/8;
+    uint8_t bit = button - 8*index;
+
+    temp->button[index] &= ~(1 << bit);
+}
+
 //! Emulates a USB interface
 void EMULATION_DEVICE::emulate_usb(){
 
-	#ifdef DEBUG
-		SERIAL_OUTPUT.println("RUNNING EMULATION");
-	#endif
-	
 	//! Do this forever.
 	while(1){
 
-		//! Delay the sending of the frame.
-		delay(500);
-		
-		//! Create a valid random USB Frame
-		_create_usb_report_frame();
-		
-		//! Send the valid report
-		_send_usb_report_frame();
+		//! Check to see if a report needs to be sent, using
+		//! the idle rate.
+		if ((TCNT1 > ((4 * (F_CPU / 1024000)) * idle_rate)
+				|| TCNT1 > 0x7FFF) && idle_rate != 0) {
+ 
+			//! Needs to send
+			_sending_mutex = true;
+		}else{
+
+			//! Create a valid random USB Frame
+			_create_usb_report_frame();
+		}
+
+		//! If we need to send.
+		if(_sending_mutex){
+
+			//! Send the report.
+			//! and reset the timer.
+			_send_usb_report_frame();
+			TCNT1 = 0;
+		}
+
+		//! No need to send anymore.
+		_sending_mutex = false;
 	}
 }

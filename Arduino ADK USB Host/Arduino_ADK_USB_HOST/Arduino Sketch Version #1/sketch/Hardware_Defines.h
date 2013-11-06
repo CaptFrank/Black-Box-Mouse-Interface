@@ -34,7 +34,6 @@ extern "C" {
 #define GOOD				1
 #define FIVE_SECONDS		        5000
 #define THREE_SECONDS                   3000
-#define ONE_SECOND			1000
 #define EMPTY				0
 
 #define MAX_WARNINGS 		        10
@@ -63,9 +62,9 @@ extern "C" {
 //#endif
 
  //! Normal Output Stream
-#define SERIAL_OUTPUT		Serial
-#define PRINT				Serial.print	//! Serial API
-#define PRINTLN				Serial.println //! Serial API
+#define SERIAL_OUTPUT		        Serial1
+#define PRINT				Serial1.print	//! Serial API
+#define PRINTLN				Serial1.println //! Serial API
 
 //! RF output stream
 #define RF_SERIAL			Serial2
@@ -74,9 +73,9 @@ extern "C" {
 
 //! Debug Output Stream
 #ifdef DEBUG
-	#define DEBUG_SERIAL	Serial
-	#define DEBUG_PRINT 	Serial.print 	//! Serial API
-	#define DEBUG_PRINTLN 	Serial.println //! Serial API
+	#define DEBUG_SERIAL	        Serial
+	#define DEBUG_PRINT 	        Serial.print 	//! Serial API
+	#define DEBUG_PRINTLN 	        Serial.println //! Serial API
  #endif
 
  //! User Button Activation
