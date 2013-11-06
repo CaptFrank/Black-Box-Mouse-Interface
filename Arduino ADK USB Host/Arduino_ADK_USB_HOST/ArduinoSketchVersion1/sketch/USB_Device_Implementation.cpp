@@ -40,32 +40,15 @@ void USB_DEVICE::run_usb(){
 	 * and parses it into the structures.
 	 */
 
-	for(;;){
+	while(1){
 
-		//! Check to see if a report needs to be sent, using
-		//! the idle rate.
-		if ((TCNT1 > ((4 * (F_CPU / 1024000)) * idle_rate)
-				|| TCNT1 > 0x7FFF) && idle_rate != 0) {
-
-			//! Needs to send
-			_sending_mutex = true;
-		}else{
-
-			//! Create a valid random USB Frame
-			_create_usb_report_frame();
-		}
-
-		//! If we need to send.
-		if(_sending_mutex){
-
-			//! Send the report.
-			//! and reset the timer.
-			_send_usb_report_frame();
-			TCNT1 = 0;
-		}
-
-		//! No need to send anymore.
-		_sending_mutex = false;
+		delay(500);
+		//! Create a valid random USB Frame
+		_create_usb_report_frame();
+		
+		//! Send the report.
+		//! and reset the timer.
+		_send_usb_report_frame();
 	}
 }
 
@@ -73,10 +56,10 @@ void USB_DEVICE::run_usb(){
 void USB_DEVICE::_create_usb_report_frame(){
 #ifdef MOUSE_REPORT
 	#ifdef WATCH_ONLY
-		buttons_mouse = packet_parser._data[ROUTER].channels[BUTTONS].channel_data;
-		wheel_mouse = packet_parser._data[ROUTER].channels[WHEEL].channel_data;
-		x_axis_mouse = packet_parser._data[ROUTER].channels[X_AXIS].channel_data;
-		y_axis_mouse = packet_parser._data[ROUTER].channels[Y_AXIS].channel_data;
+		buttons_mouse = packet_parser._data[ROUTER].buttons;
+		wheel_mouse = packet_parser._data[ROUTER].wheel;
+		x_axis_mouse = packet_parser._data[ROUTER].x;
+		y_axis_mouse = packet_parser._data[ROUTER].y;
 	#endif
 	//! Reassign the structure to send.
 	_packet_buffer = (uint8_t* )&mouse_report;
@@ -303,24 +286,29 @@ void USB_DEVICE::_init_rf_network(){
 	 */
 }
 
-//! Sets up the parameters for the usb report to be sent
-void USB_DEVICE::_setup_usb_report_params(){
+// ----------------------------------------------------------------------
+// DEPRECATED
+// ----------------------------------------------------------------------
 
-#ifdef MOUSE_REPORT
-	//! Setup the structure values
-
-	buttons_mouse = &this->_packet_parser->_data[ROUTER].channels[BUTTONS].channel_data;
-	wheel_mouse = &this->_packet_parser->_data[ROUTER].channels[WHEEL].channel_data;
-	x_axis_mouse = &this->_packet_parser->_data[ROUTER].channels[X_AXIS].channel_data;
-	y_axis_mouse = &this->_packet_parser->_data[ROUTER].channels[Y_AXIS].channel_data;
-
-	//! Reassign the structure to send.
-	_packet_buffer = &mouse_report;
-#endif
-
-#ifdef JOYSTICK_REPORT
-	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&joystick_report;
-#endif
-
-}
+////! Sets up the parameters for the usb report to be sent
+//void USB_DEVICE::_setup_usb_report_params(){
+//
+//#ifdef MOUSE_REPORT
+	////! Setup the structure values
+//
+	//buttons_mouse = &this->_packet_parser->_data[ROUTER].buttons;
+	//wheel_mouse = &this->_packet_parser->_data[ROUTER].wheel;
+	//x_axis_mouse = &this->_packet_parser->_data[ROUTER].x;
+	//y_axis_mouse = &this->_packet_parser->_data[ROUTER].y;
+//
+	////! Reassign the structure to send.
+	//_packet_buffer = &mouse_report;
+//#endif
+//
+//#ifdef JOYSTICK_REPORT
+	////! Reassign the structure to send.
+	//_packet_buffer = (uint8_t* )&joystick_report;
+//#endif
+//
+//}
+//

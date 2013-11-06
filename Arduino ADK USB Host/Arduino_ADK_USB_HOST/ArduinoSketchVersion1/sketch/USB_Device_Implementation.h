@@ -213,9 +213,6 @@ class USB_DEVICE {
         //! The mutex for the packet in the queue
         byte _packet_in_sending_queue;
 
-        //! The sending packet mutex
-        byte _sending_mutex;
-
         //! Our command interpreter
         COMMAND_PARSER* _command_interpreter;
 

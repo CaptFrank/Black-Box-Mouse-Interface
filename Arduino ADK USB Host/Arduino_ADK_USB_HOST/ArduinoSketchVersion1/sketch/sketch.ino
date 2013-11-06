@@ -100,14 +100,18 @@ void setup(){
         #ifdef DEBUG
 	        DEBUG_SERIAL.println("FATAL ERROR REBOOTING.");
 		#endif
-            reset_device();
+		
+        #ifdef DEBUG_LEDs
+        	debug_api.set_leds(REBOOT_ERROR);
+        #endif
+        	error((void*)__LINE__, (void*)__func__);
 	}
         
         #ifdef DEBUG  
                 int free_mem = memory_check();
                 DEBUG_SERIAL.print("FREE MEM: ");
                 DEBUG_SERIAL.println(free_mem);
-	#endif
+		#endif
 
 	//! Timer is initialized to keep track of the CPU idle time.
 	TCCR1B = _BV(CS12) | _BV(CS11);
@@ -115,8 +119,6 @@ void setup(){
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("USB INIT");
 	#endif
-
-//=====> STOPS HERE !!!
 
 	#ifdef DEBUG
 		DEBUG_SERIAL.println("MEM CHECK");

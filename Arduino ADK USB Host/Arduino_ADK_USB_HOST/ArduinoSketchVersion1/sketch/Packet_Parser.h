@@ -130,10 +130,10 @@ class PACKET_PARSER {
 		struct packet_header_t					_header;
 		struct router_ack_info_t				_ack;
 		struct router_heartbeat_t 				_heartbeat;
-		struct router_status_info_t 			        _status;
-		struct router_debug_status_t 			        _debug;
-		struct router_sensor_enable_report_t 	                _en_sensors;
-		struct remote_radio_configs_t			        _radio_configs;
+		struct router_status_info_t 			_status;
+		struct router_debug_status_t 			_debug;
+		struct router_sensor_enable_report_t 	_en_sensors;
+		struct remote_radio_configs_t			_radio_configs;
 		struct error_message_t					_error;
 		struct number_of_sensors_t				_num_sensors;
 

@@ -4,7 +4,6 @@
  *  Created on: Jul 13, 2013
  *      Author: francispapineau
  */
-
 #include "Packet_Parser.h"
 
 //! Default constructor
@@ -17,7 +16,7 @@ void PACKET_PARSER::set_handler(PACKET_HANDLER* packet_handler){
 //! Parse the structures.
 void PACKET_PARSER::parse(void *arg, byte packet_id, byte packet_ver,
 		void *buf) {
-
+	
 	//! Process String
 	((PACKET_PARSER*) arg)->_parse(packet_id, packet_ver, buf);
 }
@@ -93,7 +92,6 @@ void PACKET_PARSER::_check_heartbeat() {
 		DEBUG_SERIAL.println(debug_info);
 #endif
 	}
-
 }
 
 //! Checks the router status.
@@ -194,29 +192,6 @@ void PACKET_PARSER::_get_sensor_configs(void* buf) {
 	//! Get the sensor info from the packet sent.
 	_alloc_mem((void*)&_configs, sizeof(sensor_configs_t),
 			(void*) buf_ptr);
-
-//	//! Check for the number of sensors packet
-//	packet_decoder.poll(); //! Checks for more incoming packets.
-//	_check_read_packet(SENSOR_NUMBER);
-//
-//	//! Check for the number of channels packet
-//	packet_decoder.poll(); //! Checks for more incoming packets.
-//	_check_read_packet(SENSOR_CHANNELS);
-//
-//	//! Sets _config.sensor_config[]
-//	_configs = new sensor_configs_t[_num_sensors.number_of_sensors];
-//
-//	//! Checks for memory space
-//	_check_memory_space(sizeof(_configs)); //! MEM space check.
-//
-//	//! Omit 0 since it is the router
-//	for (register byte i = 1; i < _num_sensors.number_of_sensors; i++) {
-//		packet_decoder.poll(); //! Checks for more incoming packets.
-//		_check_read_packet(SENSOR_CONFIGS);
-//		_alloc_mem((void*) &_configs[i - 1], sizeof(sensor_configs_t),
-//				(void*) buf_ptr);
-//	}
-//	configs = & _configs;
 }
 
 //! Gets the sensor data
@@ -230,36 +205,9 @@ void PACKET_PARSER::_get_sensor_data(void* buf) {
 	_check_memory_space(sizeof(_data));
 
 	//! Allocate the structures
+	//! This allocates the received buffer to a remote sensor data 
+	//! structure.
 	_alloc_mem((void*) &_data, sizeof(_data), (void*) buf_ptr);
-
-//	//! Checks for the number of sensors packet.
-//	packet_decoder.poll(); //! Checks for more incoming packets.
-//	_check_read_packet(SENSOR_NUMBER);
-//
-//	//! Checks for the number of channels packet
-//	packet_decoder.poll(); //! Checks for more incoming packets.
-//	_check_read_packet(SENSOR_CHANNELS);
-//
-//	for (register byte i = 1; i < _num_sensors.number_of_sensors; i++) {
-//		//! Checks for the remote sensor data packet.
-//		packet_decoder.poll(); //! Checks for more incoming packets.
-//		_check_read_packet(SENSOR_DATA);
-//
-//		_alloc_mem(&_data[i -1], sizeof(remote_sensor_data_t), buf_ptr);
-//
-//		//! Sets the _data[].channels[]
-//		_data[i -1].channels =
-//				new remote_sensor_data_t::channels_t[ _num_channels.number_of_channels];
-//
-//		//! Checks the memory space
-//		_check_memory_space(sizeof(_data));
-//
-//		for (register byte j = 1; i < _num_channels.number_of_channels; i++) {
-//			_alloc_mem(&_data[i -1].channels[j],
-//					sizeof(remote_sensor_data_t::channels_t), buf_ptr);
-//		}
-//	}
-//	data = &_data;
 }
 
 //! Allocate buffer

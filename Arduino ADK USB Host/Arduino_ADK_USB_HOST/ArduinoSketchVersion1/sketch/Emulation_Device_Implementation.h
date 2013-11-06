@@ -32,9 +32,6 @@
 		//! The mutex for the packet in the queue
 		byte _packet_in_sending_queue;
 
-		//! The sending packet mutex
-		byte _sending_mutex;
-
 		//! button toggling
 		byte _button;
 
@@ -57,16 +54,6 @@
 		 * This updates the packet id
 		 */
 		void _update_packet_id();
-
-		/**
-		 * This clears a button
-		 */
-		void clearButton(void* joy, unsigned char button);
-
-		/**
-		 * This sets a button
-		 */
-		void setButton(void* joy, unsigned char button);
 
 	public:
 

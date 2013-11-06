@@ -38,23 +38,19 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 	mouse_report.y = random(255);
 
 	//! Reassign the structure to send.
-	_packet_buffer = &mouse_report;
+	_packet_buffer = (uint8_t*)&mouse_report;
 #endif
 
 #ifdef JOYSTICK_REPORT
 
 	for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
 		joystick_report.button[ind] |= 1 << _button;
-		SERIAL_OUTPUT.println("------");
-		SERIAL_OUTPUT.println(joystick_report.button[ind]);
 	}
 
     /* Move all of the axes */
     for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
     	joystick_report.axis[ind] = random(65535);
-		SERIAL_OUTPUT.println(joystick_report.axis[ind]);
     }
-	SERIAL_OUTPUT.println("------");
 
 	//! Reassign the structure to send.
 	_packet_buffer = (uint8_t*)&joystick_report;
@@ -67,6 +63,16 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 			joystick_report.button[ind] = 0;
 		}
     }
+	#ifdef DEBUG
+		DEBUG_SERIAL.println("--------");
+		for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
+			DEBUG_SERIAL.println(joystick_report.button[ind]);
+		}
+		for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
+			    DEBUG_SERIAL.println(joystick_report.axis[ind]));
+		}
+		DEBUG_SERIAL.println("--------");
+	#endif
 #endif
 
 	_update_packet_id();

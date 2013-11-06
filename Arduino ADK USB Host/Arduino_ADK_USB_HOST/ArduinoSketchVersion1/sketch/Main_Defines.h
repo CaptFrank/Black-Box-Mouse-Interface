@@ -32,7 +32,7 @@
 	 * it allows the functions to return and terminate the process
 	 * as an error.
 	 */
-	static void error(void* line, void* function){
+	static inline void error(void* line, void* function){
 
 	//! Print if defined
 	#ifdef DEBUG_SERIAL
@@ -43,8 +43,10 @@
 		debug_api.set_leds(FATAL_ERROR);
 	#endif
 
-//		command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)PAUSE_ROUTER);
-//		usb_state_machine.move_state_to_local_error(usb_state_machine.current_state);
+	#ifndef DEBUG
+		command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)PAUSE_ROUTER);
+		usb_state_machine.move_state_to_local_error(usb_state_machine.current_state);
+	#endif
 
 	#ifdef SELECT_BUTTON_2
 		//! Infinite loop hangs the system

@@ -143,8 +143,16 @@ struct sensor_configs_t {
 struct remote_sensor_data_t {
 
 	byte sensor_id;
-	uint16_t axis[NUM_AXES];
-	uint8_t button[(NUM_BUTTONS+7)/8];
+	#ifdef MOUSE_REPORT
+		byte buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
+		int8_t x;		/*! X axis analog values (8bits) */
+		int8_t y;		/*! Y axis analog values (8bits) */
+		int8_t wheel;	/*! Wheel analog values. (8bits) */
+	#endif
+	#ifdef JOYSTICK_REPORT
+		uint16_t axis[NUM_AXES];
+		uint8_t button[(NUM_BUTTONS+7)/8];
+	#endif
 };
 
 // *************************************************
