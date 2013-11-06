@@ -11,9 +11,6 @@ static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
 //! Default Constructor
 EMULATION_DEVICE::EMULATION_DEVICE(){
-	//! Sending mutex
-	_sending_mutex = false;
-
 	//! Initializing the enviroment variables
 	_packet_buffer = EMPTY;
 	_packet_id = EMPTY;
@@ -69,7 +66,7 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 			DEBUG_SERIAL.println(joystick_report.button[ind]);
 		}
 		for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
-			    DEBUG_SERIAL.println(joystick_report.axis[ind]));
+			    DEBUG_SERIAL.println(joystick_report.axis[ind]);
 		}
 		DEBUG_SERIAL.println("--------");
 	#endif

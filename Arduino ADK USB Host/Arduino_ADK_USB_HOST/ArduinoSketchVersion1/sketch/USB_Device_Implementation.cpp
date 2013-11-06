@@ -17,8 +17,6 @@ static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 
 //! Default Constructor
 USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packet_parser){
-	//! Sending mutex
-	_sending_mutex = false;
 
 	//! Initializing the enviroment variables
 	_packet_buffer = EMPTY;
