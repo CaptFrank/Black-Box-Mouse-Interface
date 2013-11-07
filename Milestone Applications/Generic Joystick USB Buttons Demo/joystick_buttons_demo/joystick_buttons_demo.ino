@@ -8,29 +8,6 @@
  * to show that it is easy to interface with the physical.
  */
 
-<<<<<<< HEAD
-/**
- * These defines, define the sequential order of the button array.
- * These defines, define the port map for the buttons.
- */
-#define FIRST_BUTTON_PIN   5
-#define LAST_BUTTON_PIN    6
-
-/**
- * This defines the number of buttons and the number of axis.
- */
-#define NUM_BUTTONS	3
-#define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
-
-/**
- * This is the usb joystick structure that the USB PHY, 
- * will interpret.
- */
-typedef struct joyReport_t {
-    int16_t axis[NUM_AXES];
-    uint8_t button; // 8 buttons per byte
-} joyReport_t;
-=======
 #define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
 
 #define PIN_1           5

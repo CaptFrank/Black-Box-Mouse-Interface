@@ -7,8 +7,6 @@
 
 #include "Emulation_Device_Implementation.h"
 
-static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
-
 //! Default Constructor
 EMULATION_DEVICE::EMULATION_DEVICE(){
 	//! Initializing the enviroment variables
@@ -34,23 +32,30 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 	mouse_report.x = random(255);
 	mouse_report.y = random(255);
 
-	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t*)&mouse_report;
 #endif
 
 #ifdef JOYSTICK_REPORT
 
-	for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
-		joystick_report.button[ind] |= 1 << _button;
+	for(uint8_t ind = 0; ind <= NUM_BUTTONS/8; ind++){
+		joystick_report.button[ind] <<= 1;
+		joystick_report.button[ind] |= (uint8_t)1;
 	}
 
     /* Move all of the axes */
     for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
-    	joystick_report.axis[ind] = random(65535);
+    	joystick_report.axis[ind] = random(255);
     }
 
-	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t*)&joystick_report;
+	#ifdef DEBUG
+	DEBUG_SERIAL.println("--------");
+	for(uint8_t ind = 0; ind <= NUM_BUTTONS/8; ind++){
+		SERIAL_OUTPUT.println(joystick_report.button[ind]);
+	}
+	for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
+		SERIAL_OUTPUT.println(joystick_report.axis[ind]);
+	}
+	DEBUG_SERIAL.println("--------");
+	#endif
 
     _button++;
     if (_button >= NUM_BUTTONS) {
@@ -60,16 +65,6 @@ void EMULATION_DEVICE::_create_usb_report_frame(){
 			joystick_report.button[ind] = 0;
 		}
     }
-	#ifdef DEBUG
-		DEBUG_SERIAL.println("--------");
-		for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
-			DEBUG_SERIAL.println(joystick_report.button[ind]);
-		}
-		for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
-			    DEBUG_SERIAL.println(joystick_report.axis[ind]);
-		}
-		DEBUG_SERIAL.println("--------");
-	#endif
 #endif
 
 	_update_packet_id();
@@ -82,13 +77,13 @@ void EMULATION_DEVICE::_send_usb_report_frame(){
 #ifdef MOUSE_REPORT
 
 	//! Send the structure.
-	SERIAL_OUTPUT.write(_packet_buffer, sizeof(mouse_report_t));
+	SERIAL_OUTPUT.write((uint8_t*)&mouse_report, sizeof(mouse_report_t));
 #endif
 
 #ifdef JOYSTICK_REPORT
 
 	//! Send the structure.
-	SERIAL_OUTPUT.write(_packet_buffer, sizeof(joystick_report_t));
+	SERIAL_OUTPUT.write((uint8_t*)&joystick_report, sizeof(joystick_report_t));
 #endif
 
 	_packet_in_sending_queue = false;

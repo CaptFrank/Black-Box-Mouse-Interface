@@ -18,7 +18,13 @@
 
 	private:
 
+		#ifdef JOYSTICK_REPORT
 		joystick_report_t joystick_report;
+		#endif
+		
+		#ifdef MOUSE_REPORT
+		mouse_report_t mouse_report;
+		#endif
 		
 		//! The pointer to the data structure
 		byte* _packet_buffer;
