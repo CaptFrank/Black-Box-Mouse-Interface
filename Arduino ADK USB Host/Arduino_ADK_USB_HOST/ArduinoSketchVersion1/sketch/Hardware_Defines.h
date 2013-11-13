@@ -20,8 +20,10 @@ extern "C" {
 // #define MOUSE_REPORT						//! Only send the Mouse USB report
 #define JOYSTICK_REPORT					//! Only send the joystick USB report
 
-#define NUM_BUTTONS					4
+#define NUM_BUTTONS					8
+#define MAX_BUTTON_VAL				255
 #define NUM_AXES					3
+#define MAX_AXIS_VAL				65535
 
 //! This determines the sensor data maps
 #define WATCH_ONLY

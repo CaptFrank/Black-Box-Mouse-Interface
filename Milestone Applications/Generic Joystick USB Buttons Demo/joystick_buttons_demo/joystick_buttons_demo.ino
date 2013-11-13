@@ -8,41 +8,42 @@
  * to show that it is easy to interface with the physical.
  */
 
-<<<<<<< HEAD
-/**
- * These defines, define the sequential order of the button array.
- * These defines, define the port map for the buttons.
- */
-#define FIRST_BUTTON_PIN   5
-#define LAST_BUTTON_PIN    6
-
-/**
- * This defines the number of buttons and the number of axis.
- */
-#define NUM_BUTTONS	3
 #define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
 
-/**
- * This is the usb joystick structure that the USB PHY, 
- * will interpret.
- */
-typedef struct joyReport_t {
-    int16_t axis[NUM_AXES];
-    uint8_t button; // 8 buttons per byte
-} joyReport_t;
-=======
-#define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
+#define X_AXIS          0
+#define Y_AXIS          1
+#define Z_AXIS          2
 
-#define PIN_1           5
-#define PIN_2           6
-#define APIN_1          A7
+#define BUTTON_1        2
+#define BUTTON_2        3
+#define BUTTON_3        4
 
+#define GND             3
+#define VCC             4
+#define V3              5
+
+#define SAMPLE_SIZE     5
+
+#define MINVAL          265
+#define MAXVAL          402
 
 typedef struct joyReport_t {
     int8_t x;
     int8_t y;
     int8_t z;
-    uint8_t buttons; // 8 buttons per byte
+    union {
+      struct{
+        byte button_1 : 1;
+        byte button_2 : 1;
+        byte button_3 : 1;
+        byte button_4 : 1;
+        byte button_5 : 1;
+        byte button_6 : 1;
+        byte button_7 : 1;
+        byte button_8 : 1;
+      }buttons_bits;
+      uint8_t buttons_byte;
+    }buttons; // 8 buttons per byte
     uint8_t spacer;
 } joyReport_t;
 
@@ -55,33 +56,73 @@ void loop(void);
 // The setup loop
 void setup()
 { 
-    joyReport.x = (int8_t)100;
-    joyReport.y = (int8_t)100;
-    joyReport.z = (int8_t)100;
-    joyReport.buttons = 0;
+    joyReport.x = 0;
+    joyReport.y = 0;
+    joyReport.z = 0;
+    joyReport.buttons.buttons_byte = 0;
     
-    pinMode(PIN_1, INPUT);
-    pinMode(PIN_2, INPUT);
+    pinMode(X_AXIS, INPUT);
+    pinMode(Y_AXIS, INPUT);
+    pinMode(Z_AXIS, INPUT);
+    pinMode(BUTTON_1, INPUT);
+    pinMode(BUTTON_2, INPUT);
+    pinMode(BUTTON_3, INPUT);
+    
+    pinMode(GND, OUTPUT);
+    pinMode(VCC, OUTPUT);
+    pinMode(V3, OUTPUT);
+    
+    analogWrite(GND, 0);
+    analogWrite(VCC, 255);
+    analogWrite(V3, 255);
     
     Serial.begin(115200);
-    
-    // Making the ADC work faster... 16MHZ
-    bitClear(ADCSRA,ADPS0) ;
-    bitClear(ADCSRA,ADPS1) ;
-    bitSet(ADCSRA,ADPS2) ;
     
     delay(200);
 }
 
 void loop() 
 {
-    delay(200);
-    joyReport.buttons |= digitalRead(PIN_1) << 1;
-    joyReport.buttons |= digitalRead(PIN_2);
+    delay(100);
+
+    if(digitalRead(BUTTON_1) == HIGH){
+      joyReport.buttons.buttons_bits.button_1 &= 0;
+    } else {
+      joyReport.buttons.buttons_bits.button_1 |= 1;
+    }
     
-    joyReport.x = (int8_t) map(analogRead(APIN_1), 0, 1023, 0, 255);
+    if(digitalRead(BUTTON_2) == HIGH){
+      joyReport.buttons.buttons_bits.button_2 &= 0;
+    } else {
+      joyReport.buttons.buttons_bits.button_2 |= 1;
+    }
+    
+    if(digitalRead(BUTTON_3) == HIGH){
+      joyReport.buttons.buttons_bits.button_3 &= 0;
+    } else {
+      joyReport.buttons.buttons_bits.button_3 |= 1;
+    }
+    
+    joyReport.x = (int8_t) map(ReadAxis(X_AXIS), MINVAL, MAXVAL, -100, 100);
+    joyReport.y = (int8_t) map(ReadAxis(Y_AXIS), MINVAL, MAXVAL, -100, 100);
+    joyReport.z = (int8_t) map(ReadAxis(Z_AXIS), MINVAL, MAXVAL, -100, 100);
 
     Serial.write((uint8_t *)&joyReport, sizeof(joyReport_t));
-    joyReport.buttons = 0;
+    joyReport.buttons.buttons_byte = 0;
 
+}
+
+//
+// Read "sampleSize" samples and report the average
+//
+int ReadAxis(int axisPin)
+{
+  long reading = 0;
+  analogRead(axisPin);
+  delay(1);
+  for (int i = 0; i < SAMPLE_SIZE; i++)
+  {
+    reading += analogRead(axisPin);
+  }
+  return reading/SAMPLE_SIZE;
 }
