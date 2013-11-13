@@ -26,7 +26,7 @@
 
 #define AREF            3.3
 #define AMIN            0
-#define AMAX            4
+#define AMAX            3
 
 ADXL335 accel(X_AXIS, Y_AXIS, Z_AXIS, AREF);
 
