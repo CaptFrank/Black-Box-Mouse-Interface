@@ -1,5 +1,7 @@
 /* Arduino USB Joystick HID Buttons demo */
 
+#include "ADXL335.h"
+
 /**
  * This is the demonstration file... We use only the buttons.
  * This demo is simple, the digital input of a button array, 
@@ -22,10 +24,11 @@
 #define VCC             A4
 #define V3              A5
 
-#define SAMPLE_SIZE     5
+#define AREF            3.3
+#define AMIN            0
+#define AMAX            4
 
-#define MINVAL          265
-#define MAXVAL          402
+ADXL335 accel(X_AXIS, Y_AXIS, Z_AXIS, AREF);
 
 typedef struct joyReport_t {
     int8_t x;
@@ -85,6 +88,8 @@ void setup()
 void loop() 
 {
     delay(100);
+    
+    accel.update();
 
     if(digitalRead(BUTTON_1) == HIGH){
       joyReport.buttons.buttons_bits.button_1 &= 0;
@@ -104,26 +109,12 @@ void loop()
       joyReport.buttons.buttons_bits.button_3 |= 1;
     }
     
-    joyReport.x = (int8_t) map(ReadAxis(X_AXIS), MINVAL, MAXVAL, -100, 100);
-    joyReport.y = (int8_t) map(ReadAxis(Y_AXIS), MINVAL, MAXVAL, -100, 100);
-    joyReport.z = (int8_t) map(ReadAxis(Z_AXIS), MINVAL, MAXVAL, -100, 100);
+    joyReport.x = (int8_t) map(accel.getX(), AMIN, AMAX, -100, 100);
+    joyReport.y = (int8_t) map(accel.getY(), AMIN, AMAX, -100, 100);
+    joyReport.z = (int8_t) map(accel.getZ(), AMIN, AMAX, -100, 100);
 
     Serial.write((uint8_t *)&joyReport, sizeof(joyReport_t));
     joyReport.buttons.buttons_byte = 0;
 
 }
 
-//
-// Read "sampleSize" samples and report the average
-//
-int ReadAxis(int axisPin)
-{
-  long reading = 0;
-  analogRead(axisPin);
-  delay(1);
-  for (int i = 0; i < SAMPLE_SIZE; i++)
-  {
-    reading += analogRead(axisPin);
-  }
-  return reading/SAMPLE_SIZE;
-}
