@@ -30,9 +30,6 @@ void WATCHDOG::check_watchdog(void){
                         if ((millis() - _last_time_stamp) > PACKET_TIMEOUT) {
                         		_last_time_stamp = 1;
                                 _alarm_inverted = true;
-
-                                //! XXX we should save the last GPS data here in NVRAM
-                                //! for lost-model recovery purposes.
                         }
 
                 } else {
