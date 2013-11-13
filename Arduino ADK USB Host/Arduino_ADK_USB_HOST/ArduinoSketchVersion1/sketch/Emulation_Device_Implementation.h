@@ -17,14 +17,14 @@
  class EMULATION_DEVICE {
 
 	private:
-
-		#ifdef JOYSTICK_REPORT
-		joystick_report_t joystick_report;
-		#endif
 		
-		#ifdef MOUSE_REPORT
-		mouse_report_t mouse_report;
-		#endif
+	#ifdef JOYSTICK_REPORT
+		struct joystick_report_t joystick_report;
+	#endif
+				
+	#ifdef MOUSE_REPORT
+		struct mouse_report_t mouse_report;
+	#endif
 		
 		//! The pointer to the data structure
 		byte* _packet_buffer;
@@ -54,13 +54,18 @@
 		/**
 		 * Sends a usb report
 		 */
-		void _send_usb_report_frame();
+		void _send_usb_report_frame(void* report);
 
 		/**
 		 * This updates the packet id
 		 */
 		void _update_packet_id();
 
+		/**
+		 * Clears the structure
+		 */
+		void _clear_report();
+		
 	public:
 
 		/**

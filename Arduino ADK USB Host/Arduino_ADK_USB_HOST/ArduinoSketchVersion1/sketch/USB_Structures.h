@@ -20,6 +20,7 @@
  * This is used to be able to vary the data from the
  * input parameters such as buttons (Setting them HIGH/LOW).
  */
+
 typedef struct mouse_report_t{
 
 	byte buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
@@ -28,7 +29,7 @@ typedef struct mouse_report_t{
 	int8_t wheel;	/*! Wheel analog values. (8bits) */
 	uint8_t spacer;
 	
-}__attribute__((__packed__));
+}mouse_report_t;
 
 /// Defining a mouse_report_t structure.
 //extern mouse_report_t mouse_report;
@@ -43,13 +44,14 @@ typedef struct mouse_report_t{
  * This is used to be able to vary the data from the
  * input parameters such as buttons (Setting them HIGH/LOW).
  */
+
 typedef struct joystick_report_t{
 
-    uint8_t axis[NUM_AXES];
-    uint8_t button[(NUM_BUTTONS)/8]; // 8 buttons per byte
+ 	int16_t axis[NUM_AXES];
+	uint8_t button[(NUM_BUTTONS)/8]; // 8 buttons per byte
 	uint8_t spacer;
 	
-}__attribute__((__packed__));
+}joystick_report_t;
 
 
 /// Defining a joystick_report_t structure.
