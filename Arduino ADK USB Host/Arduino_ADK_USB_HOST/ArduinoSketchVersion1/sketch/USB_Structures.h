@@ -29,7 +29,7 @@ typede struct mouse_report_t{
 	int8_t wheel;	/*! Wheel analog values. (8bits) */
 	uint8_t spacer;
 	
-}mouse_report;
+};
 
 /// Defining a mouse_report_t structure.
 //extern mouse_report_t mouse_report;
@@ -51,7 +51,7 @@ typdef struct joystick_report_t{
 	uint8_t button[(NUM_BUTTONS)/8]; // 8 buttons per byte
 	uint8_t spacer;
 	
-}joystick_report;
+};
 
 
 /// Defining a joystick_report_t structure.
