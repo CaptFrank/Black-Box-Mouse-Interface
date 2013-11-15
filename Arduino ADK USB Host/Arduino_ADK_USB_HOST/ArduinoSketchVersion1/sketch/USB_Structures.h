@@ -47,7 +47,7 @@ typede struct mouse_report_t{
 
 typdef struct joystick_report_t{
 
- 	int16_t axis[NUM_AXES];
+ 	int8_t axis[NUM_AXES];
 	uint8_t button[(NUM_BUTTONS)/8]; // 8 buttons per byte
 	uint8_t spacer;
 	
