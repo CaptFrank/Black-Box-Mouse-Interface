@@ -138,7 +138,6 @@ void loop(){
       // We are only testing the setup part of the running process
       DEBUG_SERIAL.println("DEBUGGING STARTUP PROCEDURE");
 	  delay(ONE_SECOND);
-	  //abort();
 	#endif
 
 	//! If the emulation device is chosen.
