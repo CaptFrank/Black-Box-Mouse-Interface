@@ -21,12 +21,15 @@ COMMAND_PARSER::COMMAND_PARSER( NVRAM* nvram_object, PACKET_HANDLER* packet_deco
 //! Sends a command
 void COMMAND_PARSER::_send_cmd(byte packet_id, void *buf){
 
-	char* buffer = (char*) buf;
-
+	byte* buffer = (byte*) buf;
+	
+	
+	byte c = buffer[0];
+	
 	if(packet_id == USB_DEVICE_CMD){
 
 		//! Construct a command
-		_send_command((byte*)buffer[0]);
+		_send_command(buffer);
 	}
 }
 
@@ -177,7 +180,7 @@ void COMMAND_PARSER::send_cmd(byte packet_id, void *buf){
 //! Sends and checks a received message.
 void COMMAND_PARSER::_send_check(byte receive_packet_id, byte* command, int len){
 
-	RF_SERIAL.write(command, sizeof(command));
+	RF_SERIAL.write(command, len);
 
 	while(true){
 		//! Gets a packet to the handler and parser.

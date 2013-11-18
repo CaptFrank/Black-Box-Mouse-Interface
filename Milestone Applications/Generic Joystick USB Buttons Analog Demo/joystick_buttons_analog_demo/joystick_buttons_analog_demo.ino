@@ -15,9 +15,7 @@
 #define NUM_INPUTS      5
 
 typedef struct joyReport_t {
-    int8_t x;
-    int8_t y;
-    int8_t z;
+
     union {
       struct{
         byte button_1 : 1;
@@ -31,6 +29,9 @@ typedef struct joyReport_t {
       }buttons_bits;
       uint8_t buttons_byte;
     }buttons; // 8 buttons per byte
+    int8_t x;
+    int8_t y;
+    int8_t z;
     uint8_t spacer;
 } joyReport_t;
 

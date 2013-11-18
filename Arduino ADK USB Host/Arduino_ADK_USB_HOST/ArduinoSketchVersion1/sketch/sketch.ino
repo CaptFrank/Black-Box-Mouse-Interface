@@ -62,7 +62,7 @@ void setup(){
 
         #ifdef DEBUG
           // Force the chosing to emulation device
-          digitalWrite(SELECT_BUTTON_1, HIGH);
+          digitalWrite(SELECT_BUTTON_1, LOW);
         #endif
         
 	//! Check choice (default = Emulation).

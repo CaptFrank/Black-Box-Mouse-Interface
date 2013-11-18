@@ -6,6 +6,8 @@
 
 #include "ADXL335.h"
 
+#define SAMPLESIZE    5
+
 ADXL335::ADXL335(int pin_x, int pin_y, int pin_z, float aref)
 {
   _aref = aref;
@@ -135,9 +137,24 @@ float ADXL335::getTheta()
 
 void ADXL335::update()
 {
-  _xg = getGravity(analogRead(_pin_x));
-  _yg = getGravity(analogRead(_pin_y));
-  _zg = getGravity(analogRead(_pin_z));
+  _xg = getGravity(ReadAxis(_pin_x));
+  _yg = getGravity(ReadAxis(_pin_y));
+  _zg = getGravity(ReadAxis(_pin_z));
 }
 
+
+//
+// Read "sampleSize" samples and report the average
+//
+int ADXL335::ReadAxis(int axisPin)
+{
+  long reading = 0;
+  analogRead(axisPin);
+  delay(1);
+  for (int i = 0; i < SAMPLESIZE; i++)
+  {
+    reading += analogRead(axisPin);
+  }
+  return reading/SAMPLESIZE;
+}
 //end public methods

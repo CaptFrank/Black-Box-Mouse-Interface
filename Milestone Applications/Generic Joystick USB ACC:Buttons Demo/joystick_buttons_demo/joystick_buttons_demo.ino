@@ -12,21 +12,20 @@
 
 #define NUM_AXES	3	       // 8 axes, X, Y, Z, etc
 
-#define X_AXIS          A0
-#define Y_AXIS          A1
-#define Z_AXIS          A2
+#define X_AXIS          A5
+#define Y_AXIS          A4
+#define Z_AXIS          A3
 
 #define BUTTON_1        7
 #define BUTTON_2        8
 #define BUTTON_3        9
 
-#define GND             A3
-#define VCC             A4
-#define V3              A5
+#define GND             A2
+#define VCC             A0
 
 #define AREF            3.3
-#define AMIN            0
-#define AMAX            3
+#define AMIN            -100
+#define AMAX            100
 
 ADXL335 accel(X_AXIS, Y_AXIS, Z_AXIS, AREF);
 
@@ -64,6 +63,7 @@ void setup()
     joyReport.z = 0;
     joyReport.buttons.buttons_byte = 0;
     
+    
     pinMode(X_AXIS, INPUT);
     pinMode(Y_AXIS, INPUT);
     pinMode(Z_AXIS, INPUT);
@@ -74,11 +74,11 @@ void setup()
     
     pinMode(GND, OUTPUT);
     pinMode(VCC, OUTPUT);
-    pinMode(V3, OUTPUT);
     
     digitalWrite(GND, LOW);
     digitalWrite(VCC, HIGH);
-    digitalWrite(V3, HIGH);
+    
+    analogReference(EXTERNAL);
     
     Serial.begin(115200);
     
@@ -91,27 +91,20 @@ void loop()
     
     accel.update();
 
-    if(digitalRead(BUTTON_1) == HIGH){
-      joyReport.buttons.buttons_bits.button_1 &= 0;
-    } else {
-      joyReport.buttons.buttons_bits.button_1 |= 1;
-    }
+    joyReport.buttons.buttons_bits.button_1 = digitalRead(BUTTON_1);
+    joyReport.buttons.buttons_bits.button_2 = digitalRead(BUTTON_2);
+    joyReport.buttons.buttons_bits.button_3 = digitalRead(BUTTON_3);
     
-    if(digitalRead(BUTTON_2) == HIGH){
-      joyReport.buttons.buttons_bits.button_2 &= 0;
-    } else {
-      joyReport.buttons.buttons_bits.button_2 |= 1;
-    }
+    joyReport.x = (int8_t) (accel.getX()*100.0);
+    joyReport.y = (int8_t) (accel.getY()*100.0);
+    joyReport.z = (int8_t) (accel.getZ()*100.0);
     
-    if(digitalRead(BUTTON_3) == HIGH){
-      joyReport.buttons.buttons_bits.button_3 &= 0;
-    } else {
-      joyReport.buttons.buttons_bits.button_3 |= 1;
-    }
-    
-    joyReport.x = (int8_t) map(accel.getX(), AMIN, AMAX, -100, 100);
-    joyReport.y = (int8_t) map(accel.getY(), AMIN, AMAX, -100, 100);
-    joyReport.z = (int8_t) map(accel.getZ(), AMIN, AMAX, -100, 100);
+//    Serial.print("x :");
+//    Serial.println(joyReport.x);
+//    Serial.print("y :");
+//    Serial.println(joyReport.y);
+//    Serial.print("z :");
+//    Serial.println(joyReport.z);
 
     Serial.write((uint8_t *)&joyReport, sizeof(joyReport_t));
     joyReport.buttons.buttons_byte = 0;

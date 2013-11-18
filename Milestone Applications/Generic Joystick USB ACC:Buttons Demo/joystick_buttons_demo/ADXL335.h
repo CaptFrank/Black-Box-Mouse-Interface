@@ -26,6 +26,7 @@ class ADXL335
     float getPhi();
     float getTheta();
     void update();
+    int ReadAxis(int axisPin);
   private:
     float geta2d(float gx, float gy);
     float geta3d(float gx, float gy, float gz);

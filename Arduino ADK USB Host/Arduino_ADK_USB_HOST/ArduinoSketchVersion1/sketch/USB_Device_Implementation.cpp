@@ -97,6 +97,8 @@ void USB_DEVICE::_send_usb_report_frame(){
 
 //! Setup rf link
 void USB_DEVICE::_init_rf_network(){
+	char buffer[1];
+	
 	/**
 	 * Start the state machine and push the state to start.
 	 *
@@ -108,7 +110,8 @@ void USB_DEVICE::_init_rf_network(){
 	/**
 	 * Powers on the router.
 	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)POWERON_ROUTER);
+	buffer[0] = POWERON_ROUTER;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 	/**
 	 * Move the state machine to the ID wakeup router section of the
@@ -131,12 +134,14 @@ void USB_DEVICE::_init_rf_network(){
 	 * 	 1. send_wakeup_router();
 	 * 	 	-> receive_router_ack();
  	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)WAKEUP_ROUTER);
+	buffer[0] = WAKEUP_ROUTER;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 	/**
 	 * Makes sure that the device is ok and running
 	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)PING_ROUTER);
+	buffer[0] = PING_ROUTER;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 	/**
 	 * Move the state machine to the network status request state.
@@ -157,13 +162,15 @@ void USB_DEVICE::_init_rf_network(){
   	 * 	  2. request_router_status();
   	 * 	  	-> receive_router_status();
 	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_ROUTER_STATUS);
+	buffer[0] = REQUEST_ROUTER_STATUS;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 	/**
 	 * Gets the router configs. [Radio Bytes Config]
 	 * Gets the radio configuration registers in the transceiver.
 	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_ROUTER_CONFIG);
+	buffer[0] = REQUEST_ROUTER_CONFIG;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 	/**
 	 * Save them to eeprom address 200dec.
@@ -192,7 +199,8 @@ void USB_DEVICE::_init_rf_network(){
 	 *		3. request_net_map();
 	 *			-> receive_nmap();
 	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_NMAP);
+	buffer[0] = REQUEST_NMAP;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 	/**
 	 * Move the state machine to the network sensor configs.
@@ -226,7 +234,8 @@ void USB_DEVICE::_init_rf_network(){
 	 * 		5. get_user_enable_sensors();
 	 * 			-> set_flags(byte sensor flags);
 	 */
-	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*)REQUEST_SENSOR_ENABLE);
+	buffer[0] = REQUEST_SENSOR_ENABLE;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
 //#ifdef DEBUG
 //	char* text;
