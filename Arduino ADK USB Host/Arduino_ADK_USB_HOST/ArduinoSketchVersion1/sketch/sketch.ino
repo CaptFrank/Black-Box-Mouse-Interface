@@ -86,7 +86,7 @@ void setup(){
 
 		//! Define the generic pointer (USB HOST DEVICE).
 		//! This is where we setup the object pointer.
-		USB_DEVICE usb_host_device(&command_interpreter, &packet_parser);
+		USB_DEVICE usb_host_device(&command_interpreter, &packet_parser, &packet_decoder);
 		generic_pointer = &usb_host_device;
 		usb_device_chosen = true;
 

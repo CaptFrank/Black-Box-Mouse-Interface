@@ -142,7 +142,7 @@ class PACKET_PARSER {
 		 * the sensor network.
 		 */
 		struct sensor_configs_t			 		_configs;
-//		router_nmap_info_t						_nmap	[1];
+		struct router_nmap_info_t				_nmap;
 		struct remote_sensor_data_t 			_data;
 
 };

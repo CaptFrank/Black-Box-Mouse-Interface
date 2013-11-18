@@ -40,6 +40,12 @@ void PACKET_HANDLER::poll(void){
 
 	if(EMPTY == available){
 		_guard_bool = false;
+		
+		// if debug output a status message
+		#ifdef DEBUG
+		SERIAL_OUTPUT.println("EMPTY SERIAL BUFFER!!!");
+		#endif
+		
 		//check timeout watchdog and if over reset.
 		if((millis() - _last_received) > PACKET_TIMEOUT){
 			_phase = PACKET_WAIT_PHASE_1;

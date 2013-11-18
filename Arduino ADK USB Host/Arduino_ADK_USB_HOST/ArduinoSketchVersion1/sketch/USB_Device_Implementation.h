@@ -198,8 +198,6 @@
 class USB_DEVICE {
 
 	private:
-	
-		joystick_report_t joystick_report;
 		
     	//! The pointer to the data structure
 		byte* _packet_buffer;
@@ -218,6 +216,9 @@ class USB_DEVICE {
 
         //! Our Packet Parser
         PACKET_PARSER* _packet_parser;
+		
+		//! Our Packet decoder
+		PACKET_HANDLER* packet_handler;
 
         /**
          * Init the rf network
@@ -232,12 +233,12 @@ class USB_DEVICE {
 		/**
 		 * Creates a usb report frame to send
 		 */
-		void _create_usb_report_frame();
+		void* _create_usb_report_frame();
 
 		/**
 		 * Sends the usb report
 		 */
-		void _send_usb_report_frame();
+		void _send_usb_report_frame(void* report);
 
 	public:
 
@@ -245,7 +246,7 @@ class USB_DEVICE {
 		 * The class constructor
 		 */
 		USB_DEVICE(COMMAND_PARSER* command_interpreter,
-				PACKET_PARSER* packet_parser);
+				PACKET_PARSER* packet_parser, PACKET_HANDLER* packet_decoder);
 
 		/**
 		 * Runs the usb device

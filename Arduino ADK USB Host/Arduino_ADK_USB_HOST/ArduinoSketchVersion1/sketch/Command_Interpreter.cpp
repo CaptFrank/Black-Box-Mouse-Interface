@@ -23,7 +23,6 @@ void COMMAND_PARSER::_send_cmd(byte packet_id, void *buf){
 
 	byte* buffer = (byte*) buf;
 	
-	
 	byte c = buffer[0];
 	
 	if(packet_id == USB_DEVICE_CMD){
@@ -99,11 +98,11 @@ void COMMAND_PARSER::_send_command(byte* command){
 			break;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-//		case REQUEST_NMAP: 	// Request NMAP
-//			_send_check(ROUTER_NMAP, (byte*)this->nvram_object->nv._request_nmap,
-//					sizeof(this->nvram_object->nv._request_nmap));
-//			break;
+
+		case REQUEST_NMAP: 	// Request NMAP
+			_send_check(ROUTER_NMAP, (byte*)this->nvram_object->nv._request_nmap,
+					sizeof(this->nvram_object->nv._request_nmap));
+			break;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -156,11 +155,11 @@ void COMMAND_PARSER::_send_command(byte* command){
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-		case REQUEST_NUMBER_CHANNELS:
-			command_send = (byte*)this->nvram_object->nv._request_sensor_channels;
-			command_send[6] = command[1];
-			_send_check(SENSOR_CHANNELS, command_send, sizeof(this->nvram_object->nv._request_sensor_channels));
-			break;
+// 		case REQUEST_NUMBER_CHANNELS:
+// 			command_send = (byte*)this->nvram_object->nv._request_sensor_channels;
+// 			command_send[6] = command[1];
+// 			_send_check(SENSOR_CHANNELS, command_send, sizeof(this->nvram_object->nv._request_sensor_channels));
+// 			break;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

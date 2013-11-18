@@ -162,25 +162,17 @@ void PACKET_PARSER::_check_packet_header() {
 
 }
 
-////! Gets the nmap structure
-//static void PACKET_PARSER::_get_nmap(void* buf) {
-//
-//	//! Check for number of sensors packet
-//	packet_decoder.poll(); //! Checks for more incoming packets.
-//	_check_read_packet(SENSOR_NUMBER);
-//
-//	//! Sets _nmap[]
-//	_nmap = new router_nmap_info_t[_num_sensors.number_of_sensors];
-//
-//	//! Omit 0 since it is the router
-//	for (register byte i = 1; i < _num_sensors.number_of_sensors; i++) {
-//		//! Check for another packet
-//		packet_decoder.poll(); //! Checks for more incoming packets.
-//		_check_read_packet(ROUTER_NMAP);
-//		_alloc_mem(&_nmap[i - 1], sizeof(router_nmap_info_t), (void*)buf);
-//	}
-//	nmap = & _nmap;
-//}
+//! Gets the nmap structure
+void PACKET_PARSER::_get_nmap(void* buf) {
+
+	//! cast the void buffer to nmap struct.
+	router_nmap_info_t* buf_ptr;
+	buf_ptr = (router_nmap_info_t*) buf;
+	
+	//! Get the sensor info from the packet sent.
+	_alloc_mem((void*)&_nmap, sizeof(router_nmap_info_t),
+		(void*) buf_ptr);
+}
 
 //! Gets the sensor configs
 void PACKET_PARSER::_get_sensor_configs(void* buf) {
@@ -219,7 +211,7 @@ void PACKET_PARSER::_alloc_mem(void* dest_pointer, size_t size, void* buf) {
 void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 
 	char* buffer = (char*) buf;
-        char* debug_info;
+       char* debug_info;
 
 	//! Check if there is space left
 	_check_memory_space();
@@ -231,7 +223,7 @@ void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 	memcpy(&_header, buffer, sizeof(packet_header_t));
 	_check_packet_header();
 
-	buffer += sizeof(this->_header);
+	buffer += sizeof(packet_header_t);
 
 	switch (packet_id) {
 
@@ -250,10 +242,10 @@ void PACKET_PARSER::_parse(byte packet_id, byte packet_ver, void *buf) {
 		_check_router_status();
 		return;
 
-//	case ROUTER_NMAP:
-//		_check_memory_space(sizeof(router_nmap_info_t));
-//		_get_nmap((void*) buf);
-//		return;
+	case ROUTER_NMAP:
+		_check_memory_space(sizeof(router_nmap_info_t));
+		_get_nmap((void*) buf);
+		return;
 
 	case ROUTER_CONFIG:
 		_alloc_mem(&_radio_configs, sizeof(_radio_configs), buffer);

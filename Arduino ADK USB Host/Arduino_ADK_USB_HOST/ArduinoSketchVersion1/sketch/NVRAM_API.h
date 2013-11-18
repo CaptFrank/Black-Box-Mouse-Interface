@@ -97,7 +97,7 @@ class NVRAM {
 			uint8_t _request_sensor_config[7];
 			uint8_t _request_sensor_enable[7];
 			uint8_t _request_sensor_channel[10];
-//			uint8_t _request_nmap[4];
+			uint8_t _request_nmap[4];
 			uint8_t _request_router_status[6];
 			uint8_t _pause_sensor[7];
 			uint8_t _pause_router[7];

@@ -39,7 +39,7 @@ const NVRAM::nv_data_t nvram_default PROGMEM = {
 		{'c', 'o', 'n', 'f', 'i', 'g', SPACE},
 		{'e', 'n', 'a', 'b', 'l', 'e', 'd'},
 		{'c', 'h', 'a', 'n', 'n', 'e', 'l', 's', ':', SPACE},
-//		{'n', 'm', 'a', 'p'},
+		{'n', 'm', 'a', 'p'},
 		{'s', 't', 'a', 't', 'u', 's'},
 		{'p', 'a', 'u', 's', 'e', ':', SPACE},
 		{'p', 'a', 'u', 's', 'e', ':', '0'},

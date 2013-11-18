@@ -16,7 +16,7 @@ static byte idle_rate = 500 / 4; // see HID1_11.pdf sect 7.2.4
 #define Y_AXIS			3
 
 //! Default Constructor
-USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packet_parser){
+USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packet_parser, PACKET_HANDLER* packet_handler){
 
 	//! Initializing the enviroment variables
 	_packet_buffer = EMPTY;
@@ -26,41 +26,33 @@ USB_DEVICE::USB_DEVICE(COMMAND_PARSER* command_interpreter, PACKET_PARSER* packe
 
 	this->_command_interpreter = command_interpreter;
 	this->_packet_parser = packet_parser;
-}
-
-void USB_DEVICE::run_usb(){
-
-	//! Sets up the rf network
-	_init_rf_network();
-
-	/**
-	 * Once the state machine gets here, it polls for data from the router
-	 * and parses it into the structures.
-	 */
-
-	while(1){
-
-		delay(500);
-		//! Create a valid random USB Frame
-		_create_usb_report_frame();
-		
-		//! Send the report.
-		//! and reset the timer.
-		_send_usb_report_frame();
-	}
+	this->_packet_decoder = packet_handler;
 }
 
 //! Create a valid packet to send in USB format
-void USB_DEVICE::_create_usb_report_frame(){
+void* USB_DEVICE::_create_usb_report_frame(){
+	
+	// recreate the structures we need.
+#ifdef JOYSTICK_REPORT
+	joystick_report_t joystick_report;
+#endif
+			
 #ifdef MOUSE_REPORT
-	#ifdef WATCH_ONLY
-		buttons_mouse = packet_parser._data[ROUTER].buttons;
-		wheel_mouse = packet_parser._data[ROUTER].wheel;
-		x_axis_mouse = packet_parser._data[ROUTER].x;
-		y_axis_mouse = packet_parser._data[ROUTER].y;
-	#endif
+	union mouse_report_union_t {
+		mouse_report_t mouse_report;
+		unit8_t mouse_report_bytes [sizeof(mouse_report_t)];
+	}mouse_report_union;
+#endif
+
+	// Defining a generic pointer to return
+	void* report;
+	
+#ifdef MOUSE_REPORT
+	for (register byte i = 0; i < sizeof(mouse_report_t); i++){
+		mouse_report_union.mouse_report_bytes[i] = packet_parser._data[i];
+	}
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&mouse_report;
+	report = &mouse_report_union.mouse_report;
 #endif
 
 #ifdef JOYSTICK_REPORT
@@ -73,23 +65,25 @@ void USB_DEVICE::_create_usb_report_frame(){
 	}
 
 	//! Reassign the structure to send.
-	_packet_buffer = (uint8_t* )&joystick_report;
+	report = &joystick_report;
 #endif
+
+	return report;
 }
 
 //! Sends a USB report frame
-void USB_DEVICE::_send_usb_report_frame(){
+void USB_DEVICE::_send_usb_report_frame(void* report){
 
 #ifdef MOUSE_REPORT
 
 	//! Send the structure.
-	RF_SERIAL.write(_packet_buffer, sizeof(mouse_report));
+	SERIAL_OUTPUT.write(report, sizeof(mouse_report_t));
 #endif
 
 #ifdef JOYSTICK_REPORT
 
 	//! Send the structure.
-	RF_SERIAL.write(_packet_buffer, sizeof(joystick_report));
+	SERIAL_OUTPUT.write(report, sizeof(joystick_report_t));
 #endif
 
 	_packet_in_sending_queue = false;
@@ -237,18 +231,18 @@ void USB_DEVICE::_init_rf_network(){
 	buffer[0] = REQUEST_SENSOR_ENABLE;
 	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
-//#ifdef DEBUG
-//	char* text;
-//	DEBUG_SERIAL.print("[NOTICE]: The following sensors are active:\n");
-//	for(register byte i = 0; i < sizeof(byte); i ++){
-//		byte bitmask = 0b11111110;
-//		bitmask = ~bitmask;
-//		byte sensor =  this->_packet_parser._en_sensors & bitmask;
-//		if(sensor > 0)
-//			sprintf(text, "\t - Sensor [%d] : ACTIVE\n", (i+1));
-//			DEBUG_SERIAL.print(text);
-//	}
-//#endif
+#ifdef DEBUG
+	char* text;
+	DEBUG_SERIAL.print("[NOTICE]: The following sensors are active:\n");
+	for(register byte i = 0; i < sizeof(byte); i ++){
+		byte bitmask = 0b11111110;
+		bitmask = ~bitmask;
+		byte sensor =  this->_packet_parser._en_sensors & bitmask;
+		if(sensor > 0)
+			sprintf(text, "\t - Sensor [%d] : ACTIVE\n", (i+1));
+			DEBUG_SERIAL.print(text);
+	}
+#endif
 	/**
 	 * Move the state machine to the network sensor configs.
 	 *
@@ -293,29 +287,42 @@ void USB_DEVICE::_init_rf_network(){
 	 */
 }
 
-// ----------------------------------------------------------------------
-// DEPRECATED
-// ----------------------------------------------------------------------
+// Run the usb live
+void USB_DEVICE::run_usb(){
 
-////! Sets up the parameters for the usb report to be sent
-//void USB_DEVICE::_setup_usb_report_params(){
-//
-//#ifdef MOUSE_REPORT
-	////! Setup the structure values
-//
-	//buttons_mouse = &this->_packet_parser->_data[ROUTER].buttons;
-	//wheel_mouse = &this->_packet_parser->_data[ROUTER].wheel;
-	//x_axis_mouse = &this->_packet_parser->_data[ROUTER].x;
-	//y_axis_mouse = &this->_packet_parser->_data[ROUTER].y;
-//
-	////! Reassign the structure to send.
-	//_packet_buffer = &mouse_report;
-//#endif
-//
-//#ifdef JOYSTICK_REPORT
-	////! Reassign the structure to send.
-	//_packet_buffer = (uint8_t* )&joystick_report;
-//#endif
-//
-//}
-//
+	#ifdef DEBUG
+		DEBUG_SERIAL.println("RUNNING RF INIT()");
+	#endif
+	//! Sets up the rf network
+	_init_rf_network();
+
+	/**
+	 * Once the state machine gets here, it polls for data from the router
+	 * and parses it into the structures.
+	 */
+
+	#ifdef DEBUG
+		DEBUG_SERIAL.println("RUNNING USB LIVE");
+	#endif
+	
+	while(1){
+		
+		//! delay  the sending of the frame.
+		delay(100);
+		
+		// Poll the serial line
+		this->packet_handler->poll();
+		
+		//! Create a valid random USB Frame
+		void* report = _create_usb_report_frame();
+		
+		//Poll the serial line
+		this->packet_handler->poll();
+		
+		//! Send the valid report.
+		_send_usb_report_frame(&report);
+		
+		//Poll the serial line
+		this->packet_handler->poll();
+	}
+}

@@ -104,15 +104,15 @@ struct router_debug_status_t {
 	word router_tx_count;
 };
 #endif
-//// *************************************************
-////! We need to make this for each sensor
-////! Network map object
-//struct router_nmap_info_t {
-//
-//	byte sensor_id;
-//	byte sensor_address;
-//
-//};
+// *************************************************
+//! We need to make this for each sensor
+//! Network map object
+struct router_nmap_info_t {
+
+	byte max_sensor_id;
+	byte max_sensor_address;
+
+};
 
 // *************************************************
 struct router_sensor_enable_report_t {

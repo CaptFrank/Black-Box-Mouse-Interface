@@ -54,17 +54,17 @@ void* EMULATION_DEVICE::_create_usb_report_frame(){
 	
 	
 	#ifdef DEBUG
-	SERIAL_OUTPUT.println("--------");
+	DEBUG_SERIAL.println("--------");
 	
 	for(uint8_t ind = 0; ind < NUM_BUTTONS/8; ind++){
 		word test_word = joystick_report.button[ind];
-		SERIAL_OUTPUT.println(test_word);
+		DEBUG_SERIAL.println(test_word);
 	}
 	for (uint8_t ind = 0; ind < NUM_AXES; ind++) {
 		word test_word_axis = joystick_report.axis[ind];
-		SERIAL_OUTPUT.println(test_word_axis);
+		DEBUG_SERIAL.println(test_word_axis);
 	}
-	SERIAL_OUTPUT.println("--------");
+	DEBUG_SERIAL.println("--------");
 	#endif
 	
 	report = &joystick_report;
@@ -107,7 +107,7 @@ word EMULATION_DEVICE::get_packet_id(){
 void EMULATION_DEVICE::emulate_usb(){
 
 	#ifdef DEBUG
-		SERIAL_OUTPUT.println("RUNNING EMULATION");
+		DEBUG_SERIAL.println("RUNNING EMULATION");
 	#endif
 	
 	//! Do this forever.
