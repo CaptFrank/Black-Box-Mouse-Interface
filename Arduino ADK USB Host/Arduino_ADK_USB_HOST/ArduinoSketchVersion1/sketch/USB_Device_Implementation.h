@@ -218,7 +218,7 @@ class USB_DEVICE {
         PACKET_PARSER* _packet_parser;
 		
 		//! Our Packet decoder
-		PACKET_HANDLER* packet_handler;
+		PACKET_HANDLER* _packet_handler;
 
         /**
          * Init the rf network
