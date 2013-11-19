@@ -110,7 +110,7 @@ class NVRAM {
 			uint8_t _request_sensor_number[7];
 			uint8_t _request_sensor_channels[7];
 
-		};
+		}__attribute__((__packed__));
 
 		//! The exported structure definition.
 		struct nv_data_t nv;
