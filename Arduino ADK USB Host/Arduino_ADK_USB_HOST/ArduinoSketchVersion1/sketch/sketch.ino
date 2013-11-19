@@ -104,7 +104,7 @@ void setup(){
         #ifdef DEBUG_LEDs
         	debug_api.set_leds(REBOOT_ERROR);
         #endif
-        	error((void*)__LINE__, (void*)__func__);
+        	error();
 	}
         
         #ifdef DEBUG  
@@ -128,7 +128,7 @@ void setup(){
 	#ifdef DEBUG_LEDs
     	        debug_api.set_leds(MEMORY_ERROR);
 	#endif
-		error((void*)__LINE__, (void*)__func__);
+		error();
     }
 }
 
@@ -162,7 +162,7 @@ void loop(){
 	#ifdef DEBUG_LEDs
 		debug_api.set_leds(FATAL_ERROR);
 	#endif
-		error((void*)__LINE__, (void*)__func__);
+		error();
 	}
 }
 

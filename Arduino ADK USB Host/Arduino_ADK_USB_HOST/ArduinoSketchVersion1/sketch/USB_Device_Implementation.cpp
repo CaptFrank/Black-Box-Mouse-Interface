@@ -251,7 +251,7 @@ void USB_DEVICE::_init_rf_network(){
 #ifdef DEBUG_LEDs
 		debug_api.set_leds(MEMORY_ERROR);
 #endif
-		error((void*) __LINE__, (void*) __func__);
+		error();
 	}
 
 	/**

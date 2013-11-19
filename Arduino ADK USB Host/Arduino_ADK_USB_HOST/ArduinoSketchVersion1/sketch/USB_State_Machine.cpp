@@ -54,7 +54,7 @@ void USB_STATE_MACHINE::move_state_to_network_error(byte previous_state){
 	#ifdef DEBUG_LEDs
 		debug_api.set_leds(FATAL_ERROR);
 	#endif
-	error((void*)__LINE__, (void*)__func__);
+	error();
 }
 
 //! Move to network reset
@@ -65,7 +65,7 @@ void USB_STATE_MACHINE::move_state_to_network_reset(){
 	#ifdef DEBUG_LEDs
 		debug_api.set_leds(FATAL_ERROR);
 	#endif
-	error((void*)__LINE__, (void*)__func__);
+	error();
 }
 
 //! Gets the current state

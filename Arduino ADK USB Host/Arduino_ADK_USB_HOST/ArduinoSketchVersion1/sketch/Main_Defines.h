@@ -32,12 +32,8 @@
 	 * it allows the functions to return and terminate the process
 	 * as an error.
 	 */
-	static inline void error(void* line, void* function){
+	static inline void error(){
 
-	//! Print if defined
-	#ifdef DEBUG_SERIAL
-		printf("[ERROR]: %d, %s", (int)line,  (char*)function);
-	#endif
 	#ifdef DEBUG_LEDs
 		debug_api.print_error(FATAL, FATAL_ERROR);
 		debug_api.set_leds(FATAL_ERROR);

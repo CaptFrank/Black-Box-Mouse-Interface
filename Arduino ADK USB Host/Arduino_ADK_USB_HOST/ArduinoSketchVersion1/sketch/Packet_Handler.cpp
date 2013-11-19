@@ -43,7 +43,7 @@ void PACKET_HANDLER::poll(void){
 		
 		// if debug output a status message
 		#ifdef DEBUG
-		SERIAL_OUTPUT.println("EMPTY SERIAL BUFFER!!!");
+			SERIAL_OUTPUT.println("EMPTY SERIAL BUFFER!");
 		#endif
 		
 		//check timeout watchdog and if over reset.
@@ -58,11 +58,11 @@ void PACKET_HANDLER::poll(void){
 			_move_state(RF_SERIAL.read());
 		}
 			_last_received = millis();
+			#ifdef DEBUG
+			//! Bang for every packet received.
+			DEBUG_SERIAL.print("+");
+			#endif
 	}
-	#ifdef DEBUG
-		//! Bang for every packet received.
-		DEBUG_SERIAL.print("!");
-	#endif
 }
 
 /**

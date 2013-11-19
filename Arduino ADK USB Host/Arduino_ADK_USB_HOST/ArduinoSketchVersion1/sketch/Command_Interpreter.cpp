@@ -190,11 +190,15 @@ void COMMAND_PARSER::_send_check(byte receive_packet_id, byte* command, int len)
 			return;
 
 		//! If the packet is timed out.
-		else if ((millis() - packet_decoder->_last_received) > PACKET_TIMEOUT)
+		else if ((millis() - packet_decoder->_last_received) > PACKET_TIMEOUT){
 		#ifdef DEBUG_LEDs
 			debug_api.set_leds(FATAL_ERROR);
 		#endif
+		#ifdef DEBUG
+			DEBUG_SERIAL.println("NETWORK ERROR - Rebooting");
+		#endif
 			usb_state_machine->move_state_to_network_error(usb_state_machine->current_state);
-			error((void*)__LINE__, (void*)__func__);
+			error();
+		}
 	}
 }

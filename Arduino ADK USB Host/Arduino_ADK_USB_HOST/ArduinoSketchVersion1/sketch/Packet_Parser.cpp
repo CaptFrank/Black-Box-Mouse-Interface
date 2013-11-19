@@ -27,7 +27,7 @@ bool PACKET_PARSER::_check_read_packet(byte packet_type){
 #ifdef DEBUG_LEDs
 		debug_api.set_leds(REBOOT_ERROR);
 #endif
-		error((void*) __LINE__, (void*) __func__);
+		error();
 	}
 	return true;
 }
@@ -40,7 +40,7 @@ void PACKET_PARSER::_check_memory_space(size_t mem_space) {
 #ifdef DEBUG_LEDs
 		debug_api.set_leds(MEMORY_ERROR);
 #endif
-	error((void*) __LINE__, (void*) __func__);
+	error();
 }
 
 //! Check packet integrity
@@ -63,7 +63,7 @@ void PACKET_PARSER::_check_ack() {
 #ifdef DEBUG_LEDs
 		debug_api.set_leds(REBOOT_ERROR);
 #endif
-		error((void*) __LINE__, (void*) __func__);
+		error();
 	}
 }
 
