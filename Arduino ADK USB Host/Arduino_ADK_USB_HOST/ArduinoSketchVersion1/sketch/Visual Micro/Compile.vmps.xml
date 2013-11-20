@@ -32,7 +32,27 @@
           <MessageVariable Name="millis()" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="2" Name="Command_Interpreter.cpp, line 24 character 1" Id="e08a4f70-5c96-4845-a9b2-b5e372e71c8e" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="24" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='e08a4f70-5c96-4845-a9b2-b5e372e71c8e'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+      <BreakPoint Index="2" Name="sketch.ino, line 160 character 1" Id="f177e209-6a56-49be-83a6-290c463de119" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\sketch.ino" FileLine="160" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='f177e209-6a56-49be-83a6-290c463de119'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>153		}else if(usb_device_chosen){
+154		#ifdef DEBUG
+155			DEBUG_SERIAL.println("STARTING USB DEVICE ENGINE");
+156			delay(ONE_SECOND);
+157		#endif
+158			//! Cast to the USB device pointer
+159			((USB_DEVICE*) generic_pointer)-&gt;run_usb();
+--&gt;160			
+161		}else{ //! Something went wrong.
+162		#ifdef DEBUG_LEDs
+163			debug_api.set_leds(FATAL_ERROR);
+164		#endif
+165			error();
+166		}
+167	}
+168	
+169	/**
+</Source>
+      </BreakPoint>
+      <BreakPoint Index="3" Name="Command_Interpreter.cpp, line 24 character 1" Id="e08a4f70-5c96-4845-a9b2-b5e372e71c8e" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="24" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='e08a4f70-5c96-4845-a9b2-b5e372e71c8e'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
         <Source>17	
 18	/**
 19	 * buf. definition: [Target Address][Command Predicate][Arg 1][Arg 2]
@@ -52,7 +72,7 @@
 33	}
 </Source>
       </BreakPoint>
-      <BreakPoint Index="3" Name="Command_Interpreter.cpp, line 26 character 1" Id="b01d52c7-dc5b-4511-83e4-e30cb12797b4" Enabled="1" Message="{c}" MessageTextType="2" PreProcessedMessage="{0}" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="26" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='b01d52c7-dc5b-4511-83e4-e30cb12797b4'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+      <BreakPoint Index="4" Name="Command_Interpreter.cpp, line 26 character 1" Id="08d869dc-9523-443f-8c5e-79d3b1db4219" Enabled="1" Message="{c}" MessageTextType="2" PreProcessedMessage="{0}" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="26" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='08d869dc-9523-443f-8c5e-79d3b1db4219'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
         <Source>19	 * buf. definition: [Target Address][Command Predicate][Arg 1][Arg 2]
 20	 */
 21	//! Sends a command
@@ -75,7 +95,7 @@
           <MessageVariable Name="c" Index="1" />
         </MessageVariables>
       </BreakPoint>
-      <BreakPoint Index="4" Name="Command_Interpreter.cpp, line 69 character 1" Id="b81fd988-dcb0-4121-b4e5-36871392ca96" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="69" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='b81fd988-dcb0-4121-b4e5-36871392ca96'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+      <BreakPoint Index="5" Name="Command_Interpreter.cpp, line 69 character 1" Id="d782d24c-0cb9-4b43-9e9c-ebd6c8146923" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="69" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='d782d24c-0cb9-4b43-9e9c-ebd6c8146923'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
         <Source>62				command_send = (byte*)this-&gt;nvram_object-&gt;nv._poweroff_sensor;
 63				command_send[5] = command[1];
 64				_send_check(ROUTER_HEARTBEAT, command_send, sizeof(this-&gt;nvram_object-&gt;nv._poweroff_sensor));
@@ -95,47 +115,7 @@
 78				break;
 </Source>
       </BreakPoint>
-      <BreakPoint Index="5" Name="Command_Interpreter.cpp, line 182 character 1" Id="16ec616c-a36f-4561-9b5b-8790a68982cb" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="182" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='16ec616c-a36f-4561-9b5b-8790a68982cb'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>175		//! Process String
-176		_send_cmd(packet_id, buf);
-177	}
-178	
-179	//! Sends and checks a received message.
-180	void COMMAND_PARSER::_send_check(byte receive_packet_id, byte* command, int len){
-181	
---&gt;182		RF_SERIAL.write(command, len);
-183	
-184		while(true){
-185			//! Gets a packet to the handler and parser.
-186			this-&gt;packet_decoder-&gt;poll();
-187	
-188			//! Check to see the packet id
-189			if(packet_decoder-&gt;_packet_id == receive_packet_id)
-190				return;
-191	
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="6" Name="Command_Interpreter.cpp, line 186 character 1" Id="2087166f-a75e-425b-a7d3-768501b083e7" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="186" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='2087166f-a75e-425b-a7d3-768501b083e7'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>179	//! Sends and checks a received message.
-180	void COMMAND_PARSER::_send_check(byte receive_packet_id, byte* command, int len){
-181	
-182		RF_SERIAL.write(command, len);
-183	
-184		while(true){
-185			//! Gets a packet to the handler and parser.
---&gt;186			this-&gt;packet_decoder-&gt;poll();
-187	
-188			//! Check to see the packet id
-189			if(packet_decoder-&gt;_packet_id == receive_packet_id)
-190				return;
-191	
-192			//! If the packet is timed out.
-193			else if ((millis() - packet_decoder-&gt;_last_received) &gt; PACKET_TIMEOUT){
-194			#ifdef DEBUG_LEDs
-195				debug_api.set_leds(FATAL_ERROR);
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="7" Name="Packet_Handler.cpp, line 39 character 1" Id="dc8e64b9-fe15-4376-849f-9b3928cda502" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\packet_handler.cpp" FileLine="39" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='dc8e64b9-fe15-4376-849f-9b3928cda502'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+      <BreakPoint Index="6" Name="Packet_Handler.cpp, line 39 character 1" Id="8bed77b6-e690-423e-ba99-cc1c7b11fc29" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\packet_handler.cpp" FileLine="39" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='8bed77b6-e690-423e-ba99-cc1c7b11fc29'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
         <Source>32	/**
 33	 * Poll loop reading is data from the Serial device.
 34	 */
@@ -155,7 +135,7 @@
 48			
 </Source>
       </BreakPoint>
-      <BreakPoint Index="8" Name="Packet_Handler.cpp, line 46 character 1" Id="afa38937-3917-4050-b337-e1865d0d6af8" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\packet_handler.cpp" FileLine="46" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='afa38937-3917-4050-b337-e1865d0d6af8'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+      <BreakPoint Index="7" Name="Packet_Handler.cpp, line 46 character 1" Id="bcaf2396-1b3b-42a4-ae5f-124984197075" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\packet_handler.cpp" FileLine="46" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='bcaf2396-1b3b-42a4-ae5f-124984197075'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
         <Source>39		available = RF_SERIAL.available();
 40	
 41		if(EMPTY == available){
@@ -175,77 +155,24 @@
 55			// new data
 </Source>
       </BreakPoint>
-      <BreakPoint Index="9" Name="Command_Interpreter.cpp, line 189 character 1" Id="6423df6c-d3b4-4394-9754-a1faf7ce0713" Enabled="1" Message="{receive_packet_id}" MessageTextType="2" PreProcessedMessage="{0}" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="189" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='6423df6c-d3b4-4394-9754-a1faf7ce0713'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>182		RF_SERIAL.write(command, len);
-183	
-184		while(true){
-185			//! Gets a packet to the handler and parser.
-186			this-&gt;packet_decoder-&gt;poll();
-187	
-188			//! Check to see the packet id
---&gt;189			if(packet_decoder-&gt;_packet_id == receive_packet_id)
-190				return;
-191	
-192			//! If the packet is timed out.
-193			else if ((millis() - packet_decoder-&gt;_last_received) &gt; PACKET_TIMEOUT){
-194			#ifdef DEBUG_LEDs
-195				debug_api.set_leds(FATAL_ERROR);
-196			#endif
-197			#ifdef DEBUG
-198				DEBUG_SERIAL.println("NETWORK ERROR - Rebooting");
-</Source>
-        <MessageVariables>
-          <MessageVariable Name="receive_packet_id" Index="1" />
-        </MessageVariables>
-      </BreakPoint>
-      <BreakPoint Index="10" Name="Main_Defines.h, line 43 character 1" Id="cf9c3e13-f140-4a31-abe2-de8de1c0ba25" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\main_defines.h" FileLine="43" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='cf9c3e13-f140-4a31-abe2-de8de1c0ba25'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>36	
-37		#ifdef DEBUG_LEDs
-38			debug_api.print_error(FATAL, FATAL_ERROR);
-39			debug_api.set_leds(FATAL_ERROR);
-40		#endif
-41	
-42		#ifndef DEBUG
---&gt;43			command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)PAUSE_ROUTER);
-44			usb_state_machine.move_state_to_local_error(usb_state_machine.current_state);
-45		#endif
-46	
-47		#ifdef SELECT_BUTTON_2
-48			//! Infinite loop hangs the system
-49			for(;;);
-50		#endif
-51			reset_device();
-52		}
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="11" Name="Main_Defines.h, line 49 character 1" Id="d61179fb-aa9f-4b1b-a3e4-dfb4878aeaf5" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\main_defines.h" FileLine="49" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='d61179fb-aa9f-4b1b-a3e4-dfb4878aeaf5'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>42		#ifndef DEBUG
-43			command_interpreter.send_cmd(USB_DEVICE_CMD, (void*)PAUSE_ROUTER);
-44			usb_state_machine.move_state_to_local_error(usb_state_machine.current_state);
-45		#endif
-46	
-47		#ifdef SELECT_BUTTON_2
-48			//! Infinite loop hangs the system
---&gt;49			for(;;);
-50		#endif
-51			reset_device();
-52		}
-53	
-54	#endif
-</Source>
-      </BreakPoint>
-      <BreakPoint Index="12" Name="Command_Interpreter.cpp, line 201 character 1" Id="266a6174-9928-488a-8dfa-4d44f1adc5d0" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="201" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='266a6174-9928-488a-8dfa-4d44f1adc5d0'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
-        <Source>194			#ifdef DEBUG_LEDs
-195				debug_api.set_leds(FATAL_ERROR);
-196			#endif
-197			#ifdef DEBUG
-198				DEBUG_SERIAL.println("NETWORK ERROR - Rebooting");
-199			#endif
-200				usb_state_machine-&gt;move_state_to_network_error(usb_state_machine-&gt;current_state);
---&gt;201				error();
-202			}
-203		}
-204	}
+      <BreakPoint Index="8" Name="Command_Interpreter.cpp, line 195 character 1" Id="214eccb3-e075-4cc7-a432-6bcc41b7c504" Enabled="1" Message="" MessageTextType="2" PreProcessedMessage="" Condition="" ConditionType="1" CurrentHits="0" File="z:\black-box-mouse-interface\arduino adk usb host\arduino_adk_usb_host\arduinosketchversion1\sketch\command_interpreter.cpp" FileLine="195" FileColumn="1" FunctionName="" FunctionLineOffset="1" FunctionColumnOffset="1" HitCountTarget="1" HitCountType="1" Language="AVR GCC" LocationType="3" Tag="&lt;vmbp Id='214eccb3-e075-4cc7-a432-6bcc41b7c504'/&gt;" Type="1" ToString="System.__ComObject" BreakWhenHit="1">
+        <Source>188			this-&gt;packet_decoder-&gt;poll();
+189			
+190			//! Check to see the packet id
+191			if(packet_decoder-&gt;_packet_id == receive_packet_id){
+192				return;
+193	
+194			//! If the packet is timed out.
+--&gt;195			}else if (timeout_variable == EMPTY){
+196				#ifdef DEBUG_LEDs
+197					debug_api.set_leds(FATAL_ERROR);
+198				#endif
+199				#ifdef DEBUG
+200					DEBUG_SERIAL.println("NETWORK ERROR - REBOOTING");
+201				#endif
+202				usb_state_machine-&gt;move_state_to_network_error(usb_state_machine-&gt;current_state);
+203				error();
+204			}else{
 </Source>
       </BreakPoint>
     </BreakPoints>
