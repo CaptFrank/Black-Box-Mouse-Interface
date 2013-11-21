@@ -212,6 +212,13 @@ void USB_DEVICE::_init_rf_network(){
 	buffer[0] = REQUEST_SENSOR_ENABLE;
 	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
 
+	/**
+	 * Checks the size of the packets that need to be sent
+	 */
+	buffer[0] = REQUEST_SENSOR_CONFIG;
+	this->_command_interpreter->send_cmd(USB_DEVICE_CMD, (void*) &buffer);
+
+
 #ifdef DEBUG
 	char* text;
 	DEBUG_SERIAL.print("[NOTICE]: The following sensors are active:\n");
