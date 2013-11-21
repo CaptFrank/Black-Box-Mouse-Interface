@@ -71,7 +71,7 @@ struct router_ack_info_t {
 struct router_heartbeat_t {
 
 	byte router_mode;
-	byte battery_voltage;
+	word battery_voltage;
 };
 
 // *************************************************
@@ -84,11 +84,10 @@ struct router_status_info_t {
 
 	byte error_count;
 	byte debug_enable_flag;
-	byte battery_voltage;
+	word battery_voltage;
 
 	// device info
 	byte router_address;
-	String router_id;
 };
 
 #ifdef ROUTER_COMS_DEBUG
@@ -111,6 +110,7 @@ struct router_nmap_info_t {
 
 	byte max_sensor_id;
 	byte max_sensor_address;
+	byte enabled_sensors;
 
 };
 
@@ -133,16 +133,17 @@ struct error_message_t {
 //! This is the top level structure
 struct sensor_configs_t {
 
-	//! For each sensor
-		byte sensor_id;
-		byte data_pkt_size;
+	/*
+	 * regardless of the sensors, the router only sends
+	 * the size of the packets the base station.
+	 */
+	u8 data_pkt_size;
 };
 
 // *************************************************
 //! The container for each sensor input.
 struct remote_sensor_data_t {
 
-	byte sensor_id;
 	#ifdef MOUSE_REPORT
 		byte buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
 		int8_t x;		/*! X axis analog values (8bits) */
@@ -158,7 +159,7 @@ struct remote_sensor_data_t {
 // *************************************************
 //! This is the remote radio configs.
 struct remote_radio_configs_t {
-	word values[8];
+	byte values[4];
 };
 
 // *************************************************

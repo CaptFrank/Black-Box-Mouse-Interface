@@ -180,25 +180,34 @@ void COMMAND_PARSER::send_cmd(byte packet_id, void *buf){
 void COMMAND_PARSER::_send_check(byte receive_packet_id, byte* command, int len){
 
 	RF_SERIAL.write(command, len);
-
+	uint8_t timeout_variable = PACKET_TIMEOUT_WATCH;
+	
 	while(true){
+
 		//! Gets a packet to the handler and parser.
 		this->packet_decoder->poll();
-
+		
 		//! Check to see the packet id
-		if(packet_decoder->_packet_id == receive_packet_id)
+		if(packet_decoder->_packet_id == receive_packet_id){
 			return;
 
 		//! If the packet is timed out.
-		else if ((millis() - packet_decoder->_last_received) > PACKET_TIMEOUT){
-		#ifdef DEBUG_LEDs
-			debug_api.set_leds(FATAL_ERROR);
-		#endif
-		#ifdef DEBUG
-			DEBUG_SERIAL.println("NETWORK ERROR - Rebooting");
-		#endif
+		}else if (timeout_variable == EMPTY){
+			#ifdef DEBUG_LEDs
+				debug_api.set_leds(FATAL_ERROR);
+			#endif
+			#ifdef DEBUG
+				DEBUG_SERIAL.println("NETWORK ERROR - REBOOTING");
+			#endif
 			usb_state_machine->move_state_to_network_error(usb_state_machine->current_state);
 			error();
+		}else{
+			#ifdef DEBUG
+				DEBUG_SERIAL.println("PING BACK ERROR");
+				DEBUG_SERIAL.println(timeout_variable);
+			#endif
+			timeout_variable--;
+			
 		}
 	}
 }

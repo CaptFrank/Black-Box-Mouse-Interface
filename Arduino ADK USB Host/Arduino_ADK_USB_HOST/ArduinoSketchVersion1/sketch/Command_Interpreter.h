@@ -35,7 +35,7 @@
 #define REQUEST_NUMBER_SENSORS		0x13 	// Get the number of sensors
 #define REQUEST_NUMBER_CHANNELS		0x14	// Gets the number of channels for one sensor
 
-#define PACKET_TIMEOUT				1000 //!5sec
+#define PACKET_TIMEOUT_WATCH		0x0A //!10sec
 
 /**
  * This class handles commands sent from the sensor nodes to the

@@ -5,10 +5,14 @@
  *      Author: Francis Papineau
  */
 
+#include "network_protocol.h"
+
 #ifndef NETWORK_UTILITY_H_
 #define NETWORK_UTILITY_H_
 
 typedef struct {
+
+	void (*send_heartbeat)();
 
 	void (*ping_ack)();
 	void (*ping_nack)();
@@ -21,6 +25,13 @@ typedef struct {
 	void (*send_error)(u8 error_code);
 
 }sensor_network_utilities_t;
+
+union {
+
+	packet_header_t _header;
+
+
+} packets;
 
 /**
  * Sends a ping acknowledgment.

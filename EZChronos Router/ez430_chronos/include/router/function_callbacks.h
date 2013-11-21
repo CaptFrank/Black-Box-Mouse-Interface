@@ -34,6 +34,7 @@ u8* rx_function_callback_router(void* ID);
 
 /**
  * This function sends data to the sensor node specified.
+ * Concatenates the header and the message and the tail.
  */
 void tx_function_callback_router(void* ID, void* packet, u8 size);
 
