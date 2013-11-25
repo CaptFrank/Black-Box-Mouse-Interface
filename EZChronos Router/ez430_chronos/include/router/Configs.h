@@ -13,13 +13,13 @@
  * of mouse or joystick selection.
  */
 
+#define MAX_SENSORS				2
 
 #define ROUTER_ADDRESS 			0
 #define MAX_SENSOR_ADDRESS 		8
-
 #define BYTE_LENGTH				8
 
-
+/*************************************************/
 // The general configs of the watch.
 union {
 
@@ -51,6 +51,8 @@ union {
 	u8 watch_configs_flags;
 }watch_configs;
 
+/*************************************************/
+
 union {
 
 	// the bit structure.
@@ -70,6 +72,8 @@ union {
 	// Each flag is now defined as a byte
 	u8 sensor_enable_flags;
 }enabled_sensors;
+
+/*************************************************/
 
 union {
 
@@ -91,21 +95,19 @@ union {
 	u8 sensor_flags;
 }network_sensors;
 
-
+/*************************************************/
 
 typedef struct mouse_report_t{
 
-	byte buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
-	int8_t x;		/*! X axis analog values (8bits) */
-	int8_t y;		/*! Y axis analog values (8bits) */
-	int8_t wheel;	/*! Wheel analog values. (8bits) */
+	u8 buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
+	u8 x;		/*! X axis analog values (8bits) */
+	u8 y;		/*! Y axis analog values (8bits) */
+	u8 wheel;	/*! Wheel analog values. (8bits) */
 
 	// We need this to separate our data between the packets.
-	uint8_t spacer;
+	u8 spacer;
 
 }mouse_report;;
-
-
 
 /**
  * Creating a structure of variable data.
@@ -115,12 +117,27 @@ typedef struct mouse_report_t{
 
 typedef struct joystick_report_t{
 
- 	int16_t axis[NUM_AXES]; // 1 axis with 16 bits.
-	uint8_t button[(NUM_BUTTONS)/8]; // 8 buttons per byte
+ 	u16 axis[NUM_AXES]; // 1 axis with 16 bits.
+	u8 button[(NUM_BUTTONS)/8]; // 8 buttons per byte
 
 	// We need this to separate our data between the packets.
-	uint8_t spacer;
+	u8 spacer;
 
 }joystick_report;
+
+/*************************************************/
+
+// The base station ID
+linkID_t base_station_id;
+
+// The sensor IDs
+linkID_t sensors[MAX_SENSORS];
+
+struct sensor_info{
+
+	u8 sensor_node_id;
+	u32 sensor_runtime;
+	u16 packet_id;
+}sensor_info;
 
 #endif /* CONFIGS_H_ */

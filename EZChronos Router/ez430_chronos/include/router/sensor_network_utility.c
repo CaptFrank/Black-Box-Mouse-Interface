@@ -10,9 +10,6 @@
 void ping_ack(){
 }
 
-void ping_nack(){
-}
-
 void send_config(){
 }
 

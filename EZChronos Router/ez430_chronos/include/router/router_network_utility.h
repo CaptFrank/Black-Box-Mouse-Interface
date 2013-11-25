@@ -7,6 +7,15 @@
 
 #include "network_protocol.h"
 
+#define ROUTER				0
+#define PACKET_VER			A
+
+#define PACKET_PREAMBLE		'+'
+
+// Atomic mutex
+bspIState_t intState;
+
+// Function pointer table.
 typedef struct {
 
 	// Sends a router heartbeat packet
@@ -85,4 +94,7 @@ void send_sensor_enabled();
 
 // sends the number of sensors active
 void send_sensor_number();
+
+// Internal sending function
+void _send_packet(void* packet_ptr, u8 size);
 
