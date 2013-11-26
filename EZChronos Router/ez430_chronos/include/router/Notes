@@ -5,6 +5,8 @@
 		- Timer ISR for the watchdog timer
 		- ISR for receiving, transmitting
 		- Reverse Engineer the LinkID for the RFBee
+		- Create an AP with the Watch
+		- Remove BlueRobin code
 		
 		- Create an application to receive information from the chronos and display it on screen
 		

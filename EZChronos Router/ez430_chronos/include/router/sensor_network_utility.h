@@ -9,8 +9,35 @@
 #define NETWORK_UTILITY_H_
 
 #include "network_protocol.h"
-#include "Configs.h"
+#include "nwk_types.h"
 
+/**
+ * These are the possible commands the router
+ * can send.
+ */
+#define PING				0x01
+#define CONFIG_REQ			0x02
+#define STATUS_REQ			0x03
+
+/**
+ * The sync command is structured as follows:
+ * 	- 0x04, time to sync, heartbeat freq
+ */
+#define SYNC				0x04
+#define START				0x05
+#define STOP				0x06
+#define ABORT				0x07
+#define ERROR				0x08
+
+#define HEARTBEAT_FREQ		0x01
+#define PACKET_FORMAT		0x03
+#define COMMAND_PREAMBLE	'@'
+#define COMMAND_TAIL		0x0A
+
+/**
+ * This is the function table for the sensor
+ * callbacks.
+ */
 typedef struct {
 
 	void (*send_heartbeat)(linkID_t id);
@@ -27,12 +54,6 @@ typedef struct {
 
 }sensor_network_utilities_t;
 
-union {
-
-	packet_header_t _header;
-
-
-} packets;
 
 /**
  * Sends a ping acknowledgment.
@@ -77,5 +98,10 @@ void send_abort(linkID_t id);
  * an abort packet to stop the sensor engine.
  */
 void send_error(u8 error_code, linkID_t id);
+
+/**
+ * the internal used function to send a message
+ */
+void _send_command(linkID_t id, u8* cmd, size_t size);
 
 #endif /* NETWORK_UTILITY_C_ */

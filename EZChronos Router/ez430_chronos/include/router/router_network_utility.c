@@ -20,6 +20,7 @@
 // sends a heartbeat
 void send_hearbeat(){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 	// Gets the battery value
 	packet._heartbeat.battery_voltage = sBatt.voltage;
@@ -27,6 +28,7 @@ void send_hearbeat(){
 	// Gets the router mode
 	packet._heartbeat.router_mode = get_router_mode();
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send out the address and size
@@ -36,11 +38,13 @@ void send_hearbeat(){
 // sends an ack signal
 void ping_ack(){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// Ack is true
 	packet._info.ack = 0x01;
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send out the address and the size
@@ -50,6 +54,7 @@ void ping_ack(){
 // sends the router status
 void send_router_status(){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// set the router status
@@ -69,6 +74,7 @@ void send_router_status(){
 	// Sets the router address.
 	packet._status.router_address = ROUTER_ADDRESS;
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send out packet and size
@@ -76,9 +82,9 @@ void send_router_status(){
 }
 
 // sends the sensor status
-void send_sensor_status(){
+void send_sensor_data(){
 
-
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// Get the appropriate structure pointer.
@@ -91,6 +97,7 @@ void send_sensor_status(){
 		packet._remote_data.data_len = sizeof(joystick_report);
 	}
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send the structure.
@@ -101,11 +108,13 @@ void send_sensor_status(){
 // sends the router configs
 void send_router_configs(){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// Get radio configs
 	packet._radio.values = simpliciti_ed_address;
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send the packet along with the size;
@@ -116,6 +125,7 @@ void send_router_configs(){
 // sends the network map
 void send_nmap(){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// Set max number of sensors
@@ -125,6 +135,7 @@ void send_nmap(){
 	// Get the sensors that are enabled.
 	packet._nmap.en_sensors = enabled_sensors;
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send out the packet and size.
@@ -134,6 +145,7 @@ void send_nmap(){
 // sends the sensors enabled
 void send_sensor_enabled(){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// Get the sensors in network
@@ -142,6 +154,7 @@ void send_sensor_enabled(){
 	// Get enabled sensors
 	packet._sensor_en.sensor_config_enable = enabled_sensors;
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// The number sensors is set by the check sensors function.
@@ -168,6 +181,7 @@ void send_sensor_number(){
  */
 void _send_packet(void* packet_ptr, u8 size){
 
+	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
 	// Construct the header
@@ -191,6 +205,7 @@ void _send_packet(void* packet_ptr, u8 size){
 	memcpy(packet_byte_array[1], (void*)&packet._header, size_of_header);
 	memcpy(packet_byte_array[size_of_header], packet_ptr, size);
 
+	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
 	// Send the packet

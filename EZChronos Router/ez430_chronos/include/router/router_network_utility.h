@@ -28,17 +28,12 @@ typedef struct {
 	void (*send_router_status)();
 
 	// Send the specific sensor status
-	void (*send_sensor_status)(u8 sensor_id);
+	void (*send_sensor_data)();
 
 	// Send the router configs.
 	void (*send_router_configs)();
 
-	// Send the specified sensor configs.
-	void (*send_sensor_configs)(u8 sensor_id);
-
-	// Sends the network map...
-	// Sends the max sensor address and the max
-	// Sensor count
+	// Sends the network map
 	void (*send_nmap)();
 
 	// Sends the enabled sensors
@@ -81,7 +76,7 @@ void ping_ack();
 void send_router_status();
 
 // sends the sensor status
-void send_sensor_status();
+void send_sensor_data();
 
 // sends the router configs
 void send_router_configs();
