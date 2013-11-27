@@ -193,8 +193,13 @@ void _send_packet(void* packet_ptr, u8 size){
 
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
+    // Get radio ready. Wakes up in IDLE state.
+    SMPL_Ioctl(IOCTL_OBJ_RADIO, IOCTL_ACT_RADIO_AWAKE, 0);
+
 	// Send the packet
 	SMPL_SendOpt(base_station_id, (u8*)&packet_byte_array,
 			packet._header.message_size, SMPL_TXOPTION_ACKREQ);
 
+    // Put radio back to SLEEP state
+    SMPL_Ioctl(IOCTL_OBJ_RADIO, IOCTL_ACT_RADIO_SLEEP, 0);
 }

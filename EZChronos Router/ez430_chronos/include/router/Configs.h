@@ -107,7 +107,7 @@ typedef struct mouse_report_t{
 	// We need this to separate our data between the packets.
 	u8 spacer;
 
-}mouse_report;;
+}mouse_report;
 
 /**
  * Creating a structure of variable data.
