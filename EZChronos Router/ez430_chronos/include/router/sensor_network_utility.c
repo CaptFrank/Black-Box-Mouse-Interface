@@ -6,7 +6,10 @@
  */
 
 #include "sensor_network_utility.h"
+#include "callback_functions.h"
+#include "error_handler.h"
 #include "nwk_types.h"
+#include "Utilities.h"
 
 
 
@@ -24,6 +27,9 @@
 
 // Pings a sensor
 void ping_ack(linkID_t id){
+
+	// First ping @ the hw layer
+	SMPL_Ping(id);
 
 	// Setup the ping command
 	u8 cmd [] = {PING};
@@ -106,17 +112,28 @@ void send_error(u8 error_code,  linkID_t id){
 // The internal sending fucntion
 void _send_command(linkID_t id, u8* cmd, size_t size){
 
+	// Set atomic mutex
+	BSP_ENTER_CRITICAL_SECTION(intState);
+
 	// Format the packet
-
 	u8 packet[size + PACKET_FORMAT];
-
 	packet[0] = PACKET_PREAMBLE;
-
-	memcpy(packet[1], cmd, size);
-
+	memcpy(packet[2], cmd, size);
 	packet[sizeof(packet)] = COMMAND_TAIL;
+	packet[1] = size + PACKET_FORMAT;
 
+	// set the transmit buffer
+	sensor_transmit_buf.data_buffer = packet;
+	sensor_transmit_buf.size_of_buffer = sizeof(packet);
+	sensor_transmit_buf.tx_id = id;
 
-	// Send the packet off to the appropriate ndoe.
-	SMPL_SendOpt(id, (u8*) &packet, size, SMPL_TXOPTION_ACKREQ);
+	// Set atomic mutex
+	BSP_ENTER_CRITICAL_SECTION(intState);
+
+	// sends the message
+	if(SMPL_SUCCESS != tx_callback_function(&sensor_transmit_buf)){
+
+		// Serve a network error.
+		net_error();
+	}
 }

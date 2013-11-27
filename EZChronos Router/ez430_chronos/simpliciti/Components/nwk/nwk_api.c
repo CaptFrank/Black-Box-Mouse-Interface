@@ -49,6 +49,8 @@
 #include "nwk_globals.h"
 #include "nwk_freq.h"
 
+#define EXTENDED_API
+
 /******************************************************************************
  * MACROS
  */

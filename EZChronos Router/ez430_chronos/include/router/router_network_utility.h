@@ -6,14 +6,13 @@
  */
 
 #include "network_protocol.h"
+#include "Configs.h"
 
 #define ROUTER				0
 #define PACKET_VER			A
 
-#define PACKET_PREAMBLE		'+'
-
-// Atomic mutex
-bspIState_t intState;
+#define ROUTER_PACKET_PREAMBLE		'+'
+#define ROUTER_TAIL					'\n'
 
 // Function pointer table.
 typedef struct {
@@ -44,6 +43,8 @@ typedef struct {
 
 } router_network_utilities_t;
 
+router_network_utilities_t router_utilities;
+
 /* This is the packet structure union, which
  * holds divers structures needed to create the
  * divers network packets.
@@ -65,6 +66,10 @@ union {
 
 }packet;
 
+/**
+ * This is the transmit buffer structure;
+ */
+struct receive_buffer_t router_tx_buffer;
 
 // sends a heartbeat
 void send_hearbeat();
@@ -91,5 +96,5 @@ void send_sensor_enabled();
 void send_sensor_number();
 
 // Internal sending function
-void _send_packet(void* packet_ptr, u8 size);
+void _send_packet(void* packet_ptr, u8 header_value, u8 size);
 

@@ -8,10 +8,25 @@
 #ifndef PACKET_HANDLERS_H_
 #define PACKET_HANDLERS_H_
 
+#include "sensor_network_utility.h"
+#include "router_network_utility.h"
+#include "receiver_utilities.h"
+
 /**
  * This file will contain the packet handlers for each packet type,
  * either sending or receiving packet.
  */
+
+struct packet_handlers_t{
+
+	// Defining the different modes
+	// - TX MODE
+	router_network_utilities_t* base_station_router;
+	sensor_network_utilities_t* sensors_arbitrator;
+
+	// - RX MODE
+	receiver_router_utilities_t* receiver;
+} modes;
 
 /**
  * This function will initialize the packet handler table in memory,

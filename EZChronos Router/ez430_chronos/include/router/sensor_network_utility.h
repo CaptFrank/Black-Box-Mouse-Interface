@@ -10,6 +10,7 @@
 
 #include "network_protocol.h"
 #include "nwk_types.h"
+#include "Configs.h"
 
 /**
  * These are the possible commands the router
@@ -54,6 +55,13 @@ typedef struct {
 
 }sensor_network_utilities_t;
 
+// define the type
+sensor_network_utilities_t sensor_utilities;
+
+/**
+ * This is the transmit buffer.
+ */
+struct transmit_buffer_t sensor_transmit_buf;
 
 /**
  * Sends a ping acknowledgment.

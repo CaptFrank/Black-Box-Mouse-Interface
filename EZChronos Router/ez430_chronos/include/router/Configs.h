@@ -133,11 +133,15 @@ linkID_t base_station_id;
 // The sensor IDs
 linkID_t sensors[MAX_SENSORS];
 
+// Atomic mutex
+bspIState_t intState;
+
 struct sensor_info{
 
 	u8 sensor_node_id;
 	u32 sensor_runtime;
 	u16 packet_id;
+
 }sensor_info;
 
 #endif /* CONFIGS_H_ */

@@ -7,6 +7,7 @@
 		- Reverse Engineer the LinkID for the RFBee
 		- Create an AP with the Watch
 		- Remove BlueRobin code
+		- Implement error codes
 		
 		- Create an application to receive information from the chronos and display it on screen
 		

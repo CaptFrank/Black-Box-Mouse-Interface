@@ -12,7 +12,7 @@
  * This file contains the types of packets the router,
  * can send to the ground station. This conforms to the
  * basestation -> router protocol. These packet definitions
- * can be refered to the following.
+ * can be reffered to the following.
  *
  * 	- This protocol is specific to only the base station
  * 		and the router.
@@ -24,6 +24,9 @@
 #define ROUTER_STATUS			0x03
 #define ROUTER_NMAP				0x04
 #define ROUTER_CONFIG			0x05
+#define ROUTER_DATA				0x08
+#define SENSOR_ENABLE			0x06
+#define SENSOR_NUMBER			0x09
 
 //! Optional
 #define ROUTER_DEBUG			0x0B
