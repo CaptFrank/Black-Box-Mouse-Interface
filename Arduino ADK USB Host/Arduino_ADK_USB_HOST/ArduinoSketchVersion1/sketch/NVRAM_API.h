@@ -90,25 +90,25 @@ class NVRAM {
 			uint8_t led4_setting;
 
 			//! Possible Commands;
-			uint8_t _ping_router[6];
-			uint8_t _ping_sensor[6];
-			uint8_t _request_router_run[3];
-			uint8_t _request_router_config[7];
-			uint8_t _request_sensor_config[7];
-			uint8_t _request_sensor_enable[7];
-			uint8_t _request_sensor_channel[10];
-			uint8_t _request_nmap[4];
-			uint8_t _request_router_status[6];
-			uint8_t _pause_sensor[7];
-			uint8_t _pause_router[7];
-			uint8_t _power_on_router[6];
-			uint8_t _power_on_sensor[6];
-			uint8_t _poweroff_router[6];
-			uint8_t _poweroff_sensor[6];
-			uint8_t _wakeup_router[6];
-			uint8_t _wakeup_sensor[6];
-			uint8_t _request_sensor_number[7];
-			uint8_t _request_sensor_channels[7];
+			uint8_t _ping_router;
+			uint8_t _ping_sensor[2];
+			uint8_t _request_router_run;
+			uint8_t _request_router_config;
+			uint8_t _request_sensor_config[2];
+			uint8_t _request_sensor_enable;
+			uint8_t _request_sensor_channel[2];
+			uint8_t _request_nmap;
+			uint8_t _request_router_status;
+			uint8_t _pause_sensor[2];
+			uint8_t _pause_router;
+			uint8_t _power_on_router;
+			uint8_t _power_on_sensor[2];
+			uint8_t _poweroff_router;
+			uint8_t _poweroff_sensor[2];
+			uint8_t _wakeup_router;
+			uint8_t _wakeup_sensor[2];
+			uint8_t _request_sensor_number;
+			uint8_t _request_sensor_channels;
 
 		}__attribute__((__packed__));
 

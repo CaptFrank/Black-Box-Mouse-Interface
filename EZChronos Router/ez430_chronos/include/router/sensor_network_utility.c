@@ -99,6 +99,16 @@ void send_abort(linkID_t id){
 	_send_command(id, cmd, sizeof(cmd));
 }
 
+// Sends an abort message
+void send_pause(linkID_t id){
+
+	// Format the abort command
+	u8 cmd [] = {PAUSE};
+
+	// Send it off
+	_send_command(id, cmd, sizeof(cmd));
+}
+
 // Sends an error message
 void send_error(u8 error_code,  linkID_t id){
 

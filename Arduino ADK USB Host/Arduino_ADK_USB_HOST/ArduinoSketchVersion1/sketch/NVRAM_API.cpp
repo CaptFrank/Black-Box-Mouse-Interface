@@ -8,7 +8,7 @@
 #include "NVRAM_API.h"
 
 
-#define SPACE 	' '
+#define SPACE 	0x00
 
 //! Define the structure
 const NVRAM::nv_data_t nvram_default PROGMEM = {
@@ -32,25 +32,26 @@ const NVRAM::nv_data_t nvram_default PROGMEM = {
         OUTPUT,
 
         //! Possible commands stored to save ram space.
-		{'p', 'i', 'n', 'g', ':', '0'},
-		{'p', 'i', 'n', 'g', ':', SPACE},
-		{'r', 'u', 'n'},
-		{'c', 'o', 'n', 'f', 'i', 'g', 'r'},
-		{'c', 'o', 'n', 'f', 'i', 'g', SPACE},
-		{'e', 'n', 'a', 'b', 'l', 'e', 'd'},
-		{'c', 'h', 'a', 'n', 'n', 'e', 'l', 's', ':', SPACE},
-		{'n', 'm', 'a', 'p'},
-		{'s', 't', 'a', 't', 'u', 's'},
-		{'p', 'a', 'u', 's', 'e', ':', SPACE},
-		{'p', 'a', 'u', 's', 'e', ':', '0'},
-		{'p', 'w', 'r', '1', ':', '0'},
-		{'p', 'w', 'r', '1', ':', SPACE},
-		{'p', 'w', 'r', '0', ':', '0'},
-		{'p', 'w', 'r', '0', ':', SPACE},
-		{'w', 'a', 'k', 'e', ':', '0'},
-		{'w', 'a', 'k', 'e', ':', SPACE},
-        {'s', 'e', 'n', 's', 'n', 'u', 'm'},
-        {'s', 'e', 'n', 'c', 'h', 'n', SPACE}
+		0x01,	//
+		0x02, SPACE, //
+		0x03, //
+		0x04, //
+		0x05, SPACE, //
+		0x06, //
+		0x07, SPACE,//
+		0x08, //
+		0x09, //
+		0x0A, SPACE, //
+		0x0B, //
+		0x0C, //
+		0x0D, SPACE, //
+		0x0E, //
+		0x0F, SPACE, //
+		0x10,
+		0x11, SPACE,
+        0x12,
+        0x13
+
 };
 
 //! Load the saved args.

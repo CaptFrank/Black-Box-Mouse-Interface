@@ -8,6 +8,7 @@
 		- Create an AP with the Watch
 		- Remove BlueRobin code
 		- Implement error codes
+		- Implement the 10 second interval network topology confimation loop
 		
 		- Create an application to receive information from the chronos and display it on screen
 		

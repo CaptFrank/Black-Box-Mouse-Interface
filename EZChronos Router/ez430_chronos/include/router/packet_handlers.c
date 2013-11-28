@@ -33,3 +33,23 @@ void delete_packet_handler(void* packet_handler){
 	// we just set the pointer to null.
 	packet_handler = NULL;
 }
+
+/**
+ * This function creates the USB report that needs to be sent to
+ * the arduino baed on the configs and the sensor data.
+ */
+void create_usb_report(){
+
+
+
+}
+
+/**
+ * This function gets the usb report created to send to
+ * the base station.
+ */
+void* get_usb_report(){
+
+
+
+}

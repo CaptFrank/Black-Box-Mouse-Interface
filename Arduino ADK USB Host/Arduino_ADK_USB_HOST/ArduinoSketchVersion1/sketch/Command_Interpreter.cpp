@@ -71,7 +71,7 @@ void COMMAND_PARSER::_send_command(byte* command){
 					sizeof(this->nvram_object->nv._power_on_router));
 			break;
 
-		case POWERON_SENSOR: 	// Power on sensor
+		case POWERON_SENSOR: 	// Power on se
 			command_send = (byte*)this->nvram_object->nv._power_on_sensor;
 			command_send[5] = command[1];
 			_send_check(ROUTER_HEARTBEAT, command_send, sizeof(this->nvram_object->nv._power_on_sensor));

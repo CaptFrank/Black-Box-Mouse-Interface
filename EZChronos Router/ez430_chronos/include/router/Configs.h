@@ -14,6 +14,8 @@
  */
 
 #define MAX_SENSORS				2
+#define ON						1
+#define OFF						0
 
 #define ROUTER_ADDRESS 			0
 #define MAX_SENSOR_ADDRESS 		8
@@ -49,7 +51,7 @@ union {
 
 	// Assign each config to a single byte.
 	u8 watch_configs_flags;
-}watch_configs;
+} watch_configs;
 
 /*************************************************/
 
@@ -71,7 +73,7 @@ union {
 
 	// Each flag is now defined as a byte
 	u8 sensor_enable_flags;
-}enabled_sensors;
+} enabled_sensors;
 
 /*************************************************/
 
@@ -93,7 +95,31 @@ union {
 
 	// Each flag is now defined as a byte
 	u8 sensor_flags;
-}network_sensors;
+} network_sensors;
+
+/*************************************************/
+
+union {
+
+	// the states in bit form
+	struct {
+
+		u8 on	 	: 1;
+		u8 init		: 1;
+		u8 run		: 1;
+		u8 stop		: 1;
+		u8 pause	: 1;
+		u8 command	: 1;
+		u8 error	: 1;
+		u8 off		: 1;
+
+	} state_bits;
+
+	// The state as a byte
+	u8 router_state_byte
+
+} router_state;
+
 
 /*************************************************/
 

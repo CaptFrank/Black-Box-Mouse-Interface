@@ -137,7 +137,7 @@ struct sensor_configs_t {
 	 * regardless of the sensors, the router only sends
 	 * the size of the packets the base station.
 	 */
-	u8 data_pkt_size;
+	uint8_t data_pkt_size;
 };
 
 // *************************************************

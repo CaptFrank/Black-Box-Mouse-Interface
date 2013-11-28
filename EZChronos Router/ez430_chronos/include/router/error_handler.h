@@ -10,4 +10,9 @@
 
 void net_error();
 
+void packet_erro();
+
+void command_error();
+
+
 #endif /* ERROR_HANDLER_H_ */

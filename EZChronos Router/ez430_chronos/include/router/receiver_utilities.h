@@ -5,10 +5,36 @@
  *      Author: Francis Papineau
  */
 
-#include "callback_functions.h"
 
 #ifndef RECEIVER_UTILITIES_H_
 #define RECEIVER_UTILITIES_H_
+
+#include "callback_functions.h"
+#include "packet_handlers.h"
+
+// Possible router commands that can be sent
+
+#define ROUTER_PING					0x01
+#define SENSOR_PING					0x02
+#define ROUTER_RUN					0x03
+#define ROUTER_CONFIG				0x04
+#define SENSOR_CONFIG				0x05
+#define SENSOR_ENABLE				0x06
+#define SENSOR_CHANNEL				0x07
+#define ROUTER_NMAP					0x08
+#define ROUTER_STATUS				0x09
+#define SENSOR_PAUSE				0x0A
+#define ROUTER_PAUSE				0x0B
+#define ROUTER_PWR_ON				0x0C
+#define SENSOR_PWR_ON				0x0D
+#define ROUTER_PWR_OFF				0x0E
+#define SENSOR_PWR_OFF				0x0F
+#define ROUTER_WAKE					0x10
+#define SENSOR_WAKE					0x11
+#define ROUTER_SENSOR_NUMBER		0x12
+#define ROUTER_SENSOR_CHANNELS		0x13
+
+
 /**
  * This is packet state structure,
  * which is important when checking the

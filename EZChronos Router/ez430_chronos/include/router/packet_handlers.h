@@ -26,6 +26,7 @@ struct packet_handlers_t{
 
 	// - RX MODE
 	receiver_router_utilities_t* receiver;
+
 } modes;
 
 /**
@@ -33,12 +34,6 @@ struct packet_handlers_t{
  * for quick access to the function tables.
  */
 void init_packet_handlers(void);
-
-/**
- * This function sets a packet handler to a new packet that is passed
- * through the function.
- */
-void set_run_packet_handlers(void* packet);
 
 /**
  * This function deletes the packet handler past to the function.

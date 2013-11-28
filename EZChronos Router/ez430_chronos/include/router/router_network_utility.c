@@ -129,7 +129,6 @@ void send_router_configs(){
 			sizeof(packet._radio));
 }
 
-
 // sends the network map
 void send_nmap(){
 

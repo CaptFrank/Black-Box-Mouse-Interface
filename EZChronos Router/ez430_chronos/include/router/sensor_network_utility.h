@@ -29,6 +29,7 @@
 #define STOP				0x06
 #define ABORT				0x07
 #define ERROR				0x08
+#define PAUSE				0x09
 
 #define HEARTBEAT_FREQ		0x01
 #define PACKET_FORMAT		0x03
@@ -51,6 +52,7 @@ typedef struct {
 	void (*send_start)(linkID_t id);
 	void (*send_stop)(linkID_t id);
 	void (*send_abort)(linkID_t id);
+	void (*send_pause)(linkID_t id);
 	void (*send_error)(u8 error_code, linkID_t id);
 
 }sensor_network_utilities_t;
@@ -63,6 +65,10 @@ sensor_network_utilities_t sensor_utilities;
  */
 struct transmit_buffer_t sensor_transmit_buf;
 
+
+/**
+ * Needed to start the communication between sensors and router
+ */
 /**
  * Sends a ping acknowledgment.
  */
@@ -96,6 +102,11 @@ void send_start(linkID_t id);
 void send_stop(linkID_t id);
 
 /**
+ * This pauses teh sensor node.
+ */
+void send_pause(linkID_t id);
+
+/**
  * This sends an abort signal to the sensor node. This is done,
  * if we have an error at the host side.
  */
@@ -106,6 +117,8 @@ void send_abort(linkID_t id);
  * an abort packet to stop the sensor engine.
  */
 void send_error(u8 error_code, linkID_t id);
+
+
 
 /**
  * the internal used function to send a message
