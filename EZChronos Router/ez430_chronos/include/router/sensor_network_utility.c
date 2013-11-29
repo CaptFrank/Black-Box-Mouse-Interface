@@ -45,6 +45,8 @@ void send_config_req(linkID_t id){
 	// Set the config request
 	u8 cmd [] = {CONFIG_REQ};
 
+	debug_data.router_sent_requests ++;
+
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
 }
@@ -54,6 +56,8 @@ void send_status_req(linkID_t id){
 
 	// Setup the status request command
 	u8 cmd [] = {STATUS_REQ};
+
+	debug_data.router_sent_requests ++;
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
@@ -137,6 +141,8 @@ void _send_command(linkID_t id, u8* cmd, size_t size){
 	sensor_transmit_buf.size_of_buffer = sizeof(packet);
 	sensor_transmit_buf.tx_id = id;
 
+	debug_data.router_packet_counter ++;
+
 	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
@@ -146,4 +152,7 @@ void _send_command(linkID_t id, u8* cmd, size_t size){
 		// Serve a network error.
 		net_error();
 	}
+
+	// Receive a response - stay in loop until message received
+	while((BAD_INTEGRITY != receive_sensor_response(id)) || (GOOD_INTEGRITY != receive_sensor_response(id))){}
 }

@@ -49,6 +49,9 @@
 #include "nwk_globals.h"
 #include "nwk_freq.h"
 
+
+// get the Ping application
+#undef EXTENDED_API
 #define EXTENDED_API
 
 /******************************************************************************

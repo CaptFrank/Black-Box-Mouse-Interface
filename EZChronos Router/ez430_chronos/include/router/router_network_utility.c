@@ -49,6 +49,8 @@ void ping_ack(){
 	// Ack is true
 	packet._info.ack = 0x01;
 
+	debug_data.router_acks_sent ++;
+
 	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
@@ -185,6 +187,48 @@ void send_sensor_number(){
 			sizeof(packet._num_sensor));
 }
 
+// Sends an error
+void send_error_code(u8 error_code, u8 sensor_id){
+
+	// Set atomic mutex
+	BSP_ENTER_CRITICAL_SECTION(intState);
+
+	// Set the error code message
+	packet._error.error_code = error_code;
+	packet._error.sensor_address = base_station_id;
+	packet._error.sensor_id = sensor_id;
+
+	// Set atomic mutex
+	BSP_EXIT_CRITICAL_SECTION(intState);
+
+	// Send teh packet and the size
+	_send_packet((void*)&packet._error, ERROR_MSG,
+			sizeof(packet._error));
+}
+
+// sends a debug message
+void send_debug_msg(){
+
+	// Set atomic mutex
+	BSP_ENTER_CRITICAL_SECTION(intState);
+
+	// set the debug message
+	packet._debug.router_acks_sent_counter = debug_data.router_acks_sent;
+	packet._debug.router_packet_counter debug_data.router_packet_counter;
+	packet._debug.router_rx_count = debug_data.router_rx_count;
+	packet._debug.router_sent_request_counter = debug_data.router_sent_requests;
+	packet._debug.router_tx_count = debug_data.router_tx_count;
+
+	// Set atomic mutex
+	BSP_EXIT_CRITICAL_SECTION(intState);
+
+	// send it off
+	_send_packet((void*)&packet._debug, ROUTER_DEBUG,
+			sizeof(packet._debug));
+
+}
+
+
 /**
  * Packet structure:
  * 	[+][Header][Data]
@@ -223,6 +267,8 @@ void _send_packet(void* packet_ptr, u8 header, u8 size){
 	router_tx_buffer.data_buffer = packet_byte_array;
 	router_tx_buffer.size_of_buffer = packet._header.message_size;
 	router_tx_buffer.rx_id = base_station_id;
+
+	debug_data.router_packet_counter ++;
 
 	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);

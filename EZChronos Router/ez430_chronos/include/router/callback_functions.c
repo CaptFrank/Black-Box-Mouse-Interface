@@ -25,6 +25,8 @@ smplStatus_t rx_callback_function(struct receive_buffer_t* receive_buffer_struct
 	// Put radio back to SLEEP state
 	SMPL_Ioctl(IOCTL_OBJ_RADIO, IOCTL_ACT_RADIO_SLEEP, 0);
 
+	debug_data.router_rx_count ++;
+
 	return status;
 }
 
@@ -43,6 +45,8 @@ smplStatus_t tx_callback_function(struct transmit_buffer_t* transmit_buffer_stru
 			(u8*)transmit_buffer_struct->data_buffer,
 			transmit_buffer_struct->size_of_buffer,
 			SMPL_TXOPTION_ACKREQ);
+
+	debug_data.router_rx_count ++;
 
     // Put radio back to SLEEP state
     SMPL_Ioctl(IOCTL_OBJ_RADIO, IOCTL_ACT_RADIO_SLEEP, 0);

@@ -133,6 +133,16 @@ union {
 
 } router_state;
 
+/*************************************************/
+
+struct debug_data_t{
+
+	u16 router_acks_sent;
+	u16 router_packet_counter;
+	u16 router_rx_count;
+	u16 router_sent_requests;
+	u16 router_tx_count;
+} debug_data;
 
 /*************************************************/
 
@@ -169,11 +179,16 @@ typedef struct joystick_report_t{
 // The base station ID
 linkID_t base_station_id;
 
+// Simpliciti id
+// TODO
+unsigned char simpliciti_ap_address[4];
+
 // The sensor IDs
 linkID_t sensors[MAX_SENSORS];
 
 // Atomic mutex
 bspIState_t intState;
+
 
 struct sensor_info{
 

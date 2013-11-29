@@ -63,7 +63,6 @@
 #include "rfsimpliciti.h"
 #include "simpliciti.h"
 #include "acceleration.h"
-#include "bluerobin.h"
 #include "temperature.h"
 
 // *************************************************************************************************

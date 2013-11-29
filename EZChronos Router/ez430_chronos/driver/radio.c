@@ -44,7 +44,7 @@
 
 // logic
 #include "rfsimpliciti.h"
-#include "bluerobin.h"
+//#include "bluerobin.h"
 
 // *************************************************************************************************
 // Extern section
@@ -172,11 +172,11 @@ __interrupt void radio_ISR(void)
     {
         if (rf1aivec == RF1AIV_RFIFG9)
         {
-            if ((sBlueRobin.state == BLUEROBIN_SEARCHING) ||
-                (sBlueRobin.state == BLUEROBIN_CONNECTED))
-            {
-                BlueRobin_RadioISR_v();
-            }
+//            if ((sBlueRobin.state == BLUEROBIN_SEARCHING) ||
+//                (sBlueRobin.state == BLUEROBIN_CONNECTED))
+//            {
+//                BlueRobin_RadioISR_v();
+//            }
         }
         else if (rf1aivec == RF1AIV_NONE) // RF1A interface interrupt (error etc.)
         {

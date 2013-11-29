@@ -33,15 +33,6 @@
 #define ROUTER_SENSOR_NUMBER		0x12
 #define ROUTER_SENSOR_CHANNELS		0x13
 
-// Possible reports received
-#define SENSOR_ACK					0x14
-#define SENSOR_CONFIG_REPORT		0x15
-#define SENSOR_STATUS_REPORT		0x16
-#define SENSOR_DATA_REPORT			0x17
-#define SENSOR_SYNC_REPORT			0x18
-#define SENSOR_HEARTBEAT_REPORT		0x19
-#define SENSOR_ERROR_REPORT			0x20
-
 /**
  * This is the sensor receiving state machine used by
  * the router in the synchronizing and addressing of
@@ -56,6 +47,7 @@ typedef enum {
 	DATA,
 	HEARTBEAT,
 	ERR
+
 }sensor_rx_state_t;
 
 sensor_rx_state_t sensor_state;
@@ -71,16 +63,22 @@ typedef enum {
 	GOOD_INTEGRITY,
 
 	// Bad packet structure.
-	BAD_INTEGRITY
+	BAD_INTEGRITY,
+
+	// reset
+	NONE
 
 }receiver_status_t;
 
 // Function pointer table.
 typedef struct {
 
-	void (*receive_packet)();
-	void (*receive_specific_packet)(linkID_t id);
+	// Generic receives
+	void (*receive_command)();
+	void (*receive_specific_command)(linkID_t id);
 
+	// Specifc receives
+	void (*receive_sensor_response)(linkID_t id);
 } receiver_router_utilities_t;
 
 // define the type
@@ -92,12 +90,18 @@ struct receive_buffer_t rx_buffer;
 /**
  * This function receives a broadcast message
  */
-void receive_packet();
+void receive_command();
 
 /**
  * This function receives a packet from a specific source.
  */
-void receive_specific_packet(linkID_t ID);
+void receive_specific_command(linkID_t ID);
+
+/**
+ * This function receives a packet from the sensor node
+ * and processes it.
+ */
+void receive_sensor_response(linkID_t id);
 
 /**
  * This is the internal packet integrity checker.
@@ -110,5 +114,10 @@ bool _check_packet_integrity(struct receive_buffer_t* receive_buffer_struct);
  * This function executes the packet if needed.
  */
 void _execute_command(struct receive_buffer_t* receive_buffer_struct);
+
+/**
+ * The internal read response function.
+ */
+void _read_response(struct receive_buffer_t* receive_buffer_struct);
 
 #endif /* RECEIVER_UTILITIES_H_ */

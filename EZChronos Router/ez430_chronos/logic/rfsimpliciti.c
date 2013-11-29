@@ -54,7 +54,6 @@
 // logic
 #include "acceleration.h"
 #include "rfsimpliciti.h"
-#include "bluerobin.h"
 #include "simpliciti.h"
 #include "clock.h"
 #include "date.h"

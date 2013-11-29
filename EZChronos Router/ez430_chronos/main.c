@@ -107,7 +107,6 @@
 #include "altitude.h"
 #include "battery.h"
 #include "acceleration.h"
-#include "bluerobin.h"
 #include "rfsimpliciti.h"
 #include "simpliciti.h"
 #include "rfbsl.h"
@@ -397,9 +396,6 @@ void init_global_variables(void)
     // Reset acceleration measurement
     reset_acceleration();
 
-    // Reset BlueRobin stack
-    reset_bluerobin();
-
     // Reset SimpliciTI stack
     reset_rf();
 
@@ -658,13 +654,6 @@ void display_update(void)
     // Restore blinking icons (blinking memory is cleared when calling set_value)
     if (display.flag.full_update)
     {
-        if (is_bluerobin() == BLUEROBIN_CONNECTED)
-        {
-            // Turn on beeper icon to show activity
-            display_symbol(LCD_ICON_BEEPER1, SEG_ON_BLINK_OFF);
-            display_symbol(LCD_ICON_BEEPER2, SEG_ON_BLINK_OFF);
-            display_symbol(LCD_ICON_BEEPER3, SEG_ON_BLINK_OFF);
-        }
     }
     // Clear display flag
     display.all_flags = 0;

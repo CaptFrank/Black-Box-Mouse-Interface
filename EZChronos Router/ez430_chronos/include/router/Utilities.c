@@ -164,12 +164,29 @@ void check_network(){
  */
 bool check_sensor(linkID_t address){
 
+	// first ping the sensor on transport level
 	if(SMPL_SUCCESS == SMPL_Ping(address)){
-		sensor_utilities.ping_ack(address);
-		receiver_utilities.receive_specific_packet(address);
 
-		return true;
+		// Ping using application layer
+		sensor_utilities.ping_ack(address);
+
+		// receive the ack return.
+		receiver_utilities.receive_sensor_command(address);
+
+		// Check if we got an ACK back.
+		if(sensor_state == ACK){
+			return true;
+		}
+
+		// Command issues
+		command_error();
+		return false;
+
+	// Something went wrong
 	}else{
+
+		// Sensor is in an unknown state.
+		sensor_error();
 		return false;
 	}
 }

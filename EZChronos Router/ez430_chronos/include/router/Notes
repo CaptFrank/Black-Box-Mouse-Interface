@@ -1,15 +1,68 @@
 
 
 	To do:
-		- Timer ISR for the heartbeat signal
-		- Timer ISR for the watchdog timer
-		- ISR for receiving, transmitting
-		- Reverse Engineer the LinkID for the RFBee
-		- Create an AP with the Watch
-		- Remove BlueRobin code
-		- Implement error codes
-		- Implement the 10 second interval network topology confimation loop
-		- Implement the 10 second system check loop
 		
-		- Create an application to receive information from the chronos and display it on screen
+		-> UTILITIES:
+			- DONE !!
+		
+		-> CALLBACK FUNCTIONS
+			- DONE !!
+			
+		-> ROUTER NETWORK UTILITIES
+			- DONE !!
+			
+		-> SENSOR NETWORK UTILITIES
+			- implement the receiver utilities for the responses.
+			- implement timeout.
+			
+		-> RECEIVER UTILITIES
+			- finish the read response function. 
+				- implement the logic to store and alert the data.
+			- finish the read response state machine.
+			
+		-> ERROR HANDLER
+			- implement the error functions.
+			- implement the error thresholds.
+		
+		-> ROUTER <-> BASE STATION PROTOCOL
+			- DONE !!
+			
+		-> ROUTER <-> SENSOR PROTOCOL
+			- 0.5 DONE
+				- command interface done.
+				- responses need to implemented
+				
+		-> JOYSTICK MOUSE / MOUSE SELECTION
+			- the selection loop 
+				- needs to be implemented
+				
+		-> PACKET HANDLER
+			- the creation and getting of the usb structure
+				- needs to be implemented.
+			- the abstraction of the network API
+				- needs to be implemented
+				
+		-> ROUTER MAIN
+			- needs to be implemented.
+			- needs to update hidden configs (i.e. router state)
+				and the hidden values (i.e. temp...)
+				also needs to do network arbitration and network
+				topology descovery.
+			- needs to act upon thresholds exceeding.
+			
+		-> ISR 
+			- implement the heartbeat ISR
+			- implement the watchdog timer ISR for timeouts
+			- implement the network topology descovery ISR (10sec?)
+			- implement the system check ISR (5sec?)
+			
+		-> OTHERS
+			- reverse engineer the LinkID for the RFBee
+			- convert the chronos EP to AP
+			- Remove Bluerobin stack.
+		
+			
+		
+			
+		
 		

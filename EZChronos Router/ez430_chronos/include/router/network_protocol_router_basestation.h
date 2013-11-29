@@ -45,7 +45,7 @@
 // *************************************************
 
 //! Main packet header structure.
-typedef struct packet_header_t {
+typedef struct router_packet_header_t {
 
 	u8 message_size;
 	u8 packet_id;
@@ -118,7 +118,7 @@ typedef struct router_sensor_enable_report_t {
 };
 
 // *************************************************
-typedef struct error_message_t {
+typedef struct router_error_message_t {
 
 	u8 sensor_id;
 	u8 sensor_address;

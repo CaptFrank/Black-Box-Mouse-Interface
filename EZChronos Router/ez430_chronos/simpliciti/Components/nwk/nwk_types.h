@@ -51,7 +51,7 @@
 
 typedef struct
 {
-    uint8_t addr[NET_ADDR_SIZE];
+    u8 addr[NET_ADDR_SIZE];
 } addr_t;
 
 typedef uint8_t linkID_t;

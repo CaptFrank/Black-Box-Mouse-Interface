@@ -54,7 +54,6 @@
 #include "temperature.h"
 #include "altitude.h"
 #include "battery.h"
-#include "bluerobin.h"
 #include "rfsimpliciti.h"
 #include "acceleration.h"
 #include "rfbsl.h"
@@ -151,26 +150,26 @@ const struct menu menu_L1_Altitude = {
     FUNCTION(mx_altitude),            // sub menu function
     FUNCTION(display_altitude),       // display function
     FUNCTION(update_time),            // new display data
-    &menu_L1_Heartrate,
+    &menu_L1_Acceleration,
 };
 
 // Line1 - Heart Rate
-const struct menu menu_L1_Heartrate = {
-    FUNCTION(sx_bluerobin),           // direct function
-    FUNCTION(mx_bluerobin),           // sub menu function
-    FUNCTION(display_heartrate),      // display function
-    FUNCTION(update_time),            // new display data
-    &menu_L1_Speed,
-};
+//const struct menu menu_L1_Heartrate = {
+//    FUNCTION(sx_bluerobin),           // direct function
+//    FUNCTION(mx_bluerobin),           // sub menu function
+//    FUNCTION(display_heartrate),      // display function
+//    FUNCTION(update_time),            // new display data
+//    &menu_L1_Speed,
+//};
 
 // Line1 - Speed
-const struct menu menu_L1_Speed = {
-    FUNCTION(dummy),                  // direct function
-    FUNCTION(dummy),                  // sub menu function
-    FUNCTION(display_speed),          // display function
-    FUNCTION(update_time),            // new display data
-    &menu_L1_Acceleration,
-};
+//const struct menu menu_L1_Speed = {
+//    FUNCTION(dummy),                  // direct function
+//    FUNCTION(dummy),                  // sub menu function
+//    FUNCTION(display_speed),          // display function
+//    FUNCTION(update_time),            // new display data
+//    &menu_L1_Acceleration,
+//};
 
 // Line1 - Acceleration
 const struct menu menu_L1_Acceleration = {
@@ -232,17 +231,17 @@ const struct menu menu_L2_Sync = {
     FUNCTION(dummy),                  // sub menu function
     FUNCTION(display_sync),           // display function
     FUNCTION(update_time),            // new display data
-    &menu_L2_CalDist,
+    &menu_L2_RFBSL,
 };
 
 // Line2 - Calories/Distance
-const struct menu menu_L2_CalDist = {
-    FUNCTION(sx_caldist),             // direct function
-    FUNCTION(mx_caldist),             // sub menu function
-    FUNCTION(display_caldist),        // display function
-    FUNCTION(update_time),            // new display data
-    &menu_L2_RFBSL,
-};
+//const struct menu menu_L2_CalDist = {
+//    FUNCTION(sx_caldist),             // direct function
+//    FUNCTION(mx_caldist),             // sub menu function
+//    FUNCTION(display_caldist),        // display function
+//    FUNCTION(update_time),            // new display data
+//    &menu_L2_RFBSL,
+//};
 
 // Line2 - RFBSL
 const struct menu menu_L2_RFBSL = {

@@ -15,9 +15,10 @@
  * This function receives a packet on the broadcast
  * interface.
  */
-void receive_packet(){
+receiver_status_t receive_command(){
 
 	smplStatus_t status;
+	status = NONE;
 
 	// Broadcast id.
 	rx_buffer.rx_id = SMPL_LINKID_USER_UUD;
@@ -25,22 +26,30 @@ void receive_packet(){
 	// Receive that message
 	status = rx_callback_function(&rx_buffer);
 
-	// Check the receiving status.
+	// Check for receiving status.
 	if(SMPL_SUCCESS != status){
 
 		// Serve a network error.
 		net_error();
 	}else {
-		_check_packet_integrity(&rx_buffer);
+		// Execute the packet if it good
+		if(GOOD_INTEGRITY == _check_packet_integrity(&rx_buffer)){
+			_execute_command(&rx_buffer);
+			return GOOD_INTEGRITY;
+		}else{ // return network error
+			net_error();
+			return BAD_INTEGRITY;
+		}
 	}
 }
 
 /**
  * This function receives a specific packet from a specific source.
  */
-void receive_specific_packet(linkID_t ID){
+receiver_status_t receive_specific_command(linkID_t ID){
 
 	smplStatus_t status;
+	status = NONE;
 
 	// set id.
 	rx_buffer.rx_id = id;
@@ -55,10 +64,45 @@ void receive_specific_packet(linkID_t ID){
 		net_error();
 	}else {
 		// Execute the packet if it good
-		if(GOOD_INTEGRITY == _check_packet_integrity(&rx_buffer))
+		if(GOOD_INTEGRITY == _check_packet_integrity(&rx_buffer)){
 			_execute_command(&rx_buffer);
-		else // return network error
+			return GOOD_INTEGRITY;
+		}else{ // return network error
 			net_error();
+			return BAD_INTEGRITY;
+		}
+	}
+}
+
+/**
+ * This function receives a sensor response after a
+ * command has been issued to the router.
+ */
+receiver_status_t receive_sensor_response(linkID_t id){
+
+	smplStatus_t status;
+	status = NONE;
+
+	// set id.
+	rx_buffer.rx_id = id;
+
+	// Receive that message
+	status = rx_callback_function(&rx_buffer);
+
+	// Check for receiving status.
+	if(SMPL_SUCCESS != status){
+
+		// Serve a network error.
+		net_error();
+	}else {
+		// Execute the packet if it good
+		if(GOOD_INTEGRITY == _check_packet_integrity(&rx_buffer)){
+			_read_sensor_response(&rx_buffer);
+			return GOOD_INTEGRITY;
+		}else{ // return network error
+			net_error();
+			return BAD_INTEGRITY;
+		}
 	}
 }
 
@@ -90,18 +134,17 @@ receiver_status_t _check_packet_integrity(struct receive_buffer_t* receive_buffe
 	}
 }
 
+/**
+ * This function executes the received command from the base station.
+ */
 void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 
+	// [Preamble][size][packet_id][...]
 	// get the packet id to switch on.
 	u8 packet_id = receive_buffer_struct->data_buffer[2];
 	linkID_t sensor_addr = receive_buffer_struct->data_buffer[3];
 
 	switch(packet_id){
-
-	/**********************************************
-	 ********** FROM BASE STATION *****************
-	 **********************************************
-	 */
 
 	// ********************************************
 	/**
@@ -262,6 +305,7 @@ void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 
 		// Sends a ping request to the sensor
 		modes.sensors_arbitrator->ping_ack(sensor_addr);
+		modes.receiver->
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
@@ -346,25 +390,6 @@ void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
-	/**********************************************
-	 ********** FROM SENSOR NODE ******************
-	 **********************************************
-	 */
-	case SENSOR_ACK:
-		break;
-	case SENSOR_CONFIG_REPORT:
-		break;
-	case SENSOR_STATUS_REPORT:
-		break;
-	case SENSOR_DATA_REPORT:
-		break;
-	case SENSOR_SYNC_REPORT:
-		break;
-	case SENSOR_HEARTBEAT_REPORT:
-		break;
-	case SENSOR_ERROR_REPORT:
-		break;
-
 	default:
 
 		// we have an error.
@@ -372,7 +397,54 @@ void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 		command_error();
 		break;
 	}
+}
 
+// Get a response for a command
+void _read_response(struct receive_buffer_t* receive_buffer_struct){
+
+	// TODO
+
+	// Get the packet ID based on the defines protocol
+	u8 packet_id = receive_buffer_struct->data_buffer[2];
+
+	switch(packet_id){
+
+	case SENSOR_ACK:
+
+		// Set the sensor_rx_state to ACK state
+		sensor_state = ACK;
+		break;
+
+	case SENSOR_CONFIG_REPORT:
+
+
+		break;
+
+	case SENSOR_STATUS_REPORT:
+
+
+		break;
+
+	case SENSOR_DATA_REPORT:
+
+
+		break;
+
+	case SENSOR_SYNC_REPORT:
+
+
+		break;
+
+	case SENSOR_HEARTBEAT_REPORT:
+
+
+		break;
+
+	case SENSOR_ERROR_REPORT:
+
+
+		break;
+	}
 }
 
 

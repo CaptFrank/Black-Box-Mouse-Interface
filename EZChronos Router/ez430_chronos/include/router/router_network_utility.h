@@ -5,7 +5,7 @@
  *      Author: Francis Papineau
  */
 
-#include "network_protocol.h"
+#include "network_protocol_router_basestation.h".h"
 #include "Configs.h"
 
 #define ROUTER				0
@@ -41,6 +41,12 @@ typedef struct {
 	// Sends the number of sensors.
 	void (*send_sensor_number)();
 
+	// Send a debug message
+	void (*send_debug_msg)();
+
+	// Sends an error message
+	void (*send_error_message)(u8 error_code, u8 sensor_id);
+
 } router_network_utilities_t;
 
 router_network_utilities_t router_utilities;
@@ -51,14 +57,14 @@ router_network_utilities_t router_utilities;
  */
 union {
 
-	struct packet_header_t 					_header;
+	struct reouter_packet_header_t 			_header;
 	struct router_ack_info_t				_info;
 	struct router_heartbeat_t				_heartbeat;
 	struct router_status_info_t				_status;
 	struct router_debug_status_t			_debug;
 	struct router_nmap_info_t				_nmap;
 	struct router_sensor_enable_report_t	_sensor_en;
-	struct error_message_t					_error;
+	struct router_error_message_t			_error;
 	struct remote_sensor_data_t				_remote_data;
 	struct remote_radio_configs_t			_radio;
 	struct number_of_sensors_t				_num_sensor;
@@ -94,6 +100,13 @@ void send_sensor_enabled();
 
 // sends the number of sensors active
 void send_sensor_number();
+
+// sends an error message
+void send_error_message(u8 error_code, u8 sensor_id);
+
+// sends a debug message
+void send_debug_msg();
+
 
 // Internal sending function
 void _send_packet(void* packet_ptr, u8 header_value, u8 size);

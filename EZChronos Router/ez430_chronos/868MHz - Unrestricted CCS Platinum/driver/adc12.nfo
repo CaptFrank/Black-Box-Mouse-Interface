@@ -1,0 +1,46 @@
+MSP430 C/C++ Optimizer                  v4.2.1
+Build Number 1NGPW-KDADEMDK-RTARQ-WAR-ZACIF_U_S_R
+
+		======File-level Analysis Summary======
+
+
+extern void ADC12ISR() is called from 0 sites in this file.
+    It has 3 non-trivial scope blocks nested 3 deep.
+    It calls these functions:
+	_bic_SR_register_on_exit() (1 times)
+
+extern unsigned adc12_single_conversion() is called from 0 sites in this file.
+    It appears to be inlineable (size = 73 units)
+    It has 3 non-trivial scope blocks nested 3 deep.
+    It calls these functions:
+	Timer0_A4_Delay() (2 times)
+
+
+These functions may be recursive:
+	ADC12ISR()
+	adc12_single_conversion()
+
+These external functions are called but not defined here:
+	Timer0_A4_Delay()
+	_bic_SR_register_on_exit()
+
+
+		======= End file-level Analysis =======
+
+
+==============================================================================
+
+extern unsigned adc12_single_conversion() is called from 0 sites in this file.
+    It appears to be inlineable (size = 73 units)
+    It has 3 non-trivial scope blocks nested 3 deep.
+    It calls these functions:
+	<NONE>
+
+==============================================================================
+
+extern void ADC12ISR() is called from 0 sites in this file.
+    It has 3 non-trivial scope blocks nested 3 deep.
+    It calls these functions:
+	<NONE>
+
+== END OF INFO OUTPUT==
