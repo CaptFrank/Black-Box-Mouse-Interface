@@ -21,6 +21,19 @@
 #define MAX_SENSOR_ADDRESS 		8
 #define BYTE_LENGTH				8
 
+/*************************************************
+ * 			ROUTER STATES
+ *************************************************/
+#define ON_RESET		1
+#define INIT			2
+#define RUN				4
+#define STOP			8
+#define PAUSE			16
+#define COMMAND			32
+#define ERROR			64
+#define OFF				128
+
+
 /*************************************************/
 // The general configs of the watch.
 union {
@@ -104,19 +117,19 @@ union {
 	// the states in bit form
 	struct {
 
-		u8 on	 	: 1;
-		u8 init		: 1;
-		u8 run		: 1;
-		u8 stop		: 1;
-		u8 pause	: 1;
-		u8 command	: 1;
-		u8 error	: 1;
-		u8 off		: 1;
+		u8 on	 	: 1; //1
+		u8 init		: 1; //2
+		u8 run		: 1; //4
+		u8 stop		: 1; //8
+		u8 pause	: 1; //16
+		u8 command	: 1; //32
+		u8 error	: 1; //64
+		u8 off		: 1; //128
 
 	} state_bits;
 
 	// The state as a byte
-	u8 router_state_byte
+	u8 router_state_byte;
 
 } router_state;
 

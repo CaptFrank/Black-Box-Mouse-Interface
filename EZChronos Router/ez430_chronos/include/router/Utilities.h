@@ -21,7 +21,7 @@ void set_router_mode(u8 router_mode);
 /**
  * Gets the router mode.
  */
-void get_router_mode();
+u8 get_router_mode();
 
 /**
  * Resets the router mode
@@ -31,6 +31,17 @@ void reset_router_mode();
 /***************************************************
 *				POWER STATUS
 ***************************************************/
+
+// These are the available power states.
+typedef enum {
+
+	POWER_OVER,
+	POWER_GOOD,
+	POWER_LOW
+
+}power_state_t;
+
+power_state_t power_state;
 
 /**
  * This function checks if the power state is good
@@ -42,7 +53,7 @@ void check_power_status();
 /**
  * This function returns the power state.
  */
-u8 get_power_status();
+power_state_t get_power_status();
 
 /***************************************************
 *				ERROR STATUS

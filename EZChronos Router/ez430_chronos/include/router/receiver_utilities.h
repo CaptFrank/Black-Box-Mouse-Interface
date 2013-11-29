@@ -13,7 +13,6 @@
 #include "packet_handlers.h"
 
 // Possible router commands that can be sent
-
 #define ROUTER_PING					0x01
 #define SENSOR_PING					0x02
 #define ROUTER_RUN					0x03
@@ -34,6 +33,32 @@
 #define ROUTER_SENSOR_NUMBER		0x12
 #define ROUTER_SENSOR_CHANNELS		0x13
 
+// Possible reports received
+#define SENSOR_ACK					0x14
+#define SENSOR_CONFIG_REPORT		0x15
+#define SENSOR_STATUS_REPORT		0x16
+#define SENSOR_DATA_REPORT			0x17
+#define SENSOR_SYNC_REPORT			0x18
+#define SENSOR_HEARTBEAT_REPORT		0x19
+#define SENSOR_ERROR_REPORT			0x20
+
+/**
+ * This is the sensor receiving state machine used by
+ * the router in the synchronizing and addressing of
+ * each sensor node.
+ */
+typedef enum {
+
+	ACK,
+	CONFIGS,
+	STATUS,
+	SYN,
+	DATA,
+	HEARTBEAT,
+	ERR
+}sensor_rx_state_t;
+
+sensor_rx_state_t sensor_state;
 
 /**
  * This is packet state structure,
@@ -53,8 +78,8 @@ typedef enum {
 // Function pointer table.
 typedef struct {
 
-	void (*receiver_packet)();
-	void (*receiver_specific_packet)();
+	void (*receive_packet)();
+	void (*receive_specific_packet)(linkID_t id);
 
 } receiver_router_utilities_t;
 
@@ -84,6 +109,6 @@ bool _check_packet_integrity(struct receive_buffer_t* receive_buffer_struct);
 /**
  * This function executes the packet if needed.
  */
-void _execute_packet(struct receive_buffer_t* receive_buffer_struct);
+void _execute_command(struct receive_buffer_t* receive_buffer_struct);
 
 #endif /* RECEIVER_UTILITIES_H_ */

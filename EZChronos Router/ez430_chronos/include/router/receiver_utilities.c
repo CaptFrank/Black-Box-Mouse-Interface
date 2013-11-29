@@ -56,7 +56,7 @@ void receive_specific_packet(linkID_t ID){
 	}else {
 		// Execute the packet if it good
 		if(GOOD_INTEGRITY == _check_packet_integrity(&rx_buffer))
-			_execute_packet(&rx_buffer);
+			_execute_command(&rx_buffer);
 		else // return network error
 			net_error();
 	}
@@ -90,13 +90,18 @@ receiver_status_t _check_packet_integrity(struct receive_buffer_t* receive_buffe
 	}
 }
 
-void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
+void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 
 	// get the packet id to switch on.
 	u8 packet_id = receive_buffer_struct->data_buffer[2];
 	linkID_t sensor_addr = receive_buffer_struct->data_buffer[3];
 
 	switch(packet_id){
+
+	/**********************************************
+	 ********** FROM BASE STATION *****************
+	 **********************************************
+	 */
 
 	// ********************************************
 	/**
@@ -114,6 +119,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_RUN:
 
 		// Command mode activated
@@ -129,6 +135,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_CONFIG:
 
 		// Command mode and Query mode Activated
@@ -141,6 +148,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_NMAP:
 
 		// Command mode and Query mode Activated
@@ -153,6 +161,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_STATUS:
 
 		// Command mode and Query mode Activated
@@ -165,6 +174,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_PAUSE:
 
 		// Command mode activated
@@ -180,6 +190,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_PWR_ON:
 
 		// Command mode and Query mode Activated
@@ -195,6 +206,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_PWR_OFF:
 
 		// Command mode and Query mode Activated
@@ -210,6 +222,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_WAKE:
 
 		// Command mode activated
@@ -225,6 +238,7 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 		router_state.state_bits.command = OFF;
 		break;
 
+	// ********************************************
 	case ROUTER_SENSOR_NUMBER:
 
 		// Command mode and Query mode Activated
@@ -251,7 +265,9 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
 
+	// ********************************************
 	case SENSOR_CONFIG:
 
 		// Command mode activated
@@ -262,7 +278,9 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
 
+	// ********************************************
 	case ROUTER_SENSOR_CHANNELS:
 	case SENSOR_ENABLE:
 
@@ -274,7 +292,9 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
 
+	// ********************************************
 	case SENSOR_PAUSE:
 
 		// Command mode activated
@@ -285,7 +305,9 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
 
+	// ********************************************
 	case SENSOR_PWR_ON:
 
 		// Command mode activated
@@ -296,7 +318,9 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
 
+	// ********************************************
 	case SENSOR_PWR_OFF:
 
 		// Command mode activated
@@ -307,7 +331,9 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
 
+	// ********************************************
 	case SENSOR_WAKE:
 
 		// Command mode activated
@@ -318,13 +344,33 @@ void _execute_packet(struct receive_buffer_t* receive_buffer_struct){
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
+		break;
+
+	/**********************************************
+	 ********** FROM SENSOR NODE ******************
+	 **********************************************
+	 */
+	case SENSOR_ACK:
+		break;
+	case SENSOR_CONFIG_REPORT:
+		break;
+	case SENSOR_STATUS_REPORT:
+		break;
+	case SENSOR_DATA_REPORT:
+		break;
+	case SENSOR_SYNC_REPORT:
+		break;
+	case SENSOR_HEARTBEAT_REPORT:
+		break;
+	case SENSOR_ERROR_REPORT:
+		break;
 
 	default:
 
 		// we have an error.
 		// - increase the error count and assert an error
 		command_error();
-
+		break;
 	}
 
 }
