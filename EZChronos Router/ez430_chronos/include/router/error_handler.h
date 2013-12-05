@@ -12,6 +12,7 @@
 #define CMD_ERROR_MAX		10
 #define NET_ERROR_MAX		20
 #define SENSOR_ERROR_MAX	20
+#define SYSTEM_MAX_ERROR	10
 
 #define ERROR_HIGH			8
 #define ERROR_LOW			4
@@ -28,7 +29,8 @@ typedef enum {
 	NET,
 	PACKET,
 	CMD,
-	SENSOR
+	SENSOR,
+	SYSTEM
 
 } error_lcd;
 error_lcd lcd;
@@ -40,6 +42,7 @@ struct system_error_t {
 	u8 packet_errors_cnt;
 	u8 command_errors_cnt;
 	u8 sensor_errors_cnt;
+	u8 system_errors_cnt;
 }sys_errors;
 
 // Define the error states.
@@ -83,6 +86,13 @@ void command_error();
  * structure
  */
 void sensor_error();
+
+
+/**
+ * This adds one event to the system error
+ * structure
+ */
+void system_error();
 
 /**
  * This checks for errors through out the system.

@@ -32,8 +32,7 @@
 				- responses need to implemented
 				
 		-> JOYSTICK MOUSE / MOUSE SELECTION
-			- the selection loop 
-				- needs to be implemented
+			- DONE !!
 				
 		-> PACKET HANDLER
 			- the creation and getting of the usb structure

@@ -10,6 +10,7 @@
 
 #include "Configs.h"
 #include "display.h"
+#include "error_handler.h"
 #include "timer.h"
 
 #define SEC_5	163840
@@ -53,22 +54,46 @@ inline structure_choice_t get_selection(){
 
 inline structure_choice_t _check_selection(u8 selected, structure_choice_t choice){
 
+	// Check to see if the buttons were pressed
 	if(BUTTON_NUM_IS_PRESSED){
+
+		// mouse was chosen
 		choice = MOUSE;
 		selected = 0x01;
 	}else if(BUTTON_DOWN_IS_PRESSED){
+
+		// joystick was chosen
 		choice = JOYSTICK;
 		selected = 0x01;
 	}else{
+
+		// nothing was chosen
 		choice = NONE;
-		selected = 0x00
+		selected = 0x00;
 	}
+
+	// return our choice
 	return choice;
 }
 
 inline void _assign_data_struct(structure_choice_t choice){
 
-}
+	// if the mouse was chosen
+	if(choice == MOUSE){
 
+		// assign the mouse report
+		structure_choice = (void*)mouse_report;
+
+	// if the joystick was chosen
+	}else if(choice == JOYSTICK){
+
+		// assign the joystick report
+		structure_choice = (void*)joystick_report;
+
+	}else {
+		// something went wrong
+		system_error();
+	}
+}
 
 #endif /* JOYSTICK_MOUSE_SELECTION_H_ */
