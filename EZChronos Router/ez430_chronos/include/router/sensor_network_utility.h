@@ -8,7 +8,7 @@
 #ifndef NETWORK_UTILITY_H_
 #define NETWORK_UTILITY_H_
 
-#include "network_protocol_router_sensor.h".h"
+#include "network_protocol_router_sensor.h"
 #include "nwk_types.h"
 #include "Configs.h"
 

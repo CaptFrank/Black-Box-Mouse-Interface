@@ -33,6 +33,7 @@
 #define ERROR			64
 #define OFF				128
 
+u8 reset;
 
 /*************************************************/
 // The general configs of the watch.
@@ -173,6 +174,17 @@ typedef struct joystick_report_t{
 	u8 spacer;
 
 }joystick_report;
+
+void* structure_choice;
+
+// The choice of the device.
+typedef enum {
+
+	MOUSE,
+	JOYSTICK,
+	NONE
+}structure_choice_t;
+structure_choice_t choice;
 
 /*************************************************/
 

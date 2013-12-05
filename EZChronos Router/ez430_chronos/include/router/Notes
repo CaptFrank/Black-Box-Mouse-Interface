@@ -21,8 +21,7 @@
 			- finish the read response state machine.
 			
 		-> ERROR HANDLER
-			- implement the error functions.
-			- implement the error thresholds.
+			- implement the error menu.
 		
 		-> ROUTER <-> BASE STATION PROTOCOL
 			- DONE !!
@@ -49,13 +48,15 @@
 				also needs to do network arbitration and network
 				topology descovery.
 			- needs to act upon thresholds exceeding.
+			- implement scheduler
 			
 		-> ISR 
 			- implement the heartbeat ISR
 			- implement the watchdog timer ISR for timeouts
 			- implement the network topology descovery ISR (10sec?)
 			- implement the system check ISR (5sec?)
-			
+				- checks the error states on the system.
+				
 		-> OTHERS
 			- reverse engineer the LinkID for the RFBee
 			- convert the chronos EP to AP
