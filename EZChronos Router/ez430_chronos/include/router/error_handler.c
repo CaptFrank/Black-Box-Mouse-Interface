@@ -79,6 +79,23 @@ void sensor_error(){
 	return;
 }
 
+// This adds one to the system error.
+void system_error(){
+
+
+	// add one event to the counter.
+	sys_errors.system_errors_cnt ++;
+
+	// set if we need to print
+	lcd = SYSTEM;
+
+	// check if we need to do something
+	_check_errors(&sys_errors);
+	return;
+
+}
+
+
 /**
  * This checks for errors through out the system, and intterupts
  * the display to display the errors is there are any.
@@ -89,7 +106,8 @@ void _check_errors(struct lcd_struct_t* lcd,
 	if((events->command_errors_cnt > CMD_MAX_ERROR) ||
 			(events->network_errors_cnt > NET_MAX_ERROR) ||
 			(events->packet_errors_cnt > PACKET_MAX_ERROR) ||
-			(events->sensor_errors_cnt > SENSOR_MAX_ERROR)){
+			(events->sensor_errors_cnt > SENSOR_MAX_ERROR) ||
+			(events->system_errors_cnt > SYSTEM_MAX_ERROR)){
 
 
 		// Display warning.
@@ -109,7 +127,8 @@ void _check_errors(struct lcd_struct_t* lcd,
 	} else if((events->command_errors_cnt > ERROR_HIGH) ||
 			(events->network_errors_cnt > ERROR_HIGH) ||
 			(events->packet_errors_cnt > ERROR_HIGH) ||
-			(events->sensor_errors_cnt > ERROR_HIGH)){
+			(events->sensor_errors_cnt > ERROR_HIGH)||
+			(events->system_errors_cnt > ERROR_HIGH)){
 
 		// display high error threshold
 		clear_display();
