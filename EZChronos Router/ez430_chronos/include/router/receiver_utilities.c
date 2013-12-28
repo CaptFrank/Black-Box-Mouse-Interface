@@ -11,6 +11,11 @@
 #include "sensor_network_utility.h"
 #include "router_network_utility.h"
 
+#include "timer.h"
+
+// Timeout setup
+#define SEC_1		32768
+
 /**
  * This function receives a packet on the broadcast
  * interface.
@@ -86,6 +91,9 @@ receiver_status_t receive_sensor_response(linkID_t id){
 	// set id.
 	rx_buffer.rx_id = id;
 
+	set_watchdog(SEC_1);
+	run_watchdog_timer();
+
 	// Receive that message
 	status = rx_callback_function(&rx_buffer);
 
@@ -97,7 +105,7 @@ receiver_status_t receive_sensor_response(linkID_t id){
 	}else {
 		// Execute the packet if it good
 		if(GOOD_INTEGRITY == _check_packet_integrity(&rx_buffer)){
-			_read_sensor_response(&rx_buffer);
+			_read_response(&rx_buffer);
 			return GOOD_INTEGRITY;
 		}else{ // return network error
 			net_error();
@@ -402,48 +410,83 @@ void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 // Get a response for a command
 void _read_response(struct receive_buffer_t* receive_buffer_struct){
 
-	// TODO
-
 	// Get the packet ID based on the defines protocol
 	u8 packet_id = receive_buffer_struct->data_buffer[2];
+	u8* packet_buffer = receive_buffer_struct->data_buffer[3];
 
+	// Switch on the packet id
 	switch(packet_id){
 
-	case SENSOR_ACK:
+		// Get the header set
+		memcpy(&sensor_packet._header, packet_buffer,
+				(sizeof(sensor_packet._header)));
 
-		// Set the sensor_rx_state to ACK state
-		sensor_state = ACK;
-		break;
+		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// READ SENSOR RESPONSES
+		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	case SENSOR_CONFIG_REPORT:
+		// Receive an ACK Message
+		case SENSOR_ACK:
 
+			// Set the sensor_rx_state to ACK state
+			sensor_state = ACK;
+			memcpy(&sensor_packet._ack, packet_buffer,
+					(sizeof(sensor_packet._ack)));
+			break;
 
-		break;
+		// Get a config report
+		case SENSOR_CONFIG_REPORT:
 
-	case SENSOR_STATUS_REPORT:
+			// Set the sensor_rx_state to ACK state
+			sensor_state = CONFIGS;
+			memcpy(&sensor_packet._configs, packet_buffer,
+					(sizeof(sensor_packet._configs)));
+			break;
 
+		// Get a sensor status report
+		case SENSOR_STATUS_REPORT:
 
-		break;
+			// Set the sensor_rx_state to ACK state
+			sensor_state = STATUS;
+			memcpy(&sensor_packet._status, packet_buffer,
+					(sizeof(sensor_packet._status)));
+			break;
 
-	case SENSOR_DATA_REPORT:
+		// Get sensor data
+		case SENSOR_DATA_REPORT:
 
+			// Set the sensor_rx_state to ACK state
+			sensor_state = DATA;
+			memcpy(&sensor_packet._data, packet_buffer,
+					(sizeof(sensor_packet._data)));
+			break;
 
-		break;
+		// Get sensor sync report
+		case SENSOR_SYNC_REPORT:
 
-	case SENSOR_SYNC_REPORT:
+			// Set the sensor_rx_state to ACK state
+			sensor_state = SYN;
+			memcpy(&sensor_packet._sync, packet_buffer,
+					(sizeof(sensor_packet._sync)));
+			break;
 
+		// Get heartbeat report
+		case SENSOR_HEARTBEAT_REPORT:
 
-		break;
+			// Set the sensor_rx_state to ACK state
+			sensor_state = HEARTBEAT;
+			memcpy(&sensor_packet._heart, packet_buffer,
+					(sizeof(sensor_packet._heart)));
+			break;
 
-	case SENSOR_HEARTBEAT_REPORT:
+		// Get error report
+		case SENSOR_ERROR_REPORT:
 
-
-		break;
-
-	case SENSOR_ERROR_REPORT:
-
-
-		break;
+			// Set the sensor_rx_state to ACK state
+			sensor_state = ERR;
+			memcpy(&sensor_packet._error, packet_buffer,
+					(sizeof(sensor_packet._error)));
+			break;
 	}
 }
 

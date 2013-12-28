@@ -79,6 +79,7 @@ typedef struct {
 
 	// Specifc receives
 	void (*receive_sensor_response)(linkID_t id);
+
 } receiver_router_utilities_t;
 
 // define the type

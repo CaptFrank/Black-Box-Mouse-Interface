@@ -47,8 +47,87 @@
 // *************** REMOTE DOMAIN *******************
 // *************************************************
 
-// TODO
+typedef struct sensor_packet_header_t {
+
+	u8 message_size;
+	u8 packet_id;
+	u8 sensor_id;
+	u32 sensor_run_time;
+	u8 packet_version;
+};
+
+// *************************************************
+//! Sensor acknowledge message structure
+//!	- 0/1 true of false
+typedef struct sensor_ack_info_t {
+
+	bool ack;
+};
+
+//! Sensor configs report
+//! - [sensor type][# of channels][channel types]
+//! 	- [A, D][0 - 8][0,0,1,1,1,0,0,0]
+typedef struct sensor_configs_t {
+
+	u8 sensor_type;
+	u8 num_channels;
+	u8 channel_types;
+};
+
+//! Sensor status report
+//! - [STATE]
+//! - 1 - OK
+//! - 2 - FAIL
+//! - 3 - ERROR
+//! - 4 - BOOT
+//! - 5 - REBOOT
+//!	- 6 - RESET
+//! - 7 - N/A
+//! - 8 - N/A
+typedef struct sensor_status_report_t {
+
+	u8 state;
+};
+
+//! Sensor data report
+//! - [channel data][channel data][...]
+//! - 8*8 bits - max value 0 -> 255
+typedef struct sensor_data_struct_t {
+
+	u8 data_array[8];
+};
+
+//! Sensor sync report
+typedef struct sensor_sync_report_t {
+
+	u16 sync_time;
+
+	u8 interrupt_number;
+	u8 priority;
+
+};
+
+//! Sensor heartbeat report
+typedef struct sensor_heartbeat_t {
+
+	u8 router_mode;
+	u16 battery_voltage;
+};
 
 
+//! Sensor error report
+//! - Error codes
+//! - 1 - Boot error
+//! - 2 - Memory error
+//! - 3 - Runtime error
+//! - 4 - Sync error
+//! - 5 - Packet format error
+//!	- 6 - Interrupt error
+//! - 7 - Reset error
+//! - 8 - Sut-down error
+typedef struct sensor_error_t {
+
+	u8 error_code;
+};
 
 #endif /* NETWORK_PROTOCOL_ROUTER_SENSOR_H_ */

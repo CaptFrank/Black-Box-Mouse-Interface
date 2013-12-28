@@ -12,14 +12,11 @@
 			- DONE !!
 			
 		-> SENSOR NETWORK UTILITIES
-			- implement the receiver utilities for the responses.
-			- implement timeout.
-			
+			- DONE !!
+						
 		-> RECEIVER UTILITIES
-			- finish the read response function. 
-				- implement the logic to store and alert the data.
-			- finish the read response state machine.
-			
+			- DONE !!
+						
 		-> ERROR HANDLER
 			- implement the error menu.
 		
@@ -27,13 +24,10 @@
 			- DONE !!
 			
 		-> ROUTER <-> SENSOR PROTOCOL
-			- 0.5 DONE
-				- command interface done.
-				- responses need to implemented
+			- DONE !!
 				
 		-> JOYSTICK MOUSE / MOUSE SELECTION
-			- the selection loop 
-				- needs to be implemented
+			- DONE !!
 				
 		-> PACKET HANDLER
 			- the creation and getting of the usb structure
@@ -53,9 +47,13 @@
 		-> ISR 
 			- implement the heartbeat ISR
 			- implement the watchdog timer ISR for timeouts
+				 - 	set_watchdog(SEC_1);
+				 - 	run_watchdog_timer();
+					- checks the status variable for a different status
 			- implement the network topology descovery ISR (10sec?)
 			- implement the system check ISR (5sec?)
 				- checks the error states on the system.
+			- Main ISR Loop
 				
 		-> OTHERS
 			- reverse engineer the LinkID for the RFBee

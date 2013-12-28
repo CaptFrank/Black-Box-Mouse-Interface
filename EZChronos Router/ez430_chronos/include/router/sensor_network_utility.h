@@ -41,6 +41,21 @@ sensor_network_utilities_t sensor_utilities;
  */
 struct transmit_buffer_t sensor_transmit_buf;
 
+/**
+ * The union that holds all the data structures.
+ */
+union {
+
+	struct sensor_packet_header_t   _header;
+	struct sensor_ack_info_t		_ack;
+	struct sensor_configs_t			_configs;
+	struct sensor_status_report_t	_status;
+	struct sensor_data_struct_t		_data;
+	struct sensor_sync_report_t		_sync;
+	struct sensor_heartbeat_t		_heart;
+	struct sensor_error_t			_error;
+
+}sensor_packet;
 
 /**
  * Needed to start the communication between sensors and router

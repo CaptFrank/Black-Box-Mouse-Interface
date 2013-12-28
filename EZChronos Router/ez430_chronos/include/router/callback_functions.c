@@ -17,7 +17,7 @@ smplStatus_t rx_callback_function(struct receive_buffer_t* receive_buffer_struct
 	// Get radio ready. Wakes up in IDLE state.
 	SMPL_Ioctl(IOCTL_OBJ_RADIO, IOCTL_ACT_RADIO_AWAKE, 0);
 
-	// Send the packet
+	// Receive the data
 	status = SMPL_Receive(receive_buffer_struct->rx_id,
 			(u8*) receive_buffer_struct->data_buffer,
 			(u8*) receive_buffer_struct->size_of_buffer);

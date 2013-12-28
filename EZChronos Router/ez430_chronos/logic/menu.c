@@ -58,6 +58,8 @@
 #include "acceleration.h"
 #include "rfbsl.h"
 
+#include "../include/router/error_menu.h"
+
 // *************************************************************************************************
 // Defines section
 #define FUNCTION(function)  function
@@ -171,14 +173,26 @@ const struct menu menu_L1_Altitude = {
 //    &menu_L1_Acceleration,
 //};
 
+
 // Line1 - Acceleration
 const struct menu menu_L1_Acceleration = {
     FUNCTION(sx_acceleration),        // direct function
     FUNCTION(dummy),                  // sub menu function
     FUNCTION(display_acceleration),   // display function
     FUNCTION(update_acceleration),    // new display data
-    &menu_L1_Time,
+    &menu_L1_Error,
 };
+
+// Line1 - Error menu
+const struct menu menu_L1_Error = {
+
+	FUNCTION(run_error_menu),				// Run the error acquisition
+	FUNCTION(dummy),
+	FUNCTION(display_main_error_menu),		// Display main error menu
+	FUNCTION(update_time),					// Update error menu
+	&menu_L1_Time,							// Next menu item
+};
+
 
 // Line2 - Date
 const struct menu menu_L2_Date = {

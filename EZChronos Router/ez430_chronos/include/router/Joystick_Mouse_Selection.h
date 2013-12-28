@@ -51,23 +51,46 @@ inline structure_choice_t get_selection(){
 	return;
 }
 
+/**
+ * Check the selection of the user.
+ */
 inline structure_choice_t _check_selection(u8 selected, structure_choice_t choice){
 
+	// If we pressed on the button (#)
+	// - Selected the mouse
 	if(BUTTON_NUM_IS_PRESSED){
 		choice = MOUSE;
 		selected = 0x01;
+
+	// If we pressed on the button (down)
 	}else if(BUTTON_DOWN_IS_PRESSED){
 		choice = JOYSTICK;
 		selected = 0x01;
+
+	// Else nothing happens
 	}else{
 		choice = NONE;
-		selected = 0x00
+		selected = 0x00;
 	}
+
+	// returns nothing
 	return choice;
 }
 
+/**
+ * Assigns the required data structures.
+ */
 inline void _assign_data_struct(structure_choice_t choice){
 
+	// If the mouse is checked
+	if(choice == MOUSE){
+		structure_choice = mouse_report_t;
+
+	// if the joystick is checked
+	}else if (choice == JOYSTICK){
+		structure_choice = joystick_report_t;
+
+	}
 }
 
 

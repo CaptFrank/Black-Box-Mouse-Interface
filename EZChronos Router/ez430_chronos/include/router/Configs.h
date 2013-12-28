@@ -21,6 +21,8 @@
 #define MAX_SENSOR_ADDRESS 		8
 #define BYTE_LENGTH				8
 
+#define PACKET_TIMEOUT			1000 // one second
+
 /*************************************************
  * 			ROUTER STATES
  *************************************************/

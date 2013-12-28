@@ -5,7 +5,7 @@
  *      Author: Francis Papineau
  */
 
-#include "network_protocol_router_basestation.h".h"
+#include "network_protocol_router_basestation.h"
 #include "Configs.h"
 
 #define ROUTER				0

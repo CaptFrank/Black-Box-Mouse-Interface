@@ -37,6 +37,8 @@ void ping_ack(linkID_t id){
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
 
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends a config request
@@ -49,6 +51,9 @@ void send_config_req(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends a status request
@@ -61,6 +66,9 @@ void send_status_req(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends a sync message
@@ -71,6 +79,9 @@ void send_sync(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends a start command
@@ -81,6 +92,9 @@ void send_start(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends a stop message
@@ -91,6 +105,9 @@ void send_stop(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends an abort message
@@ -101,6 +118,9 @@ void send_abort(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends an abort message
@@ -111,6 +131,9 @@ void send_pause(linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // Sends an error message
@@ -121,6 +144,12 @@ void send_error(u8 error_code,  linkID_t id){
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
+
+	// Setup timeout
+	setup_timeout_timer(PACKET_TIMEOUT);
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
 }
 
 // The internal sending fucntion
