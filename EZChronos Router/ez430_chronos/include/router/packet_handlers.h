@@ -52,5 +52,4 @@ void create_usb_report();
  */
 void* get_usb_report();
 
-
 #endif /* PACKET_HANDLERS_H_ */

@@ -8,22 +8,25 @@
 #ifndef ERROR_MENU_H_
 #define ERROR_MENU_H_
 
-enum {
+#include "Configs.h"
 
-	UPDATE,
-	DISPLAY,
-	CLEAR
-}error_menu_state;
+#define ERROR_MENU_ON		0x01
+#define ERROR_MENU_OFF		0x02
 
 // This is the
-struct error_menu_handler_t{
+struct error_menu_handler_t {
 
+	// Error counts.
 	u8 network_errors_cnt;
 	u8 packet_errors_cnt;
 	u8 command_errors_cnt;
 	u8 sensor_errors_cnt;
 
-	error_menu_state state;
+	// Error States
+	u8 error_menu_state;
+
+	// Display message
+	u8 msg[35];
 
 }error_menu_handler;
 
@@ -34,20 +37,19 @@ struct error_menu_handler_t{
 void update_error_menu();
 
 /**
- * This function runs the error menu.
- */
-void run_error_menu();
-
-/**
  * This function displays the error values on the
  * error menu.
  */
-void display_main_error_menu();
+void display_main_error_menu(u8 line, u8 update);
 
 /**
- * This function displays the secondary error menu,
- * presumably the comms errors and packet errors.
+ * Reset the error menu
  */
-void display_secondary_error_menu();
+void reset_error_menu(void);
+
+/**
+ * Check if the error menu is on.
+ */
+u8 is_error_menu_active(void);
 
 #endif /* ERROR_MENU_H_ */

@@ -40,6 +40,12 @@ void delete_packet_handler(void* packet_handler){
  */
 void create_usb_report(){
 
+/**
+ * This function creates the usb report from the data
+ * received from the remote sensors and the local sensors which are
+ * enabled.
+ */
+
 
 
 }
@@ -49,6 +55,24 @@ void create_usb_report(){
  * the base station.
  */
 void* get_usb_report(){
+
+/**
+ * We need to query the sensors and check the length of
+ * the packets that are received. From this we can then
+ * either get or create a usb report.
+ *
+ * 	- We need to query the network,
+ * 		- Check the sensor that are active
+ *
+ * 	- We need to then query the data from each sensor
+ * 		- Get data from sensor
+ * 		- Create a vector of data
+ *
+ * 	- We need to create the usb packet
+ * 		- Create the usb packet
+ * 		- Send the usb packet to the base station,
+ * 			- with the wrapper.
+ */
 
 
 

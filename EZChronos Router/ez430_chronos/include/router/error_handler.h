@@ -58,7 +58,11 @@ typedef enum{
 	HIGH_ERROR,
 
 	// At threshold...
-	MAX_ERROR
+	MAX_ERROR,
+
+	// This is only used when the system integrity flag is set
+	// or when we need to reboot the system
+	REBOOT
 
 }error_state_t;
 error_state_t error_state;

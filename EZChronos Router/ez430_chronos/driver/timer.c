@@ -65,6 +65,8 @@
 #include "acceleration.h"
 #include "temperature.h"
 
+#include "../include/router/error_menu.h"
+
 // *************************************************************************************************
 // Prototypes section
 void Timer0_Init(void);
@@ -516,6 +518,13 @@ __interrupt void TIMER0_A0_ISR(void)
         }
     }
 
+    // Send a signal / do some random stuff every second on Trandi, WHEN enabled
+    if (is_error_menu_active())
+    {
+        request.flag.error_menu = 1;
+    }
+
+
     // Exit from LPM3 on RETI
     _BIC_SR_IRQ(LPM3_bits);
 }
@@ -586,6 +595,41 @@ __interrupt void TIMER0_A1_5_ISR(void)
             sys.flag.delay_over = 1;
             break;
     }
+
+    // Exit from LPM3 on RETI
+    _BIC_SR_IRQ(LPM3_bits);
+}
+
+/**
+ * This is the system check/checking interrupt
+ */
+#pragma vector = TIMER1_A0_VECTOR
+__interrupt void TIMER1_A0_1_ISR(void)
+{
+
+	// Set the timer for every 2 seconds
+
+	// Send a heartbeat signal every 2 seconds
+	// 	- Send a heartbeat signal to the router every 2 sec
+
+	// Check system environment (5sec)
+	// - Checks the error flags
+	// - Checks the error counts
+	// - Checks the packet counts
+	// - Checks the network flags
+	// - Checks system intergrity flag.
+
+	// Check network (5sec)
+
+    // Exit from LPM3 on RETI
+    _BIC_SR_IRQ(LPM3_bits);
+}
+
+/**
+ * This is the watchdog interrupt
+ */
+#pragma vector = TIMER1_A1_VECTOR
+__interrupt void TIMER1_A1_1_ISR(void){
 
     // Exit from LPM3 on RETI
     _BIC_SR_IRQ(LPM3_bits);

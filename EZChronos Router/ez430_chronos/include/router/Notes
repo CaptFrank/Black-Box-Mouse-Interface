@@ -18,8 +18,8 @@
 			- DONE !!
 						
 		-> ERROR HANDLER
-			- implement the error menu.
-		
+			- DONE !!
+					
 		-> ROUTER <-> BASE STATION PROTOCOL
 			- DONE !!
 			
@@ -43,8 +43,12 @@
 				topology descovery.
 			- needs to act upon thresholds exceeding.
 			- implement scheduler
+		
+		-> ERROR HANDLER
+			- need to implement the _print_error() function
+			- need to implement the _cycle_error() function
 			
-		-> ISR 
+		-> ISR / TIMER.C
 			- implement the heartbeat ISR
 			- implement the watchdog timer ISR for timeouts
 				 - 	set_watchdog(SEC_1);

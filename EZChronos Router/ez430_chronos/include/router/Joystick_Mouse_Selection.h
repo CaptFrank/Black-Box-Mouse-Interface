@@ -57,12 +57,8 @@ inline structure_choice_t get_selection(){
  */
 inline structure_choice_t _check_selection(u8 selected, structure_choice_t choice){
 
-<<<<<<< HEAD
 	// If we pressed on the button (#)
 	// - Selected the mouse
-=======
-	// Check to see if the buttons were pressed
->>>>>>> e6c5eb0c6fd2dc6d2d5cfadc242eae09f46aff73
 	if(BUTTON_NUM_IS_PRESSED){
 
 		// mouse was chosen
@@ -84,11 +80,7 @@ inline structure_choice_t _check_selection(u8 selected, structure_choice_t choic
 		selected = 0x00;
 	}
 
-<<<<<<< HEAD
 	// returns nothing
-=======
-	// return our choice
->>>>>>> e6c5eb0c6fd2dc6d2d5cfadc242eae09f46aff73
 	return choice;
 }
 
@@ -97,22 +89,8 @@ inline structure_choice_t _check_selection(u8 selected, structure_choice_t choic
  */
 inline void _assign_data_struct(structure_choice_t choice){
 
-<<<<<<< HEAD
-	// If the mouse is checked
-	if(choice == MOUSE){
-		structure_choice = mouse_report_t;
-
-	// if the joystick is checked
-	}else if (choice == JOYSTICK){
-		structure_choice = joystick_report_t;
-
-	}
-}
-=======
 	// if the mouse was chosen
 	if(choice == MOUSE){
->>>>>>> e6c5eb0c6fd2dc6d2d5cfadc242eae09f46aff73
-
 		// assign the mouse report
 		structure_choice = (void*)mouse_report;
 

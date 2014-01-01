@@ -37,6 +37,18 @@
 
 u8 reset;
 
+/**
+ * This is the system integrity flag. It is used in
+ * determining if the system has been compromised or not.
+ * In other words it is set high when there is a fatal error
+ * and the system has been compromised. To reset this flag,
+ * you much reboot the device.
+ */
+
+struct {
+	u8 system_intergrity_flag : 1;
+}system_integrity_flag;
+
 /*************************************************/
 // The general configs of the watch.
 union {

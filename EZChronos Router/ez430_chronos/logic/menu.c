@@ -111,6 +111,11 @@ u8 update_acceleration(void)
     return (display.flag.update_acceleration);
 }
 
+u8 update_error_menu(void)
+{
+    return (display.flag.update_error_menu);
+}
+
 // *************************************************************************************************
 // User navigation ( [____] = default menu item after reset )
 //
@@ -186,10 +191,10 @@ const struct menu menu_L1_Acceleration = {
 // Line1 - Error menu
 const struct menu menu_L1_Error = {
 
-	FUNCTION(run_error_menu),				// Run the error acquisition
+	FUNCTION(dummy),				// Run the error acquisition
 	FUNCTION(dummy),
 	FUNCTION(display_main_error_menu),		// Display main error menu
-	FUNCTION(update_time),					// Update error menu
+	FUNCTION(update_error_menu),					// Update error menu
 	&menu_L1_Time,							// Next menu item
 };
 

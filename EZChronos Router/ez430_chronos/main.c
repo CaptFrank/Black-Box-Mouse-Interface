@@ -112,6 +112,8 @@
 #include "rfbsl.h"
 #include "test.h"
 
+#include "include/router/error_menu.h"
+
 // *************************************************************************************************
 // Prototypes section
 void init_application(void);
@@ -408,6 +410,9 @@ void init_global_variables(void)
     // Reset battery measurement
     reset_batt_measurement();
     battery_measurement();
+
+    // Reset the error menu
+    reset_error_menu();
 }
 
 // *************************************************************************************************

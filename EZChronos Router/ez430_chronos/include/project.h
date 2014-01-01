@@ -101,6 +101,7 @@ typedef union
         u16 altitude_measurement : 1;     // 1 = Measure air pressure
         u16 acceleration_measurement : 1; // 1 = Measure acceleration
         u16 buzzer : 1;                   // 1 = Output buzzer
+        u16 error_menu : 1;				  // 1 = Get Errors
     } flag;
     u16 all_flags;                        // Shortcut to all request flags (for reset)
 } s_request_flags;

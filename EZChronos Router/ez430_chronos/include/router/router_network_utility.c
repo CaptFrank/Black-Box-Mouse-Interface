@@ -214,7 +214,7 @@ void send_debug_msg(){
 
 	// set the debug message
 	packet._debug.router_acks_sent_counter = debug_data.router_acks_sent;
-	packet._debug.router_packet_counter debug_data.router_packet_counter;
+	packet._debug.router_packet_counter = debug_data.router_packet_counter;
 	packet._debug.router_rx_count = debug_data.router_rx_count;
 	packet._debug.router_sent_request_counter = debug_data.router_sent_requests;
 	packet._debug.router_tx_count = debug_data.router_tx_count;

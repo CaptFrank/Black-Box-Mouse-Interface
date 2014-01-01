@@ -91,4 +91,14 @@ void check_network();
  */
 bool check_sensor(u8 address);
 
+/***************************************************
+*				POWER MANAGER
+***************************************************/
+
+// Reboot vector definition
+static void(*reboot) (void) = 0;
+
+// Sleeps the device
+void sleep();
+
 #endif /* UTILITIES_H_ */

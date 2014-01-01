@@ -9,7 +9,10 @@
 #include "router_main.h"
 #include "lcd_structure.h"
 #include "display.h"
+#include "Utilities.h"
 #include "Configs.h"
+
+#define SEC_1 		32768
 
 /**
  * This adds one event to the network error
@@ -86,6 +89,9 @@ void system_error(){
 	// add one event to the counter.
 	sys_errors.system_errors_cnt ++;
 
+	// this is a fatal error
+	system_integrity_flag.system_intergrity_flag = 1;
+
 	// set if we need to print
 	lcd = SYSTEM;
 
@@ -144,6 +150,19 @@ void _check_errors(struct lcd_struct_t* lcd,
 		// restore the lcd state
 		display_chars(LINE1, lcd->lcd_string_L1, SEG_ON);
 		display_chars(LINE2, lcd->lcd_string_L2, SEG_ON);
+
+		// De-assert the flag
+		system_integrity_flag.system_intergrity_flag = 0;
+
+		// Print a reboot message
+		error_state = REBOOT; lcd = SYSTEM;
+		_print_error(&lcd, &error_state);
+
+		// Wait 1 seconds
+		Timer0_A3_Start(SEC_1);
+
+		// Reboot
+		reboot();
 	}
 
 	// reset the print state
