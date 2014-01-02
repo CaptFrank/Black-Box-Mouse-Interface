@@ -64,4 +64,9 @@ void stop_router(void);
  */
 void stop_router_error(u8 error_code);
 
+/**
+ * This associates the linkID to the comprehensible sensor number.
+ */
+void _check_link_ID_association(void);
+
 #endif /* ROUTER_MAIN_H_ */

@@ -6,7 +6,7 @@
  */
 
 #include "network_protocol_router_basestation.h"
-#include "Configs.h"
+#include "configs.h"
 
 #define ROUTER				0
 #define PACKET_VER			A

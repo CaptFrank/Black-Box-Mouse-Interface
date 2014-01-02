@@ -6,7 +6,7 @@
 #ifndef _Network_Protocol_h_
 #define _Network_Protocol_h_
 
-#include "Configs.h"
+#include "configs.h"
 
 /**
  * This file contains the types of packets the router,

@@ -10,7 +10,7 @@
 
 #include "network_protocol_router_sensor.h"
 #include "nwk_types.h"
-#include "Configs.h"
+#include "configs.h"
 
 /**
  * This is the function table for the sensor

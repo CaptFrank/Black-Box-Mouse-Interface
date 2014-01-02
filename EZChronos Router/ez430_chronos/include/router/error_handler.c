@@ -9,8 +9,8 @@
 #include "router_main.h"
 #include "lcd_structure.h"
 #include "display.h"
-#include "Utilities.h"
-#include "Configs.h"
+#include "utilities.h"
+#include "configs.h"
 
 #define SEC_1 		32768
 
@@ -101,13 +101,11 @@ void system_error(){
 
 }
 
-
 /**
  * This checks for errors through out the system, and intterupts
  * the display to display the errors is there are any.
  */
-void _check_errors(struct lcd_struct_t* lcd,
-		struct system_error_t* events){
+void _check_errors(struct system_error_t* events){
 
 	if((events->command_errors_cnt > CMD_MAX_ERROR) ||
 			(events->network_errors_cnt > NET_MAX_ERROR) ||
@@ -156,7 +154,7 @@ void _check_errors(struct lcd_struct_t* lcd,
 
 		// Print a reboot message
 		error_state = REBOOT; lcd = SYSTEM;
-		_print_error(&lcd, &error_state);
+		_print_error(lcd, error_state);
 
 		// Wait 1 seconds
 		Timer0_A3_Start(SEC_1);
@@ -173,10 +171,69 @@ void _check_errors(struct lcd_struct_t* lcd,
  * This function prints an error event on the
  * hardware LCD.
  */
-void _print_error(error_lcd* lcd, error_state_t* error_state){
+void _print_error(error_lcd lcd, error_state_t error_state){
 
-// TODO
+	// Create the lcd struct
+	struct lcd_struct_t lcd_struct;
 
+	// Clear the display
+	clear_display();
+
+	switch (lcd){
+		case NET:
+			// Network error
+			lcd_struct.lcd_string_L1 = "NET ER";
+			break;
+
+		case PACKET:
+			// Packet error
+			lcd_struct.lcd_string_L1 = "PKT ER";
+			break;
+
+		case CMD:
+			// Command error
+			lcd_struct.lcd_string_L1 = "CMD ER";
+			break;
+
+		case SENSOR:
+			// Sensor error
+			lcd_struct.lcd_string_L1 = "SEN ER";
+			break;
+
+		case SYSTEM:
+			// System error
+			lcd_struct.lcd_string_L1 = "SYS ER";
+			break;
+
+		default:
+			l1_string = NULL;
+			break;
+	}
+	switch (error_state){
+		case LOW_ERROR:
+			// LOW
+			lcd_struct.lcd_string_L2 = "LOW";
+			break;
+
+		case HIGH_ERROR:
+			// HIGH
+			lcd_struct.lcd_string_L2 = "HIGH";
+			break;
+
+		case MAX_ERROR:
+			// MAX
+			lcd_struct.lcd_string_L2 = "MAX";
+			break;
+
+		case REBOOT:
+			// REBOOT
+			lcd_struct.lcd_string_L2 = "REB";
+			break;
+	}
+	if(NULL != l1_string){
+		display_chars(LINE1, lcd_struct.lcd_string_L1, SEG_ON);
+		display_chars(LINE2, lcd_struct.lcd_string_L2, SEG_ON);
+	}
 }
 
 /**
@@ -184,10 +241,27 @@ void _print_error(error_lcd* lcd, error_state_t* error_state){
  * and displays them on the lcd. This function is called
  * by the menu functions....
  */
-void _cycle_errors(struct system_error_t* events){
+void _cycle_errors(error_state){
 
-// TODO
+	_print_error(NET, error_state);
 
+	// Wait 1 seconds
+	Timer0_A3_Start(SEC_1);
+	_print_error(PACKET, error_state);
+
+	// Wait 1 seconds
+	Timer0_A3_Start(SEC_1);
+	_print_error(CMD, error_state);
+
+	// Wait 1 seconds
+	Timer0_A3_Start(SEC_1);
+	_print_error(SENSOR, error_state);
+
+	// Wait 1 seconds
+	Timer0_A3_Start(SEC_1);
+	_print_error(SYSTEM, error_state);
+	// Wait 1 seconds
+	Timer0_A3_Start(SEC_1);
 }
 
 

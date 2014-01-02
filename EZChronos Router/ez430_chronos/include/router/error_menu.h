@@ -8,7 +8,7 @@
 #ifndef ERROR_MENU_H_
 #define ERROR_MENU_H_
 
-#include "Configs.h"
+#include "configs.h"
 
 #define ERROR_MENU_ON		0x01
 #define ERROR_MENU_OFF		0x02

@@ -32,6 +32,9 @@
 		-> PACKET HANDLER
 			- DONE !!
 							
+		-> ERROR HANDLER
+			- DONE !!
+			
 		-> ROUTER MAIN
 			- needs to be implemented.
 			- needs to update hidden configs (i.e. router state)
@@ -39,11 +42,6 @@
 				also needs to do network arbitration and network
 				topology descovery.
 			- needs to act upon thresholds exceeding.
-			- implement scheduler
-		
-		-> ERROR HANDLER
-			- need to implement the _print_error() function
-			- need to implement the _cycle_error() function
 		
 		-> SCHEDULER
 			- Implement it!
@@ -64,22 +62,4 @@
 			- reverse engineer the LinkID for the RFBee
 			- convert the chronos EP to AP
 			- Remove Bluerobin stack.
-			- Finish user settings
-			
-			
-		-> NOTE:
-			- We need to organize the sensor nodes based on their index in
-			the usb structure.
-			
-				ex:	
-					- Selected mouse
-						- Sensor 1 = buttons, 
-						- Sensor 2 = Axis,
-						- Sensor 3 = Axis, 
-						- Sensor 4 = ... etc ... 
-		
-			
-		
-			
-		
-		
+			- Finish user settingss

@@ -14,6 +14,7 @@
 #include "display.h"
 
 #include "error_menu.h"
+#include "stdio.h"
 
 /**
  * This function updates the error values on the

@@ -8,7 +8,7 @@
 #ifndef NETWORK_PROTOCOL_ROUTER_SENSOR_H_
 #define NETWORK_PROTOCOL_ROUTER_SENSOR_H_
 
-#include "Configs.h"
+#include "configs.h"
 
 /**
  * These are the possible commands the router

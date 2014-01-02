@@ -8,7 +8,7 @@
 #ifndef JOYSTICK_MOUSE_SELECTION_H_
 #define JOYSTICK_MOUSE_SELECTION_H_
 
-#include "Configs.h"
+#include "configs.h"
 #include "display.h"
 #include "error_handler.h"
 #include "timer.h"

@@ -8,7 +8,7 @@
 #include "packet_handlers.h"
 #include "callback_functions.h"
 #include "error_handler.h"
-#include "Configs.h"
+#include "configs.h"
 #include "user_sensor_configs.h"
 
 /**

@@ -6,7 +6,7 @@
  */
 
 #include "battery.h"
-#include "Configs.h"
+#include "configs.h"
 #include "error_handler.h"
 #include "callback_functions.h"
 

@@ -8,9 +8,9 @@
 #include "router_network_utility.h"
 #include "callback_functions.h"
 #include "router_main.h"
-#include "Utilities.h"
+#include "utilities.h"
 #include "error_handler.h"
-#include "Configs.h"
+#include "configs.h"
 #include "timer.h"
 
 /**

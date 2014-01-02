@@ -5,7 +5,7 @@
  *      Author: Francis Papineau
  */
 
-#include "Configs.h"
+#include "configs.h"
 #include "receiver_utilities.h"
 #include "callback_functions.h"
 #include "sensor_network_utility.h"
