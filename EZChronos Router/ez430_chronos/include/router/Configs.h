@@ -26,14 +26,14 @@
 /*************************************************
  * 			ROUTER STATES
  *************************************************/
-#define ON_RESET		1
-#define INIT			2
-#define RUN				4
-#define STOP			8
-#define PAUSE			16
-#define COMMAND			32
-#define ERROR			64
-#define OFF				128
+#define ON_RESET				1
+#define INIT					2
+#define RUN						4
+#define STOP					8
+#define PAUSE					16
+#define COMMAND					32
+#define ERROR					64
+#define OFF						128
 
 u8 reset;
 
@@ -44,10 +44,24 @@ u8 reset;
  * and the system has been compromised. To reset this flag,
  * you much reboot the device.
  */
-
 struct {
 	u8 system_intergrity_flag : 1;
 }system_integrity_flag;
+
+/**
+ * This is the configs array, that contains each sensors
+ * configurations, channels, channel types.
+ */
+struct {
+
+	struct sensor_packet_header_t 	header;
+	struct sensor_status_report_t 	status;
+	struct sensor_configs_t			configs;
+	struct sensor_error_t		 	error;
+	struct sensor_data_struct_t 	data;
+	struct sensor_sync_report_t		sync;
+
+}sensor_configurations[8];
 
 /*************************************************/
 // The general configs of the watch.
@@ -161,9 +175,9 @@ struct debug_data_t{
 
 /*************************************************/
 
-typedef struct mouse_report_t{
+struct mouse_report_t{
 
-	u8 buttons;   /*! Houses all the bits to toggle for each button. (8bits)*/
+	u8 buttons; /*! Houses all the bits to toggle for each button. (8bits)*/
 	u8 x;		/*! X axis analog values (8bits) */
 	u8 y;		/*! Y axis analog values (8bits) */
 	u8 wheel;	/*! Wheel analog values. (8bits) */
@@ -179,10 +193,12 @@ typedef struct mouse_report_t{
  * input parameters such as buttons (Setting them HIGH/LOW).
  */
 
-typedef struct joystick_report_t{
+struct joystick_report_t{
 
- 	u16 axis[NUM_AXES]; // 1 axis with 16 bits.
-	u8 button[(NUM_BUTTONS)/8]; // 8 buttons per byte
+ 	u8 x; // 1 axis with 16 bits.
+ 	u8 y;
+ 	u8 z;
+	u8 buttons; // 8 buttons per byte
 
 	// We need this to separate our data between the packets.
 	u8 spacer;
@@ -207,7 +223,7 @@ linkID_t base_station_id;
 
 // Simpliciti id
 // TODO
-unsigned char simpliciti_ap_address[4];
+u8 simpliciti_ap_address[4];
 
 // The sensor IDs
 linkID_t sensors[MAX_SENSORS];

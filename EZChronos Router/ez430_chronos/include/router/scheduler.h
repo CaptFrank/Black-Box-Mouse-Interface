@@ -17,7 +17,7 @@
  * 		-	enabled_sensors
  * 		- 	network_sensors
  *
- * 		To determine the next corse of action.
+ * 		To determine the next course of action.
  */
 
 

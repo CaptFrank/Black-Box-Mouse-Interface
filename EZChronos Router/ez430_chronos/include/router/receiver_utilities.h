@@ -75,7 +75,7 @@ typedef struct {
 
 	// Generic receives
 	void (*receive_command)();
-	void (*receive_specific_command)(linkID_t id);
+	void (*receive_broadcast_command)(linkID_t id);
 
 	// Specifc receives
 	void (*receive_sensor_response)(linkID_t id);
@@ -91,7 +91,7 @@ struct receive_buffer_t rx_buffer;
 /**
  * This function receives a broadcast message
  */
-void receive_command();
+void receive_broadcast_command();
 
 /**
  * This function receives a packet from a specific source.

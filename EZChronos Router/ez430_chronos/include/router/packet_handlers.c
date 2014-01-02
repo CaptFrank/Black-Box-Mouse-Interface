@@ -6,6 +6,10 @@
  */
 
 #include "packet_handlers.h"
+#include "callback_functions.h"
+#include "error_handler.h"
+#include "Configs.h"
+#include "user_sensor_configs.h"
 
 /**
  * This function creates 2 structures of function tables.
@@ -22,6 +26,11 @@ void init_packet_handlers(void){
 	modes.base_station_router = &router_utilities;
 	modes.sensors_arbitrator = &sensor_utilities;
 	modes.receiver = &receiver_utilities;
+
+	// Initiate the rx and tx uids and other tracking
+	// parameters.
+	tx_buf.uid = 0x122;
+	rx_buf.uid = 0x123;
 }
 
 /**
@@ -36,9 +45,10 @@ void delete_packet_handler(void* packet_handler){
 
 /**
  * This function creates the USB report that needs to be sent to
- * the arduino baed on the configs and the sensor data.
+ * the arduino based on the configs and the sensor data. This is
+ * only pertaining to the data stream of the device.
  */
-void create_usb_report(){
+void create_usb_report(u8 sensor_id){
 
 /**
  * This function creates the usb report from the data
@@ -46,34 +56,55 @@ void create_usb_report(){
  * enabled.
  */
 
+	// Get the packet buffer and wrap it with our packet header
+	// that the base station can understand.
+	if(sensor_state == DATA){
 
+		_wrap_rx_packet(choice);
 
+	}else {
+		// If there is an error in the packet stream
+		sys_errors.packet_errors_cnt ++;
+	}
 }
 
 /**
- * This function gets the usb report created to send to
- * the base station.
+ * This function wraps the received packet with a packet wrapper
+ * so that the base station can understand it and its format.
  */
-void* get_usb_report(){
+void _wrap_rx_packet(structure_choice_t choice){
 
-/**
- * We need to query the sensors and check the length of
- * the packets that are received. From this we can then
- * either get or create a usb report.
- *
- * 	- We need to query the network,
- * 		- Check the sensor that are active
- *
- * 	- We need to then query the data from each sensor
- * 		- Get data from sensor
- * 		- Create a vector of data
- *
- * 	- We need to create the usb packet
- * 		- Create the usb packet
- * 		- Send the usb packet to the base station,
- * 			- with the wrapper.
- */
+	// concat the packets.
+	// Mouse selected
+#ifdef MOUSE_CHOICE
+		// Assign values
+		// Buttons
+		mouse_report.buttons |= BUTTON_1;
+		mouse_report.buttons |= BUTTON_2 << 1;
+		mouse_report.buttons |= BUTTON_3 << 2;
+		mouse_report.buttons |= BUTTON_4 << 3;
+		mouse_report.buttons |= BUTTON_5 << 4;
 
+		// Axis
+		mouse_report.x = AXIS_1;
+		mouse_report.y = AXIS_2;
 
+		// Wheel
+		mouse_report.wheel = WHEEL;
+#endif
 
+#ifdef JOYSTICK_CHOICE
+		// Assign values
+		// Buttons
+		joystick_report.buttons |= BUTTON_1;
+		joystick_report.buttons |= BUTTON_2 << 1;
+		joystick_report.buttons |= BUTTON_3 << 2;
+		joystick_report.buttons |= BUTTON_4 << 3;
+		joystick_report.buttons |= BUTTON_5 << 4;
+
+		// Axis
+		joystick_report.x = AXIS_1;
+		joystick_report.y = AXIS_2;
+		joystick_report.z = AXIS_3;
+#endif
 }

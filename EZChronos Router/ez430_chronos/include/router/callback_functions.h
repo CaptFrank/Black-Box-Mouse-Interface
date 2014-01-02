@@ -17,7 +17,7 @@
  * when we want to send or receive data from or to a node.
  */
 
-typedef struct receive_buffer_t {
+struct receive_buffer_t {
 
 	// A serial uid to track the struct
 	u8 uid;
@@ -38,7 +38,7 @@ typedef struct receive_buffer_t {
 
 }rx_buf;
 
-typedef struct transmit_buffer_t {
+struct transmit_buffer_t {
 
 	// A serial uid to track the struct
 	u8 uid;

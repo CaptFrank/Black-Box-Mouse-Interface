@@ -44,12 +44,12 @@ void delete_packet_handler(void* packet_handler);
  * This function creates the USB report that needs to be sent to
  * the arduino baed on the configs and the sensor data.
  */
-void create_usb_report();
+void create_usb_report(u8 sensor_id);
 
 /**
- * This function gets the usb report created to send to
- * the base station.
+ * This function wraps the received packet with a wrapper that
+ * the base station can understand.
  */
-void* get_usb_report();
+void _wrap_rx_packet(u8 configs);
 
 #endif /* PACKET_HANDLERS_H_ */

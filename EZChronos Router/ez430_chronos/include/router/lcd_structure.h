@@ -14,7 +14,6 @@ typedef struct lcd_struct_t {
 	u8* lcd_string_L2;
 
 	u8* lcd_string_len;
-
 };
 
 

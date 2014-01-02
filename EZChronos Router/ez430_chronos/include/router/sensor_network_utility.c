@@ -75,7 +75,7 @@ void send_status_req(linkID_t id){
 void send_sync(linkID_t id){
 
 	// Setup the Sync Command
-	u8 cmd [] = {SYNC, id, HEARTBEAT_FREQ};
+	u8 cmd [] = {SYNC, id, HEARTBEAT_FREQ + id};
 
 	// Send it off
 	_send_command(id, cmd, sizeof(cmd));
@@ -152,7 +152,7 @@ void send_error(u8 error_code,  linkID_t id){
 	receiver_utilities.receive_sensor_response(id);
 }
 
-// The internal sending fucntion
+// The internal sending function
 void _send_command(linkID_t id, u8* cmd, size_t size){
 
 	// Set atomic mutex

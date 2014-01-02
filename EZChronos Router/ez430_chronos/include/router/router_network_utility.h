@@ -57,7 +57,7 @@ router_network_utilities_t router_utilities;
  */
 union {
 
-	struct reouter_packet_header_t 			_header;
+	struct router_packet_header_t 			_header;
 	struct router_ack_info_t				_info;
 	struct router_heartbeat_t				_heartbeat;
 	struct router_status_info_t				_status;

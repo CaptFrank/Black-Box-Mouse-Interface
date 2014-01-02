@@ -90,7 +90,7 @@ void send_router_status(){
 			sizeof(packet._status));
 }
 
-// sends the sensor status
+// sends the sensor data
 void send_sensor_data(){
 
 	// Set atomic mutex
@@ -181,6 +181,9 @@ void send_sensor_number(){
 	// The number sensors is set by the check sensors function.
 	// packet._sensor_en.number_sensors;
 
+	// We call it once more to make sure we have the same values \
+		as before.
+	check_network();
 
 	// Send teh packet and the size
 	_send_packet((void*)&packet._num_sensor, SENSOR_NUMBER,
@@ -227,7 +230,6 @@ void send_debug_msg(){
 			sizeof(packet._debug));
 
 }
-
 
 /**
  * Packet structure:

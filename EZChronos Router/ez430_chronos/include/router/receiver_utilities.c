@@ -20,7 +20,7 @@
  * This function receives a packet on the broadcast
  * interface.
  */
-receiver_status_t receive_command(){
+receiver_status_t receive_broadcast_command(){
 
 	smplStatus_t status;
 	status = NONE;
@@ -141,6 +141,12 @@ receiver_status_t _check_packet_integrity(struct receive_buffer_t* receive_buffe
 		return BAD_INTEGRITY;
 	}
 }
+
+/*
+ ***********************************************************************
+ * 					FROM BASE STATION
+ ***********************************************************************
+ */
 
 /**
  * This function executes the received command from the base station.
@@ -313,7 +319,6 @@ void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 
 		// Sends a ping request to the sensor
 		modes.sensors_arbitrator->ping_ack(sensor_addr);
-		modes.receiver->
 
 		// Command mode activated
 		router_state.state_bits.command = OFF;
@@ -407,6 +412,11 @@ void _execute_command(struct receive_buffer_t* receive_buffer_struct){
 	}
 }
 
+/*
+ ***********************************************************************
+ *					FROM SENSOR NODE
+ ***********************************************************************
+ */
 // Get a response for a command
 void _read_response(struct receive_buffer_t* receive_buffer_struct){
 
@@ -418,12 +428,20 @@ void _read_response(struct receive_buffer_t* receive_buffer_struct){
 	switch(packet_id){
 
 		// Get the header set
+		//	- This gets the sensor id for the network so we can\
+			assign the right values to the right sensor_configuration.
+		u8 sensor_id = sensor_packet._header.sensor_id;
 		memcpy(&sensor_packet._header, packet_buffer,
 				(sizeof(sensor_packet._header)));
 
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// Set the header to the appropriate entry
+		memcpy(&sensor_packet._header,
+				sensor_configurations[sensor_id].header,
+				sizeof(sensor_packet._header));
+
+		// ********************************************************
 		// READ SENSOR RESPONSES
-		// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		// ********************************************************
 
 		// Receive an ACK Message
 		case SENSOR_ACK:
@@ -441,6 +459,11 @@ void _read_response(struct receive_buffer_t* receive_buffer_struct){
 			sensor_state = CONFIGS;
 			memcpy(&sensor_packet._configs, packet_buffer,
 					(sizeof(sensor_packet._configs)));
+
+			// Set the configs to the appropriate entry
+			memcpy(&sensor_packet._configs,
+					sensor_configurations[sensor_id].configs,
+					sizeof(sensor_packet._configs));
 			break;
 
 		// Get a sensor status report
@@ -450,6 +473,11 @@ void _read_response(struct receive_buffer_t* receive_buffer_struct){
 			sensor_state = STATUS;
 			memcpy(&sensor_packet._status, packet_buffer,
 					(sizeof(sensor_packet._status)));
+
+			// Set the status to the appropriate entry
+			memcpy(&sensor_packet._status,
+					sensor_configurations[sensor_id].status,
+					sizeof(sensor_packet._status));
 			break;
 
 		// Get sensor data
@@ -459,6 +487,11 @@ void _read_response(struct receive_buffer_t* receive_buffer_struct){
 			sensor_state = DATA;
 			memcpy(&sensor_packet._data, packet_buffer,
 					(sizeof(sensor_packet._data)));
+
+			// Set the status to the appropriate entry
+			memcpy(&sensor_packet._data,
+					sensor_configurations[sensor_id].data,
+					sizeof(sensor_packet._data));
 			break;
 
 		// Get sensor sync report
@@ -468,6 +501,11 @@ void _read_response(struct receive_buffer_t* receive_buffer_struct){
 			sensor_state = SYN;
 			memcpy(&sensor_packet._sync, packet_buffer,
 					(sizeof(sensor_packet._sync)));
+
+			// Set the status to the appropriate entry
+			memcpy(&sensor_packet._sync,
+					sensor_configurations[sensor_id].sync,
+					sizeof(sensor_packet._sync));
 			break;
 
 		// Get heartbeat report
@@ -486,6 +524,11 @@ void _read_response(struct receive_buffer_t* receive_buffer_struct){
 			sensor_state = ERR;
 			memcpy(&sensor_packet._error, packet_buffer,
 					(sizeof(sensor_packet._error)));
+
+			// Set the status to the appropriate entry
+			memcpy(&sensor_packet._error,
+					sensor_configurations[sensor_id].error,
+					sizeof(sensor_packet._error));
 			break;
 	}
 }

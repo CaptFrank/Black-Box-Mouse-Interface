@@ -168,10 +168,10 @@ bool check_sensor(linkID_t address){
 	if(SMPL_SUCCESS == SMPL_Ping(address)){
 
 		// Ping using application layer
-		sensor_utilities.ping_ack(address);
+		modes.sensors_arbitrator.ping_ack(address);
 
 		// receive the ack return.
-		receiver_utilities.receive_sensor_command(address);
+		modes.receiver.receive_sensor_response(address);
 
 		// Check if we got an ACK back.
 		if(sensor_state == ACK){
@@ -185,6 +185,8 @@ bool check_sensor(linkID_t address){
 	// Something went wrong
 	}else{
 
+		modes.sensors_arbitrator->send_abort(address);
+		modes.sensors_arbitrator->send_error(address);
 		// Sensor is in an unknown state.
 		sensor_error();
 		return false;
