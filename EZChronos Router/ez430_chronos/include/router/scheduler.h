@@ -9,6 +9,7 @@
 #define SCHEDULER_H_
 
 #include "configs.h"
+#include "user_sensor_configs.h"
 
 /**
  * This file contains the round robin scheduler for the
@@ -22,9 +23,24 @@
  * 		To determine the next course of action.
  */
 
-struct task_t {
+#define ROUTER_ACK			1
+#define ROUTER_CONFIG		2
+#define ROUTER_STATUS		3
+#define ROUTER_SYNC			4
+#define ROUTER_START		5
 
-}task;
+// This state is called numerous times in order to
+// receive the packets from the sensor nodes.
+#define SENSOR_POLL			6
+
+struct scheduler_t {
+
+	// Serial id for tracking
+	u8 uid;
+
+	// The sensor inputs
+	u8 sensor_inputs [8];
+}scheduler;
 
 /**
  * This initializes the scheduler.

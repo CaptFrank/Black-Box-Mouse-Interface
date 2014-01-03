@@ -5,9 +5,17 @@
  *      Author: francis-ccs
  */
 
+#include "project.h"
+#include "configs.h"
+#include "scheduler.h"
+
 void init_scheduler(){
 
+	// Set the tracker
+	scheduler.uid = 0x124;
 
+	// Set the scheduler inputs
+	scheduler.sensor_inputs = ALL;
 
 }
 

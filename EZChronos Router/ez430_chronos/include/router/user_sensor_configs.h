@@ -74,6 +74,13 @@ extern alt sAlt;
 	#define AXIS_2					ACCELEROMETER_2
 	#define WHEEL					ALTITUDE
 
+	#define ALL						{ \
+									SYSTEM_BUTTON_STAR, SYSTEM_BUTTON_NUM, \
+									SYSTEM_BUTTON_UP, SYSTEM_BUTTON_DOWN, \
+									SYSTEM_BUTTON_BACKLIGHT, ACCELEROMETER_1, \
+									ACCELEROMETER_2, ALTITUDE \
+									}
+
 #endif
 
 #ifdef JOYSTICK_CHOICE
@@ -87,6 +94,13 @@ extern alt sAlt;
 #define AXIS_1					ACCELEROMETER_1
 #define AXIS_2					ACCELEROMETER_2
 #define AXIS_3					ACCELEROMETER_3
+
+#define ALL						{ \
+								SYSTEM_BUTTON_STAR, SYSTEM_BUTTON_NUM, \
+								SYSTEM_BUTTON_UP, SYSTEM_BUTTON_DOWN, \
+								SYSTEM_BUTTON_BACKLIGHT, ACCELEROMETER_1, \
+								ACCELEROMETER_2, ACCELEROMETER_3 \
+								}
 
 #endif
 
