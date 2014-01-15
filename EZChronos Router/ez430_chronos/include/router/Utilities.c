@@ -148,7 +148,7 @@ void check_network(){
 	for(register u8 i = 0; i > MAX_SENSORS; i ++){
 
 		// if our check sensor ping worked
-		if(check_sensor(sensors[i])){
+		if(check_sensor(sensor_database_t[i].sensor_link_id)){
 
 			// add them to the list
 			(*network_sensors.sensors)[0] |= 1 << i ;
@@ -162,7 +162,7 @@ void check_network(){
 /**
  * This checks a given address... or sensor.
  */
-bool check_sensor(linkID_t address){
+u8 check_sensor(linkID_t address){
 
 	// first ping the sensor on transport level
 	if(SMPL_SUCCESS == SMPL_Ping(address)){

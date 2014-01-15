@@ -13,7 +13,8 @@
  * of mouse or joystick selection.
  */
 
-#define MAX_SENSORS				2
+#define MAX_SENSORS				0
+
 #define ON						1
 #define OFF						0
 
@@ -87,7 +88,7 @@ union {
 		u8 conf_debug		: 1;
 
 		// Future...
-		u8 extra			: 1;
+		u8 network_enable	: 1;
 
 	}watch_configs_options;
 
@@ -197,7 +198,6 @@ struct joystick_report_t{
 
  	u8 x; // 1 axis with 16 bits.
  	u8 y;
- 	u8 z;
 	u8 buttons; // 8 buttons per byte
 
 	// We need this to separate our data between the packets.
@@ -226,7 +226,15 @@ linkID_t base_station_id;
 u8 simpliciti_ap_address[4];
 
 // The sensor IDs
-linkID_t sensors[MAX_SENSORS];
+//	- Struct for data
+struct sensor_t {
+	u8 sync_time;
+	u8 sensor_number;
+	linkID_t sensor_link_id;
+};
+
+// Array for structures
+struct sensor_t sensor_database_t[MAX_SENSORS];
 
 // Atomic mutex
 bspIState_t intState;

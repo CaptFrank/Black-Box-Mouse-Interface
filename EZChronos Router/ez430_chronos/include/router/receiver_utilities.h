@@ -89,6 +89,14 @@ receiver_router_utilities_t receiver_utilities;
 struct receive_buffer_t rx_buffer;
 
 /**
+ * These are the polling functions
+ * 	- poll_broacast polls for a broadcast packet
+ * 	- poll_specific polls for a specific packet
+ */
+void poll_broadcast();
+void poll_specific(linkID_t id);
+
+/**
  * This function receives a broadcast message
  */
 void receive_broadcast_command();

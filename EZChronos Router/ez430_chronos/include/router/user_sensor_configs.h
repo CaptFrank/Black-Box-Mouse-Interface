@@ -17,20 +17,20 @@ extern accel sAccel;
 extern alt sAlt;
 
 // Hardware acceleration definitions
-#define ACCELEROMETER_1 			&sAccel.xyz[0]; // x
-#define ACCELEROMETER_2				&sAccel.xyz[1];	// y
-#define ACCELEROMETER_3				&sAccel.xyz[2]; // z
+#define ACCELEROMETER_1 			(u8)sAccel.xyz[0]; // x
+#define ACCELEROMETER_2				(u8)sAccel.xyz[1];	// y
+#define ACCELEROMETER_3				(u8)sAccel.xyz[2]; // z
 
 // Hardware altitude definitons
-#define ALTITUDE					&sAlt.altitude;
-#define PRESSURE 					&sAlt.pressure;
+#define ALTITUDE					(u16)sAlt.altitude;
+#define PRESSURE 					(s16)sAlt.pressure;
 
 // Hardware system button definitons
-#define SYSTEM_BUTTON_STAR			BUTTON_STAR_IS_PRESSED
-#define SYSTEM_BUTTON_NUM			BUTTON_NUM_IS_PRESSED
-#define SYSTEM_BUTTON_UP			BUTTON_UP_IS_PRESSED
-#define SYSTEM_BUTTON_DOWN			BUTTON_DOWN_IS_PRESSED
-#define SYSTEM_BUTTON_BACKLIGHT		BUTTON_BACKLIGHT_IS_PRESSED
+#define SYSTEM_BUTTON_STAR			(u8)BUTTON_STAR_IS_PRESSED
+#define SYSTEM_BUTTON_NUM			(u8)BUTTON_NUM_IS_PRESSED
+#define SYSTEM_BUTTON_UP			(u8)BUTTON_UP_IS_PRESSED
+#define SYSTEM_BUTTON_DOWN			(u8)BUTTON_DOWN_IS_PRESSED
+#define SYSTEM_BUTTON_BACKLIGHT		(u8)BUTTON_BACKLIGHT_IS_PRESSED
 #define NONE						0
 
 
@@ -62,6 +62,13 @@ extern alt sAlt;
 #define MOUSE_CHOICE
 //#define JOYSTICK
 
+#define NETWORK_ENABLE
+#ifdef NETWORK_ENABLE
+	const u8 base_station_address = { 0, BASE_STATION_ADDRESS };
+#endif
+
+#define BASE_STATION_ADDRESS		0x00, 0x00, 0x00, 0x00
+
 #ifdef MOUSE_CHOICE
 
 	#define BUTTON_1				SYSTEM_BUTTON_STAR
@@ -73,13 +80,6 @@ extern alt sAlt;
 	#define AXIS_1					ACCELEROMETER_1
 	#define AXIS_2					ACCELEROMETER_2
 	#define WHEEL					ALTITUDE
-
-	#define ALL						{ \
-									SYSTEM_BUTTON_STAR, SYSTEM_BUTTON_NUM, \
-									SYSTEM_BUTTON_UP, SYSTEM_BUTTON_DOWN, \
-									SYSTEM_BUTTON_BACKLIGHT, ACCELEROMETER_1, \
-									ACCELEROMETER_2, ALTITUDE \
-									}
 
 #endif
 
@@ -94,13 +94,6 @@ extern alt sAlt;
 #define AXIS_1					ACCELEROMETER_1
 #define AXIS_2					ACCELEROMETER_2
 #define AXIS_3					ACCELEROMETER_3
-
-#define ALL						{ \
-								SYSTEM_BUTTON_STAR, SYSTEM_BUTTON_NUM, \
-								SYSTEM_BUTTON_UP, SYSTEM_BUTTON_DOWN, \
-								SYSTEM_BUTTON_BACKLIGHT, ACCELEROMETER_1, \
-								ACCELEROMETER_2, ACCELEROMETER_3 \
-								}
 
 #endif
 

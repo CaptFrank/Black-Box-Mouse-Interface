@@ -29,6 +29,8 @@ void init_stuctures(void);
  */
 void init_function_callbacks(void){
 
+	// set the network enable flag
+
 }
 
 /**

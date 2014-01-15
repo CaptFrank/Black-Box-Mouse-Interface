@@ -35,6 +35,9 @@
 		-> ERROR HANDLER
 			- DONE !!
 			
+		-> SCHEDULER
+			- DONE !!
+			
 		-> ROUTER MAIN
 			- needs to be implemented.
 			- needs to update hidden configs (i.e. router state)
@@ -42,10 +45,9 @@
 				also needs to do network arbitration and network
 				topology descovery.
 			- needs to act upon thresholds exceeding.
-		
-		-> SCHEDULER
-			- Implement it!
-			- Check the Link_ID Association
+			
+		-> SENSOR NETWORK ABSTRACTION
+			- LinkID_t association
 			
 		-> ISR / TIMER.C
 			- implement the heartbeat ISR
@@ -63,3 +65,4 @@
 			- convert the chronos EP to AP
 			- Remove Bluerobin stack.
 			- Finish user settings
+			- Implement precompiler for network options

@@ -29,6 +29,7 @@ typedef struct {
 	void (*send_stop)(linkID_t id);
 	void (*send_abort)(linkID_t id);
 	void (*send_pause)(linkID_t id);
+	void (*send_sensor_number_request)(linkID_t id);
 	void (*send_error)(u8 error_code, linkID_t id);
 
 }sensor_network_utilities_t;
@@ -108,6 +109,11 @@ void send_abort(linkID_t id);
  * an abort packet to stop the sensor engine.
  */
 void send_error(u8 error_code, linkID_t id);
+
+/**
+ * This gets the sensor number
+ */
+void send_sensor_number_request(linkID_t id);
 
 /**
  * the internal used function to send a message

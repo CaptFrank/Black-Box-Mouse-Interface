@@ -89,6 +89,9 @@ void system_error(){
 	// add one event to the counter.
 	sys_errors.system_errors_cnt ++;
 
+	// stop the scheduler
+	stop_scheduler();
+
 	// this is a fatal error
 	system_integrity_flag.system_intergrity_flag = 1;
 

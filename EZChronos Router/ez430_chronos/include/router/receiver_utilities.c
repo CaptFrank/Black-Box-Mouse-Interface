@@ -51,7 +51,7 @@ receiver_status_t receive_broadcast_command(){
 /**
  * This function receives a specific packet from a specific source.
  */
-receiver_status_t receive_specific_command(linkID_t ID){
+receiver_status_t receive_specific_command(linkID_t id){
 
 	smplStatus_t status;
 	status = NONE;

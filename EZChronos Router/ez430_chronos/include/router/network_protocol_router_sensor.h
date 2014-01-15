@@ -42,6 +42,7 @@
 #define SENSOR_SYNC_REPORT			0x18
 #define SENSOR_HEARTBEAT_REPORT		0x19
 #define SENSOR_ERROR_REPORT			0x20
+#define SENSOR_REQUEST_NUMBER		0x21
 
 // *************************************************
 // *************** REMOTE DOMAIN *******************

@@ -13,8 +13,8 @@
 
 /**
  * This file contains the round robin scheduler for the
- * creation and getting of the usb report sent to the
- * ground station.
+ * creation and getting of the usb report data from the
+ * remote sensors.
  *
  * 		we use the Configs.h
  * 		-	enabled_sensors
@@ -23,23 +23,37 @@
  * 		To determine the next course of action.
  */
 
-#define ROUTER_ACK			1
-#define ROUTER_CONFIG		2
-#define ROUTER_STATUS		3
-#define ROUTER_SYNC			4
-#define ROUTER_START		5
-
 // This state is called numerous times in order to
 // receive the packets from the sensor nodes.
 #define SENSOR_POLL			6
+
+// Defines the start of the scheduler init.
+#define INIT_SCHEDULER		0
+
+// State machine enum
+enum scheduler_state_t{
+
+	INIT_SCHED,
+	RUN_SCHED,
+	UPDATE_SCHED,
+	STOP_SCHED,
+	RESET_SCHED
+
+} scheduler_state;
+
+scheduler_state_t scheduler_state[5];
 
 struct scheduler_t {
 
 	// Serial id for tracking
 	u8 uid;
 
-	// The sensor inputs
-	u8 sensor_inputs [8];
+	// Atomic bool guard
+	u8 stop_guard;
+
+	// The state
+	u8 state;
+
 }scheduler;
 
 /**
@@ -53,13 +67,6 @@ void init_scheduler();
  * every stage of the rx and tx of the network.
  */
 void start_scheduler();
-
-/**
- * This pauses the scheduler for interrupt servicing
- * and error passing as well as the interruption of the
- * message passing between the sensor node and the base station.
- */
-void pause_scheduler();
 
 /**
  * This kills the scheduler process. This is triggered

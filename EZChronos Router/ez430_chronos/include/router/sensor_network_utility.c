@@ -136,6 +136,20 @@ void send_pause(linkID_t id){
 	receiver_utilities.receive_sensor_response(id);
 }
 
+// Sends a request for a sensor number
+void send_sensor_number_request(linkID_t id){
+
+	// Format the abort command
+	u8 cmd [] = {SENSOR_REQUEST_NUMBER};
+
+	// Send it off
+	_send_command(id, cmd, sizeof(cmd));
+
+	// Receive the response
+	receiver_utilities.receive_sensor_response(id);
+
+}
+
 // Sends an error message
 void send_error(u8 error_code,  linkID_t id){
 
