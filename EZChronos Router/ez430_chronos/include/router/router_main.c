@@ -19,7 +19,9 @@
  * 		- Accelerometer
  * 		- Pressure
  */
-void init_stuctures(void);
+void init_stuctures(void){
+
+}
 
 /**
  * This function initializes the function callbacks that are used
@@ -82,5 +84,8 @@ void stop_router_error(u8 error_code){
  * This associates the linkID to the comprehensible sensor number.
  */
 void _check_link_ID_association(void){
+
+	// This function checks the header of each packet, and
+	// checks the user association and linkID
 
 }

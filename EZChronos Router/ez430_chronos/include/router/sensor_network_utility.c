@@ -189,6 +189,9 @@ void _send_command(linkID_t id, u8* cmd, size_t size){
 	// Set atomic mutex
 	BSP_ENTER_CRITICAL_SECTION(intState);
 
+    // Trigger packet sending
+    simpliciti_flag |= SIMPLICITI_TRIGGER_SEND_DATA;
+
 	// sends the message
 	if(SMPL_SUCCESS != tx_callback_function(&sensor_transmit_buf)){
 

@@ -275,6 +275,9 @@ void _send_packet(void* packet_ptr, u8 header, u8 size){
 	// Unset atomic mutex
 	BSP_EXIT_CRITICAL_SECTION(intState);
 
+    // Trigger packet sending
+    simpliciti_flag |= SIMPLICITI_TRIGGER_SEND_DATA;
+
 	if( SMPL_SUCCESS != tx_callback_function(&router_tx_buffer)){
 
 		// Serve a network error

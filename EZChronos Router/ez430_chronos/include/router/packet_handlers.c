@@ -60,7 +60,8 @@ void create_usb_report(u8 sensor_id){
 	// that the base station can understand.
 	if(sensor_state == DATA){
 
-		_wrap_rx_packet(choice);
+		// We update the packet that is going to be sent.
+		_update_tx_packet(choice);
 
 	}else {
 		// If there is an error in the packet stream
@@ -69,14 +70,23 @@ void create_usb_report(u8 sensor_id){
 }
 
 /**
- * This function wraps the received packet with a packet wrapper
- * so that the base station can understand it and its format.
+ * This function sends the data packet to the base station node.
  */
-void _wrap_rx_packet(structure_choice_t choice){
+void send_usb_report(){
+
+	// Sends the usb report to the base station
+	send_sensor_data();
+}
+
+/**
+ * This function looks at the config of the device and creates a
+ * usb report (data packet).
+ */
+void _update_tx_packet(structure_choice_t configs){
 
 	// concat the packets.
 	// Mouse selected
-#ifdef MOUSE_CHOICE
+	if(configs == MOUSE){
 		// Assign values
 		// Buttons
 		mouse_report.buttons |= BUTTON_1;
@@ -91,9 +101,9 @@ void _wrap_rx_packet(structure_choice_t choice){
 
 		// Wheel
 		mouse_report.wheel = WHEEL;
-#endif
+	}
 
-#ifdef JOYSTICK_CHOICE
+	else if(configs == JOYSTICK){
 		// Assign values
 		// Buttons
 		joystick_report.buttons |= BUTTON_1;
@@ -106,5 +116,10 @@ void _wrap_rx_packet(structure_choice_t choice){
 		joystick_report.x = AXIS_1;
 		joystick_report.y = AXIS_2;
 		joystick_report.z = AXIS_3;
-#endif
+	}
+	else {
+		// Error and system is compromized
+		system_integrity_flag = 1;
+		sys_error();
+	}
 }

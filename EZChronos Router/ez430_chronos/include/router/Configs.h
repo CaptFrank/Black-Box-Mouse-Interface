@@ -36,6 +36,8 @@
 #define ERROR					64
 #define OFF						128
 
+#define RX_TIMEOUT				1000
+
 u8 reset;
 
 /**

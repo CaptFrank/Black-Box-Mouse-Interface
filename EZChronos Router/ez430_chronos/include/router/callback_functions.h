@@ -36,6 +36,9 @@ struct receive_buffer_t {
 	// the size of the buffer
 	u8 size_of_buffer;
 
+	// rx timeout
+	u8 timeout;
+
 }rx_buf;
 
 struct transmit_buffer_t {
@@ -58,6 +61,7 @@ struct transmit_buffer_t {
  * the receive callback function
  */
 void rx_callback_function(struct receive_buffer_t* receive_buffer_struct);
+void rx_until_trigger_callback_function(struct receive_buffer_t* receive_buffer_struct);
 
 /**
  * the transmit callback function
