@@ -91,6 +91,11 @@ void check_network();
  */
 u8 check_sensor(u8 address);
 
+/**
+ * This is a linklisten function for the number of devices on the network.
+ */
+void check_network_links();
+
 /***************************************************
 *				POWER MANAGER
 ***************************************************/

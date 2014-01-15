@@ -193,3 +193,57 @@ u8 check_sensor(linkID_t address){
 	}
 }
 
+/**
+ * This is a linklisten function for the number of devices on the network.
+ */
+void check_network_links(){
+
+	// Check to see if we really need this.
+	if(0 == NUMBER_OF_WIRELESS_SENSORS) return;
+
+	/* main work loop */
+	while (1){
+		/* Wait for the Join semaphore to be set by the receipt of a Join frame from
+		 * a device that supports an End Device.
+		 *
+		 * An external method could be used as well. A button press could be connected
+		 * to an ISR and the ISR could set a semaphore that is checked by a function
+		 * call here, or a command shell running in support of a serial connection
+		 * could set a semaphore that is checked by a function call.
+		 *
+		 * We must turn on the devices in this manner in order for this scheme to work:
+		 * 	- Watch / Router
+		 * 	- BaseStation
+		 * 	- Sensor1
+		 * 	- Sensor2
+		 * 	- ...
+		 */
+		if (max_number_of_peer && (number_of_peers < NUMBER_OF_WIRELESS_SENSORS)){
+			/* listen for a new connection */
+			while (1){
+				if (SMPL_SUCCESS == SMPL_LinkListen(temp)){
+
+					// we then request the header to get the id of the device.
+					modes.sensors_arbitrator->ping_ack(temp);
+
+					// we then arrange the table accordingly.
+					modes.receiver->receive_sensor_response(temp);
+					network_address_table[rx_buffer.data_buffer[3]] = temp;
+
+					break;
+				}
+				/* Implement fail-to-link policy here. otherwise, listen again. */
+				else{
+					net_error();
+				}
+			}
+
+			number_of_peers++;
+
+			BSP_ENTER_CRITICAL_SECTION(intState);
+			max_number_of_peer--;
+			BSP_EXIT_CRITICAL_SECTION(intState);
+		}
+	}
+}
+

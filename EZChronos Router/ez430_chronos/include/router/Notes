@@ -58,10 +58,13 @@
 			- implement the network topology descovery ISR (10sec?)
 			- implement the system check ISR (5sec?)
 				- checks the error states on the system.
-			- Main ISR Loop
 				
 		-> OTHERS
 			- DONE !!! ---- reverse engineer the LinkID for the RFBee - FOUND A WAY TO GO AROUND THIS
 			- convert the chronos EP to AP
 			- Remove Bluerobin stack.
 			- Finish user settings			- Implement precompiler for network options
+			
+			
+			
+	

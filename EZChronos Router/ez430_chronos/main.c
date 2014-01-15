@@ -81,6 +81,8 @@
 #include "project.h"
 #include <string.h>
 
+#include "configs.h"
+
 // driver
 #include "clock.h"
 #include "display.h"
@@ -167,7 +169,17 @@ extern void start_simpliciti_sync(void);
 // *************************************************************************************************
 int main(void)
 {
-    // Init MCU
+    // Init MCU and Simpliciti Stack
+
+	// Init the board drivers
+	BSP_Init();
+
+	// Init the simpliciti stack and sets it as an AP
+	SMPL_Init(0);
+
+	// Listen for links
+	check_network_links();
+
     init_application();
 
     // Assign initial value to global variables

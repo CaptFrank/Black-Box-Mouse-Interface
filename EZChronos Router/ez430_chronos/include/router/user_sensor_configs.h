@@ -11,6 +11,7 @@
 #include "project.h"
 #include "acceleration.h"
 #include "altitude.h"
+#include "configs.h"
 
 // External definitions
 extern accel sAccel;
@@ -33,6 +34,12 @@ extern alt sAlt;
 #define SYSTEM_BUTTON_BACKLIGHT		(u8)BUTTON_BACKLIGHT_IS_PRESSED
 #define NONE						0
 
+static sensor_type sensor_types[MAX_SENSORS] =  {
+												WIRED,
+												WIRED,
+												WIRED
+												};
+#define NUMBER_OF_WIRELESS_SENSORS	0
 
 /**
  * This file is the user config file for the sensor map

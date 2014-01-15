@@ -13,7 +13,7 @@
  * in order to get the network synchronized with all other peices
  * of the network.
  */
-void init_sensor(u8 sensor_number){
+void init_wireless_sensor(u8 sensor_number){
 
 	// start by checking the network,
 	// get the linkID_t for each sensors
@@ -64,12 +64,12 @@ void init_sensor(u8 sensor_number){
  * in turn starts the data stream from that particular sensor at a rate
  * given by the sync rate.
  */
-void start_sensor(u8 sensor_number){
+void start_wireless_sensor(u8 sensor_number){
 	modes.sensors_arbitrator->send_start(sensor_database_t[sensor_number].sensor_link_id);
 }
 
 // Starts all sensors
-void start_all_sensors(){
+void start_all_wireless_sensors(){
 	for(register u8 i = 0; i < sizeof(sensor_database_t); i ++){
 		start_sensor(i);
 	}
@@ -80,12 +80,12 @@ void start_all_sensors(){
  * stops teh communications with that sensor. Although the sensor is still
  * connected to the network the data stream is stopped.
  */
-void stop_sensor(u8 sensor_number){
+void stop_wireless_sensor(u8 sensor_number){
 	modes.sensors_arbitrator->send_stop(sensor_database_t[sensor_number].sensor_link_id);
 }
 
 // Stops all sensors
-void stop_all_sensors(){
+void stop_all_wireless_sensors(){
 	for(register u8 i = 0; i < sizeof(sensor_database_t); i ++){
 		stop_sensor(i);
 	}
@@ -95,12 +95,12 @@ void stop_all_sensors(){
  * This function resets the specific sensor and thus disconnects the sensor
  * from the network, by resetting the sensor node.
  */
-void reset_sensor(u8 sensor_number){
+void reset_wireless_sensor(u8 sensor_number){
 	modes.sensors_arbitrator->send_abort(sensor_database_t[sensor_number].sensor_link_id);
 }
 
 // Resets all sensors
-void reset_all_sensors(){
+void reset_all_wireless_sensors(){
 	for(register u8 i = 0; i < sizeof(sensor_database_t); i ++){
 			reset_sensor(i);
 	}
@@ -112,5 +112,7 @@ void _associate_linkID_t (){
 	// gain access to the network table,
 	// send sensor number request,
 	// assign network number to the sensor database
+
+
 }
 

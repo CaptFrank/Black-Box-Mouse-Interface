@@ -29,7 +29,7 @@ receiver_status_t receive_broadcast_command(){
 	rx_buffer.rx_id = SMPL_LINKID_USER_UUD;
 
 	// Receive that message
-	status = rx_callback_function(&rx_buffer);
+	status = rx_until_trigger_callback_function(&rx_buffer);
 
 	// Check for receiving status.
 	if(SMPL_SUCCESS != status){
@@ -60,7 +60,7 @@ receiver_status_t receive_specific_command(linkID_t id){
 	rx_buffer.rx_id = id;
 
 	// Receive that message
-	status = rx_callback_function(&rx_buffer);
+	status = rx_until_trigger_callback_function(&rx_buffer);;
 
 	// Check for receiving status.
 	if(SMPL_SUCCESS != status){
@@ -95,7 +95,7 @@ receiver_status_t receive_sensor_response(linkID_t id){
 	run_watchdog_timer();
 
 	// Receive that message
-	status = rx_callback_function(&rx_buffer);
+	status = rx_until_trigger_callback_function(&rx_buffer);
 
 	// Check for receiving status.
 	if(SMPL_SUCCESS != status){

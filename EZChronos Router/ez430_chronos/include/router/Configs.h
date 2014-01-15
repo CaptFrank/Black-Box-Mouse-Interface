@@ -13,7 +13,7 @@
  * of mouse or joystick selection.
  */
 
-#define MAX_SENSORS				0
+#define MAX_SENSORS				3
 
 #define ON						1
 #define OFF						0
@@ -39,6 +39,12 @@
 #define RX_TIMEOUT				1000
 
 u8 reset;
+
+enum {
+
+	WIRED,
+	WIRELESS
+}sensor_type;
 
 /**
  * This is the system integrity flag. It is used in
@@ -222,6 +228,12 @@ structure_choice_t choice;
 
 // The base station ID
 linkID_t base_station_id;
+linkID_t router_id;
+linkID_t temp;
+linkID_t network_address_table[NUMBER_OF_WIRELESS_SENSORS];
+
+u8 number_of_peers = 0;
+u8 max_number_of_peer = NUMBER_OF_WIRELESS_SENSORS;
 
 // Simpliciti id
 // TODO
@@ -231,6 +243,7 @@ u8 simpliciti_ap_address[4];
 //	- Struct for data
 struct sensor_t {
 	u8 sync_time;
+	u8 sensor_type;
 	u8 sensor_number;
 	linkID_t sensor_link_id;
 };

@@ -21,8 +21,10 @@ void init_scheduler(){
 	// Set the state machine
 	scheduler.state = INIT_SCHEDULER;
 
-	for(register u8 i = 0; i < sizeof(sensor_database_t); i++){
-		init_sensor(sensor_database_t[i].sensor_number);
+	for(register u8 i = 0; i < MAX_SENSORS; i++){
+		if(sensor_types[i] == WIRELESS){
+			init_wireless_sensor(sensor_database_t[i].sensor_number);
+		}
 	}
 	// Start the scheduler
 	start_scheduler();
@@ -36,7 +38,9 @@ void start_scheduler(){
 
 	// Start the sensors
 	for(register u8 i = 0; i < sizeof(sensor_database_t); i++){
-		start_sensor(sensor_database_t[i].sensor_number);
+		if(sensor_types[i] == WIRELESS){
+			start_wireles_sensor(sensor_database_t[i].sensor_number);
+		}
 	}
 
 	// while not stopped
@@ -49,8 +53,10 @@ void start_scheduler(){
 		 * 	- The sensor addressing is done in sequence.
 		 */
 
-		// poll data for the sensor
-		modes.receiver->receive_sensor_response(sensor_database_t[i].sensor_link_id);
+		if(sensor_types[i] == WIRELESS){
+			// poll data for the sensor
+			modes.receiver->receive_sensor_response(sensor_database_t[i].sensor_link_id);
+		}
 
 		// Move to the new sensor
 		i = (i + 1) % MAX_SENSORS;
