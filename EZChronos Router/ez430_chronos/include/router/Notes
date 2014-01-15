@@ -61,7 +61,7 @@
 				
 		-> OTHERS
 			- DONE !!! ---- reverse engineer the LinkID for the RFBee - FOUND A WAY TO GO AROUND THIS
-			- convert the chronos EP to AP
+			- DONE !!! ---- convert the chronos EP to AP
 			- Remove Bluerobin stack.
 			- Finish user settings			- Implement precompiler for network options
 			
